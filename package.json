@@ -1,0 +1,38 @@
+{
+  "name": "vocabulary-highlighter-app",
+  "version": "1.0.0",
+  "main": "src/App.jsx",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' --config ./.prettierrc --ignore-unknown",
+    "lint": "eslint src --fix"
+  },
+  "dependencies": {
+    "@react-navigation/native": "^6.1.6",
+    "@react-navigation/native-stack": "^6.9.12",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "expo": "~48.0.9",
+    "expo-status-bar": "~1.4.4",
+    "prop-types": "^15.8.1",
+    "react": "18.2.0",
+    "react-native": "0.71.4",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "~3.20.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "prettier": "2.8.7"
+  },
+  "private": true
+}
