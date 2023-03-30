@@ -1,4 +1,4 @@
-import { WORD_LIST } from '@constants/words';
+import { WORD_LIST } from 'shared/constants/words';
 
 export const genWordList = () => [...WORD_LIST.GRE, ...WORD_LIST.TOEFL].map(item => item.word);
 

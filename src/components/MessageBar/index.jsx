@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Proptypes from 'prop-types';
 import styled from 'styled-components';
-
-import { MessageBarItem } from '@components/MessageBar/MessageBarItem';
-import { GLOBAL_MESSAGE_DISPLAY_PERIOD, MAX_Z_INDEX } from '@constants/styles';
-import { GlobalMessageContext } from '@hooks/useGlobalMessageContext';
-
 import { Stack } from '@mui/material';
+
+import { MessageBarItem } from 'components/MessageBar/MessageBarItem';
+import { GLOBAL_MESSAGE_DISPLAY_PERIOD, MAX_Z_INDEX } from 'shared/constants/styles';
+import { GlobalMessageContext } from 'shared/hooks/useGlobalMessageContext';
 
 const MessageBarWrapper = styled.div`
   z-index: ${MAX_Z_INDEX};

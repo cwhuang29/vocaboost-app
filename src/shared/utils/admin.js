@@ -1,4 +1,4 @@
-import { COOKIE_NAMES } from '@constants/storage';
+import { COOKIE_NAMES } from 'shared/constants/storage';
 
 import { getCookie } from './cookie';
 

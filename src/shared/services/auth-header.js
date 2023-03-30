@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_NAME } from '@constants/storage';
+import { LOCAL_STORAGE_NAME } from 'shared/constants/storage';
 
 // const csrfToken = '';
 // const headers = { 'X-CSRF-TOKEN': csrfToken };

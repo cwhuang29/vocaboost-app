@@ -1,6 +1,6 @@
-import apis from '@constants/apis';
-import authHeader from '@services/auth-header';
-import fetch from '@services/roots';
+import apis from 'shared/constants/apis';
+import authHeader from 'shared/services/auth-header';
+import fetch from 'shared/services/roots';
 
 const getCurrentUserData = (token = authHeader()) =>
   fetch

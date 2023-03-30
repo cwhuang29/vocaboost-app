@@ -1,6 +1,6 @@
-import API from '@constants/apis';
-import fetch from '@services/roots';
-import userService from '@services/user.service';
+import API from 'shared/constants/apis';
+import fetch from 'shared/services/roots';
+import userService from 'shared/services/user.service';
 
 const register = ({ firstName, lastName, email, password /* , role */ }) =>
   fetch.post(API.V2.REGISTER, {

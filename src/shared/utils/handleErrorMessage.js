@@ -1,4 +1,4 @@
-import msg from '@constants/messages';
+import msg from 'shared/constants/messages';
 
 // https://axios-http.com/docs/handling_errors
 export const extractErrorMessage = err => {

@@ -1,7 +1,7 @@
-import { AUTH_STATUS } from '@constants/actionTypes';
-import { COOKIE_NAMES, LOCAL_STORAGE_NAME } from '@constants/storage';
-import AuthService from '@services/auth.service';
-import { extractErrorMessage } from '@utils/handleErrorMessage';
+import { AUTH_STATUS } from 'shared/constants/actionTypes';
+import { COOKIE_NAMES, LOCAL_STORAGE_NAME } from 'shared/constants/storage';
+import AuthService from 'shared/services/auth.service';
+import { extractErrorMessage } from 'shared/utils/handleErrorMessage';
 
 export const register = data => dispatch =>
   AuthService.register(data)

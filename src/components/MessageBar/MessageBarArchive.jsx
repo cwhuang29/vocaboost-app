@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Proptypes from 'prop-types';
 import styled from 'styled-components';
 
-import { CrossButton } from '@components/styledComponents/CrossButton';
-import { RoundButton } from '@components/styledComponents/RoundButton';
+import { CrossButton } from 'components/styledComponents/CrossButton';
+import { RoundButton } from 'components/styledComponents/RoundButton';
 
 const Wrapper = styled.div`
   display: block;

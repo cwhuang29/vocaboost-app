@@ -17,12 +17,11 @@
  *
  * Note: text nodes themselves contain values only. Modify their parent nodes to change styling
  */
-import { sendMessage } from '@browsers/message';
-import { getStorage, setStorage } from '@browsers/storage';
-import { HIGHLIGHTER_BG_COLOR_CLASS, HIGHLIGHTER_CLASS, HIGHLIGHTER_ORG_WORD_CLASS } from '@constants/index';
-import { EXT_MSG_TYPE_GET_WORD_LIST } from '@constants/messages';
-import { EXT_STORAGE_WORD_LIST } from '@constants/storage';
-import { HIGHLIGHTER_POPUP_DISPLAY_DELTA } from '@constants/styles';
+import { HIGHLIGHTER_BG_COLOR_CLASS, HIGHLIGHTER_CLASS, HIGHLIGHTER_ORG_WORD_CLASS } from 'shared/constants/index';
+import { EXT_MSG_TYPE_GET_WORD_LIST } from 'shared/constants/messages';
+import { EXT_STORAGE_WORD_LIST } from 'shared/constants/storage';
+import { HIGHLIGHTER_POPUP_DISPLAY_DELTA } from 'shared/constants/styles';
+import { getStorage, setStorage } from 'shared/storage';
 
 import { toCapitalize } from './stringHelpers';
 

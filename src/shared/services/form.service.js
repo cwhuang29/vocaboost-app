@@ -1,7 +1,7 @@
-import apis from '@constants/apis';
-import authHeader from '@services/auth-header';
-import fetch from '@services/roots';
-import { extractErrorMessage } from '@utils/handleErrorMessage';
+import apis from 'shared/constants/apis';
+import authHeader from 'shared/services/auth-header';
+import fetch from 'shared/services/roots';
+import { extractErrorMessage } from 'shared/utils/handleErrorMessage';
 
 const getAllForms = (token = authHeader()) => fetch.get(apis.V2.FORMS, { headers: token });
 
@@ -47,7 +47,7 @@ const deleteFormStatus = (id, payload, token = authHeader()) =>
   fetch
     // .delete(`${apis.V2.FORM_STATUS}/${id}`, { data: payload }, { headers: token }) // Error: header is not sent
     // .delete(`${apis.V2.FORM_STATUS}/${id}`, { headers: token }, { data: payload }) // Error: request body is not sent
-    .delete(`${apis.V2.FORM_STATUS}/${id}`, { headers: token, data: { payload } }) // Request body: {payload: {email: 'a1@abc.com'}}
+    .delete(`${apis.V2.FORM_STATUS}/${id}`, { headers: token, data: { payload } }) // Request body: {payload: {email: 'a1shared/abc.com'}}
     .then(resp => Promise.resolve(resp.data))
     .catch(err => Promise.reject(extractErrorMessage(err)));
 

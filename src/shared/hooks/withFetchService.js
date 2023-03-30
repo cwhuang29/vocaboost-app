@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 // import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import messages from '@constants/messages';
-import { GLOBAL_MESSAGE_SERVERITY } from '@constants/styles';
-import { useGlobalMessageContext } from '@hooks/useGlobalMessageContext';
+import messages from 'shared/constants/messages';
+import { GLOBAL_MESSAGE_SERVERITY } from 'shared/constants/styles';
+import { useGlobalMessageContext } from 'shared/hooks/useGlobalMessageContext';
 
 const ServiceFetcher = props => {
   const { render, fetchService, toDispatch, ...notForHOCProps } = props; // Method 1 (render props)

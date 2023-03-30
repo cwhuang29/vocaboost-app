@@ -1,8 +1,8 @@
-import { getStorage, setStorage } from '@browsers/storage';
-import { HIGHLIGHTER_BG_COLORS, HIGHLIGHTER_FONT_SIZE, LANGS } from '@constants/index';
-import { EXT_STORAGE_CONFIG } from '@constants/storage';
-import { logger } from '@utils/logger';
-import { isArray, isObject } from '@utils/misc';
+import { HIGHLIGHTER_BG_COLORS, HIGHLIGHTER_FONT_SIZE, LANGS } from 'shared/constants/index';
+import { EXT_STORAGE_CONFIG } from 'shared/constants/storage';
+import { getStorage, setStorage } from 'shared/storage';
+import { logger } from 'shared/utils/logger';
+import { isArray, isObject } from 'shared/utils/misc';
 
 export const DEFAULT_CONFIG = {
   highlightColor: HIGHLIGHTER_BG_COLORS.YELLOW,

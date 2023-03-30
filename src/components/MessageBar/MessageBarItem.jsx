@@ -1,6 +1,5 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-
 import { Alert, AlertTitle } from '@mui/material';
 
 // https://mui.com/components/alert/

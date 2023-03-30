@@ -1,11 +1,14 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Image, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import logo from 'assets/icon.png';
+import Login from 'pages/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +21,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeScreen = ({ navigation }) => <Button title='Go to profile page' onPress={() => navigation.navigate('Profile', { name: 'XXX' })} />;
-
 const ProfileScreen = ({ route }) => (
   <View style={styles.container}>
     <Text>This is {route.params.name}'s profile</Text>
@@ -27,11 +28,49 @@ const ProfileScreen = ({ route }) => (
   </View>
 );
 
+const HomeScreen = ({ navigation }) => {
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    // Use `setOptions` to update the button that we previously specified
+    // Now the button includes an `onPress` handler to update the count
+    navigation.setOptions({
+      headerRight: () => <Button onPress={() => setCount(c => c + 1)} title='Update count' />,
+    });
+  }, [navigation]);
+
+  return (
+    <View>
+      <Text>count: {count}</Text>
+      <Button title='Go to profile' onPress={() => navigation.navigate('Profile', { name: 'XXX' })} />
+    </View>
+  );
+};
+
+const LogoTitle = () => <Image style={{ width: 50, height: 50 }} source={logo} />;
+
 const App = () => (
   <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name='Home' component={HomeScreen} options={{ title: 'Welcome' }} />
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}
+    >
+      <Stack.Screen
+        name='Home'
+        component={HomeScreen}
+        options={{
+          headerTitle: props => <LogoTitle {...props} />,
+        }}
+      />
       <Stack.Screen name='Profile' component={ProfileScreen} />
+      <Stack.Screen name='Login' component={Login} />
     </Stack.Navigator>
   </NavigationContainer>
 );
@@ -39,6 +78,7 @@ const App = () => (
 HomeScreen.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
+    setOptions: PropTypes.func.isRequired,
   }).isRequired,
 };
 
