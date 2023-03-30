@@ -1,14 +1,13 @@
 import React from 'react';
 import { Button, Image, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PropTypes from 'prop-types';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import logo from 'assets/icon.png';
 import Login from 'pages/Login';
+import logo from 'assets/icon.png';
 
 const Stack = createNativeStackNavigator();
 

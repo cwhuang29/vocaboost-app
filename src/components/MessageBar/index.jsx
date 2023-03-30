@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Proptypes from 'prop-types';
-import styled from 'styled-components';
+
 import { Stack } from '@mui/material';
+import styled from 'styled-components';
 
 import { MessageBarItem } from 'components/MessageBar/MessageBarItem';
 import { GLOBAL_MESSAGE_DISPLAY_PERIOD, MAX_Z_INDEX } from 'shared/constants/styles';

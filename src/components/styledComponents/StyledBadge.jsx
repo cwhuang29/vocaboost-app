@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Badge from '@mui/material/Badge';
+import styled from 'styled-components';
 
 // eslint-disable-next-line no-unused-vars
 const StyledBadge = styled(Badge)(({ theme }) => ({
