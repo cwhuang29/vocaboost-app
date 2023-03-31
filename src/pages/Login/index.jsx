@@ -26,10 +26,13 @@ const Login = ({ navigation, route }) => {
 
   useEffect(() => {
     const getUserInfo = async () => {
-      const loginData = await storage.getData(STORAGE_LOGIN_INFO);
-      if (loginData) {
+      const isSignedIn = await GoogleSignin.isSignedIn();
+      setloggedIn(isSignedIn);
+      if (isSignedIn) {
+        const loginData = await storage.getData(STORAGE_LOGIN_INFO);
         setUserInfoCache(loginData);
-        setloggedIn(true);
+      } else {
+        setUserInfoCache([]);
       }
     };
     getUserInfo();
@@ -58,7 +61,7 @@ const Login = ({ navigation, route }) => {
 
       await GoogleSignin.hasPlayServices();
       const uInfo = await GoogleSignin.signIn();
-      setUserInfo(uInfo);
+      setUserInfo({ ...uInfo, idToken: '<omit>' });
       setloggedIn(true);
       storage.setData(STORAGE_LOGIN_INFO, uInfo);
     } catch (error) {
@@ -78,9 +81,7 @@ const Login = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text>User info from cache: {JSON.stringify(userInfoCache.user)}</Text>
-      <Text> =========================== </Text>
-      <Text>User info: {JSON.stringify(userInfo.user)}</Text>
+      <Text>User info: {JSON.stringify(userInfo)}</Text>
       <Button title='Sign out' onPress={signOut} disabled={!loggedIn} />
       <Button title='Sign in with Google' onPress={signIn} />
       <GoogleSigninButton
