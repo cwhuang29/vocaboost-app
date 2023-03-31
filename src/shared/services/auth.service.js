@@ -8,7 +8,8 @@ const register = ({ firstName, lastName, email, password /* , role */ }) =>
     last_name: lastName,
     email,
     password,
-    role: 0, // TODO remove this attribute
+    role: 0,
+    method: 0,
   });
 
 const login = ({ email, password }) =>
