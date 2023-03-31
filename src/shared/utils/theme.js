@@ -53,10 +53,10 @@ const themeSetting = {
       },
     },
     Text: {
-      baseStyle: ({ colorMode }) => ({
+      baseStyle: {
         _light: { color: 'warning.300' },
         _dark: { color: 'vhlight.50' },
-      }),
+      },
       defaultProps: { size: 'md' },
       sizes: {
         xl: { fontSize: '64px' },

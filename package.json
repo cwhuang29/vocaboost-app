@@ -1,5 +1,5 @@
 {
-  "name": "vocabulary-highlighter-app",
+  "name": "Vocabulary Highlighter",
   "version": "1.0.0",
   "main": "src/App.jsx",
   "scripts": {

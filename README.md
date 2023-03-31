@@ -1,3 +1,1 @@
 # vocabulary-highlighter-app
-
-

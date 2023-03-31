@@ -21,7 +21,7 @@ import { HIGHLIGHTER_BG_COLOR_CLASS, HIGHLIGHTER_CLASS, HIGHLIGHTER_ORG_WORD_CLA
 import { EXT_MSG_TYPE_GET_WORD_LIST } from 'shared/constants/messages';
 import { EXT_STORAGE_WORD_LIST } from 'shared/constants/storage';
 import { HIGHLIGHTER_POPUP_DISPLAY_DELTA } from 'shared/constants/styles';
-import { getStorage, setStorage } from 'shared/storage';
+import storage from 'shared/storage';
 
 import { toCapitalize } from './stringHelpers';
 
@@ -37,14 +37,14 @@ export const genHighlightSyntax = ({ config, orgWord }) => {
 };
 
 export const getAllWords = async () => {
-  const cache = await getStorage({ type: 'local', key: EXT_STORAGE_WORD_LIST });
+  const cache = await storage.getData(EXT_STORAGE_WORD_LIST);
 
   let wordListStr = null;
   if (cache[EXT_STORAGE_WORD_LIST]) {
     wordListStr = cache[EXT_STORAGE_WORD_LIST];
   } else {
     wordListStr = await sendMessage({ type: EXT_MSG_TYPE_GET_WORD_LIST });
-    setStorage({ type: 'local', key: EXT_STORAGE_WORD_LIST, value: wordListStr });
+    storage.setData(EXT_STORAGE_WORD_LIST, wordListStr);
   }
 
   if (!wordListStr) {

@@ -1,6 +1,6 @@
 import { HIGHLIGHTER_BG_COLORS, HIGHLIGHTER_FONT_SIZE, LANGS } from 'shared/constants/index';
 import { EXT_STORAGE_CONFIG } from 'shared/constants/storage';
-import { getStorage, setStorage } from 'shared/storage';
+import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
 import { isArray, isObject } from 'shared/utils/misc';
 
@@ -27,11 +27,11 @@ export const isConfigEqual = (config1 = {}, config2 = {}) => {
 };
 
 export const setupDefaultConfigIfNotExist = async () => {
-  let config = await getStorage({ type: 'sync', key: EXT_STORAGE_CONFIG });
+  let config = await storage.getData(EXT_STORAGE_CONFIG);
 
   if (!config || Object.keys(config).length === 0) {
     config = DEFAULT_CONFIG;
-    await setStorage({ type: 'sync', key: EXT_STORAGE_CONFIG, value: config });
+    await storage.setData(EXT_STORAGE_CONFIG, config);
   }
   logger(`Get config after installation. Config: ${JSON.stringify(config)}`);
 };

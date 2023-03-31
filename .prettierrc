@@ -9,4 +9,3 @@
   printWidth: 160,
   arrowParens: 'avoid'
 }
-

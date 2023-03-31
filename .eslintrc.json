@@ -28,7 +28,6 @@
     "react/forbid-prop-types": 0,
     "react/style-prop-object": 0,
     "react/no-unescaped-entities": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-space-before-closing": 0,
     "react/jsx-no-target-blank": 0,
     "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
@@ -56,9 +55,9 @@
       {
         "groups": [
           ["^\\u0000"],
-          ["^react", "@react", "^redux", "^prop-types", "expo", "^formik", "^yup", "@"],
-          ["native-base", "^@mui", "^styled-components"],
-          ["pages", "components", "shared", "assets"],
+          ["^react", "@react", "^redux", "^prop-types", "^expo", "^formik", "^yup", "^@"],
+          ["^native-base", "^@mui", "^styled-components"],
+          ["^pages", "^components", "^shared", "^assets"],
           ["^.+.s?css$"],
           ["^[^.]"],
           ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$", "^\\.\\.(?!/?$)", "^\\.\\./?$"]

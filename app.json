@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "vocabulary-highlighter-app",
+    "name": "Vocabulary Highlighter",
     "slug": "vocabulary-highlighter",
     "owner": "cwhuang29",
     "version": "1.0.0",
     "description": "Highlight GRE vocabulary and phrases on every web page you visit.",
     "orientation": "portrait",
-    "icon": "./src/assets/icon.png",
+    "icon": "./src/assets/icons/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./src/assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#fdfdfd"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -24,7 +24,7 @@
       "package": "vocabulary-highlighter.com",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/icons/logo.png",
         "backgroundColor": "#ffffff"
       }
     },
