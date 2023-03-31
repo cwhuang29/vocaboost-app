@@ -10,7 +10,7 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' --config ./.prettierrc --ignore-unknown",
     "lint": "eslint src --fix",
     "build-dev-ios": "eas build --profile dev-sim --platform ios",
-    "loadios": "eas build:run -p ios --latest"
+    "load-ios": "eas build:run -p ios --latest"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
