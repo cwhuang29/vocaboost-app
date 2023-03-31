@@ -3,6 +3,7 @@
     "name": "vocabulary-highlighter-app",
     "slug": "vocabulary-highlighter",
     "version": "1.0.0",
+    "description": "Highlight GRE vocabulary and phrases on every web page you visit.",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,20 +14,27 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "bundleIdentifier": "vocabulary_highlighter_app_bundle_id",
+      "bundleIdentifier": "vocabulary-highlighter.com",
       "buildNumber": "1.0.0",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "./google-services-secret-ios.plist"
     },
     "android": {
-      "package": "vocabulary_highlighter_app_bundle_id",
+      "package": "vocabulary-highlighter.com",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
+    },
+    "plugins": ["@react-native-google-signin/google-signin"],
+    "extra": {
+      "eas": {
+        "projectId": "ca67f84b-1a5b-47e4-a4c3-6e14a9b0a175"
+      }
     }
   }
 }

@@ -37,3 +37,15 @@ export const EXT_MSG_TYPE_GET_WORD_LIST = 'EXT_MSG_TYPE_GET_WORD_LIST';
 export const EXT_MSG_TYPE_INSERT_CSS = 'EXT_MSG_TYPE_INSERT_CSS';
 export const EXT_MSG_TYPE_CONFIG_UPDATE = 'EXT_MSG_TYPE_CONFIG_UPDATE';
 export const EXT_MSG_TYPE_COLLECTED_WORD_LIST_UPDATE = 'EXT_MSG_TYPE_COLLECTED_WORD_LIST_UPDATE';
+
+export const STORAGE_ERR_MSG = {
+  GET(key, err) {
+    return `Storage get error. key: ${key}. Error: ${err}`;
+  },
+  SET(key, err) {
+    return `Storage set error. key: ${key}. Error: ${err}`;
+  },
+  REMOVE(key, err) {
+    return `Storage remove error. key: ${key}. Error: ${err}`;
+  },
+};

@@ -22,3 +22,16 @@ dist.zip
 .env.production.local
 
 npm-debug.log*
+
+# credentials
+.env
+google-services-secret-web.json
+google-services-secret-chrome.json
+google-services-secret-ios.plist
+
+# Expo
+.expo
+__generated__
+web-build
+bare-apps
+

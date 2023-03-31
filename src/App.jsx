@@ -1,13 +1,16 @@
 import React from 'react';
-import { Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PropTypes from 'prop-types';
 import { registerRootComponent } from 'expo';
 import { StatusBar } from 'expo-status-bar';
 
+import { Box, Button, Center, FlatList, NativeBaseProvider, Text, useColorMode, useTheme } from 'native-base';
+
 import Login from 'pages/Login';
-import logo from 'assets/icon.png';
+import defaultTheme from 'shared/utils/theme';
+import logo from 'assets/favicon.png';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,49 +32,78 @@ const ProfileScreen = ({ route }) => (
 
 const HomeScreen = ({ navigation }) => {
   const [count, setCount] = React.useState(0);
-
   React.useEffect(() => {
-    // Use `setOptions` to update the button that we previously specified
-    // Now the button includes an `onPress` handler to update the count
     navigation.setOptions({
-      headerRight: () => <Button onPress={() => setCount(c => c + 1)} title='Update count' />,
+      // Use `setOptions` to update button in header bar
+      // eslint-disable-next-line react/no-unstable-nested-components
+      headerRight: () => (
+        <Button onPress={() => setCount(c => c + 1)} shadow={1} size='sm' variant='vh1'>
+          Click me
+        </Button>
+      ),
     });
   }, [navigation]);
 
   return (
     <View>
       <Text>count: {count}</Text>
-      <Button title='Go to profile' onPress={() => navigation.navigate('Profile', { name: 'XXX' })} />
+      <Button onPress={() => navigation.navigate('Login', { name: 'AZ' })} variant='vh2'>
+        Go to login page
+      </Button>
+      <Text>count: {count}</Text>
     </View>
   );
 };
 
-const LogoTitle = () => <Image style={{ width: 50, height: 50 }} source={logo} />;
+const LogoTitle = () => <Image style={{ width: 36, height: 36 }} source={logo} />;
+
+function ColorPalete() {
+  const { colors } = useTheme();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const key = 'vhdark';
+  return (
+    <Box>
+      <Box>
+        <FlatList numColumns='5' data={Object.keys(colors[key])} renderItem={({ item }) => <Box p='5' bg={`${key}.${item}`} />} />
+        <Text size='lg'>The active color mode is: {colorMode}</Text>
+      </Box>
+      <Center>
+        <Box p='4' maxW='300' mt={7} bg={colorMode === 'dark' ? 'coolGray.800:alpha.70' : 'secondary.600:alpha.60'} safeArea>
+          <Button onPress={toggleColorMode} h={10} variant='vh1'>
+            Toggle
+          </Button>
+        </Box>
+      </Center>
+    </Box>
+  );
+}
+
+const navigatorScreenOptions = {
+  headerStyle: { backgroundColor: '#ffedd5' },
+  headerTintColor: 'black',
+  headerTitleStyle: { fontWeight: 'bold' },
+  // headerShown: false,
+};
 
 const App = () => (
-  <NavigationContainer>
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: '#f4511e',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-      }}
-    >
-      <Stack.Screen
-        name='Home'
-        component={HomeScreen}
-        options={{
-          headerTitle: props => <LogoTitle {...props} />,
-        }}
-      />
-      <Stack.Screen name='Profile' component={ProfileScreen} />
-      <Stack.Screen name='Login' component={Login} />
-    </Stack.Navigator>
-  </NavigationContainer>
+  <NativeBaseProvider theme={defaultTheme}>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={navigatorScreenOptions}>
+        <Stack.Screen
+          name='Home'
+          component={HomeScreen}
+          options={{
+            // eslint-disable-next-line react/no-unstable-nested-components
+            headerTitle: props => <LogoTitle {...props} />,
+          }}
+        />
+        <Stack.Screen name='Login' component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    <Text mt={20}>Open up App.js to start working on your app!</Text>
+    <Text mt={20}>{JSON.stringify(defaultTheme.components.Text)}</Text>
+    <ColorPalete />
+  </NativeBaseProvider>
 );
 
 HomeScreen.propTypes = {

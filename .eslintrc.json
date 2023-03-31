@@ -57,7 +57,7 @@
         "groups": [
           ["^\\u0000"],
           ["^react", "@react", "^redux", "^prop-types", "expo", "^formik", "^yup", "@"],
-          ["^@mui", "^styled-components"],
+          ["native-base", "^@mui", "^styled-components"],
           ["pages", "components", "shared", "assets"],
           ["^.+.s?css$"],
           ["^[^.]"],
