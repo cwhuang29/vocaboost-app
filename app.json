@@ -2,6 +2,7 @@
   "expo": {
     "name": "vocabulary-highlighter-app",
     "slug": "vocabulary-highlighter",
+    "owner": "cwhuang29",
     "version": "1.0.0",
     "description": "Highlight GRE vocabulary and phrases on every web page you visit.",
     "orientation": "portrait",
