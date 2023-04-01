@@ -1,5 +1,5 @@
 {
-  "name": "Vocabulary Highlighter",
+  "name": "vocabulary-highlighter",
   "version": "1.0.0",
   "main": "src/App.jsx",
   "scripts": {
@@ -34,8 +34,8 @@
     "react-native": "0.71.4",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
-    "styled-components": "^5.3.9",
-    "react-native-svg": "13.4.0"
+    "react-native-svg": "13.4.0",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
