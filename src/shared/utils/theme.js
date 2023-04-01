@@ -45,6 +45,9 @@ const themeSetting = {
             bg: 'yellow.600',
             _text: { color: 'base.teal' },
           },
+          _disabled: {
+            opacity: 30,
+          },
         }),
         vh2: ({ colorScheme }) => ({
           bg: `${colorScheme}.purple`,
