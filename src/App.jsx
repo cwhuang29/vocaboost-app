@@ -4,18 +4,69 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import PropTypes from 'prop-types';
 import { registerRootComponent } from 'expo';
+import { StatusBar } from 'expo-status-bar';
 
-import { Box, Button, Center, FlatList, NativeBaseProvider } from 'native-base';
+import { Box, Button, Center, FlatList, NativeBaseProvider, Text, useColorMode, useTheme } from 'native-base';
 
-import HomeScreen from 'pages/HomeScreen';
-// import Login from 'pages/Login';
-import StudyScreen from 'pages/StudyScreen';
+import Home from 'pages/Home';
+import Login from 'pages/Login';
+import Study from 'pages/Study';
 import defaultTheme from 'shared/utils/theme';
 import logo from 'assets/favicon.png';
 
 const Stack = createNativeStackNavigator();
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+const ProfileScreen = ({ navigation, route }) => (
+  <View style={styles.container}>
+    <Text>This is {route.params.name}'s profile</Text>
+    <StatusBar style='auto' />
+  </View>
+);
+
+const HomeScreen = ({ navigation, route }) => (
+    <View style={styles.container}>
+      <Home />
+    </View>
+  )
+;
+
+const StudyScreen = ({ navigation, route }) => (
+  <View style={styles.container}>
+    <Study />
+  </View>
+);
+
 const LogoTitle = () => <Image style={{ width: 36, height: 36 }} source={logo} />;
+
+// function ColorPalete() {
+//   const { colors } = useTheme();
+//   const { colorMode, toggleColorMode } = useColorMode();
+//   const key = 'vhdark';
+//   return (
+//     <Box>
+//       <Box>
+//         <FlatList numColumns='5' data={Object.keys(colors[key])} renderItem={({ item }) => <Box p='5' bg={`${key}.${item}`} />} />
+//         <Text size='lg'>The active color mode is: {colorMode}</Text>
+//       </Box>
+//       <Center>
+//         <Box p='4' maxW='300' mt={7} bg={colorMode === 'dark' ? 'coolGray.800:alpha.70' : 'secondary.600:alpha.60'} safeArea>
+//           <Button onPress={toggleColorMode} h={10} variant='vh1'>
+//             Toggle
+//           </Button>
+//         </Box>
+//       </Center>
+//     </Box>
+//   );
+// }
 
 const navigatorScreenOptions = {
   headerStyle: { backgroundColor: '#ffedd5' },
@@ -28,17 +79,42 @@ const App = () => (
   <NativeBaseProvider theme={defaultTheme}>
     <NavigationContainer>
       <Stack.Navigator screenOptions={navigatorScreenOptions}>
-        <Stack.Screen
+        {/* <Stack.Screen
           name='Home'
           component={HomeScreen}
-          // eslint-disable-next-line react/no-unstable-nested-components
-          options={{headerTitle: props => <LogoTitle {...props} />,}}
-        />
+          options={{
+            // eslint-disable-next-line react/no-unstable-nested-components
+            headerTitle: props => <LogoTitle {...props} />,
+          }}
+        /> */}
+        <Stack.Screen name='Home' component={HomeScreen} options={{
+            // eslint-disable-next-line react/no-unstable-nested-components
+            headerTitle: props => <LogoTitle {...props} />,
+          }}/>
+        <Stack.Screen name='Profile' component={ProfileScreen} />
         <Stack.Screen name='Study' component={StudyScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+    {/* <Text mt={20}>Open up App.js to start working on your app!</Text> */}
+    {/* <Text mt={20}>{JSON.stringify(defaultTheme.components.Text)}</Text> */}
+    {/* <ColorPalete /> */}
   </NativeBaseProvider>
 );
 
+HomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    setOptions: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+ProfileScreen.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+StudyScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired,
+}
 
 export default registerRootComponent(App);
