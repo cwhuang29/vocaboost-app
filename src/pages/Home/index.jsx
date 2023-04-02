@@ -18,6 +18,15 @@ const styles = StyleSheet.create({
   },
 });
 
+// eslint-disable-next-line react/no-unstable-nested-components
+const HomeBox = ({ text, handleClick, bg }) => (
+  <TouchableOpacity onPress={handleClick}>
+    <Center w='64' h='64' bg={bg} rounded='md' shadow={3} _text={{ color: 'white' }}>
+      {text}
+    </Center>
+  </TouchableOpacity>
+);
+
 const Home = () => {
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfoCache, setUserInfoCache] = useState([]);
@@ -39,15 +48,6 @@ const Home = () => {
     };
     getUserInfo();
   }, []);
-
-  // eslint-disable-next-line react/no-unstable-nested-components
-  const HomeBox = ({ text, handleClick, bg }) => (
-    <TouchableOpacity onPress={handleClick}>
-      <Center w='64' h='64' bg={bg} rounded='md' shadow={3} _text={{ color: 'white' }}>
-        {text}
-      </Center>
-    </TouchableOpacity>
-  );
 
   return (
     <Flex flex={1} justifyContent='center'>
