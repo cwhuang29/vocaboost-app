@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
-
-import { Center, Flex, VStack } from 'native-base';
 
 import { STORAGE_LOGIN_INFO } from 'shared/constants/storage';
 import storage from 'shared/storage';
+import { getAllWords } from 'shared/utils/highlight';
 import logger from 'shared/utils/logger';
 
 const styles = StyleSheet.create({
@@ -18,15 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeBox = ({ text, bg }) => (
-    <TouchableOpacity >
-      <Center w='64' h='64' bg={bg} rounded='md' shadow={3} _text={{ color: 'white' }} onPress={() => navigation.navigate('Study')}>
-        {text}
-      </Center>
-    </TouchableOpacity>
-  );
-
-const Home = () => {
+const Study = ({ navigation, route }) => {
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfoCache, setUserInfoCache] = useState([]);
 
@@ -44,14 +35,24 @@ const Home = () => {
     getUserInfo();
   }, []);
 
+  const words = getAllWords();
+  const word = 'abate';
+  const wordObj = words.get(word);
+
   return (
-    <Flex flex={1} justifyContent='center'>
-      <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' />
-        <HomeBox text='Collected Words' bg='indigo.600' />
-      </VStack>
-    </Flex>
+    // Implement tapping instead of scrolling/swiping temporatily
+    <View>
+      <Text>This is Study</Text>
+      <Text>{wordObj.id}</Text>
+      <Text>{wordObj.word}</Text>
+      <Text>{wordObj.detail}</Text>
+    </View>
   );
 };
 
-export default Home;
+Study.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired,
+};
+
+export default Study;

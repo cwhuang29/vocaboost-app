@@ -8,8 +8,9 @@ import { StatusBar } from 'expo-status-bar';
 
 import { Box, Button, Center, FlatList, NativeBaseProvider, Text, useColorMode, useTheme } from 'native-base';
 
-// import Login from 'pages/Login';
 import Home from 'pages/Home';
+import Login from 'pages/Login';
+import Study from 'pages/Study';
 import defaultTheme from 'shared/utils/theme';
 import logo from 'assets/favicon.png';
 
@@ -24,37 +25,25 @@ const styles = StyleSheet.create({
   },
 });
 
-// const ProfileScreen = ({ route }) => (
-//   <View style={styles.container}>
-//     <Text>This is {route.params.name}'s profile</Text>
-//     <StatusBar style='auto' />
-//   </View>
-// );
+const ProfileScreen = ({ navigation, route }) => (
+  <View style={styles.container}>
+    <Text>This is {route.params.name}'s profile</Text>
+    <StatusBar style='auto' />
+  </View>
+);
 
-// const HomeScreen = ({ navigation }) => {
-//   const [count, setCount] = React.useState(0);
-//   React.useEffect(() => {
-//     navigation.setOptions({
-//       // Use `setOptions` to update button in header bar
-//       // eslint-disable-next-line react/no-unstable-nested-components
-//       headerRight: () => (
-//         <Button onPress={() => setCount(c => c + 1)} shadow={1} size='sm' variant='vh1'>
-//           Click me
-//         </Button>
-//       ),
-//     });
-//   }, [navigation]);
+const HomeScreen = ({ navigation, route }) => (
+    <View style={styles.container}>
+      <Home />
+    </View>
+  )
+;
 
-//   return (
-//     <View>
-//       <Text>count: {count}</Text>
-//       <Button onPress={() => navigation.navigate('Login', { name: 'AZ' })} variant='vh2'>
-//         Go to login page
-//       </Button>
-//       <Text>count: {count}</Text>
-//     </View>
-//   );
-// };
+const StudyScreen = ({ navigation, route }) => (
+  <View style={styles.container}>
+    <Study />
+  </View>
+);
 
 const LogoTitle = () => <Image style={{ width: 36, height: 36 }} source={logo} />;
 
@@ -98,7 +87,12 @@ const App = () => (
             headerTitle: props => <LogoTitle {...props} />,
           }}
         /> */}
-        <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Home' component={HomeScreen} options={{
+            // eslint-disable-next-line react/no-unstable-nested-components
+            headerTitle: props => <LogoTitle {...props} />,
+          }}/>
+        <Stack.Screen name='Profile' component={ProfileScreen} />
+        <Stack.Screen name='Study' component={StudyScreen} />
       </Stack.Navigator>
     </NavigationContainer>
     {/* <Text mt={20}>Open up App.js to start working on your app!</Text> */}
@@ -107,15 +101,20 @@ const App = () => (
   </NativeBaseProvider>
 );
 
-// HomeScreen.propTypes = {
-//   navigation: PropTypes.shape({
-//     navigate: PropTypes.func.isRequired,
-//     setOptions: PropTypes.func.isRequired,
-//   }).isRequired,
-// };
+HomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    setOptions: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
-// ProfileScreen.propTypes = {
-//   route: PropTypes.object.isRequired,
-// };
+ProfileScreen.propTypes = {
+  route: PropTypes.object.isRequired,
+};
+
+StudyScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired,
+}
 
 export default registerRootComponent(App);
