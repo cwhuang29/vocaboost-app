@@ -55,15 +55,17 @@ const HomeScreen = ({ navigation }) => {
     getUserInfo();
   }, []);
 
-  const onPress = () => {
-    navigation.navigate('Study');
+  const onPress = (wordListType) => {
+    if (wordListType === 'gre') {
+      navigation.navigate('Study', { wordListType: 'gre'});
+    }
   };
 
   return (
     <Flex flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' onPress={onPress} />
-        <HomeBox text='Collected Words' bg='indigo.600' onPress={onPress} />
+        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress('gre')} />
+        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress('collected')} />
       </VStack>
     </Flex>
   );
