@@ -18,15 +18,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeBox = ({ text, bg }) => (
-    <TouchableOpacity >
-      <Center w='64' h='64' bg={bg} rounded='md' shadow={3} _text={{ color: 'white' }} onPress={() => navigation.navigate('Study')}>
-        {text}
-      </Center>
-    </TouchableOpacity>
-  );
+const HomeBox = ({ text, bg, onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <Center w='64' h='64' bg={bg} rounded='md' shadow={3} _text={{ color: 'white' }}>
+      {text}
+    </Center>
+  </TouchableOpacity>
+);
 
-const Home = () => {
+const HomeScreen = ({ navigation }) => {
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfoCache, setUserInfoCache] = useState([]);
 
@@ -44,14 +44,25 @@ const Home = () => {
     getUserInfo();
   }, []);
 
+  const onPress = () => {
+    navigation.navigate('Study');
+  };
+
   return (
     <Flex flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' />
-        <HomeBox text='Collected Words' bg='indigo.600' />
+        <HomeBox text='GRE 1500' bg='indigo.300' onPress={onPress} />
+        <HomeBox text='Collected Words' bg='indigo.600' onPress={onPress} />
       </VStack>
     </Flex>
   );
 };
 
-export default Home;
+HomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+    setOptions: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default HomeScreen;
