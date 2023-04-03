@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 
 import { Center, Flex, VStack } from 'native-base';
 
-import { STORAGE_USER } from 'shared/constants/storage';
+import { STORAGE_LOGIN_INFO } from 'shared/constants/storage';
 import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
 
@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
       const isSignedIn = await GoogleSignin.isSignedIn();
       setloggedIn(isSignedIn);
       if (isSignedIn) {
-        const loginData = await storage.getData(STORAGE_USER);
+        const loginData = await storage.getData(STORAGE_LOGIN_INFO);
         setUserInfoCache(loginData);
       } else {
         setUserInfoCache([]);
@@ -35,17 +35,15 @@ const HomeScreen = ({ navigation }) => {
     getUserInfo();
   }, []);
 
-  const onPress = ({ type }) => {
-    if (type === 'gre') {
-      navigation.navigate('Study', { type: 'gre' });
-    }
+  const onPress = () => {
+    navigation.navigate('Study');
   };
 
   return (
     <Flex flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type: 'gre' })} />
-        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type: 'collected' })} />
+        <HomeBox text='GRE 1500' bg='indigo.300' onPress={onPress} />
+        <HomeBox text='Collected Words' bg='indigo.600' onPress={onPress} />
       </VStack>
     </Flex>
   );
