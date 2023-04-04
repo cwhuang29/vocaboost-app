@@ -57,18 +57,6 @@ const exportSelectedForms = (payload, token = authHeader()) =>
     .then(resp => Promise.resolve(resp.data))
     .catch(err => Promise.reject(extractErrorMessage(err)));
 
-// const getTodoForms = (data, token = authHeader()) => {
-//   const url = new URL(apis.V2.TODO_FORMS, window.location.href);
-//   Object.entries(data).forEach(([key, val]) => url.searchParams.set(key, val));
-//   const path = url.pathname + url.search;
-//   console.log(data);
-//   console.log(path);
-//   return fetch
-//     .post(path, data, { headers: token })
-//     .then((resp) => Promise.resolve(resp.data))
-//     .catch((err) => Promise.reject(extractErrorMessage(err))); // http://127.0.0.1/v2/form/assign?formId=6
-// };
-
 export default {
   getAllForms,
   getFormById,

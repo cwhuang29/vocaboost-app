@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { Center, Flex, VStack } from 'native-base';
 
-import { STORAGE_LOGIN_INFO } from 'shared/constants/storage';
+import { STORAGE_USER } from 'shared/constants/storage';
 import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
 
@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
       const isSignedIn = await GoogleSignin.isSignedIn();
       setloggedIn(isSignedIn);
       if (isSignedIn) {
-        const loginData = await storage.getData(STORAGE_LOGIN_INFO);
+        const loginData = await storage.getData(STORAGE_USER);
         setUserInfoCache(loginData);
       } else {
         setUserInfoCache([]);

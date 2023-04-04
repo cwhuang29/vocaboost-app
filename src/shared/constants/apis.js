@@ -1,4 +1,11 @@
 export default {
+  V1: {
+    ME: '/v1/users/me',
+    LOGIN: '/v1/login',
+    LOGOUT: '/v1/logout',
+    MANAGE_WORDS: '/v1/manage-words',
+  },
+
   V2: {
     ME: '/v2/users/me',
 

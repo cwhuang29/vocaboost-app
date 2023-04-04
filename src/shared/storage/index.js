@@ -30,7 +30,7 @@ const storage = {
     }
     return value;
   },
-  async removeValue(key) {
+  async removeData(key) {
     let res = false;
     try {
       await AsyncStorage.removeItem(key);
