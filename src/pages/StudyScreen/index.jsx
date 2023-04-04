@@ -29,7 +29,9 @@ const StudyScreen = ({ navigation, route }) => {
   const shuffledIndices = shuffleIndices({ wordsMap });
 
   const onPress = () => {
-    setCurrentIndex(currentIndex => currentIndex + 1);
+    if (currentIndex < wordsMap.size) {
+      setCurrentIndex(currentIndex => currentIndex + 1);
+    }
   }
 
   const currentWord = wordsMap.get(shuffledIndices[currentIndex]);
