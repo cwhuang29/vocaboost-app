@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
+import { TouchableOpacity } from 'react-native';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 
 import { Center, Flex, VStack } from 'native-base';
@@ -35,15 +35,17 @@ const HomeScreen = ({ navigation }) => {
     getUserInfo();
   }, []);
 
-  const onPress = () => {
-    navigation.navigate('Study');
+  const onPress = ({ type }) => {
+    if (type === 'gre') {
+      navigation.navigate('Study', { type: 'gre'});
+    }
   };
 
   return (
     <Flex flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' onPress={onPress} />
-        <HomeBox text='Collected Words' bg='indigo.600' onPress={onPress} />
+        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type : 'gre'})} />
+        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type : 'collected'})} />
       </VStack>
     </Flex>
   );

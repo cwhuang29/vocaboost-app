@@ -21,4 +21,12 @@ const ColorPalete = () => {
   );
 };
 
+<<<<<<< HEAD
 export default ColorPalete;
+=======
+<<<<<<< HEAD
+export default ColorPalete;
+=======
+export default ColorPalete;
+>>>>>>> 64fde0a (Fix navigation bug, move ColorPalete component, and revise HomeScreen)
+>>>>>>> d323710 (correct typo of ColorPalette, revise shuffling of word lists)

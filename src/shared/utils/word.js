@@ -17,12 +17,6 @@ export const genWordDetailMap = (type) => {
   return words;
 };
 
-export const genWordDetailMap = () => {
-  const wordList = genWordDetailList();
-  const words = new Map(wordList.map(item => [item.id, item]));
-  return words;
-};
-
 export const getRandomWordFromList = () => {
   const wordList = genWordDetailList();
 
