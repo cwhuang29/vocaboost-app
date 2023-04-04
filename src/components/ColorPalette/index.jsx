@@ -21,8 +21,4 @@ const ColorPalete = () => {
   );
 };
 
-<<<<<<< HEAD
 export default ColorPalete;
-=======
-export default ColorPalete;
->>>>>>> 64fde0a (Fix navigation bug, move ColorPalete component, and revise HomeScreen)
