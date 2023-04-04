@@ -1,37 +1,31 @@
 import API from 'shared/constants/apis';
 import fetch from 'shared/services/roots';
 import userService from 'shared/services/user.service';
+import { extractErrorMessage } from 'shared/utils/handleErrorMessage';
 
-const register = ({ firstName, lastName, email, password /* , role */ }) =>
-  fetch.post(API.V2.REGISTER, {
-    first_name: firstName,
-    last_name: lastName,
-    email,
-    password,
-    role: 0,
-    method: 0,
-  });
-
-const login = ({ email, password }) =>
+const login = async payload =>
   fetch
-    .post(API.V2.LOGIN, {
-      email,
-      password,
-    })
+    .post(API.V1.LOGIN, payload)
     .then(async resp => {
-      const { token: jwtToken } = resp.data;
-      let userData = {}; // The user data stores in user table
+      const { accessToken } = resp.data;
+      let userData = {};
 
-      if (jwtToken) {
-        const header = { Authorization: `Bearer ${resp.data.token}` };
-        const user = await userService.getCurrentUserData(header).catch(error => Promise.reject(error));
-        userData = { ...user.data };
+      if (accessToken) {
+        const header = { Authorization: `Bearer ${accessToken}` };
+        const userResp = await userService.getMe(header).catch(error => Promise.reject(error));
+        userData = { ...userResp.data };
       }
+      return { token: accessToken, user: userData };
+    })
+    .catch(err => Promise.reject(extractErrorMessage(err)));
 
-      return { jwt: jwtToken, user: userData };
-    });
+const logout = () =>
+  fetch
+    .post(`${API.V1.LOGOUT}`)
+    .then(resp => resp.data)
+    .catch(err => Promise.reject(extractErrorMessage(err)));
 
 export default {
-  register,
   login,
+  logout,
 };

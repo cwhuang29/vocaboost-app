@@ -1,42 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
 
-import { STORAGE_LOGIN_INFO } from 'shared/constants/storage';
+import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
+import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
+import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const showGoogleLoginErr = err => {
+  if (err.code === statusCodes.SIGN_IN_CANCELLED) {
+    logger('user cancelled the login flow');
+  } else if (err.code === statusCodes.IN_PROGRESS) {
+    logger('operation (e.g. sign in) is in progress already');
+  } else if (err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+    logger('play services not available or outdated');
+  } else {
+    logger(`UNKNOWN ERROR: ${err}`);
+  }
+};
 
 const Login = ({ navigation, route }) => {
   const [loggedIn, setloggedIn] = useState(false);
-  const [userInfo, setUserInfo] = useState([]);
-  const [userInfoCache, setUserInfoCache] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
   const [isSigninInProgress, setIsSigninInProgress] = useState(false);
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      const isSignedIn = await GoogleSignin.isSignedIn();
-      setloggedIn(isSignedIn);
-      if (isSignedIn) {
-        const loginData = await storage.getData(STORAGE_LOGIN_INFO);
-        setUserInfoCache(loginData);
-      } else {
-        setUserInfoCache([]);
-      }
-    };
-    getUserInfo();
-  }, []);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -45,50 +35,63 @@ const Login = ({ navigation, route }) => {
     });
   }, []);
 
-  const signOut = async () => {
+  // useEffect(() => {
+  //   const getUserInfo = async () => {
+  //     const isSignedIn = await GoogleSignin.isSignedIn();
+  //     if (isSignedIn) {
+  //       const loginData = await storage.getData(STORAGE_USER);
+  //     }
+  //   };
+  //   getUserInfo();
+  // }, []);
+
+  const handleLogout = async () => {
+    await authService.logout().catch(() => {}); // For logout, just ignore error message
+    await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
+    setloggedIn(false);
+    setUserInfo({});
+  };
+
+  const logout = async () => {
     try {
       await GoogleSignin.signOut();
-      setloggedIn(false);
-      setUserInfo([]);
+      await handleLogout();
     } catch (err) {
       logger(err);
     }
   };
 
-  const signIn = async () => {
+  const handleLogin = async payload => {
+    const { token, user } = await authService.login(payload).catch(err => {
+      logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
+    });
+    await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
+    setloggedIn(true);
+    setUserInfo(user);
+  };
+
+  const login = async () => {
     try {
       setIsSigninInProgress(true);
-
-      await GoogleSignin.hasPlayServices();
+      await GoogleSignin.hasPlayServices(); // Always resolves to true on iOS
       const uInfo = await GoogleSignin.signIn();
-      setUserInfo({ ...uInfo, idToken: '<omit>' });
-      setloggedIn(true);
-      storage.setData(STORAGE_LOGIN_INFO, uInfo);
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        logger('user cancelled the login flow');
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        logger('operation (e.g. sign in) is in progress already');
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        logger('play services not available or outdated');
-      } else {
-        logger('UNKNOWN ERROR');
-      }
+      await handleLogin(transformGoogleLoginResp(uInfo));
+    } catch (err) {
+      showGoogleLoginErr(err);
     } finally {
       setIsSigninInProgress(false);
     }
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <Text>User info: {JSON.stringify(userInfo)}</Text>
-      <Button title='Sign out' onPress={signOut} disabled={!loggedIn} />
-      <Button title='Sign in with Google' onPress={signIn} />
+      <Button title='Sign out' onPress={logout} disabled={!loggedIn} />
       <GoogleSigninButton
         style={{ width: 192, height: 48 }}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
-        onPress={signIn}
+        onPress={login}
         disabled={isSigninInProgress || loggedIn}
       />
     </View>

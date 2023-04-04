@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-unresolved
 import { BACKEND_URL } from '@env';
 
-import { STORAGE_LOGIN_INFO } from 'shared/constants/storage';
-import logger from 'shared/utils/logger';
+import { STORAGE_AUTH_TOKEN } from 'shared/constants/storage';
+import storage from 'shared/storage';
 
 import axios from 'axios';
 
@@ -12,20 +12,20 @@ const httpConfig = {
   xsrfHeaderName: 'X-CSRF-Token', // the name of the http header that carries the xsrf token value
   xsrfCookieName: 'csrftoken', // The name of the cookie to use as a value for xsrf token
   timeout: 30000, // If the request takes longer than `timeout`, the request will be aborted (Error: timeout of 1000ms exceeded)
-  headers: { 'X-VH-Source': 'mobile' }, // Custom headers to be sent
   transformResponse: [data => ({ ...JSON.parse(data) /* , timeStamp: new Date() */ })], // Changes to the response to be made before it is passed to then/catch
+  headers: { 'X-VH-Source': 'mobile' }, // Custom headers to be sent
 };
 
 const fetch = axios.create(httpConfig);
 
-const beforeReqIsSent = async config => {
-  const newConfig = config;
-  const loginData = await storage.getData(STORAGE_LOGIN_INFO);
-
-  newConfig.headers['X-VH-Auth'] = loginData || '';
-  logger(`Request is about to send. Config: ${newConfig}`);
-  return newConfig;
+const beforeReqIsSend = async config => {
+  const token = await storage.getData(STORAGE_AUTH_TOKEN);
+  if (token) {
+    Object.assign(config.headers, { ...config.headers, Authorization: `Bearer ${token}` });
+  }
+  return config;
 };
-fetch.interceptors.request.use(beforeReqIsSent);
+
+fetch.interceptors.request.use(beforeReqIsSend);
 
 export default fetch;
