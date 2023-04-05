@@ -1,55 +1,59 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { Box, View } from 'native-base';
+
+import { EXT_STORAGE_CONFIG } from 'shared/constants/storage';
+import storage from 'shared/storage';
+import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
 import { genWordDetailMap } from 'shared/utils/word';
 
+import Detail from './Detail';
 
-const StudyScreen = ({ navigation, route }) => {
-  const { type } = route.params;
+const StudyScreen = ({ route }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [config, setConfig] = useState(DEFAULT_CONFIG);
-  const lang = config.language;
 
-  const shuffleIndices = ({ wordsMap }) => {
-    let indices = Array.from({ length: wordsMap.size }, (_, i) => i + 1);
-    let currentIndex = wordsMap.size;
-    let randomIndex;
-
-    while (currentIndex > 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [indices[currentIndex], indices[randomIndex]] = [indices[randomIndex], indices[currentIndex]];
-    }
-    return indices;
-  }
-  const wordsMap = genWordDetailMap(route.params['type']);
-  const shuffledIndices = shuffleIndices({ wordsMap });
+  const wordsMap = genWordDetailMap(route.params.type);
+  const shuffledIndices = shuffleArray([...wordsMap.keys()]);
+  const currWordData = wordsMap.get(shuffledIndices[currentIndex]);
+  const { language: lang, fontSize } = config;
 
   const onPress = () => {
-    if (currentIndex < wordsMap.size) {
-      setCurrentIndex(currentIndex => currentIndex + 1);
-    }
-  }
+    setCurrentIndex(prevIdx => (currentIndex < shuffledIndices.length ? prevIdx + 1 : 0));
+  };
 
-  const currentWord = wordsMap.get(shuffledIndices[currentIndex]);
-  const { example, meaning, partsOfSpeech } = currentWord.detail[0];
+  const onCollectWord =
+    ({ id, isCollected }) =>
+    async () => {
+      const collectedWords = isCollected ? config.collectedWords.filter(wordId => wordId !== id) : [...config.collectedWords, id];
+      const newConfig = { ...config, collectedWords };
+      await storage.setData(EXT_STORAGE_CONFIG, newConfig);
+      setConfig(newConfig);
+      logger('New config: ', newConfig);
+      // TODO Use web-socket to update with backend
+    };
+
+  const isCollected = config.collectedWords.includes(currWordData.id);
 
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
-      <TouchableOpacity style={{ flex: 1, justifyContent: "center" }} onPress={onPress}>
-        <Text>({partsOfSpeech}) {currentWord.word}</Text>
-        <Text>{meaning[lang]}</Text>
-        <Text>{example}</Text>
-      </TouchableOpacity>
+    <View flex={1}>
+      <View flex={1} style={{ backgroundColor: 'powderblue' }} />
+      <View flex={4} justifyContent='flex-start' alignItems='center' mx={12}>
+        <TouchableOpacity onPress={onPress}>
+          <Detail wordData={currWordData} language={lang} fontSize={fontSize} isCollected={isCollected} onPress={onPress} onCollectWord={onCollectWord} />
+          <Box height='100%' />
+        </TouchableOpacity>
+      </View>
+      <View flex={1} style={{ backgroundColor: 'steelblue' }} />
     </View>
   );
 };
 
 StudyScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
 };
 
