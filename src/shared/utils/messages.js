@@ -1,4 +1,5 @@
 import { ReadyState } from 'react-use-websocket';
+
 import { WS_CONNECTION_STATUS } from 'shared/constants/messages';
 
 export const getWSConnStatusDisplay = state => {

@@ -11,8 +11,8 @@ import { toCapitalize } from 'shared/utils/stringHelpers';
 const StarIconButton = ({ isCollected, onPress }) => {
   const iconName = isCollected ? 'star' : 'staro';
   const onPressThenStop = e => {
-    onPress();
     e.preventDefault();
+    onPress();
   };
   return (
     <IconButton
@@ -21,7 +21,7 @@ const StarIconButton = ({ isCollected, onPress }) => {
       _icon={{ color: 'vhlight.100', size: '28px' }}
       _pressed={{
         bg: '',
-        _icon: { name: 'star', color: 'vhlight.300', size: '30px' },
+        _icon: { name: 'star', color: 'vhlight.300', size: '28px' },
       }}
     />
   );
@@ -33,17 +33,18 @@ const DisplayText = ({ children, size, shrink }) => (
   </Text>
 );
 
+// TODO Use fontsize for texts
 const Detail = ({ display, wordData, language, fontSize, isCollected, onCollectWord }) =>
   display && (
     <Box>
-      <Stack direction='row' space={2} justifyContent='space-between'>
+      <Stack direction='row' space={2} justifyContent='space-around' alignSelf='center'>
         <DisplayText size='lg' shrink={0}>
           {toCapitalize(wordData.word)}
         </DisplayText>
         <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
       </Stack>
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
-        <Box key={`${partsOfSpeech}-${example.slice(0, 10)}`} pt={6}>
+        <Box key={`${partsOfSpeech}-${example.slice(0, 20)}`} pt={6}>
           <Stack direction='row' space={2} justifyContent='flex-start'>
             <DisplayText shrink={0}>{PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]}</DisplayText>
             <DisplayText>{meaning[LANGS[language]] || meaning[LANGS.en]}</DisplayText>

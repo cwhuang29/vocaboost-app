@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Text, View } from 'react-native';
-import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-google-signin/google-signin';
+import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
@@ -11,19 +11,9 @@ import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
 import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 
-const showGoogleLoginErr = err => {
-  if (err.code === statusCodes.SIGN_IN_CANCELLED) {
-    logger('user cancelled the login flow');
-  } else if (err.code === statusCodes.IN_PROGRESS) {
-    logger('operation (e.g. sign in) is in progress already');
-  } else if (err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-    logger('play services not available or outdated');
-  } else {
-    logger(`UNKNOWN ERROR: ${err}`);
-  }
-};
+import { showGoogleLoginErr } from './helper';
 
-const Login = ({ navigation, route }) => {
+const Login = ({ navigation }) => {
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [isSigninInProgress, setIsSigninInProgress] = useState(false);
@@ -34,16 +24,6 @@ const Login = ({ navigation, route }) => {
       // androidClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID,
     });
   }, []);
-
-  // useEffect(() => {
-  //   const getUserInfo = async () => {
-  //     const isSignedIn = await GoogleSignin.isSignedIn();
-  //     if (isSignedIn) {
-  //       const loginData = await storage.getData(STORAGE_USER);
-  //     }
-  //   };
-  //   getUserInfo();
-  // }, []);
 
   const handleLogout = async () => {
     await authService.logout().catch(() => {}); // For logout, just ignore error message
@@ -57,7 +37,7 @@ const Login = ({ navigation, route }) => {
       await GoogleSignin.signOut();
       await handleLogout();
     } catch (err) {
-      logger(err);
+      logger(err); // TODO Ask user to logout again (due to network issues)
     }
   };
 
@@ -100,7 +80,6 @@ const Login = ({ navigation, route }) => {
 
 Login.propTypes = {
   navigation: PropTypes.object.isRequired,
-  route: PropTypes.object.isRequired,
 };
 
 export default Login;

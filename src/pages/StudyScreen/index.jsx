@@ -1,29 +1,82 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
+import useWebSocket, { ReadyState } from 'react-use-websocket';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-unresolved
+import { BACKEND_URL } from '@env';
 
-import { Box, View } from 'native-base';
+import { Box, Spinner, View } from 'native-base';
 
-import { EXT_STORAGE_CONFIG } from 'shared/constants/storage';
+import apis from 'shared/constants/apis';
+import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
+import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailMap } from 'shared/utils/word';
 
 import Detail from './Detail';
 
-const StudyScreen = ({ route }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [config, setConfig] = useState(DEFAULT_CONFIG);
+const getWebSocketURL = () => `${BACKEND_URL}${apis.V1.SETTING}`;
 
-  const wordsMap = genWordDetailMap(route.params.type);
-  const shuffledIndices = shuffleArray([...wordsMap.keys()]);
-  const currWordData = wordsMap.get(shuffledIndices[currentIndex]);
-  const { language: lang, fontSize } = config;
+const StudyScreen = ({ route }) => {
+  const accessToken = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [config, setConfig] = useState({});
+  const [currIdx, setCurrIdx] = useState(0);
+  const wordsMap = useMemo(() => genWordDetailMap(route.params.type), [route.params.type]);
+  const shuffledIndices = useMemo(() => shuffleArray([...wordsMap.keys()]), [wordsMap]);
+  const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
+
+  const { language: lang, fontSize } = config || {};
+  const currWordData = wordsMap.get(shuffledIndices[currIdx]);
+  // const connStatus = getWSConnStatusDisplay(readyState); // TODO Show 'cannot connect to server' message
+
+  useEffect(() => {
+    const setup = async () => {
+      const token = await storage.getData(STORAGE_AUTH_TOKEN);
+      const c = (await storage.getData(STORAGE_CONFIG)) || DEFAULT_CONFIG;
+      accessToken.current = token; // TODO Recommend user to login if the value is null
+      setConfig(c);
+      setLoading(false); // Even if the app cannot connect to the server, still let users operate on their phones
+    };
+    setup();
+  }, []);
+
+  useEffect(() => {
+    const setup = async () => {
+      // Note that readyState only turns to OPEN once
+      if (readyState !== ReadyState.OPEN || accessToken.current === null) {
+        return;
+      }
+      if (accessToken.current) {
+        sendJsonMessage({ config: config || DEFAULT_CONFIG, accessToken: accessToken.current, ts: new Date('Wed Apr 05 2000 00:00:00') });
+      }
+    };
+    setup();
+  }, [readyState]);
+
+  useEffect(() => {
+    const wsMessageOnReceive = async () => {
+      if (lastJsonMessage === null) {
+        return;
+      }
+      const { isStale, data, error } = lastJsonMessage;
+      if (error) {
+        logger(`Update config to server error: ${error}`);
+      }
+      if (isStale) {
+        await storage.setData(STORAGE_CONFIG, data);
+        logger('Just updated the latest config from server!');
+        setConfig(data);
+      }
+    };
+    wsMessageOnReceive();
+  }, [lastJsonMessage]);
 
   const onPress = () => {
-    setCurrentIndex(prevIdx => (currentIndex < shuffledIndices.length ? prevIdx + 1 : 0));
+    setCurrIdx(prevIdx => (prevIdx + 1 < shuffledIndices.length ? prevIdx + 1 : 0));
   };
 
   const onCollectWord =
@@ -31,23 +84,29 @@ const StudyScreen = ({ route }) => {
     async () => {
       const collectedWords = isCollected ? config.collectedWords.filter(wordId => wordId !== id) : [...config.collectedWords, id];
       const newConfig = { ...config, collectedWords };
-      await storage.setData(EXT_STORAGE_CONFIG, newConfig);
+
+      await storage.setData(STORAGE_CONFIG, newConfig);
       setConfig(newConfig);
-      logger('New config: ', newConfig);
-      // TODO Use web-socket to update with backend
+      if (accessToken.current) {
+        sendJsonMessage({ config: newConfig, accessToken: accessToken.current, ts: new Date() });
+      }
     };
 
-  const isCollected = config.collectedWords.includes(currWordData.id);
+  const isCollected = loading ? false : config.collectedWords.includes(currWordData.id);
 
   return (
     <View flex={1}>
       <View flex={1} style={{ backgroundColor: 'powderblue' }} />
-      <View flex={4} justifyContent='flex-start' alignItems='center' mx={12}>
-        <TouchableOpacity onPress={onPress}>
-          <Detail wordData={currWordData} language={lang} fontSize={fontSize} isCollected={isCollected} onPress={onPress} onCollectWord={onCollectWord} />
-          <Box height='100%' />
-        </TouchableOpacity>
-      </View>
+      {loading ? (
+        <Spinner size='sm' color='vh1.200' />
+      ) : (
+        <View flex={4} px={12} justifyContent='flex-start' alignItems='flex-start'>
+          <TouchableOpacity onPress={onPress}>
+            <Detail wordData={currWordData} language={lang} fontSize={fontSize} isCollected={isCollected} onPress={onPress} onCollectWord={onCollectWord} />
+            <Box height='100%' style={{ backgroundColor: 'blue' }} />
+          </TouchableOpacity>
+        </View>
+      )}
       <View flex={1} style={{ backgroundColor: 'steelblue' }} />
     </View>
   );

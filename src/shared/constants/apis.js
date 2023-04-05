@@ -3,7 +3,7 @@ export default {
     ME: '/v1/users/me',
     LOGIN: '/v1/login',
     LOGOUT: '/v1/logout',
-    MANAGE_WORDS: '/v1/manage-words',
+    SETTING: '/v1/users/setting',
   },
 
   V2: {
