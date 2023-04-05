@@ -1,6 +1,6 @@
 import { Box, Button, Center, FlatList, Text, useColorMode, useTheme } from 'native-base';
 
-const ColorPalete = () => {
+const ColorPalette = () => {
   const { colors } = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
   const key = 'vhdark';
@@ -21,4 +21,4 @@ const ColorPalete = () => {
   );
 };
 
-export default ColorPalete;
+export default ColorPalette;
