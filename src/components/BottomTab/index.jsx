@@ -8,7 +8,12 @@ const Tab = createMaterialBottomTabNavigator();
 
 const BottomTab = () => (
 
-    <Tab.Navigator screenOptions={({ route }) => ({
+    <Tab.Navigator 
+        activeColor="#f0edf6"
+        inactiveColor="#3e2465"
+        barStyle={{ backgroundColor: '#694fad' }}
+        shifting={true}
+        screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
             let iconName;
             if (route.name === 'Home') {
@@ -18,8 +23,6 @@ const BottomTab = () => (
             }
             return <MaterialCommunityIcons name={iconName} size={24} />;
         },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
     })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
