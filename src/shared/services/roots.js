@@ -20,7 +20,8 @@ const fetch = axios.create(httpConfig);
 
 const beforeReqIsSend = async config => {
   const token = await storage.getData(STORAGE_AUTH_TOKEN);
-  if (token) {
+
+  if (token && !config.headers.Authorization) {
     Object.assign(config.headers, { ...config.headers, Authorization: `Bearer ${token}` });
   }
   return config;
