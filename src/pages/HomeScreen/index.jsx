@@ -37,15 +37,15 @@ const HomeScreen = ({ navigation }) => {
 
   const onPress = ({ type }) => {
     if (type === 'gre') {
-      navigation.navigate('Study', { type: 'gre'});
+      navigation.navigate('Study', { type: 'gre' });
     }
   };
 
   return (
     <Flex flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type : 'gre'})} />
-        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type : 'collected'})} />
+        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type: 'gre' })} />
+        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type: 'collected' })} />
       </VStack>
     </Flex>
   );

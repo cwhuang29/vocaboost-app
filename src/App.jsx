@@ -15,7 +15,6 @@ import storage from 'shared/storage';
 import defaultTheme from 'shared/utils/theme';
 import logo from 'assets/favicon.png';
 
-
 const Stack = createNativeStackNavigator();
 
 const navigatorScreenOptions = {
@@ -27,17 +26,14 @@ const navigatorScreenOptions = {
 
 const App = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  
+
   useEffect(() => {
     const getIsSignedIn = async () => {
-        const accessToken = await storage.getData(STORAGE_AUTH_TOKEN);
-        if (accessToken) {
-          setIsSignedIn(true);
-          console.log("isSignedIn 1: ", isSignedIn);
-        } else {
-          console.log("isSignedIn 2: ", isSignedIn);
-        }
-    }
+      const accessToken = await storage.getData(STORAGE_AUTH_TOKEN);
+      if (accessToken) {
+        setIsSignedIn(true);
+      }
+    };
     getIsSignedIn();
   }, [isSignedIn]);
 
@@ -47,15 +43,15 @@ const App = () => {
         <Stack.Navigator screenOptions={navigatorScreenOptions}>
           {isSignedIn ? (
             <>
-              <Stack.Screen name="BottomTab" component={BottomTab} />
               <Stack.Screen name='Home' component={HomeScreen} />
+              <Stack.Screen name='BottomTab' component={BottomTab} />
               <Stack.Screen name='Study' component={StudyScreen} />
               <Stack.Screen name='Profile' component={ProfileScreen} />
             </>
           ) : (
             <>
-              <Stack.Screen name="Login" component={Login} />
-              <Stack.Screen name="Profile" component={ProfileScreen} />
+              <Stack.Screen name='Login' component={Login} />
+              <Stack.Screen name='Profile' component={ProfileScreen} />
             </>
           )}
         </Stack.Navigator>

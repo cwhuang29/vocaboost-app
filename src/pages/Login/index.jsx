@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
 
-import { Box,Button } from "native-base";
+import { Box, Button } from 'native-base';
 
 import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
 import authService from 'shared/services/auth.service';
@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
   const handleLogout = async () => {
     await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
     await authService.logout().catch(() => {}); // For logout, just ignore error message
-    
+
     setloggedIn(false);
     setUserInfo({});
   };
@@ -46,7 +46,8 @@ const Login = ({ navigation }) => {
   };
 
   const handleLogin = async payload => {
-    const { token, user } = await authService.login(payload).catch(err => { // login() ISSUE!!!!!
+    const { token, user } = await authService.login(payload).catch(err => {
+      // login() ISSUE!!!!!
       logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
     });
     await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
@@ -68,11 +69,13 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <Box alignItems="center" marginTop={150} px={5}>
+    <Box alignItems='center' marginTop={150} px={5}>
       {loggedIn ? (
         <>
           <Text>User info: {JSON.stringify(userInfo)}</Text>
-          <Button variant='vh2' size="md" style={{ width: 120, height: 48 }} onPress={logout} marginTop={3} >Sign out</Button>
+          <Button variant='vh2' size='md' style={{ width: 120, height: 48 }} onPress={logout} marginTop={3}>
+            Sign out
+          </Button>
         </>
       ) : (
         <GoogleSigninButton
