@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
+
+import { Box,Button } from "native-base";
 
 import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
 import authService from 'shared/services/auth.service';
@@ -57,7 +59,6 @@ const Login = ({ navigation }) => {
       setIsSigninInProgress(true);
       await GoogleSignin.hasPlayServices(); // Always resolves to true on iOS
       const uInfo = await GoogleSignin.signIn();
-      console.log( "uInfo.idToken: ", uInfo.idToken );
       await handleLogin(transformGoogleLoginResp(uInfo));
     } catch (err) {
       showGoogleLoginErr(err);
@@ -67,17 +68,22 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>User info: {JSON.stringify(userInfo)}</Text>
-      <Button title='Sign out' onPress={logout} disabled={!loggedIn} />
-      <GoogleSigninButton
-        style={{ width: 192, height: 48 }}
-        size={GoogleSigninButton.Size.Wide}
-        color={GoogleSigninButton.Color.Dark}
-        onPress={login}
-        disabled={isSigninInProgress || loggedIn}
-      />
-    </View>
+    <Box alignItems="center" marginTop={150} px={5}>
+      {loggedIn ? (
+        <>
+          <Text>User info: {JSON.stringify(userInfo)}</Text>
+          <Button variant='vh2' size="md" style={{ width: 120, height: 48 }} onPress={logout} marginTop={3} >Sign out</Button>
+        </>
+      ) : (
+        <GoogleSigninButton
+          style={{ width: 192, height: 48 }}
+          size={GoogleSigninButton.Size.Wide}
+          color={GoogleSigninButton.Color.Dark}
+          onPress={login}
+          disabled={isSigninInProgress || loggedIn}
+        />
+      )}
+    </Box>
   );
 };
 

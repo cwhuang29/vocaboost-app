@@ -33,10 +33,13 @@ const App = () => {
         const accessToken = await storage.getData(STORAGE_AUTH_TOKEN);
         if (accessToken) {
           setIsSignedIn(true);
+          console.log("isSignedIn 1: ", isSignedIn);
+        } else {
+          console.log("isSignedIn 2: ", isSignedIn);
         }
     }
     getIsSignedIn();
-  }, []);
+  }, [isSignedIn]);
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
@@ -50,13 +53,15 @@ const App = () => {
               <Stack.Screen name='Profile' component={ProfileScreen} />
             </>
           ) : (
-            <Stack.Screen name="Login" component={Login} />
+            <>
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Profile" component={ProfileScreen} />
+            </>
           )}
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
   );
-  
 };
 
 export default registerRootComponent(App);

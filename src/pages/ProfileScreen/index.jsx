@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 
 import { Avatar, Button, Center } from "native-base";
 
+import Login from 'pages/Login';
 import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
 import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
 
 
-const ProfileScreen = ({ navigation, route }) => {
-    const [loggedIn, setloggedIn] = useState(false);
+const ProfileScreen = ({ navigation }) => {
+    const [loggedIn, setloggedIn] = useState(true);
     const [userInfo, setUserInfo] = useState({});
 
     useEffect(() => {
@@ -29,7 +30,11 @@ const ProfileScreen = ({ navigation, route }) => {
             setUserInfo(userInfo);
         }
         getUserInfo();
-    }, []);
+    }, [loggedIn, userInfo]);
+
+    const login = () => {
+        navigation.navigate('Login');
+    };
 
     const handleLogout = async () => {
         await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
@@ -37,12 +42,10 @@ const ProfileScreen = ({ navigation, route }) => {
         
         setloggedIn(false);
         setUserInfo({});
-      };
+    };
     
     const logout = async () => {
-        // console.log("logout pressed!");
         const accessToken = await storage.getData(STORAGE_AUTH_TOKEN);
-        // console.log("accessToken: ", accessToken);
         try {
             await GoogleSignin.signOut();
             await handleLogout();
@@ -51,27 +54,25 @@ const ProfileScreen = ({ navigation, route }) => {
         }
     };
 
-    // console.log("userInfo: ", userInfo);
-
     return (
         <Center>
-            <Avatar size="xl" style={{ marginTop: 120 }} // todo: remove hard-coded image URL
-                source={{ uri: userInfo ? 
-                    userInfo.avatar : 
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFbTNmzbm13hDKsd-PGH7i0EnWEYlUYOW1SefPBpg&s" }}>
-                User
+            <Avatar size="xl" style={{ marginTop: 120 }}
+                source={{ uri: userInfo ? userInfo.avatar : null }}>
             </Avatar>
             <Text style={{ fontSize: 24, fontWeight: 'bold', marginTop: 10 }}>
-                {userInfo ? userInfo.firstName : 'username'}
+                {userInfo ? userInfo.firstName : 'username' }
             </Text>
-            <Button variant='vh2' onPress={logout} marginTop={3} disabled={!loggedIn}>Sign out</Button>
+            {loggedIn ? (
+                <Button variant='vh2' onPress={logout} marginTop={3} >Sign out</Button>
+            ) : (
+                <Button variant='vh2' onPress={login} marginTop={3} >Sign in</Button>
+            )}
         </Center>
     );
 }
 
 ProfileScreen.propTypes = {
     navigation: PropTypes.object.isRequired,
-    route: PropTypes.object.isRequired,
 };
 
 export default ProfileScreen;
