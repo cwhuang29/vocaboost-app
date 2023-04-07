@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 
 import { Center, Flex, VStack } from 'native-base';
-
-import { STORAGE_USER } from 'shared/constants/storage';
-import storage from 'shared/storage';
-import logger from 'shared/utils/logger';
 
 const HomeBox = ({ text, bg, onPress }) => (
   <TouchableOpacity onPress={onPress}>
@@ -18,23 +13,6 @@ const HomeBox = ({ text, bg, onPress }) => (
 );
 
 const HomeScreen = ({ navigation }) => {
-  const [loggedIn, setloggedIn] = useState(false);
-  const [userInfoCache, setUserInfoCache] = useState([]);
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      const isSignedIn = await GoogleSignin.isSignedIn();
-      setloggedIn(isSignedIn);
-      if (isSignedIn) {
-        const loginData = await storage.getData(STORAGE_USER);
-        setUserInfoCache(loginData);
-      } else {
-        setUserInfoCache([]);
-      }
-    };
-    getUserInfo();
-  }, []);
-
   const onPress = ({ type }) => {
     if (type === 'gre') {
       navigation.navigate('Study', { type: 'gre' });
