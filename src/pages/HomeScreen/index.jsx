@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { Center, Flex, VStack } from 'native-base';
 
+import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+
 const HomeBox = ({ text, bg, onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <Center w='64' h='64' bg={bg} rounded='md' shadow={3} _text={{ color: 'white' }}>
@@ -14,16 +16,16 @@ const HomeBox = ({ text, bg, onPress }) => (
 
 const HomeScreen = ({ navigation }) => {
   const onPress = ({ type }) => {
-    if (type === 'gre') {
-      navigation.navigate('Study', { type: 'gre' });
+    if (type === WORD_LIST_TYPE.GRE) {
+      navigation.navigate('Study', { type: WORD_LIST_TYPE.GRE });
     }
   };
 
   return (
     <Flex flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type: 'gre' })} />
-        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type: 'collected' })} />
+        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type: WORD_LIST_TYPE.GRE })} />
+        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>
     </Flex>
   );
