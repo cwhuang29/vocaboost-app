@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import messages from 'shared/constants/messages';
 import { GLOBAL_MESSAGE_SERVERITY } from 'shared/constants/styles';
+import logger from 'shared/utils/logger';
 
 const ServiceFetcher = props => {
   const { render, fetchService, toDispatch, ...notForHOCProps } = props; // Method 1 (render props)
@@ -24,7 +25,7 @@ const ServiceFetcher = props => {
       .then(fetchData => setData(fetchData))
       .catch(err => {
         setError(err);
-        console.log({
+        logger({
           title: err.title || messages.UNKNOWN_ERROR,
           content: err.content || messages.SERVER_UNSTABLE,
           severity: GLOBAL_MESSAGE_SERVERITY.ERROR,
