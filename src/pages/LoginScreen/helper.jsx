@@ -1,5 +1,7 @@
 import { statusCodes } from '@react-native-google-signin/google-signin';
 
+import logger from 'shared/utils/logger';
+
 export const showGoogleLoginErr = err => {
   if (err.code === statusCodes.SIGN_IN_CANCELLED) {
     logger('user cancelled the login flow');

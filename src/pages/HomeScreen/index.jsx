@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 
 import { Center, Flex, VStack } from 'native-base';
 
-import { STORAGE_USER } from 'shared/constants/storage';
-import storage from 'shared/storage';
-import logger from 'shared/utils/logger';
+import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 
 const HomeBox = ({ text, bg, onPress }) => (
   <TouchableOpacity onPress={onPress}>
@@ -18,34 +15,17 @@ const HomeBox = ({ text, bg, onPress }) => (
 );
 
 const HomeScreen = ({ navigation }) => {
-  const [loggedIn, setloggedIn] = useState(false);
-  const [userInfoCache, setUserInfoCache] = useState([]);
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      const isSignedIn = await GoogleSignin.isSignedIn();
-      setloggedIn(isSignedIn);
-      if (isSignedIn) {
-        const loginData = await storage.getData(STORAGE_USER);
-        setUserInfoCache(loginData);
-      } else {
-        setUserInfoCache([]);
-      }
-    };
-    getUserInfo();
-  }, []);
-
   const onPress = ({ type }) => {
-    if (type === 'gre') {
-      navigation.navigate('Study', { type: 'gre'});
+    if (type === WORD_LIST_TYPE.GRE) {
+      navigation.navigate('Study', { type: WORD_LIST_TYPE.GRE });
     }
   };
 
   return (
     <Flex flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
-        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type : 'gre'})} />
-        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type : 'collected'})} />
+        <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type: WORD_LIST_TYPE.GRE })} />
+        <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>
     </Flex>
   );
@@ -56,6 +36,12 @@ HomeScreen.propTypes = {
     navigate: PropTypes.func.isRequired,
     setOptions: PropTypes.func.isRequired,
   }).isRequired,
+};
+
+HomeBox.propTypes = {
+  text: PropTypes.string.isRequired,
+  bg: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default HomeScreen;

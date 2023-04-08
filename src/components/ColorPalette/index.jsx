@@ -1,9 +1,11 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Box, Button, Center, FlatList, Text, useColorMode, useTheme } from 'native-base';
 
-const ColorPalete = () => {
+const ColorPalette = ({ key }) => {
   const { colors } = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
-  const key = 'vhdark';
   return (
     <Box>
       <Box>
@@ -21,4 +23,8 @@ const ColorPalete = () => {
   );
 };
 
-export default ColorPalete;
+ColorPalette.propTypes = {
+  key: PropTypes.string.isRequired,
+};
+
+export default ColorPalette;

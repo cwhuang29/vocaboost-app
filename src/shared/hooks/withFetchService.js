@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import messages from 'shared/constants/messages';
 import { GLOBAL_MESSAGE_SERVERITY } from 'shared/constants/styles';
-import { useGlobalMessageContext } from 'shared/hooks/useGlobalMessageContext';
+import logger from 'shared/utils/logger';
 
 const ServiceFetcher = props => {
   const { render, fetchService, toDispatch, ...notForHOCProps } = props; // Method 1 (render props)
@@ -14,7 +14,6 @@ const ServiceFetcher = props => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({});
-  const { addGlobalMessage } = useGlobalMessageContext();
 
   // const fetch = toDispatch ? () => dispatch(fetchService()) : () => fetchService();
   const fetch = () => fetchService();
@@ -26,7 +25,7 @@ const ServiceFetcher = props => {
       .then(fetchData => setData(fetchData))
       .catch(err => {
         setError(err);
-        addGlobalMessage({
+        logger({
           title: err.title || messages.UNKNOWN_ERROR,
           content: err.content || messages.SERVER_UNSTABLE,
           severity: GLOBAL_MESSAGE_SERVERITY.ERROR,

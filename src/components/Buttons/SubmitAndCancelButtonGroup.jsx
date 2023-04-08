@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Box, ListItemButton, ListItemText } from '@mui/material';
+import { Box, Button, ListItem, Text } from 'native-base';
 
 const SubmitAndCancelButtonGroup = props => {
   const { disabledSubmit, disabledCancel, onSubmit, onCancel, submitButtonText, cancelButtonText } = props;
@@ -20,15 +20,19 @@ const SubmitAndCancelButtonGroup = props => {
   return (
     <Box style={wrapperStyle}>
       <Box style={cancelCursorStyle}>
-        <ListItemButton disabled={disabledCancel} sx={{ ...listItemButtonStyle, backgroundColor: '#F95C5C' }} onClick={onCancel}>
-          <ListItemText primary={cancelButtonText} style={listItemTextStyle} />
-        </ListItemButton>
+        <Button disabled={disabledCancel} sx={{ ...listItemButtonStyle, backgroundColor: '#F95C5C' }} onClick={onCancel}>
+          <ListItem style={listItemTextStyle}>
+            <Text>{cancelButtonText}</Text>
+          </ListItem>
+        </Button>
       </Box>
       <div style={{ width: '9%' }} />
       <Box style={submitCursorStyle}>
-        <ListItemButton disabled={disabledSubmit} sx={{ ...listItemButtonStyle, backgroundColor: '#4778DD' }} onClick={onSubmit}>
-          <ListItemText primary={submitButtonText} style={listItemTextStyle} />
-        </ListItemButton>
+        <Button disabled={disabledSubmit} sx={{ ...listItemButtonStyle, backgroundColor: '#4778DD' }} onClick={onSubmit}>
+          <ListItem style={listItemTextStyle}>
+            <Text>{submitButtonText}</Text>
+          </ListItem>
+        </Button>
       </Box>
     </Box>
   );

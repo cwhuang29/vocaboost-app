@@ -34,6 +34,7 @@ const DisplayText = ({ children, size, shrink }) => (
 );
 
 // TODO Use fontsize for texts
+// eslint-disable-next-line no-unused-vars
 const Detail = ({ display, wordData, language, fontSize, isCollected, onCollectWord }) =>
   display && (
     <Box>

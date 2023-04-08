@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Box, ListItemButton, ListItemText } from '@mui/material';
+import { Box, Button, ListItem, Text } from 'native-base';
 
 const ConfirmButton = props => {
   const { disabledConfirm, onConfirm, confirmButtonText } = props;
@@ -24,9 +24,11 @@ const ConfirmButton = props => {
 
   return (
     <Box style={wrapperStyle}>
-      <ListItemButton disabled={disabledConfirm} sx={{ ...listItemButtonStyle, backgroundColor: '#4778DD' }} onClick={onConfirm}>
-        <ListItemText primary={confirmButtonText} style={listItemTextStyle} />
-      </ListItemButton>
+      <Button disabled={disabledConfirm} sx={{ ...listItemButtonStyle, backgroundColor: '#4778DD' }} onClick={onConfirm}>
+        <ListItem style={listItemTextStyle}>
+          <Text>{confirmButtonText}</Text>
+        </ListItem>
+      </Button>
     </Box>
   );
 };

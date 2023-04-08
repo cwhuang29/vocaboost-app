@@ -52,6 +52,9 @@ const themeSetting = {
         vh2: ({ colorScheme }) => ({
           bg: `${colorScheme}.purple`,
           rounded: 'lg',
+          _disabled: {
+            opacity: 30,
+          },
         }),
       },
     },

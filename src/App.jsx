@@ -1,21 +1,26 @@
-import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import React, { useEffect, useMemo, useReducer } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import PropTypes from 'prop-types';
 import { registerRootComponent } from 'expo';
 
-import { Box, Button, Center, FlatList, NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider } from 'native-base';
 
 import HomeScreen from 'pages/HomeScreen';
-// import Login from 'pages/Login';
+import LoginScreen from 'pages/LoginScreen';
+import ProfileScreen from 'pages/ProfileScreen';
+import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
+import BottomTab from 'components/BottomTab';
+import { AUTH_STATUS } from 'shared/actionTypes/auth';
+import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
+import { AuthContext } from 'shared/hooks/useAuthContext';
+import { authInitialState, authReducer } from 'shared/reducers/auth';
+import authService from 'shared/services/auth.service';
+import storage from 'shared/storage';
+import logger from 'shared/utils/logger';
 import defaultTheme from 'shared/utils/theme';
-import logo from 'assets/favicon.png';
 
 const Stack = createNativeStackNavigator();
-
-const LogoTitle = () => <Image style={{ width: 36, height: 36 }} source={logo} />;
 
 const navigatorScreenOptions = {
   headerStyle: { backgroundColor: '#ffedd5' },
@@ -24,21 +29,64 @@ const navigatorScreenOptions = {
   // headerShown: false,
 };
 
-const App = () => (
-  <NativeBaseProvider theme={defaultTheme}>
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={navigatorScreenOptions}>
-        <Stack.Screen
-          name='Home'
-          component={HomeScreen}
-          // eslint-disable-next-line react/no-unstable-nested-components
-          options={{headerTitle: props => <LogoTitle {...props} />,}}
-        />
-        <Stack.Screen name='Study' component={StudyScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  </NativeBaseProvider>
-);
+const App = () => {
+  const [state, dispatch] = useReducer(authReducer, authInitialState);
 
+  useEffect(() => {
+    const tryRestoreToken = async () => {
+      const token = await storage.getData(STORAGE_AUTH_TOKEN);
+      dispatch({ type: AUTH_STATUS.RESTORE_TOKEN, payload: { token } });
+    };
+    tryRestoreToken();
+  }, []);
+
+  const authContext = useMemo(
+    () => ({
+      signIn: async data => {
+        // TODO Show a greeting message to new user
+        // eslint-disable-next-line no-unused-vars
+        const { token, isNewUser, user } = await authService.login(data).catch(err => {
+          logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
+        });
+        await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
+        dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
+      },
+      signOut: async () => {
+        await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
+        await authService.logout().catch(() => {}); // For logout, just ignore error message
+        dispatch({ type: AUTH_STATUS.SIGN_OUT });
+      },
+    }),
+    []
+  );
+
+  return (
+    <NativeBaseProvider theme={defaultTheme}>
+      {state.isLoading ? (
+        <SplashScreen />
+      ) : (
+        <NavigationContainer>
+          <AuthContext.Provider value={authContext}>
+            <Stack.Navigator screenOptions={navigatorScreenOptions}>
+              {state.token ? (
+                <>
+                  <Stack.Screen name='BottomTab' component={BottomTab} />
+                  <Stack.Screen name='Home' component={HomeScreen} />
+                  <Stack.Screen name='Study' component={StudyScreen} />
+                  <Stack.Screen name='Profile' component={ProfileScreen} />
+                </>
+              ) : (
+                <>
+                  <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
+                  <Stack.Screen name='Profile' component={ProfileScreen} />
+                </>
+              )}
+            </Stack.Navigator>
+          </AuthContext.Provider>
+        </NavigationContainer>
+      )}
+    </NativeBaseProvider>
+  );
+};
 
 export default registerRootComponent(App);
