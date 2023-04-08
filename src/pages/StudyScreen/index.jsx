@@ -13,7 +13,7 @@ import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
-import { getWSConnStatusDisplay } from 'shared/utils/messages';
+// import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailMap } from 'shared/utils/word';
 
 import Detail from './Detail';

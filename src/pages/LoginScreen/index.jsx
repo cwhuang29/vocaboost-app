@@ -10,7 +10,7 @@ import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 
 import { showGoogleLoginErr } from './helper';
 
-const Login = () => {
+const LoginScreen = () => {
   const [isSigninInProgress, setIsSigninInProgress] = useState(false);
   const { signIn } = useContext(AuthContext);
 
@@ -48,4 +48,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginScreen;

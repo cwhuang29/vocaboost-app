@@ -6,7 +6,7 @@ import { registerRootComponent } from 'expo';
 import { NativeBaseProvider } from 'native-base';
 
 import HomeScreen from 'pages/HomeScreen';
-import Login from 'pages/Login';
+import LoginScreen from 'pages/LoginScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
@@ -43,7 +43,9 @@ const App = () => {
   const authContext = useMemo(
     () => ({
       signIn: async data => {
-        const { token, user } = await authService.login(data).catch(err => {
+        // TODO Show a greeting message to new user
+        // eslint-disable-next-line no-unused-vars
+        const { token, isNewUser, user } = await authService.login(data).catch(err => {
           logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
         });
         await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
@@ -75,7 +77,7 @@ const App = () => {
                 </>
               ) : (
                 <>
-                  <Stack.Screen name='Login' component={Login} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
+                  <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
                   <Stack.Screen name='Profile' component={ProfileScreen} />
                 </>
               )}

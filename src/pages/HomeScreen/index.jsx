@@ -38,4 +38,10 @@ HomeScreen.propTypes = {
   }).isRequired,
 };
 
+HomeBox.propTypes = {
+  text: PropTypes.string.isRequired,
+  bg: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+};
+
 export default HomeScreen;
