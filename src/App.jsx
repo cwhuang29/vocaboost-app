@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useReducer } from 'react';
+import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
@@ -10,8 +10,10 @@ import LoginScreen from 'pages/LoginScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
+import CustomAlert from 'components/Alerts';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
+import { ALERT_STATUS } from 'shared/constants/alertStatus';
 import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
@@ -31,6 +33,7 @@ const navigatorScreenOptions = {
 
 const App = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
+  const [isNewUser, setIsNewUser] = useState(false);
 
   useEffect(() => {
     const tryRestoreToken = async () => {
@@ -48,6 +51,7 @@ const App = () => {
         const { token, isNewUser, user } = await authService.login(data).catch(err => {
           logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
         });
+        setIsNewUser(isNewUser);
         await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
         dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
       },
@@ -62,6 +66,7 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
+      {isNewUser && <CustomAlert status={ALERT_STATUS.SUCCESS} title='test title' />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (
@@ -77,6 +82,9 @@ const App = () => {
                 </>
               ) : (
                 <>
+                  <Stack.Screen name='BottomTab' component={BottomTab} />
+                  <Stack.Screen name='Home' component={HomeScreen} />
+                  <Stack.Screen name='Study' component={StudyScreen} />
                   <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
                   <Stack.Screen name='Profile' component={ProfileScreen} />
                 </>
