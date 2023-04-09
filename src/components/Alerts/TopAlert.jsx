@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Alert, Box, Center, CloseIcon, HStack, IconButton, Text, VStack } from 'native-base';
@@ -7,6 +7,16 @@ import { ALERT_STYLE, MAX_Z_INDEX } from 'shared/constants/styles';
 
 const TopAlert = ({ type, title, content }) => {
   const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setShow(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return show ? (
     <Box safeAreaTop='8' zIndex={MAX_Z_INDEX} top={5} position='absolute' alignSelf='center'>
