@@ -1,10 +1,10 @@
-import { HIGHLIGHTER_FONT_SIZE, LANGS } from 'shared/constants/index';
+import { FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants/index';
 import { isArray, isObject } from 'shared/utils/misc';
 
 export const DEFAULT_CONFIG = {
   language: LANGS.en,
-  fontSize: HIGHLIGHTER_FONT_SIZE.MEDIUM,
-  fontStyle: null,
+  fontSize: FONT_SIZE.MEDIUM,
+  fontStyle: FONT_STYLE.ROBOTO,
   collectedWords: [],
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
 };

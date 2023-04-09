@@ -40,19 +40,10 @@ export const ONLINE_DIC_URL = {
   zh_CN: 'https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B0%A1%E9%AB%94/',
 };
 
-export const HIGHLIGHTER_FONT_SIZE = {
+export const FONT_SIZE = {
   SMALL: 'SMALL',
   MEDIUM: 'MEDIUM',
   LARGE: 'LARGE',
-};
-
-export const HIGHLIGHTER_BG_COLORS = {
-  PINK: 'PINK',
-  ORANGE: 'ORANGE',
-  YELLOW: 'YELLOW',
-  GREEN: 'GREEN',
-  BLUE: 'BLUE',
-  PURPLE: 'PURPLE',
 };
 
 export const LANGS = {
@@ -60,6 +51,11 @@ export const LANGS = {
   es: 'es',
   zh_TW: 'zh_TW',
   zh_CN: 'zh_CN',
+};
+
+export const FONT_STYLE = {
+  ROBOTO: 'ROTOBO',
+  ARIA: 'ARIA',
 };
 
 export const PARTS_OF_SPEECH_SHORTHAND = {
