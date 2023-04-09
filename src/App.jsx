@@ -10,10 +10,10 @@ import LoginScreen from 'pages/LoginScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
-import CustomAlert from 'components/Alerts';
+import { TopAlert } from 'components/Alerts';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
-import { ALERT_STATUS } from 'shared/constants/alertStatus';
+import { ALERT_TYPES } from 'shared/constants';
 import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
@@ -66,7 +66,7 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
-      {isNewUser && <CustomAlert status={ALERT_STATUS.SUCCESS} title='test title' content='Hello this is message 12345 !!!!' />}
+      {isNewUser && <TopAlert type={ALERT_TYPES.SUCCESS} title='test title' content='Hello this is message 12345 !!!!' />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (
@@ -82,9 +82,6 @@ const App = () => {
                 </>
               ) : (
                 <>
-                  <Stack.Screen name='BottomTab' component={BottomTab} />
-                  <Stack.Screen name='Home' component={HomeScreen} />
-                  <Stack.Screen name='Study' component={StudyScreen} />
                   <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
                   <Stack.Screen name='Profile' component={ProfileScreen} />
                 </>
