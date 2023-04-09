@@ -27,6 +27,7 @@ const BottomTab = () => (
   <Tab.Navigator
     activeColor='#f0edf6'
     inactiveColor='#3e2465'
+    safeAreaInsets={{ bottom: 20 }}
     barStyle={{ backgroundColor: '#694fad' }}
     shifting
     screenOptions={({ route }) => ({

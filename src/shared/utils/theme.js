@@ -67,15 +67,22 @@ const themeSetting = {
       sizes: {
         xl: { fontSize: '64px' },
         lg: { fontSize: '32px' },
-        md: { fontSize: '16px' },
+        md: { fontSize: '18px' },
         sm: { fontSize: '12px' },
       },
     },
     Heading: {
       baseStyle: ({ colorMode }) => ({
-        color: colorMode === 'dark' ? 'vhlight.200' : 'vhlight.100', // TODO
-        fontWeight: 'normal',
+        color: colorMode === 'dark' ? 'vhlight.200' : 'vhlight.400',
+        fontWeight: 'bold',
       }),
+      sizes: {
+        '2xl': { fontSize: '64px' },
+        xl: { fontSize: '40px' },
+        lg: { fontSize: '28px' },
+        md: { fontSize: '20px' },
+        sm: { fontSize: '16px' },
+      },
     },
   },
   config: {
