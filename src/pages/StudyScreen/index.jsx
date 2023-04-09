@@ -13,12 +13,13 @@ import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
+import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailMap } from 'shared/utils/word';
 
 import Detail from './Detail';
 
-const getWebSocketURL = () => `${BACKEND_URL}${apis.V1.SETTING}`;
+const getWebSocketURL = () => `${BACKEND_URL}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
 const StudyScreen = ({ route }) => {
   const accessToken = useRef(null);
@@ -30,13 +31,13 @@ const StudyScreen = ({ route }) => {
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
 
   const { language: lang, fontSize } = config || {};
-  const currWordData = wordsMap.get(shuffledIndices[currIdx]);
+  const wordData = wordsMap.get(shuffledIndices[currIdx]);
   // const connStatus = getWSConnStatusDisplay(readyState); // TODO Show 'cannot connect to server' message
 
   useEffect(() => {
     const setup = async () => {
-      const token = await storage.getData(STORAGE_AUTH_TOKEN);
       const c = (await storage.getData(STORAGE_CONFIG)) || DEFAULT_CONFIG;
+      const token = await storage.getData(STORAGE_AUTH_TOKEN);
       accessToken.current = token; // TODO Recommend user to login if the value is null
       setConfig(c);
       setLoading(false); // Even if the app cannot connect to the server, still let users operate on their phones
@@ -45,16 +46,16 @@ const StudyScreen = ({ route }) => {
   }, []);
 
   useEffect(() => {
-    const setup = async () => {
+    const setupWebSocket = async () => {
       // Note that readyState only turns to OPEN once
       if (readyState !== ReadyState.OPEN || accessToken.current === null) {
         return;
       }
       if (accessToken.current) {
-        sendJsonMessage({ config: config || DEFAULT_CONFIG, accessToken: accessToken.current, ts: new Date('Wed Apr 05 2000 00:00:00') });
+        sendJsonMessage({ data: config.collectedWords, accessToken: accessToken.current, ts: config.updatedAt });
       }
     };
-    setup();
+    setupWebSocket();
   }, [readyState]);
 
   useEffect(() => {
@@ -62,14 +63,14 @@ const StudyScreen = ({ route }) => {
       if (lastJsonMessage === null) {
         return;
       }
-      const { isStale, data, error } = lastJsonMessage;
-      if (error) {
+      const { isStale, data, ts, error } = lastJsonMessage;
+      if (error && !isStale) {
         logger(`Update config to server error: ${error}`);
       }
       if (isStale) {
-        await storage.setData(STORAGE_CONFIG, data);
+        await storage.setData(STORAGE_CONFIG, { ...config, collectedWords: data, updatedAt: ts });
+        setConfig(prev => ({ ...prev, collectedWords: data, updatedAt: ts }));
         logger('Just updated the latest config from server!');
-        setConfig(data);
       }
     };
     wsMessageOnReceive();
@@ -82,17 +83,18 @@ const StudyScreen = ({ route }) => {
   const onCollectWord =
     ({ id, isCollected }) =>
     async () => {
+      const time = getLocalDate();
       const collectedWords = isCollected ? config.collectedWords.filter(wordId => wordId !== id) : [...config.collectedWords, id];
-      const newConfig = { ...config, collectedWords };
+      const newConfig = { ...config, collectedWords, updatedAt: time };
 
       await storage.setData(STORAGE_CONFIG, newConfig);
       setConfig(newConfig);
       if (accessToken.current) {
-        sendJsonMessage({ config: newConfig, accessToken: accessToken.current, ts: new Date() });
+        sendJsonMessage({ data: collectedWords, accessToken: accessToken.current, ts: time });
       }
     };
 
-  const isCollected = loading ? false : config.collectedWords.includes(currWordData.id);
+  const isCollected = loading ? false : config.collectedWords.includes(wordData.id);
 
   return (
     <View flex={1}>
@@ -102,7 +104,7 @@ const StudyScreen = ({ route }) => {
       ) : (
         <View flex={4} px={12} justifyContent='flex-start' alignItems='flex-start'>
           <TouchableOpacity onPress={onPress}>
-            <Detail wordData={currWordData} language={lang} fontSize={fontSize} isCollected={isCollected} onPress={onPress} onCollectWord={onCollectWord} />
+            <Detail wordData={wordData} language={lang} fontSize={fontSize} isCollected={isCollected} onPress={onPress} onCollectWord={onCollectWord} />
             <Box height='100%' style={{ backgroundColor: 'blue' }} />
           </TouchableOpacity>
         </View>

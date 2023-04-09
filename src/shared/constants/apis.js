@@ -4,6 +4,7 @@ export default {
     LOGIN: '/v1/login',
     LOGOUT: '/v1/logout',
     SETTING: '/v1/users/setting',
+    SETTING_COLLECTED_WORDS: '/v1/users/setting/collected-words',
   },
 
   V2: {
