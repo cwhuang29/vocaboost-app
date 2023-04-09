@@ -66,7 +66,12 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
-      {isNewUser && <TopAlert type={ALERT_TYPES.SUCCESS} title='test title' content='Hello this is message 12345 !!!!' />}
+      {isNewUser && 
+        <TopAlert 
+          type={ALERT_TYPES.SUCCESS} 
+          title='Welcome to the app!' 
+          content='Start collecting words effortlessly by installing our Chrome extension today.'
+        />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (
