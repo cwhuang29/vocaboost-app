@@ -52,8 +52,8 @@ const App = () => {
         dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
       },
       signOut: async () => {
-        await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
         await authService.logout().catch(() => {}); // For logout, just ignore error message
+        await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
         dispatch({ type: AUTH_STATUS.SIGN_OUT });
       },
     }),
