@@ -1,3 +1,4 @@
+import BottomAlert from './BottomAlert';
 import TopAlert from './TopAlert';
 
-export { TopAlert };
+export { BottomAlert, TopAlert };

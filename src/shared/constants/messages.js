@@ -57,3 +57,8 @@ export const STORAGE_ERR_MSG = {
     return `Storage remove error. key: ${key}. Error: ${err}`;
   },
 };
+
+export const WELCOME_MSG = {
+  TITLE: 'Welcome to the app!',
+  CONTENT: 'Start collecting words effortlessly by installing our Chrome extension today',
+}

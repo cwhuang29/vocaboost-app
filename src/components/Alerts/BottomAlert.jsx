@@ -7,7 +7,8 @@ import { ALERT_TIMEOUT } from 'shared/constants';
 import { ALERT_STYLE, MAX_Z_INDEX } from 'shared/constants/styles';
 
 
-const TopAlert = ({ type, title, content, link }) => {
+
+const BottomAlert = ({ type, title, content, link }) => {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const TopAlert = ({ type, title, content, link }) => {
   }, []);
   
   return show ? (
-    <Box safeAreaTop='8' zIndex={MAX_Z_INDEX} top={5} position='absolute' alignSelf='center'>
+    <Box safeAreaTop='8' zIndex={MAX_Z_INDEX} bottom={130} position='absolute' alignSelf='center'>
       <Center>
         <Alert maxW='95%' minW='95%' status={ALERT_STYLE[type]} colorScheme='info'>
           <VStack space={1} flexShrink={1} w='100%'>
@@ -55,16 +56,16 @@ const TopAlert = ({ type, title, content, link }) => {
 };
 
 
-TopAlert.propTypes = {
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    content: PropTypes.string,
-    link: PropTypes.string,
-};
-  
-TopAlert.defaultProps = {
-    content: '',
-    link: ''
+BottomAlert.propTypes = {
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  link: PropTypes.string,
 };
 
-export default TopAlert;
+BottomAlert.defaultProps = {
+  content: '',
+  link: ''
+};
+
+export default BottomAlert;

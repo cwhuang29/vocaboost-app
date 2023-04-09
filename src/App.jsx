@@ -10,10 +10,12 @@ import LoginScreen from 'pages/LoginScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
-import { TopAlert } from 'components/Alerts';
+import { BottomAlert } from 'components/Alerts';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
 import { ALERT_TYPES } from 'shared/constants';
+import { EXTENSION_LINK } from 'shared/constants/link';
+import { WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
@@ -67,10 +69,11 @@ const App = () => {
   return (
     <NativeBaseProvider theme={defaultTheme}>
       {isNewUser && 
-        <TopAlert 
+        <BottomAlert 
           type={ALERT_TYPES.SUCCESS} 
-          title='Welcome to the app!' 
-          content='Start collecting words effortlessly by installing our Chrome extension today.'
+          title={WELCOME_MSG.TITLE}
+          content={WELCOME_MSG.CONTENT}
+          link={EXTENSION_LINK}
         />}
       {state.isLoading ? (
         <SplashScreen />
