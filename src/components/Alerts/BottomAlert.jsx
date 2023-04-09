@@ -43,11 +43,15 @@ const BottomAlert = ({ type, title, content, link }) => {
                 onPress={() => setShow(false)}
               />
             </HStack>
-            <Box pl='6'>
-              <Link href={link} isExternal _text={{ color: 'coolGray.600' }}>
-                {content}
-              </Link>
-            </Box>
+            {content ? (
+              <Box pl='6'>
+                {link ? (
+                  <Link href={link} isExternal>{content}</Link>
+                ) : (
+                  <Text>{content}</Text>
+                )}
+              </Box>
+            ) : null}
           </VStack>
         </Alert>
       </Center>

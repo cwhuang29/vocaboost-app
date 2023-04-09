@@ -42,11 +42,15 @@ const TopAlert = ({ type, title, content, link }) => {
                 onPress={() => setShow(false)}
               />
             </HStack>
-            <Box pl='6'>
-              <Link href={link} isExternal _text={{ color: 'coolGray.600' }}>
-                {content}
-              </Link>
-            </Box>
+            {content ? (
+              <Box pl='6'>
+                {link ? (
+                  <Link href={link} isExternal>{content}</Link>
+                ) : (
+                  <Text>{content}</Text>
+                )}
+              </Box>
+            ) : null}
           </VStack>
         </Alert>
       </Center>
@@ -56,15 +60,15 @@ const TopAlert = ({ type, title, content, link }) => {
 
 
 TopAlert.propTypes = {
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    content: PropTypes.string,
-    link: PropTypes.string,
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string,
+  link: PropTypes.string,
 };
-  
+
 TopAlert.defaultProps = {
-    content: '',
-    link: ''
+  content: '',
+  link: ''
 };
 
 export default TopAlert;
