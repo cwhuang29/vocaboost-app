@@ -23,3 +23,10 @@ export const HIGHLIGHTER_BG_COLORS_CODE = {
   BLUE: 'rgb(176 219 227 / 80%)',
   PURPLE: 'rgb(200 178 234 / 80%)',
 };
+
+export const ALERT_STYLE = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+  INFO: 'info',
+  WARNING: 'warning'
+};

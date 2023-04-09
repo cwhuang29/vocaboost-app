@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useReducer } from 'react';
+import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
@@ -10,8 +10,12 @@ import LoginScreen from 'pages/LoginScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
+import { BottomAlert } from 'components/Alerts';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
+import { ALERT_TYPES } from 'shared/constants';
+import { EXTENSION_LINK } from 'shared/constants/link';
+import { WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
@@ -31,6 +35,7 @@ const navigatorScreenOptions = {
 
 const App = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
+  const [isNewUser, setIsNewUser] = useState(false);
 
   useEffect(() => {
     const tryRestoreToken = async () => {
@@ -48,6 +53,7 @@ const App = () => {
         const { token, isNewUser, user } = await authService.login(data).catch(err => {
           logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
         });
+        setIsNewUser(isNewUser);
         await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
         dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
       },
@@ -62,6 +68,13 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
+      {isNewUser && 
+        <BottomAlert 
+          type={ALERT_TYPES.SUCCESS} 
+          title={WELCOME_MSG.TITLE}
+          content={WELCOME_MSG.CONTENT}
+          link={EXTENSION_LINK}
+        />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (

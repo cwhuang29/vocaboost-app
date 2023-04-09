@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { Center, Flex, VStack } from 'native-base';
+import { Center, VStack } from 'native-base';
 
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 
@@ -22,12 +22,12 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <Flex flex={1} justifyContent='center'>
+    <Center flex={1} justifyContent='center'>
       <VStack space={4} alignItems='center'>
         <HomeBox text='GRE 1500' bg='indigo.300' onPress={() => onPress({ type: WORD_LIST_TYPE.GRE })} />
         <HomeBox text='Collected Words' bg='indigo.600' onPress={() => onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>
-    </Flex>
+    </Center>
   );
 };
 

@@ -66,3 +66,12 @@ export const PARTS_OF_SPEECH_SHORTHAND = {
   preposition: '(prep.)',
   conjunction: '(conj.)',
 };
+
+export const ALERT_TYPES = {
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+  INFO: 'INFO',
+  WARNING: 'WARNING'
+};
+
+export const ALERT_TIMEOUT = 5000;
