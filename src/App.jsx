@@ -66,7 +66,7 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
-      {isNewUser && <CustomAlert status={ALERT_STATUS.SUCCESS} title='test title' />}
+      {isNewUser && <CustomAlert status={ALERT_STATUS.SUCCESS} title='test title' content='Hello this is message 12345 !!!!' />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (
