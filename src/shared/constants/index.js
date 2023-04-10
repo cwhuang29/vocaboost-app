@@ -71,7 +71,7 @@ export const ALERT_TYPES = {
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
   INFO: 'INFO',
-  WARNING: 'WARNING'
+  WARNING: 'WARNING',
 };
 
 export const ALERT_TIMEOUT = 5000;

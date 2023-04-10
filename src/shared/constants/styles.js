@@ -28,5 +28,5 @@ export const ALERT_STYLE = {
   SUCCESS: 'success',
   ERROR: 'error',
   INFO: 'info',
-  WARNING: 'warning'
+  WARNING: 'warning',
 };

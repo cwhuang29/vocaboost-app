@@ -68,32 +68,18 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
-      {isNewUser && 
-        <BottomAlert 
-          type={ALERT_TYPES.SUCCESS} 
-          title={WELCOME_MSG.TITLE}
-          content={WELCOME_MSG.CONTENT}
-          link={EXTENSION_LINK}
-        />}
+      {isNewUser && <BottomAlert type={ALERT_TYPES.SUCCESS} title={WELCOME_MSG.TITLE} content={WELCOME_MSG.CONTENT} link={EXTENSION_LINK} />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (
         <NavigationContainer>
           <AuthContext.Provider value={authContext}>
             <Stack.Navigator screenOptions={navigatorScreenOptions}>
-              {state.token ? (
-                <>
-                  <Stack.Screen name='BottomTab' component={BottomTab} />
-                  <Stack.Screen name='Home' component={HomeScreen} />
-                  <Stack.Screen name='Study' component={StudyScreen} />
-                  <Stack.Screen name='Profile' component={ProfileScreen} />
-                </>
-              ) : (
-                <>
-                  <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
-                  <Stack.Screen name='Profile' component={ProfileScreen} />
-                </>
-              )}
+              <Stack.Screen name='BottomTab' component={BottomTab} />
+              <Stack.Screen name='Home' component={HomeScreen} />
+              <Stack.Screen name='Study' component={StudyScreen} />
+              <Stack.Screen name='Profile' component={ProfileScreen} />
+              <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
             </Stack.Navigator>
           </AuthContext.Provider>
         </NavigationContainer>

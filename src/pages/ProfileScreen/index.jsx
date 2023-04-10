@@ -16,14 +16,18 @@ import { AuthContext } from 'shared/hooks/useAuthContext';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
+import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 import { toCapitalize } from 'shared/utils/stringHelpers';
+
+import { showGoogleLoginErr } from './helper';
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
+  const [isSigninInProgress, setIsSigninInProgress] = useState(false);
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
   const [config, dispatch] = useReducer(configReducer, configInitialState);
-  const { signOut } = useContext(AuthContext);
+  const { signIn, signOut } = useContext(AuthContext);
   const isFocused = useIsFocused();
   const { language, fontSize, fontStyle } = config || {};
 
@@ -50,6 +54,28 @@ const ProfileScreen = () => {
     };
     setup();
   }, []);
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID,
+      // androidClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID,
+    });
+  }, []);
+
+  const googleSignIn = async () => {
+    try {
+      setIsSigninInProgress(true);
+      // Always resolves to true on iOS. Presence of up-to-date Google Play Services is required to show the sign in modal
+      await GoogleSignin.hasPlayServices();
+      const uInfo = await GoogleSignin.signIn();
+      signIn(transformGoogleLoginResp(uInfo));
+      setIsSignedIn(true);
+    } catch (err) {
+      showGoogleLoginErr(err);
+    } finally {
+      setIsSigninInProgress(false);
+    }
+  };
 
   const googleSignOut = async () => {
     try {
@@ -120,9 +146,15 @@ const ProfileScreen = () => {
             isDisabled={loading}
           />
         </VStack>
-        <Button variant='vh2' width={120} onPress={googleSignOut} alignSelf='center'>
-          Sign out
-        </Button>
+        {userInfo ? (
+          <Button variant='vh2' width={120} onPress={googleSignOut} alignSelf='center'>
+            Sign out
+          </Button>
+        ) : (
+          <Button variant='vh2' width={120} onPress={googleSignIn} alignSelf='center'>
+            Sign in
+          </Button>
+        )}
       </View>
       <View flex={1} />
     </Box>

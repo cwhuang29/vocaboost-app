@@ -61,4 +61,4 @@ export const STORAGE_ERR_MSG = {
 export const WELCOME_MSG = {
   TITLE: 'Welcome to the app!',
   CONTENT: 'Start collecting words effortlessly by installing our Chrome extension today',
-}
+};
