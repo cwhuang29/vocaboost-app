@@ -16,11 +16,12 @@ import { AUTH_STATUS } from 'shared/actionTypes/auth';
 import { ALERT_TYPES } from 'shared/constants';
 import { EXTENSION_LINK } from 'shared/constants/link';
 import { WELCOME_MSG } from 'shared/constants/messages';
-import { STORAGE_AUTH_TOKEN, STORAGE_USER } from 'shared/constants/storage';
+import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
 import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
+import { getLatestConfigOnLogin } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
 import defaultTheme from 'shared/utils/theme';
 
@@ -56,6 +57,10 @@ const App = () => {
         setIsNewUser(isNewUser);
         await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
         dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
+        if (!isNewUser) {
+          const latestConfig = await getLatestConfigOnLogin();
+          await storage.setData(STORAGE_CONFIG, latestConfig);
+        }
       },
       signOut: async () => {
         await authService.logout().catch(() => {}); // For logout, just ignore error message

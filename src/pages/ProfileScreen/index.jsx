@@ -23,13 +23,35 @@ import { showGoogleLoginErr } from './helper';
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
-  const [isSigninInProgress, setIsSigninInProgress] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const { signIn, signOut } = useContext(AuthContext);
   const isFocused = useIsFocused();
-  const { language, fontSize, fontStyle } = config || {};
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID,
+      // androidClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID,
+    });
+  }, []);
+
+  useEffect(() => {
+    const setup = async () => {
+      GoogleSignin.configure({ iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID });
+      const [stillSignedIn, latestUserInfo, latestConfig] = await Promise.all([
+        GoogleSignin.isSignedIn(),
+        storage.getData(STORAGE_USER),
+        storage.getData(STORAGE_CONFIG),
+      ]);
+      setIsSignedIn(stillSignedIn);
+      setUserInfo(latestUserInfo);
+      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...(latestConfig ?? DEFAULT_CONFIG) } });
+      setInit(false);
+    };
+    setup();
+  }, []);
 
   useEffect(() => {
     const getLatestConfig = async () => {
@@ -44,36 +66,22 @@ const ProfileScreen = () => {
     getLatestConfig();
   }, [isFocused]);
 
-  useEffect(() => {
-    const setup = async () => {
-      GoogleSignin.configure({ iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID });
-      const [latestConfig, uInfo] = await Promise.all([storage.getData(STORAGE_CONFIG), storage.getData(STORAGE_USER)]);
-      setUserInfo(uInfo);
-      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...(latestConfig ?? DEFAULT_CONFIG) } });
-      setInit(false);
-    };
-    setup();
-  }, []);
-
-  useEffect(() => {
-    GoogleSignin.configure({
-      iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID,
-      // androidClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID,
-    });
-  }, []);
-
   const googleSignIn = async () => {
     try {
-      setIsSigninInProgress(true);
+      setLoading(true);
       // Always resolves to true on iOS. Presence of up-to-date Google Play Services is required to show the sign in modal
       await GoogleSignin.hasPlayServices();
       const uInfo = await GoogleSignin.signIn();
-      signIn(transformGoogleLoginResp(uInfo));
+      await signIn(transformGoogleLoginResp(uInfo));
+
+      const [latestUserInfo, latestConfig] = await Promise.all([storage.getData(STORAGE_USER), storage.getData(STORAGE_CONFIG)]);
+      setUserInfo(latestUserInfo);
+      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...(latestConfig ?? DEFAULT_CONFIG) } });
       setIsSignedIn(true);
     } catch (err) {
       showGoogleLoginErr(err);
     } finally {
-      setIsSigninInProgress(false);
+      setLoading(false);
     }
   };
 
@@ -81,6 +89,8 @@ const ProfileScreen = () => {
     try {
       await GoogleSignin.signOut();
       signOut();
+      setIsSignedIn(false);
+      setUserInfo({});
     } catch (err) {
       logger(err); // TODO If logout from google server failed, ask user to logout again
     }
@@ -122,7 +132,7 @@ const ProfileScreen = () => {
           <Select
             options={LANGS}
             displayFunc={l => LANGS_DISPLAY[l]}
-            value={language}
+            value={config.language ?? DEFAULT_CONFIG.language}
             onChange={val => onLanguageChange(val)}
             placeholder='Choose Language'
             isDisabled={loading}
@@ -131,7 +141,7 @@ const ProfileScreen = () => {
           <Select
             options={FONT_SIZE}
             displayFunc={s => toCapitalize(FONT_SIZE[s])}
-            value={fontSize}
+            value={config.fontSize}
             onChange={val => onFontSizeChange(val)}
             placeholder='Choose Font Size'
             isDisabled={loading}
@@ -140,13 +150,13 @@ const ProfileScreen = () => {
           <Select
             options={FONT_STYLE}
             displayFunc={s => toCapitalize(FONT_STYLE[s])}
-            value={fontStyle}
+            value={config.fontStyle}
             onChange={val => onFontStyleChange(val)}
             placeholder='Choose Font Style'
             isDisabled={loading}
           />
         </VStack>
-        {userInfo ? (
+        {isSignedIn ? (
           <Button variant='vh2' width={120} onPress={googleSignOut} alignSelf='center'>
             Sign out
           </Button>
