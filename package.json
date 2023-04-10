@@ -1,5 +1,5 @@
 {
-  "name": "vocabulary-highlighter",
+  "name": "vocaboost-app",
   "version": "1.0.0",
   "main": "src/App.jsx",
   "scripts": {

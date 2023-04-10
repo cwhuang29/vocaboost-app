@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "Vocabulary Highlighter",
-    "slug": "vocabulary-highlighter",
+    "name": "VocaBoost",
+    "slug": "vocaboost",
     "owner": "cwhuang29",
     "version": "1.0.0",
-    "description": "Highlight GRE vocabulary and phrases on every web page you visit.",
+    "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
     "orientation": "portrait",
     "icon": "./src/assets/icons/logo.png",
     "userInterfaceStyle": "light",
@@ -15,13 +15,13 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "bundleIdentifier": "vocabulary-highlighter.com",
+      "bundleIdentifier": "vocaboost.com",
       "buildNumber": "1.0.0",
       "supportsTablet": true,
       "googleServicesFile": "./google-services-secret-ios.plist"
     },
     "android": {
-      "package": "vocabulary-highlighter.com",
+      "package": "vocaboost.com",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/icons/logo.png",
