@@ -36,7 +36,7 @@ const navigatorScreenOptions = {
 
 const App = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
-  const [isNewUser, setIsNewUser] = useState(false);
+  const [newUser, setNewUser] = useState(false);
 
   useEffect(() => {
     const tryRestoreToken = async () => {
@@ -49,12 +49,10 @@ const App = () => {
   const authContext = useMemo(
     () => ({
       signIn: async data => {
-        // TODO Show a greeting message to new user
-        // eslint-disable-next-line no-unused-vars
         const { token, isNewUser, user } = await authService.login(data).catch(err => {
           logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
         });
-        setIsNewUser(isNewUser);
+        setNewUser(newUser);
         await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
         dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
         if (!isNewUser) {
@@ -73,7 +71,7 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
-      {isNewUser && <BottomAlert type={ALERT_TYPES.SUCCESS} title={WELCOME_MSG.TITLE} content={WELCOME_MSG.CONTENT} link={EXTENSION_LINK} />}
+      {newUser && <BottomAlert type={ALERT_TYPES.SUCCESS} title={WELCOME_MSG.TITLE} content={WELCOME_MSG.CONTENT} link={EXTENSION_LINK} />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (

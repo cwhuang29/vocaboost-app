@@ -123,7 +123,7 @@ const ProfileScreen = () => {
         <Center>
           <Heading mb={2}>{userInfo?.firstName ?? 'username'}</Heading>
           <Text mb={4}>
-            You have collected <Text bold>{config.collectedWords.length}</Text> words!
+            You have collected <Text bold>{config.collectedWords?.length ?? '0'}</Text> words!
           </Text>
         </Center>
         <VStack space={4} mb={5}>
