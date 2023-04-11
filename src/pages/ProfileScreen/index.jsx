@@ -7,17 +7,22 @@ import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
 import { Avatar, Box, Button, Center, Heading, Text, View, VStack } from 'native-base';
 
 import SplashScreen from 'pages/SplashScreen';
+import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
-import { FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants';
+import { ALERT_TYPES, FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants';
 import { LANGS_DISPLAY } from 'shared/constants/i18n';
+import { EXTENSION_LINK } from 'shared/constants/link';
+import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
+import logger from 'shared/utils/logger';
 import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 import { toCapitalize } from 'shared/utils/stringHelpers';
+import { getLocalDate } from 'shared/utils/time';
 
 import { showGoogleLoginErr } from './helper';
 
@@ -29,6 +34,7 @@ const ProfileScreen = () => {
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const { signIn, signOut } = useContext(AuthContext);
   const isFocused = useIsFocused();
+  const [alertData, setAlertData] = useState({});
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -72,13 +78,23 @@ const ProfileScreen = () => {
       // Always resolves to true on iOS. Presence of up-to-date Google Play Services is required to show the sign in modal
       await GoogleSignin.hasPlayServices();
       const uInfo = await GoogleSignin.signIn();
-      await signIn(transformGoogleLoginResp(uInfo));
-
-      const [latestUserInfo, latestConfig] = await Promise.all([storage.getData(STORAGE_USER), storage.getData(STORAGE_CONFIG)]);
-      setUserInfo(latestUserInfo);
-      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...(latestConfig ?? DEFAULT_CONFIG) } });
+      const { latestConfig, latestUser, isNewUser } = await signIn(transformGoogleLoginResp(uInfo));
+      if (latestConfig) {
+        dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...latestConfig } });
+      }
+      if (isNewUser) {
+        setAlertData({
+          type: ALERT_TYPES.SUCCESS,
+          title: WELCOME_MSG.TITLE,
+          content: WELCOME_MSG.CONTENT,
+          link: EXTENSION_LINK,
+          ts: getLocalDate().toString(),
+        });
+      }
+      setUserInfo(latestUser);
       setIsSignedIn(true);
     } catch (err) {
+      setAlertData({ type: ALERT_TYPES.ERROR, title: SIGNIN_FAILED_MSG.TITLE, content: SIGNIN_FAILED_MSG.CONTENT, ts: getLocalDate().toString() });
       showGoogleLoginErr(err);
     } finally {
       setLoading(false);
@@ -88,11 +104,13 @@ const ProfileScreen = () => {
   const googleSignOut = async () => {
     try {
       await GoogleSignin.signOut();
-      signOut();
-      setIsSignedIn(false);
-      setUserInfo({});
+      await signOut();
     } catch (err) {
-      logger(err); // TODO If logout from google server failed, ask user to logout again
+      // setAlertData({ type: ALERT_TYPES.ERROR, title: SIGNOUT_FAILED_MSG.TITLE, content: SIGNOUT_FAILED_MSG.CONTENT, ts: getLocalDate().toString() });
+      logger(err);
+    } finally {
+      setIsSignedIn(false); // Always let user signedout
+      setUserInfo({});
     }
   };
 
@@ -167,6 +185,7 @@ const ProfileScreen = () => {
         )}
       </View>
       <View flex={1} />
+      {alertData.type && <BottomAlert {...alertData} bottom={6} />}
     </Box>
   );
 };

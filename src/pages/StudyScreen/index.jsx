@@ -7,7 +7,10 @@ import { BACKEND_URL } from '@env';
 
 import { Box, Spinner, View } from 'native-base';
 
+import { BottomAlert } from 'components/Alerts';
+import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';
+import { CONNECTED_WORDS_FAILED_MSG, SIGNIN_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
@@ -26,19 +29,28 @@ const StudyScreen = ({ route }) => {
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
   const [currIdx, setCurrIdx] = useState(0);
+  const [alertData, setAlertData] = useState({});
   const wordsMap = useMemo(() => genWordDetailMap(route.params.type), [route.params.type]);
   const shuffledIndices = useMemo(() => shuffleArray([...wordsMap.keys()]), [wordsMap]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
   const wordData = wordsMap.get(shuffledIndices[currIdx]);
-  // const connStatus = getWSConnStatusDisplay(readyState); // TODO Show 'cannot connect to server' message
+  // const connStatus = getWSConnStatusDisplay(readyState);
 
   useEffect(() => {
     const setup = async () => {
       const c = (await storage.getData(STORAGE_CONFIG)) || DEFAULT_CONFIG;
       const token = await storage.getData(STORAGE_AUTH_TOKEN);
-      accessToken.current = token; // TODO Recommend user to login if the value is null
+      if (!token) {
+        setAlertData({
+          type: ALERT_TYPES.WARNING,
+          title: CONNECTED_WORDS_FAILED_MSG.TITLE,
+          content: CONNECTED_WORDS_FAILED_MSG.CONTENT,
+          ts: getLocalDate().toString(),
+        });
+      }
+      accessToken.current = token;
       setConfig(c);
-      setLoading(false); // Even if the app cannot connect to the server, still let users operate on their phones
+      setLoading(false);
     };
     setup();
   }, []);
@@ -118,6 +130,7 @@ const StudyScreen = ({ route }) => {
         </View>
       )}
       <View flex={1} style={{ backgroundColor: 'steelblue' }} />
+      {alertData.type && <BottomAlert {...alertData} bottom={50} />}
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useReducer, useState } from 'react';
+import React, { useEffect, useMemo, useReducer } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
@@ -10,12 +10,9 @@ import LoginScreen from 'pages/LoginScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
-import { BottomAlert } from 'components/Alerts';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
-import { ALERT_TYPES } from 'shared/constants';
-import { EXTENSION_LINK } from 'shared/constants/link';
-import { WELCOME_MSG } from 'shared/constants/messages';
+import { SIGNIN_FAILED_MSG, SIGNOUT_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
@@ -36,7 +33,6 @@ const navigatorScreenOptions = {
 
 const App = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
-  const [newUser, setNewUser] = useState(false);
 
   useEffect(() => {
     const tryRestoreToken = async () => {
@@ -48,22 +44,31 @@ const App = () => {
 
   const authContext = useMemo(
     () => ({
-      signIn: async data => {
-        const { token, isNewUser, user } = await authService.login(data).catch(err => {
-          logger(`Login error: ${JSON.stringify(err)}`); // TODO Popup error message
-        });
-        setNewUser(newUser);
-        await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
-        dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
-        if (!isNewUser) {
-          const latestConfig = await getLatestConfigOnLogin();
-          await storage.setData(STORAGE_CONFIG, latestConfig);
-        }
-      },
       signOut: async () => {
-        await authService.logout().catch(() => {}); // For logout, just ignore error message
+        // .catch(err => throw new Error()). Error: Support for the experimental syntax 'throwExpressions' isn't currently enabled
+        const resp = await authService.logout().catch(err => err); // For logout, just ignore error message
+        if (!resp.result) {
+          throw new Error(SIGNOUT_FAILED_MSG);
+        }
         await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
         dispatch({ type: AUTH_STATUS.SIGN_OUT });
+      },
+      signIn: async data => {
+        const resp = await authService.login(data).catch(err => logger(`Login error: ${JSON.stringify(err)}`));
+        if (!resp) {
+          throw new Error(SIGNIN_FAILED_MSG);
+        }
+        const { token, isNewUser, user } = resp || {};
+        await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
+        dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
+        let latestConfig = null;
+        if (!isNewUser) {
+          latestConfig = await getLatestConfigOnLogin();
+          if (latestConfig) {
+            await storage.setData(STORAGE_CONFIG, latestConfig);
+          }
+        }
+        return { latestConfig, latestUser: user, isNewUser };
       },
     }),
     []
@@ -71,7 +76,6 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
-      {newUser && <BottomAlert type={ALERT_TYPES.SUCCESS} title={WELCOME_MSG.TITLE} content={WELCOME_MSG.CONTENT} link={EXTENSION_LINK} />}
       {state.isLoading ? (
         <SplashScreen />
       ) : (

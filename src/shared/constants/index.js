@@ -68,10 +68,10 @@ export const PARTS_OF_SPEECH_SHORTHAND = {
 };
 
 export const ALERT_TYPES = {
-  SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR',
   INFO: 'INFO',
+  SUCCESS: 'SUCCESS',
   WARNING: 'WARNING',
+  ERROR: 'ERROR',
 };
 
 export const ALERT_TIMEOUT = 5000;
