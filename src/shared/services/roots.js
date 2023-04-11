@@ -3,6 +3,7 @@ import { BACKEND_URL } from '@env';
 
 import { STORAGE_AUTH_TOKEN } from 'shared/constants/storage';
 import storage from 'shared/storage';
+import logger from 'shared/utils/logger';
 
 import axios from 'axios';
 
@@ -24,6 +25,7 @@ const beforeReqIsSend = async config => {
   if (token && !config.headers.Authorization) {
     Object.assign(config.headers, { ...config.headers, Authorization: `Bearer ${token}` });
   }
+  logger(config);
   return config;
 };
 

@@ -23,6 +23,15 @@ export const isConfigEqual = (config1 = {}, config2 = {}) => {
   return Object.entries(c1).filter(([key, val]) => (isArray(val) ? val.length !== c2[key].length : val !== c2[key])).length === 0;
 };
 
+export const fillConfigMissingFields = config => {
+  for (const key in DEFAULT_CONFIG) {
+    if (!config[key]) {
+      Object.assign(config, { [key]: DEFAULT_CONFIG[key] });
+    }
+  }
+  return config;
+};
+
 export const getLatestConfig = async config => {
   let ret = config;
   try {
@@ -38,7 +47,7 @@ export const getLatestConfig = async config => {
   } catch (err) {
     // do nothing
   }
-  return ret;
+  return fillConfigMissingFields(ret);
 };
 
 export const getLatestConfigOnLogin = async () => getLatestConfig(DEFAULT_CONFIG);

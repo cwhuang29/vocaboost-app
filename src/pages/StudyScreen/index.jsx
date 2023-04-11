@@ -29,8 +29,6 @@ const StudyScreen = ({ route }) => {
   const wordsMap = useMemo(() => genWordDetailMap(route.params.type), [route.params.type]);
   const shuffledIndices = useMemo(() => shuffleArray([...wordsMap.keys()]), [wordsMap]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
-
-  const { language: lang, fontSize } = config || {};
   const wordData = wordsMap.get(shuffledIndices[currIdx]);
   // const connStatus = getWSConnStatusDisplay(readyState); // TODO Show 'cannot connect to server' message
 
@@ -102,11 +100,21 @@ const StudyScreen = ({ route }) => {
       {loading ? (
         <Spinner size='sm' color='vh1.200' />
       ) : (
-        <View flex={4} px={12} justifyContent='flex-start' alignItems='flex-start'>
-          <TouchableOpacity onPress={onPress}>
-            <Detail wordData={wordData} language={lang} fontSize={fontSize} isCollected={isCollected} onPress={onPress} onCollectWord={onCollectWord} />
-            <Box height='100%' style={{ backgroundColor: 'blue' }} />
-          </TouchableOpacity>
+        <View flex={4} px={6} justifyContent='flex-start'>
+          <Box width='100%'>
+            <TouchableOpacity onPress={onPress} width='100%'>
+              <Detail
+                wordData={wordData}
+                language={config.language}
+                fontSize={config.fontSize}
+                fontStyle={config.fontStyle}
+                isCollected={isCollected}
+                onPress={onPress}
+                onCollectWord={onCollectWord}
+              />
+              <Box height='100%' />
+            </TouchableOpacity>
+          </Box>
         </View>
       )}
       <View flex={1} style={{ backgroundColor: 'steelblue' }} />
