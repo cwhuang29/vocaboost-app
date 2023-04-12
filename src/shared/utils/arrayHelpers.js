@@ -1,8 +1,8 @@
 export const shuffleArray = arr =>
   arr
-    .map(val => ({ value: val, sort: Math.random() }))
+    .map(val => ({ val, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
+    .map(({ val }) => val);
 
 export const getRandomList = size =>
   Array.from(Array(size).keys())

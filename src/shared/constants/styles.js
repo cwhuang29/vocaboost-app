@@ -28,5 +28,13 @@ export const ALERT_STYLE = {
   SUCCESS: 'success',
   ERROR: 'error',
   INFO: 'info',
-  WARNING: 'warning'
+  WARNING: 'warning',
+};
+
+export const FONT_STYLE_DISPLAY = {
+  ROBOTO: 'Roboto',
+  GARAMOND: 'Garamond',
+  KALAM: 'Kalam',
+  CHARMONMAN: 'Charmonman',
+  PLAYFAIRDISPLAY: 'Playfair Display',
 };

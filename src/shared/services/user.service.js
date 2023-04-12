@@ -7,6 +7,13 @@ const getMe = (header = {}) =>
     .then(resp => resp.data)
     .catch(err => Promise.reject(err));
 
+const updateUserSetting = payload =>
+  fetch
+    .put(apis.V1.SETTING, payload)
+    .then(resp => resp.data)
+    .catch(err => Promise.reject(err));
+
 export default {
   getMe,
+  updateUserSetting,
 };

@@ -4,43 +4,89 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { BACKEND_URL } from '@env';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-import { Box, Spinner, View } from 'native-base';
+import { Box, Icon, IconButton, View } from 'native-base';
 
+import SplashScreen from 'pages/SplashScreen';
+import { BottomAlert } from 'components/Alerts';
+import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';
+import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
+import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import storage from 'shared/storage';
-import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
+import { isObjectEmpty } from 'shared/utils/misc';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailMap } from 'shared/utils/word';
 
 import Detail from './Detail';
+import FinishStudy from './FinishStudy';
 
 const getWebSocketURL = () => `${BACKEND_URL}${apis.V1.SETTING_COLLECTED_WORDS}`;
+
+const getWords = type => {
+  const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
+  return genWordDetailMap({ type: queryType });
+};
+
+const filterCollectedWords = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
+
+const UndoIconButton = ({ onPress }) => {
+  const onPressThenStop = e => {
+    e.preventDefault();
+    onPress();
+  };
+  return (
+    <IconButton
+      icon={<Icon as={FontAwesome5} name='undo' />}
+      onPress={onPressThenStop}
+      _icon={{ color: 'base.black', size: '36px' }}
+      _pressed={{
+        bg: 'base.black:alpha.10',
+        rounded: 'full',
+      }}
+    />
+  );
+};
 
 const StudyScreen = ({ route }) => {
   const accessToken = useRef(null);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
   const [currIdx, setCurrIdx] = useState(0);
-  const wordsMap = useMemo(() => genWordDetailMap(route.params.type), [route.params.type]);
-  const shuffledIndices = useMemo(() => shuffleArray([...wordsMap.keys()]), [wordsMap]);
+  const [alertData, setAlertData] = useState({});
+  const allWordsMap = useMemo(() => getWords(route.params.type), [route.params.type]);
+  const [wordsMap, setWordsMap] = useState(null);
+  const [wordsMapKeys, setWordsMapKeys] = useState(null);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
-
-  const { language: lang, fontSize } = config || {};
-  const wordData = wordsMap.get(shuffledIndices[currIdx]);
-  // const connStatus = getWSConnStatusDisplay(readyState); // TODO Show 'cannot connect to server' message
+  const [wordData, setWordData] = useState({});
+  // const connStatus = getWSConnStatusDisplay(readyState);
 
   useEffect(() => {
     const setup = async () => {
-      const c = (await storage.getData(STORAGE_CONFIG)) || DEFAULT_CONFIG;
-      const token = await storage.getData(STORAGE_AUTH_TOKEN);
-      accessToken.current = token; // TODO Recommend user to login if the value is null
-      setConfig(c);
-      setLoading(false); // Even if the app cannot connect to the server, still let users operate on their phones
+      const [c, token] = await Promise.all([storage.getData(STORAGE_CONFIG), storage.getData(STORAGE_AUTH_TOKEN)]);
+      if (!token) {
+        setAlertData({
+          type: ALERT_TYPES.WARNING,
+          title: CONNECTED_WORDS_FAILED_MSG.TITLE,
+          content: CONNECTED_WORDS_FAILED_MSG.CONTENT,
+          ts: getLocalDate().toString(),
+        });
+      }
+      const finalConfig = c ?? DEFAULT_CONFIG;
+      accessToken.current = token;
+      setConfig(finalConfig);
+
+      const wMap = route.params.type === WORD_LIST_TYPE.COLLECTED ? filterCollectedWords(allWordsMap, finalConfig.collectedWords) : allWordsMap;
+      const wMapKeys = Array.from(wMap.keys());
+      setWordsMap(wMap);
+      setWordsMapKeys(wMapKeys);
+      setWordData(wMap.get(wMapKeys[currIdx]));
+      setLoading(false);
     };
     setup();
   }, []);
@@ -77,7 +123,8 @@ const StudyScreen = ({ route }) => {
   }, [lastJsonMessage]);
 
   const onPress = () => {
-    setCurrIdx(prevIdx => (prevIdx + 1 < shuffledIndices.length ? prevIdx + 1 : 0));
+    setCurrIdx(prevIdx => (prevIdx + 1 < wordsMapKeys.length ? prevIdx + 1 : 0));
+    setWordData(wordsMap.get(wordsMapKeys[currIdx + 1 < wordsMapKeys.length ? currIdx + 1 : 0]));
   };
 
   const onCollectWord =
@@ -94,28 +141,54 @@ const StudyScreen = ({ route }) => {
       }
     };
 
-  const isCollected = loading ? false : config.collectedWords.includes(wordData.id);
+  const undoIconOnPress = () => {
+    setCurrIdx(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordsMapKeys.length - 1));
+    setWordData(wordsMap.get(wordsMapKeys[currIdx > 0 ? currIdx - 1 : wordsMapKeys.length - 1]));
+  };
 
-  return (
+  const isCollected = loading || isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
+
+  return loading ? (
+    <SplashScreen />
+  ) : (
     <View flex={1}>
-      <View flex={1} style={{ backgroundColor: 'powderblue' }} />
-      {loading ? (
-        <Spinner size='sm' color='vh1.200' />
+      {isObjectEmpty(wordData) ? (
+        <FinishStudy fontStyle={config.fontStyle} />
       ) : (
-        <View flex={4} px={12} justifyContent='flex-start' alignItems='flex-start'>
-          <TouchableOpacity onPress={onPress}>
-            <Detail wordData={wordData} language={lang} fontSize={fontSize} isCollected={isCollected} onPress={onPress} onCollectWord={onCollectWord} />
-            <Box height='100%' style={{ backgroundColor: 'blue' }} />
-          </TouchableOpacity>
-        </View>
+        <>
+          <View flex={1} />
+          <View flex={6} px={8} justifyContent='flex-start'>
+            <Box width='100%'>
+              <TouchableOpacity onPress={onPress} width='100%'>
+                <Detail
+                  wordData={wordData}
+                  language={config.language}
+                  fontSize={config.fontSize}
+                  fontStyle={config.fontStyle}
+                  isCollected={isCollected}
+                  onPress={onPress}
+                  onCollectWord={onCollectWord}
+                />
+                <Box height='100%' />
+              </TouchableOpacity>
+            </Box>
+          </View>
+          <View flex={1} px={8} alignItems='flex-end'>
+            <UndoIconButton onPress={undoIconOnPress} />
+          </View>
+        </>
       )}
-      <View flex={1} style={{ backgroundColor: 'steelblue' }} />
+      {alertData.type && <BottomAlert {...alertData} bottom={50} />}
     </View>
   );
 };
 
 StudyScreen.propTypes = {
   route: PropTypes.object.isRequired,
+};
+
+UndoIconButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
 };
 
 export default StudyScreen;

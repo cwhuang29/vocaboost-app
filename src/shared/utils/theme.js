@@ -22,7 +22,7 @@ const themeSetting = {
     },
     base: {
       white: '#fafafa',
-      black: '404040',
+      black: '#3c3c3c',
       blue: '#7dd3fc',
       pink: '#fb7185',
       purple: '#8b5cf6',
@@ -65,10 +65,10 @@ const themeSetting = {
       },
       defaultProps: { size: 'md' },
       sizes: {
-        xl: { fontSize: '64px' },
-        lg: { fontSize: '32px' },
-        md: { fontSize: '18px' },
-        sm: { fontSize: '12px' },
+        xl: { fontSize: '42' },
+        lg: { fontSize: '34', lineHeight: '60' },
+        md: { fontSize: '20', lineHeight: '32' },
+        sm: { fontSize: '12' },
       },
     },
     Heading: {
@@ -77,13 +77,53 @@ const themeSetting = {
         fontWeight: 'bold',
       }),
       sizes: {
-        '2xl': { fontSize: '64px' },
-        xl: { fontSize: '40px' },
-        lg: { fontSize: '28px' },
-        md: { fontSize: '20px' },
-        sm: { fontSize: '16px' },
+        '2xl': { fontSize: '64' },
+        xl: { fontSize: '40' },
+        lg: { fontSize: '28' },
+        md: { fontSize: '20' },
+        sm: { fontSize: '16' },
       },
     },
+  },
+  fontConfig: {
+    Roboto: {
+      300: { normal: 'Roboto-Regular' },
+      400: { normal: 'Roboto-Medium' }, // Roboto-Regular
+      500: { normal: 'Roboto-Medium' },
+      600: { normal: 'Roboto-Bold' },
+    },
+    Garamond: {
+      300: { normal: 'Garamond-Medium' },
+      400: { normal: 'Garamond-SemiBold' },
+      500: { normal: 'Garamond-SemiBold' },
+      600: { normal: 'Garamond-Bold' },
+    },
+    Kalam: {
+      300: { normal: 'Kalam-Light' },
+      400: { normal: 'Kalam-Regular' },
+      500: { normal: 'Kalam-Regular' },
+      600: { normal: 'Kalam-Bold' },
+    },
+    Charmonman: {
+      300: { normal: 'Charmonman-Regular' },
+      400: { normal: 'Charmonman-Bold' },
+      500: { normal: 'Charmonman-Bold' },
+      600: { normal: 'Charmonman-Bold' },
+    },
+    PlayfairDisplay: {
+      300: { normal: 'PlayfairDisplay-Medium' }, // Regular
+      400: { normal: 'PlayfairDisplay-Bold' },
+      500: { normal: 'PlayfairDisplay-Bold' },
+      600: { normal: 'PlayfairDisplay-Black' },
+    },
+  },
+  fonts: {
+    // Default font weight is 400
+    roboto: 'Roboto',
+    garamond: 'Garamond',
+    kalam: 'Kalam',
+    charmonman: 'Charmonman',
+    playfairdisplay: 'PlayfairDisplay',
   },
   config: {
     // initialColorMode: 'dark',

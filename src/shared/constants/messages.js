@@ -1,4 +1,4 @@
-export default {
+const msg = {
   UNKNOWN_ERROR: 'Oops, this is unexpected',
   TRY_AGAIN: 'Please try again',
   RELOAD_AND_RETRY: 'Please reload the page and try again',
@@ -61,4 +61,21 @@ export const STORAGE_ERR_MSG = {
 export const WELCOME_MSG = {
   TITLE: 'Welcome to the app!',
   CONTENT: 'Start collecting words effortlessly by installing our Chrome extension today',
-}
+};
+
+export const SIGNIN_FAILED_MSG = {
+  TITLE: msg.UNKNOWN_ERROR,
+  CONTENT: msg.TRY_AGAIN,
+};
+
+export const SIGNOUT_FAILED_MSG = {
+  TITLE: msg.UNKNOWN_ERROR,
+  CONTENT: msg.TRY_AGAIN,
+};
+
+export const CONNECTED_WORDS_FAILED_MSG = {
+  TITLE: "You haven't login yet",
+  CONTENT: 'Login to keep your words safely!',
+};
+
+export default msg;

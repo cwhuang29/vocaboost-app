@@ -3,6 +3,7 @@
     "baseUrl": "./src",
     "paths": {
       "src": ["./src/*"],
+      "assets": ["./assets/*"],
       "pages": ["./src/pages/*"],
       "components": ["./src/components/*"],
       "shared": ["./src/shared/*"]

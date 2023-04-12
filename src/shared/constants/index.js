@@ -54,8 +54,11 @@ export const LANGS = {
 };
 
 export const FONT_STYLE = {
-  ROBOTO: 'ROTOBO',
-  ARIA: 'ARIA',
+  ROBOTO: 'ROBOTO',
+  GARAMOND: 'GARAMOND',
+  KALAM: 'KALAM',
+  PLAYFAIRDISPLAY: 'PLAYFAIRDISPLAY',
+  CHARMONMAN: 'CHARMONMAN',
 };
 
 export const PARTS_OF_SPEECH_SHORTHAND = {
@@ -68,10 +71,10 @@ export const PARTS_OF_SPEECH_SHORTHAND = {
 };
 
 export const ALERT_TYPES = {
-  SUCCESS: 'SUCCESS',
-  ERROR: 'ERROR',
   INFO: 'INFO',
-  WARNING: 'WARNING'
+  SUCCESS: 'SUCCESS',
+  WARNING: 'WARNING',
+  ERROR: 'ERROR',
 };
 
 export const ALERT_TIMEOUT = 5000;

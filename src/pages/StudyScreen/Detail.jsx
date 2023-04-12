@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AntDesign } from '@expo/vector-icons';
 
-import { Box, Icon, IconButton, Stack, Text } from 'native-base';
+import { Box, HStack, Icon, IconButton, Stack, Text } from 'native-base';
 
 import { LANGS, PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
 import { constructWordExample } from 'shared/utils/highlight';
@@ -27,30 +27,29 @@ const StarIconButton = ({ isCollected, onPress }) => {
   );
 };
 
-const DisplayText = ({ children, size, shrink }) => (
-  <Text size={size} flexShrink={shrink}>
+const DisplayText = ({ children, size, shrink, fontStyle }) => (
+  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()}>
     {children}
   </Text>
 );
 
 // TODO Use fontsize for texts
 // eslint-disable-next-line no-unused-vars
-const Detail = ({ display, wordData, language, fontSize, isCollected, onCollectWord }) =>
+const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCollectWord }) =>
   display && (
     <Box>
-      <Stack direction='row' space={2} justifyContent='space-around' alignSelf='center'>
-        <DisplayText size='lg' shrink={0}>
+      <HStack space={3} justifyContent='space-around' alignSelf='center'>
+        <DisplayText size='lg' shrink={0} fontStyle={fontStyle}>
           {toCapitalize(wordData.word)}
         </DisplayText>
         <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
-      </Stack>
+      </HStack>
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
         <Box key={`${partsOfSpeech}-${example.slice(0, 20)}`} pt={6}>
-          <Stack direction='row' space={2} justifyContent='flex-start'>
-            <DisplayText shrink={0}>{PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]}</DisplayText>
-            <DisplayText>{meaning[LANGS[language]] || meaning[LANGS.en]}</DisplayText>
+          <Stack space={3}>
+            <DisplayText fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}</DisplayText>
+            <DisplayText fontStyle={fontStyle}>{constructWordExample(example)}</DisplayText>
           </Stack>
-          <DisplayText>{constructWordExample(example)}</DisplayText>
         </Box>
       ))}
     </Box>
@@ -63,6 +62,7 @@ StarIconButton.propTypes = {
 
 DisplayText.propTypes = {
   children: PropTypes.string.isRequired,
+  fontStyle: PropTypes.string.isRequired,
   size: PropTypes.string,
   shrink: PropTypes.number,
 };
@@ -77,6 +77,7 @@ Detail.propTypes = {
   wordData: PropTypes.object.isRequired,
   language: PropTypes.string.isRequired,
   fontSize: PropTypes.string.isRequired,
+  fontStyle: PropTypes.string.isRequired,
   isCollected: PropTypes.bool.isRequired,
   onCollectWord: PropTypes.func.isRequired,
 };

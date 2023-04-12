@@ -8,7 +8,6 @@ export const transformGoogleLoginResp = data => ({
     firstName: data.user.givenName,
     lastName: data.user.familyName,
     scopes: JSON.stringify(data.scopes),
-    serverAuthCode: data.serverAuthCode,
     avatar: data.user.photo,
   },
 });

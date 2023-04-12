@@ -6,7 +6,6 @@ import { Alert, Box, Center, CloseIcon, HStack, IconButton, Link, Text, VStack }
 import { ALERT_TIMEOUT } from 'shared/constants';
 import { ALERT_STYLE, MAX_Z_INDEX } from 'shared/constants/styles';
 
-
 const TopAlert = ({ type, title, content, link }) => {
   const [show, setShow] = useState(true);
 
@@ -19,7 +18,7 @@ const TopAlert = ({ type, title, content, link }) => {
       clearTimeout(timeout);
     };
   }, []);
-  
+
   return show ? (
     <Box safeAreaTop='8' zIndex={MAX_Z_INDEX} top={5} position='absolute' alignSelf='center'>
       <Center>
@@ -45,7 +44,9 @@ const TopAlert = ({ type, title, content, link }) => {
             {content ? (
               <Box pl='6'>
                 {link ? (
-                  <Link href={link} isExternal>{content}</Link>
+                  <Link href={link} isExternal>
+                    {content}
+                  </Link>
                 ) : (
                   <Text>{content}</Text>
                 )}
@@ -58,7 +59,6 @@ const TopAlert = ({ type, title, content, link }) => {
   ) : null;
 };
 
-
 TopAlert.propTypes = {
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -68,7 +68,7 @@ TopAlert.propTypes = {
 
 TopAlert.defaultProps = {
   content: '',
-  link: ''
+  link: '',
 };
 
 export default TopAlert;
