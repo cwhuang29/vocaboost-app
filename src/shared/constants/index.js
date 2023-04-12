@@ -54,8 +54,9 @@ export const LANGS = {
 };
 
 export const FONT_STYLE = {
-  ROBOTO: 'ROTOBO',
-  ARIA: 'ARIA',
+  ROBOTO: 'ROBOTO',
+  KALAM: 'KALAM',
+  PLAYFAIRDISPLAY: 'PLAYFAIRDISPLAY',
 };
 
 export const PARTS_OF_SPEECH_SHORTHAND = {

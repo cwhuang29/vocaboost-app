@@ -33,7 +33,7 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
               </HStack>
               <IconButton
                 variant='unstyled'
-                _pressed={{ bgColor: 'coolGray.300', rounded: 'full', padding: 2 }}
+                _pressed={{ bgColor: 'base.black:alpha.10', rounded: 'full', padding: 2 }}
                 padding={2}
                 _focus={{ borderWidth: 0 }}
                 icon={<CloseIcon size='3' />}

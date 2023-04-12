@@ -27,19 +27,19 @@ const StarIconButton = ({ isCollected, onPress }) => {
   );
 };
 
-const DisplayText = ({ children, size, shrink }) => (
-  <Text size={size} flexShrink={shrink}>
+const DisplayText = ({ children, size, shrink, fontStyle }) => (
+  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()}>
     {children}
   </Text>
 );
 
-// TODO Use fontsize, fontStyle for texts
+// TODO Use fontsize for texts
 // eslint-disable-next-line no-unused-vars
 const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCollectWord }) =>
   display && (
     <Box>
       <HStack space={3} justifyContent='space-around' alignSelf='center'>
-        <DisplayText size='lg' shrink={0}>
+        <DisplayText size='lg' shrink={0} fontStyle={fontStyle}>
           {toCapitalize(wordData.word)}
         </DisplayText>
         <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
@@ -47,8 +47,8 @@ const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected,
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
         <Box key={`${partsOfSpeech}-${example.slice(0, 20)}`} pt={6}>
           <Stack space={3}>
-            <DisplayText>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}</DisplayText>
-            <DisplayText>{constructWordExample(example)}</DisplayText>
+            <DisplayText fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}</DisplayText>
+            <DisplayText fontStyle={fontStyle}>{constructWordExample(example)}</DisplayText>
           </Stack>
         </Box>
       ))}
@@ -62,6 +62,7 @@ StarIconButton.propTypes = {
 
 DisplayText.propTypes = {
   children: PropTypes.string.isRequired,
+  fontStyle: PropTypes.string.isRequired,
   size: PropTypes.string,
   shrink: PropTypes.number,
 };

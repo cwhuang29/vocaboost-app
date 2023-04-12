@@ -9,7 +9,7 @@ import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 const HomeBox = ({ text, bg, onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <Center w='64' h='64' bg={bg} rounded='md' shadow={3} _text={{ color: 'white' }}>
-      <Heading size='md' color='base.white' fontWeight='bold'>
+      <Heading size='md' color='base.white' fontWeight='600' fontFamily='roboto'>
         {text}
       </Heading>
     </Center>

@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useReducer } from 'react';
+import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
+import { useFonts } from 'expo-font';
 
 import { NativeBaseProvider } from 'native-base';
 
@@ -20,6 +21,7 @@ import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import { getLatestConfigOnLogin } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
+import { fontsMap } from 'shared/utils/style';
 import defaultTheme from 'shared/utils/theme';
 
 const Stack = createNativeStackNavigator();
@@ -33,6 +35,14 @@ const navigatorScreenOptions = {
 
 const App = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
+  const [fontsHasLoaded, setFontsHasLoaded] = useState(false);
+  const [fontsLoaded] = useFonts(fontsMap);
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      setFontsHasLoaded(true);
+    }
+  }, [fontsLoaded]);
 
   useEffect(() => {
     const tryRestoreToken = async () => {
@@ -76,7 +86,7 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={defaultTheme}>
-      {state.isLoading ? (
+      {!fontsHasLoaded || state.isLoading ? (
         <SplashScreen />
       ) : (
         <NavigationContainer>

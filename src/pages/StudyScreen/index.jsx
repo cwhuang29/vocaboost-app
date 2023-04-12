@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { BACKEND_URL } from '@env';
 import { Entypo } from '@expo/vector-icons';
 
-import { Box, Center, Heading, Icon, View } from 'native-base';
+import { Box, Center, Heading, Icon, Text, View } from 'native-base';
 
 import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
@@ -34,14 +34,14 @@ const getWords = type => {
 
 const filterCollectedWords = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
 
-const FinishStudy = () => {
-  const color = 'vhlight.300:alpha.80';
+const FinishStudy = ({ fontStyle }) => {
+  const color = 'vhlight.300:alpha.70';
   return (
     <Center>
-      <Heading mb={3} color={color}>
+      <Text mb={8} size='xl' color={color} fontFamily={fontStyle.toLowerCase()}>
         You've reviewed all your collected vocabulary!
-      </Heading>
-      <Icon as={Entypo} name='emoji-flirt' size={20} color={color} />
+      </Text>
+      <Icon as={Entypo} name='emoji-flirt' size={32} color={color} />
     </Center>
   );
 };
@@ -146,7 +146,7 @@ const StudyScreen = ({ route }) => {
       <View flex={1} />
       {isObjectEmpty(wordData) ? (
         <View flex={4} px={6} justifyContent='center'>
-          <FinishStudy />
+          <FinishStudy fontStyle={config.fontStyle} />
         </View>
       ) : (
         <View flex={4} px={8} justifyContent='flex-start'>
@@ -174,6 +174,10 @@ const StudyScreen = ({ route }) => {
 
 StudyScreen.propTypes = {
   route: PropTypes.object.isRequired,
+};
+
+FinishStudy.propTypes = {
+  fontStyle: PropTypes.string.isRequired,
 };
 
 export default StudyScreen;

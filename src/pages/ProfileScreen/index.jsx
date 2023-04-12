@@ -15,6 +15,7 @@ import { LANGS_DISPLAY } from 'shared/constants/i18n';
 import { EXTENSION_LINK } from 'shared/constants/link';
 import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
+import { FONT_STYLE_DISPLAY } from 'shared/constants/styles';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
@@ -140,7 +141,7 @@ const ProfileScreen = () => {
         <Avatar mb={2} size='xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} />
         <Center>
           <Heading mb={2}>{userInfo?.firstName ?? 'username'}</Heading>
-          <Text mb={4}>
+          <Text mb={4} fontFamily={config.fontStyle.toLowerCase()}>
             You have collected <Text bold>{config.collectedWords?.length ?? '0'}</Text> words!
           </Text>
         </Center>
@@ -155,19 +156,19 @@ const ProfileScreen = () => {
             placeholder='Choose Language'
             isDisabled={loading}
           />
-          <Heading size='md'>Font Size</Heading>
-          <Select
-            options={FONT_SIZE}
-            displayFunc={s => toCapitalize(FONT_SIZE[s])}
-            value={config.fontSize}
-            onChange={val => onFontSizeChange(val)}
-            placeholder='Choose Font Size'
-            isDisabled={loading}
-          />
+          {/* <Heading size='md'>Font Size</Heading> */}
+          {/* <Select */}
+          {/*   options={FONT_SIZE} */}
+          {/*   displayFunc={s => toCapitalize(FONT_SIZE[s])} */}
+          {/*   value={config.fontSize} */}
+          {/*   onChange={val => onFontSizeChange(val)} */}
+          {/*   placeholder='Choose Font Size' */}
+          {/*   isDisabled={loading} */}
+          {/* /> */}
           <Heading size='md'>Font Style</Heading>
           <Select
             options={FONT_STYLE}
-            displayFunc={s => toCapitalize(FONT_STYLE[s])}
+            displayFunc={s => FONT_STYLE_DISPLAY[FONT_STYLE[s]]}
             value={config.fontStyle}
             onChange={val => onFontStyleChange(val)}
             placeholder='Choose Font Style'

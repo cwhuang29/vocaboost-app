@@ -30,3 +30,9 @@ export const ALERT_STYLE = {
   INFO: 'info',
   WARNING: 'warning',
 };
+
+export const FONT_STYLE_DISPLAY = {
+  ROBOTO: 'Roboto',
+  KALAM: 'Kalam',
+  PLAYFAIRDISPLAY: 'Playfair Display',
+};

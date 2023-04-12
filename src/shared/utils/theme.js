@@ -65,7 +65,7 @@ const themeSetting = {
       },
       defaultProps: { size: 'md' },
       sizes: {
-        xl: { fontSize: '64' },
+        xl: { fontSize: '42' },
         lg: { fontSize: '32', lineHeight: '42' },
         md: { fontSize: '18', lineHeight: '24' },
         sm: { fontSize: '12' },
@@ -84,6 +84,32 @@ const themeSetting = {
         sm: { fontSize: '16' },
       },
     },
+  },
+  fontConfig: {
+    Roboto: {
+      300: { normal: 'Roboto-Bold' },
+      400: { normal: 'Roboto-Medium' }, // Roboto-Regular
+      500: { normal: 'Roboto-Medium' },
+      600: { normal: 'Roboto-Bold' },
+    },
+    Kalam: {
+      300: { normal: 'Kalam-Light' },
+      400: { normal: 'Kalam-Regular' },
+      500: { normal: 'Kalam-Regular' },
+      600: { normal: 'Kalam-Bold' },
+    },
+    PlayfairDisplay: {
+      300: { normal: 'PlayfairDisplay-Regular' },
+      400: { normal: 'PlayfairDisplay-Medium' },
+      500: { normal: 'PlayfairDisplay-Bold' },
+      600: { normal: 'PlayfairDisplay-Black' },
+    },
+  },
+  fonts: {
+    // Default font weight is 400
+    roboto: 'Roboto',
+    kalam: 'Kalam',
+    playfairdisplay: 'PlayfairDisplay',
   },
   config: {
     // initialColorMode: 'dark',
