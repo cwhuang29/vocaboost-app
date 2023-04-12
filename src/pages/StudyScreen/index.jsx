@@ -4,9 +4,9 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { BACKEND_URL } from '@env';
-import { Entypo } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-import { Box, Center, Heading, Icon, Text, View } from 'native-base';
+import { Box, Icon, IconButton, View } from 'native-base';
 
 import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
@@ -24,6 +24,7 @@ import { getLocalDate } from 'shared/utils/time';
 import { genWordDetailMap } from 'shared/utils/word';
 
 import Detail from './Detail';
+import FinishStudy from './FinishStudy';
 
 const getWebSocketURL = () => `${BACKEND_URL}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
@@ -34,15 +35,21 @@ const getWords = type => {
 
 const filterCollectedWords = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
 
-const FinishStudy = ({ fontStyle }) => {
-  const color = 'vhlight.300:alpha.70';
+const UndoIconButton = ({ onPress }) => {
+  const onPressThenStop = e => {
+    e.preventDefault();
+    onPress();
+  };
   return (
-    <Center>
-      <Text mb={8} size='xl' color={color} fontFamily={fontStyle.toLowerCase()}>
-        You've reviewed all your collected vocabulary!
-      </Text>
-      <Icon as={Entypo} name='emoji-flirt' size={32} color={color} />
-    </Center>
+    <IconButton
+      icon={<Icon as={FontAwesome5} name='undo' />}
+      onPress={onPressThenStop}
+      _icon={{ color: 'base.black', size: '36px' }}
+      _pressed={{
+        bg: 'base.black:alpha.10',
+        rounded: 'full',
+      }}
+    />
   );
 };
 
@@ -78,10 +85,7 @@ const StudyScreen = ({ route }) => {
       const wMapKeys = Array.from(wMap.keys());
       setWordsMap(wMap);
       setWordsMapKeys(wMapKeys);
-      if (wMapKeys.length > 0) {
-        setWordData(wMap.get(wMapKeys[0]));
-        setCurrIdx(Math.min(1, wMapKeys.length - 1));
-      }
+      setWordData(wMap.get(wMapKeys[currIdx]));
       setLoading(false);
     };
     setup();
@@ -137,36 +141,43 @@ const StudyScreen = ({ route }) => {
       }
     };
 
-  const isCollected = loading ? false : config.collectedWords.includes(wordData.id);
+  const undoIconOnPress = () => {
+    setCurrIdx(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordsMapKeys.length - 1));
+    setWordData(wordsMap.get(wordsMapKeys[currIdx > 0 ? currIdx - 1 : wordsMapKeys.length - 1]));
+  };
+
+  const isCollected = loading || isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
   return loading ? (
     <SplashScreen />
   ) : (
     <View flex={1}>
-      <View flex={1} />
       {isObjectEmpty(wordData) ? (
-        <View flex={4} px={6} justifyContent='center'>
-          <FinishStudy fontStyle={config.fontStyle} />
-        </View>
+        <FinishStudy fontStyle={config.fontStyle} />
       ) : (
-        <View flex={4} px={8} justifyContent='flex-start'>
-          <Box width='100%'>
-            <TouchableOpacity onPress={onPress} width='100%'>
-              <Detail
-                wordData={wordData}
-                language={config.language}
-                fontSize={config.fontSize}
-                fontStyle={config.fontStyle}
-                isCollected={isCollected}
-                onPress={onPress}
-                onCollectWord={onCollectWord}
-              />
-              <Box height='100%' />
-            </TouchableOpacity>
-          </Box>
-        </View>
+        <>
+          <View flex={1} />
+          <View flex={6} px={8} justifyContent='flex-start'>
+            <Box width='100%'>
+              <TouchableOpacity onPress={onPress} width='100%'>
+                <Detail
+                  wordData={wordData}
+                  language={config.language}
+                  fontSize={config.fontSize}
+                  fontStyle={config.fontStyle}
+                  isCollected={isCollected}
+                  onPress={onPress}
+                  onCollectWord={onCollectWord}
+                />
+                <Box height='100%' />
+              </TouchableOpacity>
+            </Box>
+          </View>
+          <View flex={1} px={8} alignItems='flex-end'>
+            <UndoIconButton onPress={undoIconOnPress} />
+          </View>
+        </>
       )}
-      <View flex={1} />
       {alertData.type && <BottomAlert {...alertData} bottom={50} />}
     </View>
   );
@@ -176,8 +187,8 @@ StudyScreen.propTypes = {
   route: PropTypes.object.isRequired,
 };
 
-FinishStudy.propTypes = {
-  fontStyle: PropTypes.string.isRequired,
+UndoIconButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
 };
 
 export default StudyScreen;
