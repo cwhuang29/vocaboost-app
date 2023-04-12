@@ -46,7 +46,7 @@ const App = () => {
     () => ({
       signOut: async () => {
         // .catch(err => throw new Error()). Error: Support for the experimental syntax 'throwExpressions' isn't currently enabled
-        const resp = await authService.logout().catch(err => err); // For logout, just ignore error message
+        const resp = await authService.logout().catch(err => err);
         if (!resp.result) {
           throw new Error(SIGNOUT_FAILED_MSG);
         }

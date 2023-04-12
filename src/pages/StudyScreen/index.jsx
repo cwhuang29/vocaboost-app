@@ -4,18 +4,21 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { BACKEND_URL } from '@env';
+import { Entypo } from '@expo/vector-icons';
 
-import { Box, Spinner, View } from 'native-base';
+import { Box, Center, Heading, Icon, View } from 'native-base';
 
+import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';
-import { CONNECTED_WORDS_FAILED_MSG, SIGNIN_FAILED_MSG } from 'shared/constants/messages';
+import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
+import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import storage from 'shared/storage';
-import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
+import { isObjectEmpty } from 'shared/utils/misc';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailMap } from 'shared/utils/word';
@@ -24,22 +27,41 @@ import Detail from './Detail';
 
 const getWebSocketURL = () => `${BACKEND_URL}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
+const getWords = type => {
+  const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
+  return genWordDetailMap({ type: queryType });
+};
+
+const filterCollectedWords = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
+
+const FinishStudy = () => {
+  const color = 'vhlight.300:alpha.80';
+  return (
+    <Center>
+      <Heading mb={3} color={color}>
+        You've reviewed all your collected vocabulary!
+      </Heading>
+      <Icon as={Entypo} name='emoji-flirt' size={20} color={color} />
+    </Center>
+  );
+};
+
 const StudyScreen = ({ route }) => {
   const accessToken = useRef(null);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
   const [currIdx, setCurrIdx] = useState(0);
   const [alertData, setAlertData] = useState({});
-  const wordsMap = useMemo(() => genWordDetailMap(route.params.type), [route.params.type]);
-  const shuffledIndices = useMemo(() => shuffleArray([...wordsMap.keys()]), [wordsMap]);
+  const allWordsMap = useMemo(() => getWords(route.params.type), [route.params.type]);
+  const [wordsMap, setWordsMap] = useState(null);
+  const [wordsMapKeys, setWordsMapKeys] = useState(null);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
-  const wordData = wordsMap.get(shuffledIndices[currIdx]);
+  const [wordData, setWordData] = useState({});
   // const connStatus = getWSConnStatusDisplay(readyState);
 
   useEffect(() => {
     const setup = async () => {
-      const c = (await storage.getData(STORAGE_CONFIG)) || DEFAULT_CONFIG;
-      const token = await storage.getData(STORAGE_AUTH_TOKEN);
+      const [c, token] = await Promise.all([storage.getData(STORAGE_CONFIG), storage.getData(STORAGE_AUTH_TOKEN)]);
       if (!token) {
         setAlertData({
           type: ALERT_TYPES.WARNING,
@@ -48,8 +70,18 @@ const StudyScreen = ({ route }) => {
           ts: getLocalDate().toString(),
         });
       }
+      const finalConfig = c ?? DEFAULT_CONFIG;
       accessToken.current = token;
-      setConfig(c);
+      setConfig(finalConfig);
+
+      const wMap = route.params.type === WORD_LIST_TYPE.COLLECTED ? filterCollectedWords(allWordsMap, finalConfig.collectedWords) : allWordsMap;
+      const wMapKeys = Array.from(wMap.keys());
+      setWordsMap(wMap);
+      setWordsMapKeys(wMapKeys);
+      if (wMapKeys.length > 0) {
+        setWordData(wMap.get(wMapKeys[0]));
+        setCurrIdx(Math.min(1, wMapKeys.length - 1));
+      }
       setLoading(false);
     };
     setup();
@@ -87,7 +119,8 @@ const StudyScreen = ({ route }) => {
   }, [lastJsonMessage]);
 
   const onPress = () => {
-    setCurrIdx(prevIdx => (prevIdx + 1 < shuffledIndices.length ? prevIdx + 1 : 0));
+    setCurrIdx(prevIdx => (prevIdx + 1 < wordsMapKeys.length ? prevIdx + 1 : 0));
+    setWordData(wordsMap.get(wordsMapKeys[currIdx + 1 < wordsMapKeys.length ? currIdx + 1 : 0]));
   };
 
   const onCollectWord =
@@ -106,13 +139,17 @@ const StudyScreen = ({ route }) => {
 
   const isCollected = loading ? false : config.collectedWords.includes(wordData.id);
 
-  return (
+  return loading ? (
+    <SplashScreen />
+  ) : (
     <View flex={1}>
-      <View flex={1} style={{ backgroundColor: 'powderblue' }} />
-      {loading ? (
-        <Spinner size='sm' color='vh1.200' />
+      <View flex={1} />
+      {isObjectEmpty(wordData) ? (
+        <View flex={4} px={6} justifyContent='center'>
+          <FinishStudy />
+        </View>
       ) : (
-        <View flex={4} px={6} justifyContent='flex-start'>
+        <View flex={4} px={8} justifyContent='flex-start'>
           <Box width='100%'>
             <TouchableOpacity onPress={onPress} width='100%'>
               <Detail
@@ -129,7 +166,7 @@ const StudyScreen = ({ route }) => {
           </Box>
         </View>
       )}
-      <View flex={1} style={{ backgroundColor: 'steelblue' }} />
+      <View flex={1} />
       {alertData.type && <BottomAlert {...alertData} bottom={50} />}
     </View>
   );
