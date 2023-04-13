@@ -2,9 +2,11 @@ export const POPUP_MAX_WIDTH = 400;
 
 export const MAX_Z_INDEX = 2147483647;
 
-export const SLIDE_SHOW_DELAY = 3000;
+export const COPY_TEXT_ALERT_TIME_PERIOD = 900;
 
 export const HIGHLIGHTER_POPUP_DISPLAY_DELTA = 12;
+
+export const GLOBAL_MESSAGE_DISPLAY_PERIOD = 1000 * 30;
 
 export const GLOBAL_MESSAGE_SERVERITY = {
   ERROR: 'error',
@@ -12,8 +14,6 @@ export const GLOBAL_MESSAGE_SERVERITY = {
   INFO: 'info',
   SUCCESS: 'success',
 };
-
-export const GLOBAL_MESSAGE_DISPLAY_PERIOD = 1000 * 30;
 
 export const HIGHLIGHTER_BG_COLORS_CODE = {
   PINK: ' rgb(246 155 241 / 80%)',

@@ -22,12 +22,12 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
   return show ? (
     <Box safeAreaTop='5' zIndex={MAX_Z_INDEX} bottom={bottom} position='absolute' alignSelf='center'>
       <Center>
-        <Alert maxW='99%' minW='99%' status={ALERT_STYLE[type]} colorScheme='info'>
-          <VStack space={1} flexShrink={1} w='100%'>
-            <HStack flexShrink={1} space={2} alignItems='center' justifyContent='space-between'>
-              <HStack flexShrink={1} space={2} alignItems='center'>
+        <Alert maxW='96%' minW='96%' status={ALERT_STYLE[type]} colorScheme='info'>
+          <VStack space={0.3} flexShrink={1} w='100%'>
+            <HStack flexShrink={1} alignItems='center' justifyContent='space-between'>
+              <HStack flexShrink={1} alignItems='center'>
                 <Alert.Icon />
-                <Text fontSize='md' fontWeight='medium' color='coolGray.800'>
+                <Text fontWeight='medium' color='coolGray.800' pl={3}>
                   {title}
                 </Text>
               </HStack>
@@ -42,13 +42,16 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
               />
             </HStack>
             {content ? (
-              <Box pl='6'>
+              <Box pl={7}>
                 {link ? (
-                  <Link href={link} isExternal>
-                    {content}
-                  </Link>
+                  <Text size='sm'>
+                    {content}&nbsp;
+                    <Link href={link} isExternal _text={{ marginTop: '6', paddingTop: '0.2', fontSize: '16', color: 'blue.500', fontWeight: 'bold' }}>
+                      link
+                    </Link>
+                  </Text>
                 ) : (
-                  <Text>{content}</Text>
+                  <Text size='sm'>{content}</Text>
                 )}
               </Box>
             ) : null}

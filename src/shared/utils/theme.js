@@ -3,13 +3,13 @@ import { extendTheme } from 'native-base';
 const themeSetting = {
   colors: {
     vhlight: {
-      50: '#C5E4F3',
-      100: '#10b981',
-      200: '#047857',
-      300: '#fb923c',
-      400: '#47A9DA',
-      500: '#bef264',
-      600: '#000000',
+      50: '#3F3F3F',
+      100: '#3d3d3d',
+      200: '#F0F0F0',
+      300: '#FEF7F1',
+      400: '#394374',
+      500: '#FAD34D',
+      600: '#FEF7F1',
     },
     vhdark: {
       50: '#C5E4F3',
@@ -22,7 +22,7 @@ const themeSetting = {
     },
     base: {
       white: '#fafafa',
-      black: '#3c3c3c',
+      black: '#181818',
       blue: '#7dd3fc',
       pink: '#fb7185',
       purple: '#8b5cf6',
@@ -60,26 +60,27 @@ const themeSetting = {
     },
     Text: {
       baseStyle: {
-        _light: { color: 'warning.300' },
-        _dark: { color: 'vhlight.50' },
+        _light: { color: 'vhlight.50' },
+        _dark: { color: 'vhdark.50' },
       },
       defaultProps: { size: 'md' },
       sizes: {
         xl: { fontSize: '42' },
         lg: { fontSize: '34', lineHeight: '60' },
         md: { fontSize: '20', lineHeight: '32' },
-        sm: { fontSize: '12' },
+        sm: { fontSize: '16', lineHeight: '22' },
+        xs: { fontSize: '14' },
       },
     },
     Heading: {
       baseStyle: ({ colorMode }) => ({
-        color: colorMode === 'dark' ? 'vhlight.200' : 'vhlight.400',
+        color: colorMode === 'dark' ? 'vhdark.100' : 'vhlight.100',
         fontWeight: 'bold',
       }),
       sizes: {
         '2xl': { fontSize: '64' },
         xl: { fontSize: '40' },
-        lg: { fontSize: '28' },
+        lg: { fontSize: '26' },
         md: { fontSize: '20' },
         sm: { fontSize: '16' },
       },
