@@ -1,0 +1,146 @@
+{
+  "configVersion": 0,
+  "apple": {
+    "version": "1.0.0",
+    "copyright": "2023 VocaBoost Authors",
+    "categories": ["EDUCATION", "PRODUCTIVITY"],
+    "release": {
+      "automaticRelease": true
+    },
+    "review": {
+      "firstName": "Chen Wei (Jimmy)",
+      "lastName": "Huang",
+      "email": "hqdevonly@gmail.com",
+      "phone": "+1 424 440 4426",
+      "demoRequired": false
+    },
+    "info": {
+      "en-US": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "en-GB": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "en-CA": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "en-AU": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "fr-FR": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "fr-CA": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "de-DE": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "zh-Hant": {
+        "title": "VocabularyBoost",
+        "subtitle": "您的 GRE 考試複習好夥伴",
+        "description": "VocaBoost 幫助您更有效率的複習GRE單字",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "學習", "英檢", "檢定", "英文"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "zh-Hans": {
+        "title": "VocabularyBoost",
+        "subtitle": "您的 GRE 考试复习好伙伴",
+        "description": "VocaBoost 帮助您更有效率的复习GRE单字",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "学习", "英检", "检定", "英文"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "es-ES": {
+        "title": "VocabularyBoost",
+        "subtitle": "Ayudante de estudio examen GRE",
+        "description": "VocaBoost te ayuda a mejorar tu vocabulario GRE de manera efectiva",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "es-MX": {
+        "title": "VocabularyBoost",
+        "subtitle": "Ayudante de estudio examen GRE",
+        "description": "VocaBoost te ayuda a mejorar tu vocabulario GRE de manera efectiva",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "id": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "ja": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE 語彙学習ツール",
+        "description": "VocaBoost は、効果的な方法で GRE 語彙を改善するのに役立ちます",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "ko": {
+        "title": "VocabularyBoost",
+        "subtitle": "GRE 어휘 학습 도구",
+        "description": "VocaBoost는 효과적인 방법으로 GRE 어휘를 향상시키는 데 도움이 됩니다",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
+        "marketingUrl": "",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      }
+    }
+  }
+}
