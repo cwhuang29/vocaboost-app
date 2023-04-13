@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "VocaBoost",
-    "slug": "vocaboost",
+    "name": "VocabularyBoost",
+    "slug": "vocabularyboost",
     "owner": "cwhuang29",
     "version": "1.0.0",
     "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
@@ -34,7 +34,7 @@
     "plugins": ["@react-native-google-signin/google-signin"],
     "extra": {
       "eas": {
-        "projectId": "bd87cb25-8644-4a8e-b367-013313c79e14"
+        "projectId": "0b83e8e2-61d4-4829-b6d7-e6e0fd4e2cab"
       }
     }
   }
