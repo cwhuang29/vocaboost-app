@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { registerRootComponent } from 'expo';
 import { useFonts } from 'expo-font';
 
 import { NativeBaseProvider } from 'native-base';
@@ -105,4 +104,4 @@ const App = () => {
   );
 };
 
-export default registerRootComponent(App);
+export default App;
