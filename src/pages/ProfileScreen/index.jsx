@@ -1,31 +1,83 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
+import { Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useIsFocused } from '@react-navigation/native';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
+import { AntDesign } from '@expo/vector-icons';
 
-import { Avatar, Box, Button, Center, Heading, Text, View, VStack } from 'native-base';
+import { Avatar, Box, Center, Heading, Link, Modal, Text, View, VStack } from 'native-base';
 
 import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
-import { ALERT_TYPES, FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants';
+import { ALERT_TYPES, FONT_STYLE, LANGS } from 'shared/constants';
 import { LANGS_DISPLAY } from 'shared/constants/i18n';
 import { EXTENSION_LINK } from 'shared/constants/link';
 import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
-import { FONT_STYLE_DISPLAY } from 'shared/constants/styles';
+import { FONT_STYLE_DISPLAY, MAX_Z_INDEX } from 'shared/constants/styles';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
 import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
-import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getLocalDate } from 'shared/utils/time';
 
 import { showGoogleLoginErr } from './helper';
+
+const SignedInOutButton = ({ isSignedIn, onPress }) => {
+  const icon = isSignedIn ? 'logout' : 'login';
+  const delay = isSignedIn ? 800 : 80;
+  return (
+    <Pressable onLongPress={onPress} style={{ zIndex: MAX_Z_INDEX }} delayLongPress={delay}>
+      <AntDesign
+        name={icon}
+        size={35}
+        color='#3d3d3d'
+        position='absolute'
+        top={40}
+        right={4}
+        style={{ transform: [{ rotateY: isSignedIn ? '180deg' : '0deg' }] }}
+      />
+    </Pressable>
+  );
+};
+
+const AdvertisementModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Pressable onPress={() => setIsOpen(true)} style={{ zIndex: MAX_Z_INDEX }}>
+        <AntDesign name='bulb1' size={35} color='#3d3d3d' position='absolute' top={100} right={4} />
+      </Pressable>
+      <Center>
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} _backdrop={{ _dark: { bg: 'coolGray.800' }, bg: 'warmGray.500' }}>
+          <Modal.Content maxW='95%' minW='90%' maxH='500' p={2}>
+            <Modal.Header bg='#FCFCFC'>Boost Your Performance</Modal.Header>
+            <Modal.Body bg='#FCFCFC'>
+              <Text size='sm'>
+                Our
+                <Link
+                  isExternal
+                  href={EXTENSION_LINK}
+                  _text={{ marginTop: '4', paddingTop: '0.5', paddingX: '1', fontSize: '16', color: 'blue.500', fontWeight: 'bold' }}
+                >
+                  extension
+                </Link>
+                highlights GRE vocabulary on every web page you visit.{'\n\n'}You can collect unfamiliar words when browsing webpages, and review them on this
+                APP.
+              </Text>
+            </Modal.Body>
+          </Modal.Content>
+        </Modal>
+      </Center>
+    </>
+  );
+};
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -73,12 +125,15 @@ const ProfileScreen = () => {
     getLatestConfig();
   }, [isFocused]);
 
-  const googleSignIn = async () => {
+  const oauthSignIn = async () => {
+    let oauthSucceed = false;
     try {
       setLoading(true);
       // Always resolves to true on iOS. Presence of up-to-date Google Play Services is required to show the sign in modal
       await GoogleSignin.hasPlayServices();
       const uInfo = await GoogleSignin.signIn();
+      oauthSucceed = true;
+
       const { latestConfig, latestUser, isNewUser } = await signIn(transformGoogleLoginResp(uInfo));
       if (latestConfig) {
         dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...latestConfig } });
@@ -95,19 +150,21 @@ const ProfileScreen = () => {
       setUserInfo(latestUser);
       setIsSignedIn(true);
     } catch (err) {
-      setAlertData({ type: ALERT_TYPES.ERROR, title: SIGNIN_FAILED_MSG.TITLE, content: SIGNIN_FAILED_MSG.CONTENT, ts: getLocalDate().toString() });
+      if (oauthSucceed) {
+        // If OAuth signed in failed, either user cancelled it or there would be failed messages displayed on the oauth modal
+        setAlertData({ type: ALERT_TYPES.ERROR, title: SIGNIN_FAILED_MSG.TITLE, content: SIGNIN_FAILED_MSG.CONTENT, ts: getLocalDate().toString() });
+      }
       showGoogleLoginErr(err);
     } finally {
       setLoading(false);
     }
   };
 
-  const googleSignOut = async () => {
+  const oauthSignOut = async () => {
     try {
       await GoogleSignin.signOut();
       await signOut();
     } catch (err) {
-      // setAlertData({ type: ALERT_TYPES.ERROR, title: SIGNOUT_FAILED_MSG.TITLE, content: SIGNOUT_FAILED_MSG.CONTENT, ts: getLocalDate().toString() });
       logger(err);
     } finally {
       setIsSignedIn(false); // Always let user signedout
@@ -124,10 +181,6 @@ const ProfileScreen = () => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_LANGUAGE, payload: { language: val } });
   };
 
-  const onFontSizeChange = val => {
-    updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_SIZE, payload: { fontSize: val } });
-  };
-
   const onFontStyleChange = val => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_STYLE, payload: { fontStyle: val } });
   };
@@ -135,17 +188,25 @@ const ProfileScreen = () => {
   return init ? (
     <SplashScreen />
   ) : (
-    <Box safeArea='5' flex={1}>
+    <Box safeArea='5' flex={1} bg='vhlight.600'>
+      <SignedInOutButton isSignedIn={isSignedIn} onPress={isSignedIn ? oauthSignOut : oauthSignIn} />
+      <AdvertisementModal />
       <View flex={1} />
-      <View flex={25}>
-        <Avatar mb={2} size='xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} />
-        <Center>
-          <Heading mb={2}>{userInfo?.firstName ?? 'username'}</Heading>
-          <Text mb={4} fontFamily={config.fontStyle.toLowerCase()}>
-            You have collected <Text bold>{config.collectedWords?.length ?? '0'}</Text> words!
+      <View flex={8}>
+        <Avatar mb={3} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} bg='vhlight.300:alpha.10'>
+          <AntDesign name='user' size={112} color='#394374' />
+        </Avatar>
+        <Center mb={4}>
+          <Heading mb={3}>{userInfo?.firstName ?? ' '}</Heading>
+          <Text mb={4} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+            You have collected{' '}
+            <Text bold color='#F9736A'>
+              {config.collectedWords?.length ?? '0'}
+            </Text>{' '}
+            words!
           </Text>
         </Center>
-        <VStack space={4} mb={5}>
+        <VStack space={4} mb={8}>
           <Heading alignSelf='center'>Settings</Heading>
           <Heading size='md'>Language</Heading>
           <Select
@@ -156,39 +217,26 @@ const ProfileScreen = () => {
             placeholder='Choose Language'
             isDisabled={loading}
           />
-          {/* <Heading size='md'>Font Size</Heading> */}
-          {/* <Select */}
-          {/*   options={FONT_SIZE} */}
-          {/*   displayFunc={s => toCapitalize(FONT_SIZE[s])} */}
-          {/*   value={config.fontSize} */}
-          {/*   onChange={val => onFontSizeChange(val)} */}
-          {/*   placeholder='Choose Font Size' */}
-          {/*   isDisabled={loading} */}
-          {/* /> */}
           <Heading size='md'>Font Style</Heading>
           <Select
             options={FONT_STYLE}
             displayFunc={s => FONT_STYLE_DISPLAY[FONT_STYLE[s]]}
-            value={config.fontStyle}
+            value={config.fontStyle ?? DEFAULT_CONFIG.fontStyle}
             onChange={val => onFontStyleChange(val)}
             placeholder='Choose Font Style'
             isDisabled={loading}
           />
         </VStack>
-        {isSignedIn ? (
-          <Button variant='vh2' width={120} onPress={googleSignOut} alignSelf='center'>
-            Sign out
-          </Button>
-        ) : (
-          <Button variant='vh2' width={120} onPress={googleSignIn} alignSelf='center'>
-            Sign in
-          </Button>
-        )}
       </View>
       <View flex={1} />
-      {alertData.type && <BottomAlert {...alertData} bottom={6} />}
+      {alertData.type && <BottomAlert {...alertData} bottom={4} />}
     </Box>
   );
+};
+
+SignedInOutButton.propTypes = {
+  isSignedIn: PropTypes.bool.isRequired,
+  onPress: PropTypes.func.isRequired,
 };
 
 export default ProfileScreen;

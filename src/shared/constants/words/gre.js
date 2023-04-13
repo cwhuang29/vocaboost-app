@@ -8973,16 +8973,6 @@ export default [
       },
       {
         meaning: {
-          en: 'discharge from employment or office',
-          es: 'despido del empleo o cargo',
-          zh_TW: '',
-          zh_CN: '',
-        },
-        partsOfSpeech: 'verb',
-        example: 'CBS Records dismissed another 120 people',
-      },
-      {
-        meaning: {
           en: 'treat as unworthy of serious consideration',
           es: 'tratar como indigno de consideración seria',
           zh_TW: '',
@@ -8990,26 +8980,6 @@ export default [
         },
         partsOfSpeech: 'verb',
         example: 'it would be easy to dismiss him as all brawn and no brain',
-      },
-      {
-        meaning: {
-          en: 'deliberately cease to think about',
-          es: 'dejar deliberadamente de pensar en',
-          zh_TW: '',
-          zh_CN: '',
-        },
-        partsOfSpeech: 'verb',
-        example: 'he suspected a double meaning in her words, but dismissed the thought',
-      },
-      {
-        meaning: {
-          en: '(law) refuse further hearing to (a case)',
-          es: '(ley) denegar más audiencia a (un caso)',
-          zh_TW: '',
-          zh_CN: '',
-        },
-        partsOfSpeech: 'verb',
-        example: 'the judge dismissed the case for lack of evidence',
       },
     ],
   },

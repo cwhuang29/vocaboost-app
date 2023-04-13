@@ -59,8 +59,8 @@ export const STORAGE_ERR_MSG = {
 };
 
 export const WELCOME_MSG = {
-  TITLE: 'Welcome to the app!',
-  CONTENT: 'Start collecting words effortlessly by installing our Chrome extension today',
+  TITLE: 'Welcome to the app',
+  CONTENT: 'Start learning words effortlessly by installing our Chrome extension',
 };
 
 export const SIGNIN_FAILED_MSG = {
@@ -75,7 +75,7 @@ export const SIGNOUT_FAILED_MSG = {
 
 export const CONNECTED_WORDS_FAILED_MSG = {
   TITLE: "You haven't login yet",
-  CONTENT: 'Login to keep your words safely!',
+  CONTENT: 'Login to keep your collection safely',
 };
 
 export default msg;
