@@ -9,7 +9,7 @@ export const Select = ({ options, displayFunc, value, onChange, placeholder, isD
     height={height}
     fontSize={fontSize}
     _item={{ pl: 52 }}
-    _selectedItem={{ bg: 'teal.200', pl: 4, startIcon: <CheckIcon size='5' /> }}
+    _selectedItem={{ bg: '#A2F2D2', pl: 4, startIcon: <CheckIcon size='5' mt={1} /> }}
     variant='rounded'
     accessibilityLabel={placeholder}
     placeholder={placeholder}
