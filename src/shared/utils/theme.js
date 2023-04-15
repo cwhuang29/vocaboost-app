@@ -2,14 +2,23 @@ import { extendTheme } from 'native-base';
 
 const themeSetting = {
   colors: {
+    // vhlight: {
+    //   50: '#3F3F3F',
+    //   100: '#3d3d3d',
+    //   200: '#F0F0F0',
+    //   300: '#FEF7F1',
+    //   400: '#394374',
+    //   500: '#FAD34D',
+    //   600: 'gray.50',
+    // },
     vhlight: {
-      50: '#3F3F3F',
-      100: '#3d3d3d',
-      200: '#F0F0F0',
-      300: '#FEF7F1',
-      400: '#394374',
-      500: '#FAD34D',
-      600: 'gray.50',
+      darkGray: '#3F3F3F',
+      lightGray1: '#E5E5E5',
+      lightGray2: '#E2E2E2',
+      steelBlue: '#7892B5',
+      seafoam: '#8CB9C0',
+      sageGreen: '#91B5A9',
+      paleGold: '#EDCA7F',
     },
     vhdark: {
       50: '#C5E4F3',
@@ -28,6 +37,8 @@ const themeSetting = {
       purple: '#8b5cf6',
       teal: '#2dd4bf',
       lightYellow: '#fde68a',
+      lavender: '#EDEAF3',
+      eggplant: '#494268'
     },
   },
   components: {
@@ -60,7 +71,7 @@ const themeSetting = {
     },
     Text: {
       baseStyle: {
-        _light: { color: 'vhlight.50' },
+        _light: { color: 'vhlight.darkGray' },
         _dark: { color: 'vhdark.50' },
       },
       defaultProps: { size: 'md' },

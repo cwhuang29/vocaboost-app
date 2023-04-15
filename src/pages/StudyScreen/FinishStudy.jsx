@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Entypo } from '@expo/vector-icons';
 
-import { Icon, Stack, Text, View } from 'native-base';
+import { Box, Icon, Image, VStack, Text, View } from 'native-base';
+import FinishStudyImg from 'assets/study/undraw_Winners_re_wr1l.png'
 
 const FinishStudy = ({ fontStyle }) => {
-  const color = 'vhlight.400:alpha.90';
+  const color = 'vhlight.sageGreen:alpha.90';
   return (
     <View flex={1} px={6} justifyContent='center'>
-      <Stack space={12} alignItems='center'>
-        <Icon as={Entypo} name='emoji-flirt' size={48} color={color} />
-        <Text mb={8} size='lg' color={color} fontFamily={fontStyle.toLowerCase()} textAlign='center'>
-          You've reviewed all your collection!
+      <VStack alignItems='center'>
+        <Image mt={-42} source={FinishStudyImg} alt="image" resizeMode='contain' />
+        <Text color={color} fontFamily={fontStyle.toLowerCase()} textAlign='center' >
+            You've reviewed all your collection!
         </Text>
-      </Stack>
+      </VStack>
     </View>
   );
 };

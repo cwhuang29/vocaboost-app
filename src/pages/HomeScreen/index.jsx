@@ -5,21 +5,19 @@ import PropTypes from 'prop-types';
 import { AspectRatio, Box, Center, Heading, Image, Stack, Text, HStack, VStack } from 'native-base';
 
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
-import homePicture1 from 'assets/home/undraw_Exams_re_4ios.png'
-import homePicture2 from 'assets/home/undraw_Reading_re_29f8.png'
+import HomeBoxImg1 from 'assets/home/undraw_Exams_re_4ios.png'
+import HomeBoxImg2 from 'assets/home/undraw_Reading_re_29f8.png'
 
 
 const HomeBox = ({ text, imgPath, onPress}) => (
   <TouchableOpacity onPress={onPress}>
     <Box alignItems="center">
       <Box maxW="80" rounded="xl" overflow="hidden" 
-        // borderColor="coolGray.200" borderWidth="1" 
         _dark={{
-          borderColor: "coolGray.600",
-          backgroundColor: "gray.700"
+          backgroundColor: "vhdark.50"
         }} 
         _light={{
-          backgroundColor: "gray.200"
+          backgroundColor: "vhlight.lightGray2"
         }}>
         <Box>
           <AspectRatio w="100%" ratio={16 / 9}>
@@ -42,10 +40,10 @@ const HomeScreen = ({ navigation }) => {
     };
 
   return (
-    <Center flex={1} justifyContent='center' bg='vhlight.600'>
+    <Center flex={1} justifyContent='center'>
       <VStack mt={4} space={8} alignItems='center'>
-        <HomeBox text='GRE' imgPath={homePicture1} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
-        <HomeBox text='Colleted' imgPath={homePicture2} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
+        <HomeBox text='GRE' imgPath={HomeBoxImg1} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
+        <HomeBox text='Colleted' imgPath={HomeBoxImg2} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>
     </Center>
   );
