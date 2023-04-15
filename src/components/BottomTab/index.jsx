@@ -28,8 +28,7 @@ const BottomTab = () => (
     activeColor='#EDEAF3'
     inactiveColor='#3A225F'
     safeAreaInsets={{ bottom: 15 }}
-    barStyle={{ backgroundColor: '#85AB8A' }}
-    shifting
+    barStyle={{ backgroundColor: '#494268' }}
     screenOptions={({ route }) => ({
       tabBarIcon: getTagBarIcon({ route }),
     })}
