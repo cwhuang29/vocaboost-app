@@ -2,30 +2,25 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { AspectRatio, Box, Center, Heading, Image, Stack, Text, HStack, VStack } from 'native-base';
+import { AspectRatio, Box, Center, Heading, Image, Stack, VStack } from 'native-base';
 
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
-import HomeBoxImg1 from 'assets/home/undraw_Exams_re_4ios.png'
-import HomeBoxImg2 from 'assets/home/undraw_Reading_re_29f8.png'
+import HomeBoxImg1 from 'assets/home/undraw_Exams_re_4ios.png';
+import HomeBoxImg2 from 'assets/home/undraw_Reading_re_29f8.png';
 
-
-const HomeBox = ({ text, imgPath, onPress}) => (
+const HomeBox = ({ text, imgPath, onPress }) => (
   <TouchableOpacity onPress={onPress}>
-    <Box alignItems="center">
-      <Box maxW="80" rounded="xl" overflow="hidden" 
-        _dark={{
-          backgroundColor: "vhdark.50"
-        }} 
-        _light={{
-          backgroundColor: "vhlight.lightGray2"
-        }}>
+    <Box alignItems='center'>
+      <Box maxW='80' rounded='xl' overflow='hidden' _dark={{ backgroundColor: 'vhdark.50' }} _light={{ backgroundColor: 'vhlight.lightGray2' }}>
         <Box>
-          <AspectRatio w="100%" ratio={16 / 9}>
-            <Image source={imgPath} alt="image" w='100%' h='100%' />
+          <AspectRatio w='100%' ratio={16 / 9}>
+            <Image source={imgPath} alt='image' w='100%' h='100%' />
           </AspectRatio>
         </Box>
-        <Stack p="4" space={3}>
-          <Heading size="md" ml="-1" textAlign='center'>{text}</Heading>
+        <Stack p='4' space={3}>
+          <Heading size='md' ml='-1' textAlign='center'>
+            {text}
+          </Heading>
         </Stack>
       </Box>
     </Box>
@@ -58,7 +53,7 @@ HomeScreen.propTypes = {
 
 HomeBox.propTypes = {
   text: PropTypes.string.isRequired,
-  imgPath: PropTypes.string.isRequired,
+  imgPath: PropTypes.number.isRequired,
   onPress: PropTypes.func.isRequired,
 };
 

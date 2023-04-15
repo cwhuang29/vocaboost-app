@@ -6,7 +6,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from 'pages/HomeScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 
-
 const Tab = createMaterialBottomTabNavigator();
 
 const HomeIcon = ({ focused }) => <MaterialCommunityIcons name={focused ? 'home-variant' : 'home-variant-outline'} size={24} />;
@@ -26,10 +25,10 @@ const getTagBarIcon =
 
 const BottomTab = () => (
   <Tab.Navigator
-    // activeColor='base.lavender'
-    // inactiveColor='base.eggplant'
+    activeColor='#edeaf3'
+    inactiveColor='#494268'
     safeAreaInsets={{ bottom: 15 }}
-    // barStyle={{ backgroundColor: 'base.eggplant' }}
+    barStyle={{ backgroundColor: '#494268' }}
     screenOptions={({ route }) => ({
       tabBarIcon: getTagBarIcon({ route }),
     })}
