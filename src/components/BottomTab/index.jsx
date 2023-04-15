@@ -26,7 +26,7 @@ const getTagBarIcon =
 const BottomTab = () => (
   <Tab.Navigator
     activeColor='#EDEAF3'
-    inactiveColor='#3A225F'
+    inactiveColor='#494268'
     safeAreaInsets={{ bottom: 15 }}
     barStyle={{ backgroundColor: '#494268' }}
     screenOptions={({ route }) => ({

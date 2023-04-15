@@ -9,7 +9,7 @@ const themeSetting = {
       300: '#FEF7F1',
       400: '#394374',
       500: '#FAD34D',
-      600: '#FEF7F1',
+      600: 'gray.50',
     },
     vhdark: {
       50: '#C5E4F3',
