@@ -85,7 +85,7 @@ const themeSetting = {
     },
     Heading: {
       baseStyle: ({ colorMode }) => ({
-        color: colorMode === 'dark' ? 'vhdark.100' : 'vhlight.100',
+        color: colorMode === 'dark' ? 'vhdark.100' : 'vhlight.darkGray',
         fontWeight: 'bold',
       }),
       sizes: {
