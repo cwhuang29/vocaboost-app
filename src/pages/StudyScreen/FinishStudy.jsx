@@ -7,11 +7,11 @@ import { Box, Icon, Image, Text, View, VStack } from 'native-base';
 import FinishStudyImg from 'assets/study/undraw_Winners_re_wr1l.png';
 
 const FinishStudy = ({ fontStyle }) => {
-  const color = 'vhlight.sageGreen:alpha.90';
+  const color = 'vhlight.500';
   return (
     <View flex={1} px={6} mt={-5} justifyContent='flex-start'>
       <VStack alignItems='center'>
-        <Image source={FinishStudyImg} alt='image' resizeMode='contain' />
+        <Image mt={-42} source={FinishStudyImg} alt='image' resizeMode='contain' />
         <Text mt={-56} color={color} fontFamily={fontStyle.toLowerCase()} textAlign='center'>
           You've reviewed all your collection!
         </Text>

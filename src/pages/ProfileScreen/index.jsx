@@ -188,7 +188,7 @@ const ProfileScreen = () => {
   return init ? (
     <SplashScreen />
   ) : (
-    <Box safeArea='5' flex={1} bg='vhlight.600'>
+    <Box safeArea='5' flex={1} bg='vhlight.700'>
       <SignedInOutButton isSignedIn={isSignedIn} onPress={isSignedIn ? oauthSignOut : oauthSignIn} />
       <AdvertisementModal />
       <View flex={1} />

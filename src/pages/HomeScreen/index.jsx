@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import { AspectRatio, Box, Center, Heading, Image, Stack, VStack } from 'native-base';
 
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
-import HomeBoxImg1 from 'assets/home/undraw_Exams_re_4ios.png';
-import HomeBoxImg2 from 'assets/home/undraw_Reading_re_29f8.png';
+import GREWordListImg from 'assets/home/undraw_Exams_re_4ios.png';
+import CollectedWordListImg from 'assets/home/undraw_Reading_re_29f8.png';
 
 const HomeBox = ({ text, imgPath, onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <Box alignItems='center'>
-      <Box maxW='80' rounded='xl' overflow='hidden' _dark={{ backgroundColor: 'vhdark.50' }} _light={{ backgroundColor: 'vhlight.lightGray2' }}>
+      <Box maxW='80' rounded='xl' overflow='hidden' _dark={{ backgroundColor: 'vhdark.50' }} _light={{ backgroundColor: 'vhlight.100' }}>
         <Box>
           <AspectRatio w='100%' ratio={16 / 9}>
             <Image source={imgPath} alt='image' w='100%' h='100%' />
@@ -37,8 +37,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Center flex={1} justifyContent='center'>
       <VStack mt={4} space={8} alignItems='center'>
-        <HomeBox text='GRE' imgPath={HomeBoxImg1} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
-        <HomeBox text='Colleted' imgPath={HomeBoxImg2} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
+        <HomeBox text='GRE' imgPath={GREWordListImg} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
+        <HomeBox text='Colleted' imgPath={CollectedWordListImg} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>
     </Center>
   );

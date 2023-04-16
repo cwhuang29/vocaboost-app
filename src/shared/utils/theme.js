@@ -2,23 +2,15 @@ import { extendTheme } from 'native-base';
 
 const themeSetting = {
   colors: {
-    // vhlight: {
-    //   50: '#3F3F3F',
-    //   100: '#3d3d3d',
-    //   200: '#F0F0F0',
-    //   300: '#FEF7F1',
-    //   400: '#394374',
-    //   500: '#FAD34D',
-    //   600: 'gray.50',
-    // },
     vhlight: {
-      darkGray: '#3F3F3F',
-      lightGray1: '#E5E5E5',
-      lightGray2: '#E2E2E2',
-      steelBlue: '#7892B5',
-      seafoam: '#8CB9C0',
-      sageGreen: '#91B5A9',
-      paleGold: '#EDCA7F',
+      50: '#3F3F3F',
+      100: '#E5E5E5',
+      200: '#E2E2E2',
+      300: '#7892B5',
+      400: '#8CB9C0',
+      500: '#91B5A9',
+      600: '#EDCA7F',
+      700: '#FFFFFF',
     },
     vhdark: {
       50: '#C5E4F3',
@@ -37,8 +29,6 @@ const themeSetting = {
       purple: '#8b5cf6',
       teal: '#2dd4bf',
       lightYellow: '#fde68a',
-      lavender: '#EDEAF3',
-      eggplant: '#494268'
     },
   },
   components: {
