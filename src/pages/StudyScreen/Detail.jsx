@@ -3,7 +3,7 @@ import { Pressable } from 'react-native';
 import PropTypes from 'prop-types';
 import { AntDesign } from '@expo/vector-icons';
 
-import { Box, HStack, Icon, IconButton, Stack, Text, VStack } from 'native-base';
+import { Box, Icon, IconButton, Stack, Text, VStack } from 'native-base';
 
 import { LANGS, PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
 import { constructWordExample } from 'shared/utils/highlight';
@@ -19,17 +19,17 @@ const StarIconButton = ({ isCollected, onPress }) => {
     <IconButton
       icon={<Icon as={AntDesign} name={iconName} />}
       onPress={onPressThenStop}
-      _icon={{ color: 'vhlight.paleGold', size: '30' }}
+      _icon={{ color: 'vhlight.600', size: '30' }}
       _pressed={{
         bg: '',
-        _icon: { name: 'star', color: 'vhlight.paleGold:alpha.50', size: '30' },
+        _icon: { name: 'star', color: 'vhlight.600:alpha.50', size: '30' },
       }}
     />
   );
 };
 
 const DisplayText = ({ children, size, shrink, fontStyle }) => (
-  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} color='vhlight.darkGray'>
+  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} color='vhlight.50'>
     {children}
   </Text>
 );

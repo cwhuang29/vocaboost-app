@@ -35,6 +35,5 @@ export const FONT_STYLE_DISPLAY = {
   ROBOTO: 'Roboto',
   GARAMOND: 'Garamond',
   KALAM: 'Kalam',
-  CHARMONMAN: 'Charmonman',
   PLAYFAIRDISPLAY: 'Playfair Display',
 };
