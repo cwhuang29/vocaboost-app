@@ -19,10 +19,10 @@ const StarIconButton = ({ isCollected, onPress }) => {
     <IconButton
       icon={<Icon as={AntDesign} name={iconName} />}
       onPress={onPressThenStop}
-      _icon={{ color: 'vhlight.600', size: '30' }}
+      _icon={{ color: 'vhlight.700', size: '30' }}
       _pressed={{
         bg: '',
-        _icon: { name: 'star', color: 'vhlight.600:alpha.50', size: '30' },
+        _icon: { name: 'star', color: 'vhlight.700:alpha.50', size: '30' },
       }}
     />
   );
@@ -34,29 +34,6 @@ const DisplayText = ({ children, size, shrink, fontStyle }) => (
   </Text>
 );
 
-// TODO Use fontsize for texts
-// eslint-disable-next-line no-unused-vars
-// const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
-//   display && (
-//     <Box>
-//       <HStack space={3} justifyContent='space-around' alignSelf='center'>
-//         <Pressable onLongPress={onCopyText}>
-//           <DisplayText size='lg' shrink={0} fontStyle={fontStyle}>
-//             {toCapitalize(wordData.word)}
-//           </DisplayText>
-//         </Pressable>
-//         <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
-//       </HStack>
-//       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
-//         <Box key={`${partsOfSpeech}-${example.slice(0, 20)}`} pt={8}>
-//           <Stack space={3}>
-//             <DisplayText fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}</DisplayText>
-//             <DisplayText fontStyle={fontStyle}>{constructWordExample(example)}</DisplayText>
-//           </Stack>
-//         </Box>
-//       ))}
-//     </Box>
-//   );
 const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
   display && (
     <Box>

@@ -52,7 +52,7 @@ const AdvertisementModal = () => {
   return (
     <>
       <Pressable onPress={() => setIsOpen(true)} style={{ zIndex: MAX_Z_INDEX }}>
-        <AntDesign name='bulb1' size={35} color='#3d3d3d' position='absolute' top={100} right={4} />
+        <AntDesign name='bulb1' size={35} color='vhlight.50' position='absolute' top={100} right={4} />
       </Pressable>
       <Center>
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} _backdrop={{ _dark: { bg: 'coolGray.800' }, bg: 'warmGray.500' }}>
@@ -188,19 +188,19 @@ const ProfileScreen = () => {
   return init ? (
     <SplashScreen />
   ) : (
-    <Box safeArea='5' flex={1} bg='vhlight.700'>
+    <Box safeArea='5' flex={1} bg='vhlight.200'>
       <SignedInOutButton isSignedIn={isSignedIn} onPress={isSignedIn ? oauthSignOut : oauthSignIn} />
       <AdvertisementModal />
       <View flex={1} />
       <View flex={8}>
-        <Avatar mb={3} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} bg='vhlight.300:alpha.10'>
+        <Avatar mb={3} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} bg='vhlight.200:alpha.10'>
           <AntDesign name='user' size={112} color='#394374' />
         </Avatar>
         <Center mb={4}>
           <Heading mb={3}>{userInfo?.firstName ?? ' '}</Heading>
           <Text mb={4} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
-            <Text bold color='#F9736A'>
+            <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
             </Text>{' '}
             words!
