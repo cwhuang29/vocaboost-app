@@ -10,8 +10,15 @@ const FinishStudy = ({ fontStyle }) => (
   <View flex={1} px={6} mt={-5} justifyContent='flex-start'>
     <VStack alignItems='center'>
       <SvgXml xml={FinishStudyImgXml} height='100%' width='100%' />
-      <Text mt={-40} color='vhlight.600' fontFamily={fontStyle.toLowerCase()} textAlign='center' fontWeight='medium'>
-        You've reviewed all your collection!
+      <Text
+        mt={-40}
+        _light={{ color: 'vhlight.600' }}
+        _dark={{ color: 'vhdark.600' }}
+        fontFamily={fontStyle.toLowerCase()}
+        textAlign='center'
+        fontWeight='medium'
+      >
+        You've reviewed all your collection
       </Text>
     </VStack>
   </View>

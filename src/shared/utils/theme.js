@@ -6,23 +6,29 @@ const themeSetting = {
       50: '#3F3F3F',
       100: '#E5E5E5',
       200: '#F2F2F2',
-      300: '#F9F9F9', 
+      300: '#F9F9F9',
       400: '#7892B5',
       500: '#8CB9C0',
       600: '#91B5A9',
-      700: '#EDCA7F',
+      700: '#EDC673',
       800: '#D98481',
+      900: '#EDEAF3',
+      1000: '#494268',
+      1100: '#FEF8F4',
     },
     vhdark: {
-      50: '#F9F9F9',
-      100: '#3F3F3F',
-      200: '#595959',
-      300: '#7F7F7F',
+      50: '#E7E7E7',
+      100: '#565656',
+      200: '#33363E',
+      300: '#2B2E32',
       400: '#7892B5',
       500: '#8CB9C0',
-      600: '#91B5A9',
+      600: '#A5D2B7',
       700: '#EDCA7F',
       800: '#D98481',
+      900: '#EDEAF3',
+      1000: '#A9CFA1',
+      1100: '#393D44',
     },
     base: {
       white: '#fafafa',
@@ -77,10 +83,11 @@ const themeSetting = {
       },
     },
     Heading: {
-      baseStyle: ({ colorMode }) => ({
-        color: colorMode === 'dark' ? 'vhdark.100' : 'vhlight.50',
+      baseStyle: {
+        _light: { color: 'vhlight.50' },
+        _dark: { color: 'vhdark.50' },
         fontWeight: 'bold',
-      }),
+      },
       sizes: {
         '2xl': { fontSize: '64' },
         xl: { fontSize: '40' },
@@ -124,8 +131,8 @@ const themeSetting = {
     playfairdisplay: 'PlayfairDisplay',
   },
   config: {
-    // initialColorMode: 'dark',
     useSystemColorMode: true, // Default system color mode
+    // initialColorMode: 'dark',
   },
 };
 
