@@ -55,7 +55,7 @@ HomeScreen.propTypes = {
 
 HomeBox.propTypes = {
   text: PropTypes.string.isRequired,
-  imgXml: PropTypes.number.isRequired,
+  imgXml: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,
 };
 

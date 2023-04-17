@@ -52,7 +52,7 @@ const AdvertisementModal = () => {
   return (
     <>
       <Pressable onPress={() => setIsOpen(true)} style={{ zIndex: MAX_Z_INDEX }}>
-        <AntDesign name='bulb1' size={35} color='vhlight.50' position='absolute' top={100} right={4} />
+        <AntDesign name='bulb1' size={35} color='#3d3d3d' position='absolute' top={100} right={4} />
       </Pressable>
       <Center>
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} _backdrop={{ _dark: { bg: 'coolGray.800' }, bg: 'warmGray.500' }}>
