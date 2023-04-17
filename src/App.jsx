@@ -26,7 +26,7 @@ import defaultTheme from 'shared/utils/theme';
 const Stack = createNativeStackNavigator();
 
 const navigatorScreenOptions = {
-  contentStyle: { backgroundColor: '#F9F9F9' },
+  contentStyle: { backgroundColor: '#FEF8F4' },
   headerShown: false,
 };
 
