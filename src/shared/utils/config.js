@@ -1,4 +1,4 @@
-import { FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants/index';
+import { COLOR_MODE, FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants/index';
 import userService from 'shared/services/user.service';
 import { isArray, isObject } from 'shared/utils/misc';
 
@@ -9,6 +9,7 @@ export const DEFAULT_CONFIG = {
   language: LANGS.en,
   fontSize: FONT_SIZE.MEDIUM,
   fontStyle: FONT_STYLE.ROBOTO,
+  colorMode: COLOR_MODE.LIGHT,
   collectedWords: [],
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
 };

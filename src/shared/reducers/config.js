@@ -17,6 +17,8 @@ export const configReducer = (state, action) => {
       return { ...state, fontSize: payload.fontSize };
     case CONFIG_STATUS.UPDATE_FONT_STYLE:
       return { ...state, fontStyle: payload.fontStyle };
+    case CONFIG_STATUS.UPDATE_COLOR_MODE:
+      return { ...state, colorMode: payload.colorMode };
     case CONFIG_STATUS.OVERRIDE_ALL:
       // For now only these properties are stored in database
       return { ...state, language: payload.language, collectedWords: payload.collectedWords, updatedAt: payload.updatedAt };

@@ -29,11 +29,12 @@ const StarIconButton = ({ isCollected, onPress }) => {
 };
 
 const DisplayText = ({ children, size, shrink, fontStyle }) => (
-  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} color='vhlight.50'>
+  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
     {children}
   </Text>
 );
 
+// eslint-disable-next-line no-unused-vars
 const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
   display && (
     <Box>

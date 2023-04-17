@@ -27,7 +27,7 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
             <HStack flexShrink={1} alignItems='center' justifyContent='space-between'>
               <HStack flexShrink={1} alignItems='center'>
                 <Alert.Icon />
-                <Text fontWeight='medium' color='coolGray.800' pl={3}>
+                <Text size='sm' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }} pl={3}>
                   {title}
                 </Text>
               </HStack>
@@ -51,7 +51,9 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
                     </Link>
                   </Text>
                 ) : (
-                  <Text size='sm'>{content}</Text>
+                  <Text size='xs' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }}>
+                    {content}
+                  </Text>
                 )}
               </Box>
             ) : null}

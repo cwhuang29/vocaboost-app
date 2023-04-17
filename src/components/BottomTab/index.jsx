@@ -3,8 +3,11 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import PropTypes from 'prop-types';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { useColorMode, useTheme } from 'native-base';
+
 import HomeScreen from 'pages/HomeScreen';
 import ProfileScreen from 'pages/ProfileScreen';
+import { isDarkMode } from 'shared/utils/style';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -23,20 +26,27 @@ const getTagBarIcon =
   props =>
     <TabBarIcon route={route} {...props} />;
 
-const BottomTab = () => (
-  <Tab.Navigator
-    activeColor='#edeaf3'
-    inactiveColor='#494268'
-    safeAreaInsets={{ bottom: 15 }}
-    barStyle={{ backgroundColor: '#494268' }}
-    screenOptions={({ route }) => ({
-      tabBarIcon: getTagBarIcon({ route }),
-    })}
-  >
-    <Tab.Screen name='Home' component={HomeScreen} />
-    <Tab.Screen name='Profile' component={ProfileScreen} />
-  </Tab.Navigator>
-);
+const BottomTab = () => {
+  const { colorMode } = useColorMode();
+  const { colors } = useTheme();
+  const activeColor = isDarkMode(colorMode) ? colors.vhdark[900] : colors.vhlight[900];
+  const inactiveColor = isDarkMode(colorMode) ? colors.vhdark[1000] : colors.vhlight[1000];
+
+  return (
+    <Tab.Navigator
+      activeColor={activeColor}
+      inactiveColor={inactiveColor}
+      safeAreaInsets={{ bottom: 12 }}
+      barStyle={{ backgroundColor: inactiveColor }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: getTagBarIcon({ route }),
+      })}
+    >
+      <Tab.Screen name='Home' component={HomeScreen} />
+      <Tab.Screen name='Profile' component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+};
 
 HomeIcon.propTypes = {
   focused: PropTypes.bool.isRequired,

@@ -76,4 +76,9 @@ export const ALERT_TYPES = {
   ERROR: 'ERROR',
 };
 
+export const COLOR_MODE = {
+  LIGHT: 'LIGHT',
+  DARK: 'DARK',
+};
+
 export const ALERT_TIMEOUT = 5000;

@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 
-import { NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider, useColorMode, useTheme } from 'native-base';
 
 import HomeScreen from 'pages/HomeScreen';
 import LoginScreen from 'pages/LoginScreen';
@@ -20,20 +20,18 @@ import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import { getLatestConfigOnLogin } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
-import { fontsMap } from 'shared/utils/style';
+import { fontsMap, isDarkMode } from 'shared/utils/style';
 import defaultTheme from 'shared/utils/theme';
 
 const Stack = createNativeStackNavigator();
 
-const navigatorScreenOptions = {
-  contentStyle: { backgroundColor: '#FEF8F4' },
-  headerShown: false,
-};
-
-const App = () => {
+const AppCore = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
   const [fontsHasLoaded, setFontsHasLoaded] = useState(false);
   const [fontsLoaded] = useFonts(fontsMap);
+  const { colors } = useTheme();
+  const { colorMode } = useColorMode();
+  const bgColor = isDarkMode(colorMode) ? colors.vhdark[1100] : colors.vhlight[1100];
 
   useEffect(() => {
     if (fontsLoaded) {
@@ -81,25 +79,32 @@ const App = () => {
     []
   );
 
-  return (
-    <NativeBaseProvider theme={defaultTheme}>
-      {!fontsHasLoaded || state.isLoading ? (
-        <SplashScreen />
-      ) : (
-        <NavigationContainer>
-          <AuthContext.Provider value={authContext}>
-            <Stack.Navigator screenOptions={navigatorScreenOptions}>
-              <Stack.Screen name='BottomTab' component={BottomTab} />
-              <Stack.Screen name='Home' component={HomeScreen} />
-              <Stack.Screen name='Study' component={StudyScreen} />
-              <Stack.Screen name='Profile' component={ProfileScreen} />
-              <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
-            </Stack.Navigator>
-          </AuthContext.Provider>
-        </NavigationContainer>
-      )}
-    </NativeBaseProvider>
+  return !fontsHasLoaded || state.isLoading ? (
+    <SplashScreen />
+  ) : (
+    <NavigationContainer>
+      <AuthContext.Provider value={authContext}>
+        <Stack.Navigator
+          screenOptions={{
+            contentStyle: { backgroundColor: bgColor },
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name='BottomTab' component={BottomTab} />
+          <Stack.Screen name='Home' component={HomeScreen} />
+          <Stack.Screen name='Study' component={StudyScreen} />
+          <Stack.Screen name='Profile' component={ProfileScreen} />
+          <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
+        </Stack.Navigator>
+      </AuthContext.Provider>
+    </NavigationContainer>
   );
 };
+
+const App = () => (
+  <NativeBaseProvider theme={defaultTheme}>
+    <AppCore />
+  </NativeBaseProvider>
+);
 
 export default App;
