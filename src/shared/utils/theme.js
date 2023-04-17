@@ -4,21 +4,25 @@ const themeSetting = {
   colors: {
     vhlight: {
       50: '#3F3F3F',
-      100: '#3d3d3d',
-      200: '#F0F0F0',
-      300: '#FEF7F1',
-      400: '#394374',
-      500: '#FAD34D',
-      600: '#FEF7F1',
+      100: '#E5E5E5',
+      200: '#F2F2F2',
+      300: '#F9F9F9', 
+      400: '#7892B5',
+      500: '#8CB9C0',
+      600: '#91B5A9',
+      700: '#EDCA7F',
+      800: '#D98481',
     },
     vhdark: {
-      50: '#C5E4F3',
-      100: '#C5E4F3',
-      200: '#A2D4EC',
-      300: '#7AC1E4',
-      400: '#47A9DA',
-      500: '#0088CC',
-      600: '#007AB8',
+      50: '#F9F9F9',
+      100: '#3F3F3F',
+      200: '#595959',
+      300: '#7F7F7F',
+      400: '#7892B5',
+      500: '#8CB9C0',
+      600: '#91B5A9',
+      700: '#EDCA7F',
+      800: '#D98481',
     },
     base: {
       white: '#fafafa',
@@ -66,15 +70,15 @@ const themeSetting = {
       defaultProps: { size: 'md' },
       sizes: {
         xl: { fontSize: '42' },
-        lg: { fontSize: '34', lineHeight: '60' },
-        md: { fontSize: '20', lineHeight: '32' },
-        sm: { fontSize: '16', lineHeight: '22' },
+        lg: { fontSize: '34', lineHeight: '45' },
+        md: { fontSize: '20', lineHeight: '26' },
+        sm: { fontSize: '16', lineHeight: '21' },
         xs: { fontSize: '14' },
       },
     },
     Heading: {
       baseStyle: ({ colorMode }) => ({
-        color: colorMode === 'dark' ? 'vhdark.100' : 'vhlight.100',
+        color: colorMode === 'dark' ? 'vhdark.100' : 'vhlight.50',
         fontWeight: 'bold',
       }),
       sizes: {
@@ -105,12 +109,6 @@ const themeSetting = {
       500: { normal: 'Kalam-Regular' },
       600: { normal: 'Kalam-Bold' },
     },
-    Charmonman: {
-      300: { normal: 'Charmonman-Regular' },
-      400: { normal: 'Charmonman-Bold' },
-      500: { normal: 'Charmonman-Bold' },
-      600: { normal: 'Charmonman-Bold' },
-    },
     PlayfairDisplay: {
       300: { normal: 'PlayfairDisplay-Medium' }, // Regular
       400: { normal: 'PlayfairDisplay-Bold' },
@@ -123,7 +121,6 @@ const themeSetting = {
     roboto: 'Roboto',
     garamond: 'Garamond',
     kalam: 'Kalam',
-    charmonman: 'Charmonman',
     playfairdisplay: 'PlayfairDisplay',
   },
   config: {
