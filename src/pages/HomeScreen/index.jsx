@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import PropTypes from 'prop-types';
 
-import { AspectRatio, Box, Center, Heading, Stack, useColorMode, useTheme, VStack } from 'native-base';
+import { AspectRatio, Box, Center, Heading, useColorMode, useTheme, VStack } from 'native-base';
 
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import CollectedWordListSvg from 'shared/svgs/collectedWordListSvg';
@@ -12,18 +12,16 @@ import { isDarkMode } from 'shared/utils/style';
 
 const HomeBox = ({ text, imgXml, onPress }) => (
   <TouchableOpacity onPress={onPress}>
-    <Box alignItems='center' shadow='1'>
+    <Box alignItems='center'>
       <Box maxW='80' minW='80' rounded='xl' overflow='hidden'>
-        <Box>
-          <AspectRatio w='100%' ratio={16 / 9}>
-            <SvgXml xml={imgXml} width='100%' height='100%' />
-          </AspectRatio>
-        </Box>
-        <Stack p='4' space={3} _light={{ bgColor: 'vhlight.100' }} _dark={{ bgColor: 'vhdark.100' }}>
-          <Heading fontWeight='extrabold' size='md' ml='-1' textAlign='center' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
+        <AspectRatio w='100%' ratio={16 / 9}>
+          <SvgXml xml={imgXml} width='100%' height='100%' />
+        </AspectRatio>
+        <Box p={5} _light={{ bgColor: 'vhlight.100' }} _dark={{ bgColor: 'vhdark.100' }}>
+          <Heading fontWeight='bold' size='md' ml='-1' textAlign='center' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
             {text}
           </Heading>
-        </Stack>
+        </Box>
       </Box>
     </Box>
   </TouchableOpacity>

@@ -122,6 +122,12 @@ const themeSetting = {
       500: { normal: 'PlayfairDisplay-Bold' },
       600: { normal: 'PlayfairDisplay-Black' },
     },
+    Kumincho: {
+      300: { normal: 'Kumincho-Regular' },
+      400: { normal: 'Kumincho-Regular' },
+      500: { normal: 'Kumincho-Regular' },
+      600: { normal: 'Kumincho-Regular' },
+    },
   },
   fonts: {
     // Default font weight is 400
@@ -129,6 +135,7 @@ const themeSetting = {
     garamond: 'Garamond',
     kalam: 'Kalam',
     playfairdisplay: 'PlayfairDisplay',
+    kumincho: 'Kumincho',
   },
   config: {
     useSystemColorMode: true, // Default system color mode

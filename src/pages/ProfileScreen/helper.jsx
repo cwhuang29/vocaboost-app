@@ -10,6 +10,6 @@ export const showGoogleLoginErr = err => {
   } else if (err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
     logger('play services not available or outdated');
   } else {
-    logger(`UNKNOWN ERROR: ${err}`);
+    logger(`UNKNOWN ERROR: ${JSON.stringify(err)}`);
   }
 };
