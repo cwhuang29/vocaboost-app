@@ -1,146 +1,389 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "1.0.0",
+    "version": "1.0.2",
     "copyright": "2023 VocaBoost Authors",
-    "categories": ["EDUCATION", "PRODUCTIVITY"],
     "release": {
       "automaticRelease": true
+    },
+    "info": {
+      "ru": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "no": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "fr-FR": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "en-CA": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary and prepare for the exam effortlessly. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "ro": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "hr": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "it": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "uk": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "fi": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "tr": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "hi": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "th": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "sk": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "da": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "hu": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "ar-SA": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "pt-BR": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "de-DE": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "es-MX": {
+        "description": "VocaBoost te ayuda a mejorar tu vocabulario GRE de manera efectiva",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Revise los 1500 vocabularios GRE más comunes con definiciones y ejemplos. Admitimos inglés, chino y español.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "Ayudante de estudio examen GRE",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "ko": {
+        "description": "VocaBoost는 효과적인 방법으로 GRE 어휘를 향상시키는 데 도움이 됩니다",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "정의 및 예와 함께 1500개의 가장 일반적인 GRE 어휘를 검토합니다. 영어, 중국어, 스페인어를 지원합니다.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE 어휘 학습 도구",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "en-US": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\nThis app is designed to assist non-native English users in learning English and preparing for the GRE exam. It has about 1500 most common GRE vocabulary and phrases. You can review vocabulary in English, Chinese, and Spanish.",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary and prepare for the exam effortlessly. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocabBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "ja": {
+        "description": "VocaBoost は、効果的な方法で GRE 語彙を改善するのに役立ちます",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "定義と例を含む 1500 の最も一般的な GRE 語彙を確認します。 英語、中国語、スペイン語に対応しています",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE 語彙学習ツール",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "fr-CA": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "en-GB": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary and prepare for the exam effortlessly. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "id": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "es-ES": {
+        "description": "VocaBoost te ayuda a mejorar tu vocabulario GRE de manera efectiva",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Revise los 1500 vocabularios GRE más comunes con definiciones y ejemplos. Admitimos inglés, chino y español.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "Ayudante de estudio examen GRE",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "zh-Hans": {
+        "description": "VocaBoost 帮助您更有效率的复习GRE单字",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "学习", "英检", "检定", "英文"],
+        "promoText": "轻鬆复习最常考的1500个GRE单字以及它们的翻译和例句。",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "您的 GRE 考试复习好伙伴",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "en-AU": {
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary and prepare for the exam effortlessly. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "GRE vocabulary learning tool",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "zh-Hant": {
+        "description": "VocaBoost 幫助您更有效率的複習GRE單字",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "學習", "英檢", "檢定", "英文"],
+        "promoText": "輕鬆複習最常考的1500個GRE單字以及它們的翻譯和例句。",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "title": "VocaBoost",
+        "subtitle": "您的 GRE 考試複習好夥伴",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
+      },
+      "el": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "he": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "pt-PT": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "ms": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "vi": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "cs": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "pl": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "ca": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "sv": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      },
+      "nl-NL": {
+        "title": "VocaBoost",
+        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
+        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
+        "promoText": "Review 1500 most common GRE vocabulary with definitions and examples. We support English, Chinese, and Spanish.",
+        "supportUrl": "https://www.vocabularyboost.com/support/",
+        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/",
+        "subtitle": "GRE vocabulary learning tool"
+      }
+    },
+    "categories": ["EDUCATION", "PRODUCTIVITY"],
+    "advisory": {
+      "alcoholTobaccoOrDrugUseOrReferences": "NONE",
+      "contests": "NONE",
+      "gamblingSimulated": "NONE",
+      "horrorOrFearThemes": "NONE",
+      "matureOrSuggestiveThemes": "NONE",
+      "medicalOrTreatmentInformation": "NONE",
+      "profanityOrCrudeHumor": "NONE",
+      "sexualContentGraphicAndNudity": "NONE",
+      "sexualContentOrNudity": "NONE",
+      "violenceCartoonOrFantasy": "NONE",
+      "violenceRealistic": "NONE",
+      "violenceRealisticProlongedGraphicOrSadistic": "NONE",
+      "gambling": false,
+      "unrestrictedWebAccess": false,
+      "kidsAgeBand": null,
+      "seventeenPlus": false
     },
     "review": {
       "firstName": "Chen Wei (Jimmy)",
       "lastName": "Huang",
       "email": "hqdevonly@gmail.com",
-      "phone": "+1 424 440 4426",
+      "phone": "424 440 4426",
       "demoRequired": false
-    },
-    "info": {
-      "en-US": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "en-GB": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "en-CA": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "en-AU": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "fr-FR": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "fr-CA": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "de-DE": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "zh-Hant": {
-        "title": "VocabularyBoost",
-        "subtitle": "您的 GRE 考試複習好夥伴",
-        "description": "VocaBoost 幫助您更有效率的複習GRE單字",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "學習", "英檢", "檢定", "英文"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "zh-Hans": {
-        "title": "VocabularyBoost",
-        "subtitle": "您的 GRE 考试复习好伙伴",
-        "description": "VocaBoost 帮助您更有效率的复习GRE单字",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "学习", "英检", "检定", "英文"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "es-ES": {
-        "title": "VocabularyBoost",
-        "subtitle": "Ayudante de estudio examen GRE",
-        "description": "VocaBoost te ayuda a mejorar tu vocabulario GRE de manera efectiva",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "es-MX": {
-        "title": "VocabularyBoost",
-        "subtitle": "Ayudante de estudio examen GRE",
-        "description": "VocaBoost te ayuda a mejorar tu vocabulario GRE de manera efectiva",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "id": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE vocabulary learning tool",
-        "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "ja": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE 語彙学習ツール",
-        "description": "VocaBoost は、効果的な方法で GRE 語彙を改善するのに役立ちます",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      },
-      "ko": {
-        "title": "VocabularyBoost",
-        "subtitle": "GRE 어휘 학습 도구",
-        "description": "VocaBoost는 효과적인 방법으로 GRE 어휘를 향상시키는 데 도움이 됩니다",
-        "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "abroad"],
-        "marketingUrl": "",
-        "supportUrl": "https://www.vocabularyboost.com/support/",
-        "privacyPolicyUrl": "https://www.vocabularyboost.com/privacy-policy/"
-      }
     }
   }
 }

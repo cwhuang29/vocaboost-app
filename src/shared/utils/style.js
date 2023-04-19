@@ -5,6 +5,7 @@ import GaramondBold from 'assets/fonts/Garamond-Bold.ttf';
 import GaramondMedium from 'assets/fonts/Garamond-Medium.ttf';
 import GaramondRegular from 'assets/fonts/Garamond-Regular.ttf';
 import GaramondSemiBold from 'assets/fonts/Garamond-SemiBold.ttf';
+import Kumincho from 'assets/fonts/KuMincho.otf';
 import KalamBold from 'assets/fonts/Kalam-Bold.ttf';
 import KalamLight from 'assets/fonts/Kalam-Light.ttf';
 import KalamRegular from 'assets/fonts/Kalam-Regular.ttf';
@@ -31,6 +32,7 @@ export const fontsMap = {
   'PlayfairDisplay-Regular': PlayfairDisplayRegular,
   'PlayfairDisplay-Medium': PlayfairDisplayMedium,
   'PlayfairDisplay-Bold': PlayfairDisplayBold,
+  'Kumincho-Regular': Kumincho,
 };
 
 export const isDarkMode = colorMode => colorMode === COLOR_MODE.DARK || colorMode === COLOR_MODE.DARK.toLowerCase();

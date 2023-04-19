@@ -36,4 +36,5 @@ export const FONT_STYLE_DISPLAY = {
   GARAMOND: 'Garamond',
   KALAM: 'Kalam',
   PLAYFAIRDISPLAY: 'Playfair Display',
+  KUMINCHO: 'Kumincho',
 };
