@@ -123,7 +123,7 @@ const ProfileScreen = () => {
       }
       setLoading(true);
       const latestConfig = await storage.getData(STORAGE_CONFIG);
-      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: latestConfig });
+      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: {...(latestConfig ?? DEFAULT_CONFIG) } });
       setLoading(false);
     };
     getLatestConfig();
