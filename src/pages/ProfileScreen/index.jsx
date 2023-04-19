@@ -97,10 +97,6 @@ const ProfileScreen = () => {
   const avatarColor = isDarkMode(colorMode) ? '#5F6FBA' : '#394374';
 
   useEffect(() => {
-    GoogleSignin.configure({ iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID });
-  }, []);
-
-  useEffect(() => {
     const setup = async () => {
       GoogleSignin.configure({ iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID });
       const [stillSignedIn, latestUserInfo, latestConfig] = await Promise.all([
@@ -202,13 +198,13 @@ const ProfileScreen = () => {
       <SignedInOutButton iconColor={iconColor} isSignedIn={isSignedIn} onPress={isSignedIn ? oauthSignOut : oauthSignIn} />
       <AdvertisementModal iconColor={iconColor} />
       <View flex={1} />
-      <View flex={8}>
+      <View flex={10}>
         <Avatar mb={3} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
-        <Center mb={4}>
+        <Center mb={5}>
           <Heading mb={3}>{userInfo?.firstName ?? ' '}</Heading>
-          <Text mb={4} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+          <Text fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
             <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
@@ -216,7 +212,7 @@ const ProfileScreen = () => {
             words!
           </Text>
         </Center>
-        <VStack space={4} mb={8}>
+        <VStack space={4}>
           <Heading alignSelf='center'>Settings</Heading>
           <Heading size='md'>Language</Heading>
           <Select
@@ -236,7 +232,6 @@ const ProfileScreen = () => {
             placeholder='Choose Font Style'
             isDisabled={loading}
           />
-
           <Heading size='md'>Color Mode</Heading>
           <HStack mt={0.2} alignItems='center'>
             <SunIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
