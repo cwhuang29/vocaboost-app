@@ -12,7 +12,7 @@ const themeSetting = {
       600: '#91B5A9',
       700: '#EDC673',
       800: '#D98481',
-      900: '#EDEAF3',
+      900: '#F1F0F3',
       1000: '#494268',
       1100: '#FEF8F4',
     },
@@ -26,7 +26,7 @@ const themeSetting = {
       600: '#A5D2B7',
       700: '#EDCA7F',
       800: '#D98481',
-      900: '#EDEAF3',
+      900: '#F1F0F3',
       1000: '#A9CFA1',
       1100: '#393D44',
     },
@@ -116,17 +116,17 @@ const themeSetting = {
       500: { normal: 'Kalam-Regular' },
       600: { normal: 'Kalam-Bold' },
     },
-    PlayfairDisplay: {
-      300: { normal: 'PlayfairDisplay-Medium' }, // Regular
-      400: { normal: 'PlayfairDisplay-Bold' },
-      500: { normal: 'PlayfairDisplay-Bold' },
-      600: { normal: 'PlayfairDisplay-Black' },
-    },
     Kumincho: {
       300: { normal: 'Kumincho-Regular' },
       400: { normal: 'Kumincho-Regular' },
       500: { normal: 'Kumincho-Regular' },
       600: { normal: 'Kumincho-Regular' },
+    },
+    PlayfairDisplay: {
+      300: { normal: 'PlayfairDisplay-Medium' }, // Regular
+      400: { normal: 'PlayfairDisplay-Bold' },
+      500: { normal: 'PlayfairDisplay-Bold' },
+      600: { normal: 'PlayfairDisplay-Bold' },
     },
   },
   fonts: {
@@ -134,8 +134,8 @@ const themeSetting = {
     roboto: 'Roboto',
     garamond: 'Garamond',
     kalam: 'Kalam',
-    playfairdisplay: 'PlayfairDisplay',
     kumincho: 'Kumincho',
+    playfairdisplay: 'PlayfairDisplay',
   },
   config: {
     useSystemColorMode: true, // Default system color mode

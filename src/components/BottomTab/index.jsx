@@ -34,10 +34,11 @@ const BottomTab = () => {
 
   return (
     <Tab.Navigator
+      shifting
       activeColor={activeColor}
       inactiveColor={inactiveColor}
       safeAreaInsets={{ bottom: 12 }}
-      barStyle={{ backgroundColor: inactiveColor }}
+      barStyle={{ backgroundColor: inactiveColor, marginBottom: -6 }}
       screenOptions={({ route }) => ({
         tabBarIcon: getTagBarIcon({ route }),
       })}

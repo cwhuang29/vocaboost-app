@@ -1,4 +1,5 @@
 export default {
+  HOST: 'https://api.vocabularyboost.com',
   V1: {
     ME: '/v1/users/me',
     LOGIN: '/v1/login',

@@ -21,5 +21,10 @@ export const genWordDetailList = ({ type, shuffle = true }) => {
 
 export const genWordDetailMap = ({ type, shuffle = true }) => {
   const wordList = genWordDetailList({ type, shuffle });
-  return new Map(wordList.map(item => [item.id, item]));
+  const obj = {};
+  wordList.forEach(item => {
+    obj[item.id] = item;
+  });
+  return obj;
+  // return new Map(wordList.map(item => [item.id, item])); // Map goes wrong in production build
 };

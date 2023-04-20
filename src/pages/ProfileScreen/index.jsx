@@ -134,7 +134,8 @@ const ProfileScreen = () => {
       const uInfo = await GoogleSignin.signIn();
       oauthSucceed = true;
 
-      const { latestConfig, latestUser, isNewUser } = await signIn(transformGoogleLoginResp(uInfo));
+      const loginPayload = transformGoogleLoginResp(uInfo);
+      const { latestConfig, latestUser, isNewUser } = await signIn(loginPayload);
       if (latestConfig) {
         dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...latestConfig } });
       }
@@ -194,15 +195,15 @@ const ProfileScreen = () => {
   return init ? (
     <SplashScreen />
   ) : (
-    <Box safeArea='5' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+    <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
       <SignedInOutButton iconColor={iconColor} isSignedIn={isSignedIn} onPress={isSignedIn ? oauthSignOut : oauthSignIn} />
       <AdvertisementModal iconColor={iconColor} />
       <View flex={1} />
-      <View flex={10}>
-        <Avatar mb={3} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+      <View flex={14}>
+        <Avatar mb={4} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
-        <Center mb={5}>
+        <Center mb={4}>
           <Heading mb={3}>{userInfo?.firstName ?? ' '}</Heading>
           <Text fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
@@ -212,7 +213,7 @@ const ProfileScreen = () => {
             words!
           </Text>
         </Center>
-        <VStack space={4}>
+        <VStack space={5}>
           <Heading alignSelf='center'>Settings</Heading>
           <Heading size='md'>Language</Heading>
           <Select
