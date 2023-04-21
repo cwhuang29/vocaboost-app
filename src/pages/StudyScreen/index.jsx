@@ -3,8 +3,6 @@ import { TouchableOpacity } from 'react-native';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Clipboard from '@react-native-clipboard/clipboard';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-unresolved
-import { BACKEND_URL } from '@env';
 import { Ionicons } from '@expo/vector-icons';
 
 import { Box, Icon, IconButton, Text, View } from 'native-base';
@@ -18,6 +16,7 @@ import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import storage from 'shared/storage';
+import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
@@ -28,14 +27,23 @@ import { genWordDetailMap } from 'shared/utils/word';
 import Detail from './Detail';
 import FinishStudy from './FinishStudy';
 
-const getWebSocketURL = () => `${BACKEND_URL}${apis.V1.SETTING_COLLECTED_WORDS}`;
+const getWebSocketURL = () => `${apis.HOST}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
 const getWords = type => {
   const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
   return genWordDetailMap({ type: queryType });
 };
 
-const filterCollectedWords = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
+// Note: Map goes wrong in production build
+// const filterCollectedWords = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
+
+const filterCollectedWords = (wordsMap, ids) => {
+  const map = {};
+  ids.forEach(id => {
+    map[id] = wordsMap[id];
+  });
+  return map;
+};
 
 const UndoIconButton = ({ onPress }) => {
   const onPressThenStop = e => {
@@ -85,10 +93,10 @@ const StudyScreen = ({ route }) => {
       setConfig(finalConfig);
 
       const wMap = route.params.type === WORD_LIST_TYPE.COLLECTED ? filterCollectedWords(allWordsMap, finalConfig.collectedWords) : allWordsMap;
-      const wMapKeys = Array.from(wMap.keys());
+      const wMapKeys = shuffleArray(Object.keys(wMap));
       setWordsMap(wMap);
       setWordsMapKeys(wMapKeys);
-      setWordData(wMap.get(wMapKeys[currIdx]));
+      setWordData(wMap[wMapKeys[currIdx]]);
       setLoading(false);
     };
     setup();
@@ -127,7 +135,7 @@ const StudyScreen = ({ route }) => {
 
   const onPress = () => {
     setCurrIdx(prevIdx => (prevIdx + 1 < wordsMapKeys.length ? prevIdx + 1 : 0));
-    setWordData(wordsMap.get(wordsMapKeys[currIdx + 1 < wordsMapKeys.length ? currIdx + 1 : 0]));
+    setWordData(wordsMap[wordsMapKeys[currIdx + 1 < wordsMapKeys.length ? currIdx + 1 : 0]]);
   };
 
   const onCopyText = text => () => {
@@ -152,7 +160,7 @@ const StudyScreen = ({ route }) => {
 
   const undoIconOnPress = () => {
     setCurrIdx(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordsMapKeys.length - 1));
-    setWordData(wordsMap.get(wordsMapKeys[currIdx > 0 ? currIdx - 1 : wordsMapKeys.length - 1]));
+    setWordData(wordsMap[wordsMapKeys[currIdx > 0 ? currIdx - 1 : wordsMapKeys.length - 1]]);
   };
 
   const isCollected = loading || isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
@@ -187,7 +195,6 @@ const StudyScreen = ({ route }) => {
                 <Detail
                   wordData={wordData}
                   language={config.language}
-                  fontSize={config.fontSize}
                   fontStyle={config.fontStyle}
                   isCollected={isCollected}
                   onPress={onPress}

@@ -65,7 +65,7 @@ export const WELCOME_MSG = {
 
 export const SIGNIN_FAILED_MSG = {
   TITLE: msg.UNKNOWN_ERROR,
-  CONTENT: msg.TRY_AGAIN,
+  CONTENT: 'Please try login again in a minute',
 };
 
 export const SIGNOUT_FAILED_MSG = {

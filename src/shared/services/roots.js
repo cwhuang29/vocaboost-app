@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-unresolved
-import { BACKEND_URL } from '@env';
-
+import apis from 'shared/constants/apis';
 import { STORAGE_AUTH_TOKEN } from 'shared/constants/storage';
 import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
@@ -8,7 +6,7 @@ import logger from 'shared/utils/logger';
 import axios from 'axios';
 
 const httpConfig = {
-  baseURL: BACKEND_URL,
+  baseURL: apis.HOST,
   withCredentials: true, // Indicates whether or not cross-site Access-Control requests should be made using credentials
   xsrfHeaderName: 'X-CSRF-Token', // the name of the http header that carries the xsrf token value
   xsrfCookieName: 'csrftoken', // The name of the cookie to use as a value for xsrf token

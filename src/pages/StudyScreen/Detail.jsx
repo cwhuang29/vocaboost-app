@@ -34,8 +34,7 @@ const DisplayText = ({ children, size, shrink, fontStyle }) => (
   </Text>
 );
 
-// eslint-disable-next-line no-unused-vars
-const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
+const Detail = ({ display, wordData, language, fontStyle, isCollected, onCopyText, onCollectWord }) =>
   display && (
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
@@ -47,7 +46,7 @@ const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected,
         <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
       </VStack>
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
-        <Box key={`${partsOfSpeech}-${example.slice(0, 20)}`} pt={8}>
+        <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
           <Stack space={3}>
             <DisplayText fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}</DisplayText>
             <DisplayText fontStyle={fontStyle}>{constructWordExample(example)}</DisplayText>
@@ -78,7 +77,6 @@ Detail.propTypes = {
   display: PropTypes.bool,
   wordData: PropTypes.object.isRequired,
   language: PropTypes.string.isRequired,
-  fontSize: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
   isCollected: PropTypes.bool.isRequired,
   onCopyText: PropTypes.func.isRequired,
