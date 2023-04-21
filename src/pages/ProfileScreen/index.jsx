@@ -14,6 +14,7 @@ import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
 import { ALERT_TYPES, COLOR_MODE, FONT_STYLE, LANGS } from 'shared/constants';
+import apis from 'shared/constants/apis';
 import { LANGS_DISPLAY } from 'shared/constants/i18n';
 import { EXTENSION_LINK } from 'shared/constants/link';
 import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
@@ -48,6 +49,12 @@ const SignedInOutButton = ({ isSignedIn, onPress, iconColor }) => {
   );
 };
 
+const ExternalLink = ({ link, text }) => (
+  <Link isExternal href={link} _text={{ marginTop: 6, paddingTop: 1, paddingX: 2, fontSize: 16, color: 'blue.500', fontWeight: 'bold' }}>
+    {text}
+  </Link>
+);
+
 const AdvertisementModal = ({ iconColor }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -57,22 +64,18 @@ const AdvertisementModal = ({ iconColor }) => {
       </Pressable>
       <Center>
         <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} _backdrop={{ _dark: { bg: 'coolGray.800' }, bg: 'warmGray.500' }}>
-          <Modal.Content maxW='95%' minW='90%' maxH='500' p={2} _light={{ bgColor: 'vhlight.300' }} _dark={{ bgColor: 'vhdark.300' }}>
+          <Modal.Content maxW='95%' minW='92%' maxH='500' p={2} _light={{ bgColor: 'vhlight.300' }} _dark={{ bgColor: 'vhdark.300' }}>
             <Modal.Header _light={{ bgColor: 'vhlight.300' }} _dark={{ bgColor: 'vhdark.300' }}>
               Boost Your Performance
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body style={{ alignItems: 'center' }}>
               <Text size='sm'>
-                Our
-                <Link
-                  isExternal
-                  href={EXTENSION_LINK}
-                  _text={{ marginTop: '4', paddingTop: '0.5', paddingX: '1', fontSize: '16', color: 'blue.500', fontWeight: 'bold' }}
-                >
-                  extension
-                </Link>
-                highlights GRE vocabulary on every web page you visit.{'\n\n'}You can collect unfamiliar words when browsing webpages, and review them on this
-                app.
+                VocaBoost
+                <ExternalLink link={EXTENSION_LINK} text='extension' />
+                highlights GRE words on every web page you visit.
+                {'\n\n'}Collect unfamiliar words when browsing webpages, and review them on this app.
+                {'\n\n'}Visit VocaBoost official website
+                <ExternalLink link={apis.OFFICAIL_HOME_PAGE} text='here' />
               </Text>
             </Modal.Body>
           </Modal.Content>
@@ -262,6 +265,11 @@ SignedInOutButton.propTypes = {
 
 AdvertisementModal.propTypes = {
   iconColor: PropTypes.string.isRequired,
+};
+
+ExternalLink.propTypes = {
+  link: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default ProfileScreen;

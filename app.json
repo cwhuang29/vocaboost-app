@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "vocaboost.com",
-      "buildNumber": "1.0.7",
+      "buildNumber": "1.0.8",
       "supportsTablet": true,
       "googleServicesFile": "./google-services-secret-ios.plist"
     },
