@@ -20,7 +20,7 @@ import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import { getLatestConfigOnLogin } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
-import { fontsMap, isDarkMode } from 'shared/utils/style';
+import { colorModeManager, fontsMap, isDarkMode } from 'shared/utils/style';
 import defaultTheme from 'shared/utils/theme';
 
 const Stack = createNativeStackNavigator();
@@ -102,7 +102,7 @@ const AppCore = () => {
 };
 
 const App = () => (
-  <NativeBaseProvider theme={defaultTheme}>
+  <NativeBaseProvider theme={defaultTheme} colorModeManager={colorModeManager}>
     <AppCore />
   </NativeBaseProvider>
 );
