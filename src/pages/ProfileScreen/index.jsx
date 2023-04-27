@@ -109,7 +109,7 @@ const ProfileScreen = () => {
       ]);
       setIsSignedIn(stillSignedIn);
       setUserInfo(latestUserInfo);
-      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...(latestConfig ?? DEFAULT_CONFIG) } });
+      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: latestConfig ?? DEFAULT_CONFIG });
       setInit(false);
     };
     setup();
@@ -122,7 +122,7 @@ const ProfileScreen = () => {
       }
       setLoading(true);
       const latestConfig = await storage.getData(STORAGE_CONFIG);
-      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: latestConfig });
+      dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: latestConfig ?? DEFAULT_CONFIG });
       setLoading(false);
     };
     getLatestConfig();
@@ -140,7 +140,7 @@ const ProfileScreen = () => {
       const loginPayload = transformGoogleLoginResp(uInfo);
       const { latestConfig, latestUser, isNewUser } = await signIn(loginPayload);
       if (latestConfig) {
-        dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: { ...latestConfig } });
+        dispatch({ type: CONFIG_STATUS.OVERRIDE_BY_SERVER, payload: { ...latestConfig } });
       }
       if (isNewUser) {
         setAlertData({
