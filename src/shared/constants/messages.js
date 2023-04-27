@@ -1,6 +1,7 @@
 const msg = {
   UNKNOWN_ERROR: 'Oops, this is unexpected',
   TRY_AGAIN: 'Please try again',
+  TRY_AGAIN_LATER: 'Please try again later',
   RELOAD_AND_RETRY: 'Please reload the page and try again',
   GO_BACK_AND_RETRY: 'Go back to previous page and try again',
   TRY_TOO_OFTEN: 'You are trying too often',
