@@ -50,16 +50,15 @@ const AppCore = () => {
   const authContext = useMemo(
     () => ({
       signOut: async () => {
-        // .catch(err => throw new Error()). Error: Support for the experimental syntax 'throwExpressions' isn't currently enabled
-        const resp = await authService.logout().catch(err => err);
-        if (!resp.result) {
-          throw new Error(SIGNOUT_FAILED_MSG);
-        }
+        await authService.logout().catch(err => err); // .catch(err => throw new Error()). Error: Support for the experimental syntax 'throwExpressions' isn't currently enabled
         await Promise.all([storage.removeData(STORAGE_USER), storage.removeData(STORAGE_AUTH_TOKEN)]);
         dispatch({ type: AUTH_STATUS.SIGN_OUT });
       },
       signIn: async data => {
-        const resp = await authService.login(data).catch(err => logger(`Login error: ${JSON.stringify(err)}`));
+        const resp = await authService.login(data).catch(err => {
+          logger(`Login error: ${JSON.stringify(err)}`);
+          return null;
+        });
         if (!resp) {
           throw new Error(SIGNIN_FAILED_MSG);
         }
