@@ -16,7 +16,7 @@ import { CONFIG_STATUS } from 'shared/actionTypes/config';
 import { ALERT_TYPES, COLOR_MODE, FONT_STYLE, LANGS } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import { LANGS_DISPLAY } from 'shared/constants/i18n';
-import { EXTENSION_LINK } from 'shared/constants/link';
+import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
 import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { FONT_STYLE_DISPLAY, MAX_Z_INDEX } from 'shared/constants/styles';
@@ -76,6 +76,8 @@ const AdvertisementModal = ({ iconColor }) => {
                 {'\n\n'}Collect unfamiliar words when browsing webpages, and review them on this app.
                 {'\n\n'}Visit VocaBoost official website
                 <ExternalLink link={apis.OFFICAIL_HOME_PAGE} text='here' />
+                {'\n\n'}Let us know your opinions
+                <ExternalLink link={GOOGLE_FORM_LINK} text='here' />
               </Text>
             </Modal.Body>
           </Modal.Content>
