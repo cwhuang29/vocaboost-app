@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
+import Tts from 'react-native-tts';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Clipboard from '@react-native-clipboard/clipboard';
 import PropTypes from 'prop-types';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 import { Box, Icon, IconButton, Text, View } from 'native-base';
 
@@ -11,6 +12,7 @@ import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';
+import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
@@ -45,6 +47,24 @@ const filterCollectedWords = (wordsMap, ids) => {
   return map;
 };
 
+const SpeakerIconButton = ({ onPress }) => {
+  const onPressThenStop = e => {
+    e.preventDefault();
+    onPress();
+  };
+  return (
+    <IconButton
+      icon={<Icon as={AntDesign} name='sound' />}
+      onPress={onPressThenStop}
+      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '38' }}
+      _pressed={{
+        bg: 'base.black:alpha.10',
+        rounded: 'full',
+      }}
+    />
+  );
+};
+
 const UndoIconButton = ({ onPress }) => {
   const onPressThenStop = e => {
     e.preventDefault();
@@ -76,6 +96,11 @@ const StudyScreen = ({ route }) => {
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
   const [wordData, setWordData] = useState({});
   // const connStatus = getWSConnStatusDisplay(readyState);
+
+  useEffect(() => {
+    Tts.setDefaultLanguage(LANGS.en_US);
+    Tts.setDefaultRate(0.5);
+  }, []);
 
   useEffect(() => {
     const setup = async () => {
@@ -163,6 +188,10 @@ const StudyScreen = ({ route }) => {
     setWordData(wordsMap[wordsMapKeys[currIdx > 0 ? currIdx - 1 : wordsMapKeys.length - 1]]);
   };
 
+  const speackerIconOnPress = text => () => {
+    Tts.speak(text);
+  };
+
   const isCollected = loading || isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
   return loading ? (
@@ -205,8 +234,11 @@ const StudyScreen = ({ route }) => {
               </TouchableOpacity>
             </Box>
           </View>
-          <View flex={1} px={6} alignItems='flex-start'>
-            <UndoIconButton onPress={undoIconOnPress} />
+          <View flex={1} px={6}>
+            <Box display='flex' flexDirection='row' justifyContent='space-between'>
+              <UndoIconButton onPress={undoIconOnPress} />
+              <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
+            </Box>
           </View>
         </>
       )}
@@ -217,6 +249,10 @@ const StudyScreen = ({ route }) => {
 
 StudyScreen.propTypes = {
   route: PropTypes.object.isRequired,
+};
+
+SpeakerIconButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
 };
 
 UndoIconButton.propTypes = {
