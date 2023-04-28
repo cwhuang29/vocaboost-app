@@ -195,6 +195,7 @@ const StudyScreen = ({ route }) => {
                 <Detail
                   wordData={wordData}
                   language={config.language}
+                  fontSize={config.fontSize}
                   fontStyle={config.fontStyle}
                   isCollected={isCollected}
                   onPress={onPress}

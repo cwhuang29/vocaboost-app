@@ -13,7 +13,7 @@ import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
-import { ALERT_TYPES, COLOR_MODE, FONT_STYLE, LANGS } from 'shared/constants';
+import { ALERT_TYPES, COLOR_MODE, FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import { LANGS_DISPLAY } from 'shared/constants/i18n';
 import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
@@ -26,7 +26,8 @@ import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
 import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
-import { isDarkMode } from 'shared/utils/style';
+import { toCapitalize } from 'shared/utils/stringHelpers';
+import { getTextSize, isDarkMode } from 'shared/utils/style';
 import { getLocalDate } from 'shared/utils/time';
 
 import { showGoogleLoginErr } from './helper';
@@ -187,6 +188,10 @@ const ProfileScreen = () => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_LANGUAGE, payload: { language: val } });
   };
 
+  const onFontSizeChange = val => {
+    updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_SIZE, payload: { fontSize: val } });
+  };
+
   const onFontStyleChange = val => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_STYLE, payload: { fontStyle: val } });
   };
@@ -204,13 +209,13 @@ const ProfileScreen = () => {
       <SignedInOutButton iconColor={iconColor} isSignedIn={isSignedIn} onPress={isSignedIn ? oauthSignOut : oauthSignIn} />
       <AdvertisementModal iconColor={iconColor} />
       <View flex={1} />
-      <View flex={14}>
-        <Avatar mb={4} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+      <View flex={16}>
+        <Avatar mb={3} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
         <Center mb={4}>
           <Heading mb={3}>{userInfo?.firstName ?? ' '}</Heading>
-          <Text fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+          <Text size={getTextSize(config.fontSize)} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
             <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
@@ -218,7 +223,7 @@ const ProfileScreen = () => {
             words!
           </Text>
         </Center>
-        <VStack space={5}>
+        <VStack space={3}>
           <Heading alignSelf='center'>Settings</Heading>
           <Heading size='md'>Language</Heading>
           <Select
@@ -227,6 +232,15 @@ const ProfileScreen = () => {
             value={config.language ?? DEFAULT_CONFIG.language}
             onChange={val => onLanguageChange(val)}
             placeholder='Choose Language'
+            isDisabled={loading}
+          />
+          <Heading size='md'>Font Size</Heading>
+          <Select
+            options={FONT_SIZE}
+            displayFunc={s => toCapitalize(FONT_SIZE[s])}
+            value={config.fontSize ?? DEFAULT_CONFIG.fontSize}
+            onChange={val => onFontSizeChange(val)}
+            placeholder='Choose Font Size'
             isDisabled={loading}
           />
           <Heading size='md'>Font Style</Heading>
