@@ -13,9 +13,9 @@ import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
-import { ALERT_TYPES, COLOR_MODE, FONT_STYLE, LANGS } from 'shared/constants';
+import { ALERT_TYPES, COLOR_MODE, FONT_STYLE } from 'shared/constants';
 import apis from 'shared/constants/apis';
-import { LANGS_DISPLAY } from 'shared/constants/i18n';
+import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
 import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
@@ -222,7 +222,7 @@ const ProfileScreen = () => {
           <Heading alignSelf='center'>Settings</Heading>
           <Heading size='md'>Language</Heading>
           <Select
-            options={LANGS}
+            options={LANGS_SUPPORTED}
             displayFunc={l => LANGS_DISPLAY[l]}
             value={config.language ?? DEFAULT_CONFIG.language}
             onChange={val => onLanguageChange(val)}

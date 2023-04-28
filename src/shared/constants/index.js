@@ -46,13 +46,6 @@ export const FONT_SIZE = {
   LARGE: 'LARGE',
 };
 
-export const LANGS = {
-  en: 'en',
-  es: 'es',
-  zh_TW: 'zh_TW',
-  zh_CN: 'zh_CN',
-};
-
 export const FONT_STYLE = {
   ROBOTO: 'ROBOTO',
   GARAMOND: 'GARAMOND',
