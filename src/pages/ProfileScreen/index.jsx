@@ -71,7 +71,7 @@ const AdvertisementModal = ({ iconColor }) => {
               Boost Your Performance
             </Modal.Header>
             <Modal.Body style={{ alignItems: 'center' }}>
-              <Text size='sm'>
+              <Text size='xs'>
                 VocaBoost
                 <ExternalLink link={EXTENSION_LINK} text='extension' />
                 highlights GRE words on every web page you visit.

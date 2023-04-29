@@ -79,7 +79,8 @@ const themeSetting = {
         lg: { fontSize: '23', lineHeight: '32', letterSpacing: '0.02em' },
         md: { fontSize: '20.4', lineHeight: '30' },
         sm: { fontSize: '19', lineHeight: '28' },
-        xs: { fontSize: '14' },
+        xs: { fontSize: '16' },
+        '2xs': { fontSize: '14' },
       },
     },
     Heading: {

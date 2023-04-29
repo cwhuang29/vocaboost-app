@@ -51,7 +51,7 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
                     </Link>
                   </Text>
                 ) : (
-                  <Text size='xs' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }}>
+                  <Text size='2xs' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }}>
                     {content}
                   </Text>
                 )}
