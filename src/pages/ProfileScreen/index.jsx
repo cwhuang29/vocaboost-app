@@ -70,7 +70,7 @@ const AdvertisementModal = ({ iconColor }) => {
               Boost Your Performance
             </Modal.Header>
             <Modal.Body style={{ alignItems: 'center' }}>
-              <Text size='sm'>
+              <Text size='xs'>
                 VocaBoost
                 <ExternalLink link={EXTENSION_LINK} text='extension' />
                 highlights GRE words on every web page you visit.
@@ -88,8 +88,8 @@ const AdvertisementModal = ({ iconColor }) => {
   );
 };
 
-const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 }
-const normalDeviceStyle = { marginBottom: 4, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 5 }
+const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 };
+const normalDeviceStyle = { marginBottom: 4, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 5 };
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -217,11 +217,20 @@ const ProfileScreen = () => {
       <AdvertisementModal iconColor={iconColor} />
       <View flex={1} />
       <View flex={14}>
-        <Avatar mb={deviceStyle.marginBottom} size={deviceStyle.avatarSize} alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+        <Avatar
+          mb={deviceStyle.marginBottom}
+          size={deviceStyle.avatarSize}
+          alignSelf='center'
+          source={{ uri: userInfo?.avatar ?? null }}
+          _light={{ bg: 'vhlight.200' }}
+          _dark={{ bg: 'vhdark.200' }}
+        >
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
         <Center mb={deviceStyle.marginBottom}>
-          <Heading size={deviceStyle.headingSize} mb={3}>{userInfo?.firstName ?? ' '}</Heading>
+          <Heading size={deviceStyle.headingSize} mb={3}>
+            {userInfo?.firstName ?? ' '}
+          </Heading>
           <Text size={deviceStyle.textSize} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
             <Text bold color='vhlight.800'>
@@ -231,7 +240,9 @@ const ProfileScreen = () => {
           </Text>
         </Center>
         <VStack space={deviceStyle.spacing}>
-          <Heading size={deviceStyle.headingSize} alignSelf='center'>Settings</Heading>
+          <Heading size={deviceStyle.headingSize} alignSelf='center'>
+            Settings
+          </Heading>
           <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
           <Select
             options={LANGS_SUPPORTED}

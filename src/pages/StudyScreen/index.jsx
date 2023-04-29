@@ -214,7 +214,7 @@ const StudyScreen = ({ route }) => {
             alignSelf='center'
             rounded='lg'
           >
-            <Text size='xs' color='base.white'>
+            <Text size='2xs' color='base.white'>
               Copied!
             </Text>
           </Box>
