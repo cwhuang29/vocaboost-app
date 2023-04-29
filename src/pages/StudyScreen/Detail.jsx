@@ -9,6 +9,7 @@ import LANGS from 'shared/constants/i18n';
 import { PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
 import { constructWordExample } from 'shared/utils/highlight';
 import { toCapitalize } from 'shared/utils/stringHelpers';
+import { getTextSize } from 'shared/utils/style';
 
 const StarIconButton = ({ isCollected, onPress }) => {
   const iconName = isCollected ? 'star' : 'staro';
@@ -35,12 +36,12 @@ const DisplayText = ({ children, size, shrink, fontStyle }) => (
   </Text>
 );
 
-const Detail = ({ display, wordData, language, fontStyle, isCollected, onCopyText, onCollectWord }) =>
+const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
   display && (
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
         <Pressable onLongPress={onCopyText}>
-          <DisplayText size='lg' shrink={0} fontStyle={fontStyle}>
+          <DisplayText size='xl' shrink={0} fontStyle={fontStyle}>
             {toCapitalize(wordData.word)}
           </DisplayText>
         </Pressable>
@@ -49,8 +50,12 @@ const Detail = ({ display, wordData, language, fontStyle, isCollected, onCopyTex
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
         <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
           <Stack space={3}>
-            <DisplayText fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}</DisplayText>
-            <DisplayText fontStyle={fontStyle}>{constructWordExample(example)}</DisplayText>
+            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${
+              meaning[LANGS[language]] || meaning[LANGS.en]
+            }`}</DisplayText>
+            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
+              {constructWordExample(example)}
+            </DisplayText>
           </Stack>
         </Box>
       ))}
@@ -78,6 +83,7 @@ Detail.propTypes = {
   display: PropTypes.bool,
   wordData: PropTypes.object.isRequired,
   language: PropTypes.string.isRequired,
+  fontSize: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
   isCollected: PropTypes.bool.isRequired,
   onCopyText: PropTypes.func.isRequired,
