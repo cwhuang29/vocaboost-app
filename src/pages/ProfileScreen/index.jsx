@@ -13,7 +13,7 @@ import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
-import { ALERT_TYPES, COLOR_MODE, FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants';
+import { ALERT_TYPES, COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
@@ -236,7 +236,7 @@ const ProfileScreen = () => {
           <Heading size={deviceStyle.headingSize} mb={3}>
             {userInfo?.firstName ?? ' '}
           </Heading>
-          <Text size={deviceStyle.textSize} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+          <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
             <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
