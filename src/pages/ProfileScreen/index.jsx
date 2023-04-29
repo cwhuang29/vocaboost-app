@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
-import { Pressable } from 'react-native';
+import { Dimensions, Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useIsFocused } from '@react-navigation/native';
 import PropTypes from 'prop-types';
@@ -15,6 +15,7 @@ import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
 import { ALERT_TYPES, COLOR_MODE, FONT_STYLE } from 'shared/constants';
 import apis from 'shared/constants/apis';
+import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
 import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
@@ -87,6 +88,9 @@ const AdvertisementModal = ({ iconColor }) => {
   );
 };
 
+const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 }
+const normalDeviceStyle = { marginBottom: 4, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 5 }
+
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -100,6 +104,7 @@ const ProfileScreen = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const iconColor = isDarkMode(colorMode) ? colors.vhdark[50] : colors.vhlight[50];
   const avatarColor = isDarkMode(colorMode) ? '#5F6FBA' : '#394374';
+  const [isSmallDevice, setIsSmallDevice] = useState(false);
 
   useEffect(() => {
     const setup = async () => {
@@ -129,6 +134,11 @@ const ProfileScreen = () => {
     };
     getLatestConfig();
   }, [isFocused]);
+
+  useEffect(() => {
+    const windowHeight = Dimensions.get('window').height;
+    setIsSmallDevice(windowHeight <= SMALL_DEVICE_HEIGHT);
+  }, []);
 
   const oauthSignIn = async () => {
     let oauthSucceed = false;
@@ -197,6 +207,8 @@ const ProfileScreen = () => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_COLOR_MODE, payload: { colorMode: value } });
   };
 
+  const deviceStyle = isSmallDevice ? smallDeviceStyle : normalDeviceStyle;
+
   return init ? (
     <SplashScreen />
   ) : (
@@ -205,12 +217,12 @@ const ProfileScreen = () => {
       <AdvertisementModal iconColor={iconColor} />
       <View flex={1} />
       <View flex={14}>
-        <Avatar mb={4} size='2xl' alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+        <Avatar mb={deviceStyle.marginBottom} size={deviceStyle.avatarSize} alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
-        <Center mb={4}>
-          <Heading mb={3}>{userInfo?.firstName ?? ' '}</Heading>
-          <Text fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+        <Center mb={deviceStyle.marginBottom}>
+          <Heading size={deviceStyle.headingSize} mb={3}>{userInfo?.firstName ?? ' '}</Heading>
+          <Text size={deviceStyle.textSize} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
             <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
@@ -218,9 +230,9 @@ const ProfileScreen = () => {
             words!
           </Text>
         </Center>
-        <VStack space={5}>
-          <Heading alignSelf='center'>Settings</Heading>
-          <Heading size='md'>Language</Heading>
+        <VStack space={deviceStyle.spacing}>
+          <Heading size={deviceStyle.headingSize} alignSelf='center'>Settings</Heading>
+          <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
           <Select
             options={LANGS_SUPPORTED}
             displayFunc={l => LANGS_DISPLAY[l]}
@@ -229,7 +241,16 @@ const ProfileScreen = () => {
             placeholder='Choose Language'
             isDisabled={loading}
           />
-          <Heading size='md'>Font Style</Heading>
+          <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
+          <Select
+            options={LANGS_SUPPORTED}
+            displayFunc={l => LANGS_DISPLAY[l]}
+            value={config.language ?? DEFAULT_CONFIG.language}
+            onChange={val => onLanguageChange(val)}
+            placeholder='Choose Language'
+            isDisabled={loading}
+          />
+          <Heading size={deviceStyle.menuHeadingSize}>Font Style</Heading>
           <Select
             options={FONT_STYLE}
             displayFunc={s => FONT_STYLE_DISPLAY[FONT_STYLE[s]]}
@@ -238,7 +259,7 @@ const ProfileScreen = () => {
             placeholder='Choose Font Style'
             isDisabled={loading}
           />
-          <Heading size='md'>Color Mode</Heading>
+          <Heading size={deviceStyle.menuHeadingSize}>Color Mode</Heading>
           <HStack mt={0.2} alignItems='center'>
             <SunIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
             <Switch
