@@ -12,7 +12,7 @@ import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
-import { SIGNIN_FAILED_MSG, SIGNOUT_FAILED_MSG } from 'shared/constants/messages';
+import { SIGNIN_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';

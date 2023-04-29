@@ -100,6 +100,10 @@ const StudyScreen = ({ route }) => {
   useEffect(() => {
     Tts.setDefaultLanguage(LANGS.en_US);
     Tts.setDefaultRate(0.5);
+    Tts.addEventListener('tts-start', evt => logger('start', evt));
+    Tts.addEventListener('tts-progress', evt => logger('progress', evt));
+    Tts.addEventListener('tts-finish', evt => logger('finish', evt));
+    Tts.addEventListener('tts-cancel', evt => logger('cancel', evt));
   }, []);
 
   useEffect(() => {

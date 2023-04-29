@@ -44,8 +44,6 @@ export const getTextSize = fontSize => {
   }
 };
 
-// The await cause the switch glitching a bit while changing value
-// Usage: <NativeBaseProvider theme={defaultTheme} colorModeManager={colorModeManager}>
 export const colorModeManager = {
   get: async () => {
     try {
