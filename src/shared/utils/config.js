@@ -1,4 +1,5 @@
-import { COLOR_MODE, FONT_SIZE, FONT_STYLE, LANGS } from 'shared/constants/index';
+import LANGS from 'shared/constants/i18n';
+import { COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants/index';
 import userService from 'shared/services/user.service';
 import { isArray, isObject } from 'shared/utils/misc';
 

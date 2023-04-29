@@ -5,7 +5,8 @@ import { AntDesign } from '@expo/vector-icons';
 
 import { Box, Icon, IconButton, Stack, Text, VStack } from 'native-base';
 
-import { LANGS, PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
+import LANGS from 'shared/constants/i18n';
+import { PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
 import { constructWordExample } from 'shared/utils/highlight';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
