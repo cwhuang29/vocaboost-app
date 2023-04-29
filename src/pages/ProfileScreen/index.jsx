@@ -90,7 +90,7 @@ const AdvertisementModal = ({ iconColor }) => {
 };
 
 const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 };
-const normalDeviceStyle = { marginBottom: 4, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 5 };
+const normalDeviceStyle = { marginBottom: 3, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 4 };
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
