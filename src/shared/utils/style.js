@@ -1,4 +1,4 @@
-import { COLOR_MODE } from 'shared/constants';
+import { COLOR_MODE, FONT_SIZE } from 'shared/constants';
 import { STORAGE_COLOR_MODE } from 'shared/constants/storage';
 import storage from 'shared/storage';
 import GaramondBold from 'assets/fonts/Garamond-Bold.ttf';
@@ -30,6 +30,19 @@ export const fontsMap = {
 };
 
 export const isDarkMode = colorMode => colorMode === COLOR_MODE.DARK || colorMode === COLOR_MODE.DARK.toLowerCase();
+
+export const getTextSize = fontSize => {
+  switch (fontSize) {
+    case FONT_SIZE.LARGE:
+      return 'lg';
+    case FONT_SIZE.MEDIUM:
+      return 'md';
+    case FONT_SIZE.SMALL:
+      return 'sm';
+    default:
+      return 'md';
+  }
+};
 
 // The await cause the switch glitching a bit while changing value
 // Usage: <NativeBaseProvider theme={defaultTheme} colorModeManager={colorModeManager}>

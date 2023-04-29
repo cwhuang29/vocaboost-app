@@ -214,7 +214,7 @@ const StudyScreen = ({ route }) => {
             alignSelf='center'
             rounded='lg'
           >
-            <Text size='xs' color='base.white'>
+            <Text size='2xs' color='base.white'>
               Copied!
             </Text>
           </Box>
@@ -224,6 +224,7 @@ const StudyScreen = ({ route }) => {
                 <Detail
                   wordData={wordData}
                   language={config.language}
+                  fontSize={config.fontSize}
                   fontStyle={config.fontStyle}
                   isCollected={isCollected}
                   onPress={onPress}

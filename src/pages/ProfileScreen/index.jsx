@@ -13,7 +13,7 @@ import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
-import { ALERT_TYPES, COLOR_MODE, FONT_STYLE } from 'shared/constants';
+import { ALERT_TYPES, COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
@@ -27,7 +27,8 @@ import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import logger from 'shared/utils/logger';
 import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
-import { isDarkMode } from 'shared/utils/style';
+import { toCapitalize } from 'shared/utils/stringHelpers';
+import { getTextSize, isDarkMode } from 'shared/utils/style';
 import { getLocalDate } from 'shared/utils/time';
 
 import { showGoogleLoginErr } from './helper';
@@ -70,7 +71,7 @@ const AdvertisementModal = ({ iconColor }) => {
               Boost Your Performance
             </Modal.Header>
             <Modal.Body style={{ alignItems: 'center' }}>
-              <Text size='sm'>
+              <Text size='xs'>
                 VocaBoost
                 <ExternalLink link={EXTENSION_LINK} text='extension' />
                 highlights GRE words on every web page you visit.
@@ -88,8 +89,8 @@ const AdvertisementModal = ({ iconColor }) => {
   );
 };
 
-const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 }
-const normalDeviceStyle = { marginBottom: 4, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 5 }
+const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 };
+const normalDeviceStyle = { marginBottom: 4, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 5 };
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -197,6 +198,10 @@ const ProfileScreen = () => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_LANGUAGE, payload: { language: val } });
   };
 
+  const onFontSizeChange = val => {
+    updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_SIZE, payload: { fontSize: val } });
+  };
+
   const onFontStyleChange = val => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_STYLE, payload: { fontStyle: val } });
   };
@@ -217,12 +222,21 @@ const ProfileScreen = () => {
       <AdvertisementModal iconColor={iconColor} />
       <View flex={1} />
       <View flex={14}>
-        <Avatar mb={deviceStyle.marginBottom} size={deviceStyle.avatarSize} alignSelf='center' source={{ uri: userInfo?.avatar ?? null }} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+        <Avatar
+          mb={deviceStyle.marginBottom}
+          size={deviceStyle.avatarSize}
+          alignSelf='center'
+          source={{ uri: userInfo?.avatar ?? null }}
+          _light={{ bg: 'vhlight.200' }}
+          _dark={{ bg: 'vhdark.200' }}
+        >
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
         <Center mb={deviceStyle.marginBottom}>
-          <Heading size={deviceStyle.headingSize} mb={3}>{userInfo?.firstName ?? ' '}</Heading>
-          <Text size={deviceStyle.textSize} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+          <Heading size={deviceStyle.headingSize} mb={3}>
+            {userInfo?.firstName ?? ' '}
+          </Heading>
+          <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
             You have collected{' '}
             <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
@@ -231,7 +245,9 @@ const ProfileScreen = () => {
           </Text>
         </Center>
         <VStack space={deviceStyle.spacing}>
-          <Heading size={deviceStyle.headingSize} alignSelf='center'>Settings</Heading>
+          <Heading size={deviceStyle.headingSize} alignSelf='center'>
+            Settings
+          </Heading>
           <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
           <Select
             options={LANGS_SUPPORTED}
@@ -241,13 +257,13 @@ const ProfileScreen = () => {
             placeholder='Choose Language'
             isDisabled={loading}
           />
-          <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
+          <Heading size={deviceStyle.menuHeadingSize}>Font Size</Heading>
           <Select
-            options={LANGS_SUPPORTED}
-            displayFunc={l => LANGS_DISPLAY[l]}
-            value={config.language ?? DEFAULT_CONFIG.language}
-            onChange={val => onLanguageChange(val)}
-            placeholder='Choose Language'
+            options={FONT_SIZE}
+            displayFunc={s => toCapitalize(FONT_SIZE[s])}
+            value={config.fontSize ?? DEFAULT_CONFIG.fontSize}
+            onChange={val => onFontSizeChange(val)}
+            placeholder='Choose Font Size'
             isDisabled={loading}
           />
           <Heading size={deviceStyle.menuHeadingSize}>Font Style</Heading>

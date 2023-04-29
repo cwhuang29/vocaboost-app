@@ -75,11 +75,12 @@ const themeSetting = {
       },
       defaultProps: { size: 'md' },
       sizes: {
-        xl: { fontSize: '42' },
-        lg: { fontSize: '34', lineHeight: '45' },
-        md: { fontSize: '20', lineHeight: '26' },
-        sm: { fontSize: '16', lineHeight: '21' },
-        xs: { fontSize: '14' },
+        xl: { fontSize: '34', lineHeight: '45' },
+        lg: { fontSize: '23', lineHeight: '32', letterSpacing: '0.02em' },
+        md: { fontSize: '20.4', lineHeight: '30' },
+        sm: { fontSize: '19', lineHeight: '28' },
+        xs: { fontSize: '16' },
+        '2xs': { fontSize: '14' },
       },
     },
     Heading: {
