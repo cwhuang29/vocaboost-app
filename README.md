@@ -10,10 +10,15 @@ Available in English, Chinese, and Spanish, VocaBoost allows you to review vocab
 
 ## Features
 
-- Secure login with Google account to store collected words and settings safely in the app's database.
-- Intuitive add/remove function via the star icon for easy customization of your word collection.
-- Multiple language options to support users internationally.
-- Customizable font styles and light/dark mode to enhance user experience and readability.
+- Integrate with external Oauth services to perform authentication
+- Once you login, your collected words and settings will be synchronized with the extension and store in the database
+- Real-time add/remove words feature (using WebSocket) for easy customization of your word collection
+- Multiple language options to support users internationally
+- Customizable font styles and light/dark mode to enhance user experience and readability
+
+## System Architecture
+
+![System Architecture](demo/vocaboost-system-architecture.jpg)
 
 ## Demo
 
