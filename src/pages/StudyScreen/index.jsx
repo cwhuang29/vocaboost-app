@@ -28,8 +28,8 @@ import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailList } from 'shared/utils/word';
 
-import Detail from './Detail';
 import FinishStudy from './FinishStudy';
+import WordCard from './WordCard';
 
 const getWebSocketURL = () => `${apis.HOST}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
@@ -243,7 +243,7 @@ const StudyScreen = ({ route }) => {
           <View flex={6} px={8} justifyContent='flex-start'>
             <Box width='100%'>
               <TouchableOpacity onPress={onPress} width='100%'>
-                <Detail
+                <WordCard
                   wordData={wordData}
                   language={config.language}
                   fontSize={config.fontSize}
