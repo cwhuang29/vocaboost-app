@@ -60,8 +60,8 @@ export const STORAGE_ERR_MSG = {
 };
 
 export const WELCOME_MSG = {
-  TITLE: 'Welcome to VocaBoost👋🏻',
-  CONTENT: 'Start collecting words effortlessly by installing our Chrome ',
+  TITLE: 'Welcome to VocaBoost 👋🏻',
+  CONTENT: 'Start collecting words effortlessly by installing our browser extension ',
 };
 
 export const SIGNIN_FAILED_MSG = {

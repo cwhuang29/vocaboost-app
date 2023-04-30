@@ -26,21 +26,21 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
           <VStack space={0.3} flexShrink={1} w='100%'>
             <HStack flexShrink={1} alignItems='center'>
               <Alert.Icon />
-              <Text size='xs' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }} pl={3}>
+              <Text size='xs' fontWeight='medium' color='#3F3F3F' pl={3}>
                 {title}
               </Text>
             </HStack>
             {content ? (
               <Box pl={7}>
                 {link ? (
-                  <Text size='xs'>
+                  <Text size='xs' color='#3F3F3F'>
                     {content}&nbsp;
                     <Link href={link} isExternal _text={{ marginTop: '6', paddingTop: '0.2', fontSize: '16', color: 'blue.500', fontWeight: 'bold' }}>
-                      extension
+                      here
                     </Link>
                   </Text>
                 ) : (
-                  <Text size='2xs' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }}>
+                  <Text size='2xs' fontWeight='medium' color='#3F3F3F'>
                     {content}
                   </Text>
                 )}
