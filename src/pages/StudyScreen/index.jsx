@@ -97,6 +97,7 @@ const StudyScreen = ({ route }) => {
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
   const [shuffle, setShuffle] = useState(true);
+  const [selectedLetter, setSelectedLetter] = useState('A');
   const allWordsList = useMemo(() => shuffleArray(getWordsList(route.params.type), [route.params.type]));
   const allWordsObject = useMemo(() => getWordsObjectFromList(allWordsList), [allWordsList]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
@@ -149,6 +150,15 @@ const StudyScreen = ({ route }) => {
     setWordIndex(0);
     setWordData(newWordList[0]);
   }, [shuffle]);
+
+  const handleSelectedLetterChange = () => {
+    setSelectedLetter(selectedLetter);
+    const startIndex = wordList.findIndex(word => word.charAt(0).toUpperCase() === selectedLetter);
+    const newWordList = [...wordList.slice(startIndex), ...wordList.slice(0, startIndex)];
+    setWordList(newWordList);
+    setWordIndex(0);
+    setWordData(newWordList[0]);
+  };
 
   useEffect(() => {
     const setupWebSocket = async () => {
@@ -260,7 +270,7 @@ const StudyScreen = ({ route }) => {
           </View>
           {!shuffle ? (
             <Box mb={5}>
-              <AlphaSlider />
+              <AlphaSlider onSelectedLetterChange={handleSelectedLetterChange} />
             </Box>
           ) : null}
           <View flex={1} px={6}>
