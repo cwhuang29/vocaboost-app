@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Alert, Box, Center, CloseIcon, HStack, IconButton, Link, Text, VStack } from 'native-base';
+import { Alert, Box, Center, HStack, Link, Text, VStack } from 'native-base';
 
 import { ALERT_TIMEOUT } from 'shared/constants';
 import { ALERT_STYLE, MAX_Z_INDEX } from 'shared/constants/styles';
@@ -22,36 +22,25 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
   return show ? (
     <Box safeAreaTop='5' zIndex={MAX_Z_INDEX} bottom={bottom} position='absolute' alignSelf='center'>
       <Center>
-        <Alert maxW='96%' minW='96%' status={ALERT_STYLE[type]} colorScheme='info'>
+        <Alert maxW='100%' minW='100%' status={ALERT_STYLE[type]} colorScheme='info'>
           <VStack space={0.3} flexShrink={1} w='100%'>
-            <HStack flexShrink={1} alignItems='center' justifyContent='space-between'>
-              <HStack flexShrink={1} alignItems='center'>
-                <Alert.Icon />
-                <Text size='sm' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }} pl={3}>
-                  {title}
-                </Text>
-              </HStack>
-              <IconButton
-                variant='unstyled'
-                _pressed={{ bgColor: 'base.black:alpha.10', rounded: 'full', padding: 2 }}
-                padding={2}
-                _focus={{ borderWidth: 0 }}
-                icon={<CloseIcon size='3' />}
-                _icon={{ color: 'coolGray.600' }}
-                onPress={() => setShow(false)}
-              />
+            <HStack flexShrink={1} alignItems='center'>
+              <Alert.Icon />
+              <Text size='xs' fontWeight='medium' color='#3F3F3F' pl={3}>
+                {title}
+              </Text>
             </HStack>
             {content ? (
               <Box pl={7}>
                 {link ? (
-                  <Text size='sm'>
+                  <Text size='xs' color='#3F3F3F'>
                     {content}&nbsp;
                     <Link href={link} isExternal _text={{ marginTop: '6', paddingTop: '0.2', fontSize: '16', color: 'blue.500', fontWeight: 'bold' }}>
-                      link
+                      here
                     </Link>
                   </Text>
                 ) : (
-                  <Text size='2xs' fontWeight='medium' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.100' }}>
+                  <Text size='2xs' fontWeight='medium' color='#3F3F3F'>
                     {content}
                   </Text>
                 )}

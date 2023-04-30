@@ -75,4 +75,4 @@ export const COLOR_MODE = {
   DARK: 'DARK',
 };
 
-export const ALERT_TIMEOUT = 5000;
+export const ALERT_TIMEOUT = 4000;
