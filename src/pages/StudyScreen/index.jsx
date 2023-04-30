@@ -27,6 +27,7 @@ import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailList } from 'shared/utils/word';
 
+import AlphaSlider from './AlphaSlider';
 import FinishStudy from './FinishStudy';
 import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
@@ -257,6 +258,11 @@ const StudyScreen = ({ route }) => {
               </TouchableOpacity>
             </Box>
           </View>
+          {!shuffle ? (
+            <Box mb={5}>
+              <AlphaSlider />
+            </Box>
+          ) : null}
           <View flex={1} px={6}>
             <Box display='flex' flexDirection='row' justifyContent='space-between'>
               <UndoIconButton onPress={undoIconOnPress} />
