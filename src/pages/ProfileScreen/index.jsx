@@ -1,55 +1,28 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { Dimensions, Pressable } from 'react-native';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useIsFocused } from '@react-navigation/native';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-unresolved
-import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
 import { AntDesign } from '@expo/vector-icons';
 
-import { Avatar, Box, Center, Heading, HStack, Link, Modal, MoonIcon, SunIcon, Switch, Text, useColorMode, useTheme, View, VStack } from 'native-base';
+import { Avatar, Box, Center, Heading, HStack, Link, Modal, MoonIcon, SunIcon, Switch, Text, useColorMode, View, VStack } from 'native-base';
 
 import SplashScreen from 'pages/SplashScreen';
-import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
+import SignedInOut from 'components/SignedInOut';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
-import { ALERT_TYPES, COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants';
+import { COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
-import { SIGNIN_FAILED_MSG, WELCOME_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { FONT_STYLE_DISPLAY, MAX_Z_INDEX } from 'shared/constants/styles';
-import { AuthContext } from 'shared/hooks/useAuthContext';
+import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
-import logger from 'shared/utils/logger';
-import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize, isDarkMode } from 'shared/utils/style';
-import { getLocalDate } from 'shared/utils/time';
-
-import { showGoogleLoginErr } from './helper';
-
-const SignedInOutButton = ({ isSignedIn, onPress, iconColor }) => {
-  const icon = isSignedIn ? 'logout' : 'login';
-  const delay = isSignedIn ? 800 : 80;
-  return (
-    <Pressable onLongPress={onPress} style={{ zIndex: MAX_Z_INDEX }} delayLongPress={delay}>
-      <AntDesign
-        name={icon}
-        size={35}
-        color={iconColor}
-        position='absolute'
-        top={40}
-        right={4}
-        style={{ transform: [{ rotateY: isSignedIn ? '180deg' : '0deg' }] }}
-      />
-    </Pressable>
-  );
-};
 
 const ExternalLink = ({ link, text }) => (
   <Link isExternal href={link} _text={{ marginTop: 6, paddingTop: 1, paddingX: 2, fontSize: 16, color: 'blue.500', fontWeight: 'bold' }}>
@@ -94,28 +67,18 @@ const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: 'lg',
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
-  const [isSignedIn, setIsSignedIn] = useState(false);
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
   const [isSmallDevice, setIsSmallDevice] = useState(false);
   const [config, dispatch] = useReducer(configReducer, configInitialState);
-  const { signIn, signOut } = useContext(AuthContext);
   const isFocused = useIsFocused();
-  const [alertData, setAlertData] = useState({});
-  const { colors } = useTheme();
   const { colorMode, toggleColorMode } = useColorMode();
-  const iconColor = isDarkMode(colorMode) ? colors.vhdark[50] : colors.vhlight[50];
+  const iconColor = useIconStyle();
   const avatarColor = isDarkMode(colorMode) ? '#5F6FBA' : '#394374';
 
   useEffect(() => {
     const setup = async () => {
-      GoogleSignin.configure({ iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID });
-      const [stillSignedIn, latestUserInfo, latestConfig] = await Promise.all([
-        GoogleSignin.isSignedIn(),
-        storage.getData(STORAGE_USER),
-        storage.getData(STORAGE_CONFIG),
-      ]);
-      setIsSignedIn(stillSignedIn);
+      const [latestUserInfo, latestConfig] = await Promise.all([storage.getData(STORAGE_USER), storage.getData(STORAGE_CONFIG)]);
       setUserInfo(latestUserInfo);
       dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: latestConfig ?? DEFAULT_CONFIG });
       setInit(false);
@@ -140,54 +103,6 @@ const ProfileScreen = () => {
     const windowHeight = Dimensions.get('window').height;
     setIsSmallDevice(windowHeight <= SMALL_DEVICE_HEIGHT);
   }, []);
-
-  const oauthSignIn = async () => {
-    let oauthSucceed = false;
-    try {
-      setLoading(true);
-      // Always resolves to true on iOS. Presence of up-to-date Google Play Services is required to show the sign in modal
-      await GoogleSignin.hasPlayServices();
-      const uInfo = await GoogleSignin.signIn();
-      oauthSucceed = true;
-
-      const loginPayload = transformGoogleLoginResp(uInfo);
-      const { latestConfig, latestUser, isNewUser } = await signIn(loginPayload);
-      if (latestConfig) {
-        dispatch({ type: CONFIG_STATUS.OVERRIDE_BY_SERVER, payload: { ...latestConfig } });
-      }
-      if (isNewUser) {
-        setAlertData({
-          type: ALERT_TYPES.SUCCESS,
-          title: WELCOME_MSG.TITLE,
-          content: WELCOME_MSG.CONTENT,
-          link: EXTENSION_LINK,
-          ts: getLocalDate().toString(),
-        });
-      }
-      setUserInfo(latestUser);
-      setIsSignedIn(true);
-    } catch (err) {
-      if (oauthSucceed) {
-        // If OAuth signed in failed, either user cancelled it or there would be failed messages displayed on the oauth modal
-        setAlertData({ type: ALERT_TYPES.ERROR, title: SIGNIN_FAILED_MSG.TITLE, content: SIGNIN_FAILED_MSG.CONTENT, ts: getLocalDate().toString() });
-      }
-      showGoogleLoginErr(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const oauthSignOut = async () => {
-    try {
-      await GoogleSignin.signOut();
-      await signOut();
-    } catch (err) {
-      logger(err);
-    } finally {
-      setIsSignedIn(false); // Always let user signedout
-      setUserInfo({});
-    }
-  };
 
   const updateConfigToStorage = async ({ type, payload }) => {
     await storage.setData(STORAGE_CONFIG, { ...config, ...payload });
@@ -218,7 +133,7 @@ const ProfileScreen = () => {
     <SplashScreen />
   ) : (
     <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-      <SignedInOutButton iconColor={iconColor} isSignedIn={isSignedIn} onPress={isSignedIn ? oauthSignOut : oauthSignIn} />
+      <SignedInOut setLoading={setLoading} setUserInfo={setUserInfo} setConfig={payload => dispatch({ type: CONFIG_STATUS.OVERRIDE_BY_SERVER, payload })} />
       <AdvertisementModal iconColor={iconColor} />
       <View flex={1} />
       <View flex={14}>
@@ -292,15 +207,8 @@ const ProfileScreen = () => {
         </VStack>
       </View>
       <View flex={1} />
-      {alertData.type && <BottomAlert {...alertData} bottom={4} />}
     </Box>
   );
-};
-
-SignedInOutButton.propTypes = {
-  isSignedIn: PropTypes.bool.isRequired,
-  onPress: PropTypes.func.isRequired,
-  iconColor: PropTypes.string.isRequired,
 };
 
 AdvertisementModal.propTypes = {
