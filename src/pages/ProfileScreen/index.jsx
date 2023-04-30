@@ -156,13 +156,13 @@ const ProfileScreen = () => {
         dispatch({ type: CONFIG_STATUS.OVERRIDE_BY_SERVER, payload: { ...latestConfig } });
       }
       if (isNewUser) {
-      setAlertData({
-        type: ALERT_TYPES.SUCCESS,
-        title: WELCOME_MSG.TITLE,
-        content: WELCOME_MSG.CONTENT,
-        link: EXTENSION_LINK,
-        ts: getLocalDate().toString(),
-      });
+        setAlertData({
+          type: ALERT_TYPES.SUCCESS,
+          title: WELCOME_MSG.TITLE,
+          content: WELCOME_MSG.CONTENT,
+          link: EXTENSION_LINK,
+          ts: getLocalDate().toString(),
+        });
       }
       setUserInfo(latestUser);
       setIsSignedIn(true);
