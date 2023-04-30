@@ -47,9 +47,9 @@ Select.defaultProps = {
   isDisabled: false,
   displayFunc: x => x,
   height: 10,
-  fontSize: 16,
+  fontSize: 15,
   minWidth: 150,
-  maxWidth: '100%',
+  maxWidth: '99%',
 };
 
 export default Select;
