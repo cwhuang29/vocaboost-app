@@ -3,9 +3,7 @@ import { WORD_LIST } from 'shared/constants/words';
 
 import { shuffleArray } from './arrayHelpers';
 
-export const genWordList = () => [...WORD_LIST.GRE, ...WORD_LIST.TOEFL].map(item => item.word);
-
-export const genWordDetailList = ({ type, shuffle = true }) => {
+export const genWordDetailList = ({ type, shuffle = false }) => {
   let arr = [];
   if (type === WORD_LIST_TYPE.GRE) {
     arr = WORD_LIST.GRE;
@@ -19,12 +17,7 @@ export const genWordDetailList = ({ type, shuffle = true }) => {
   return shuffle ? shuffleArray(arr) : arr;
 };
 
-export const genWordDetailMap = ({ type, shuffle = true }) => {
+export const genWordDetailMap = ({ type, shuffle = false }) => {
   const wordList = genWordDetailList({ type, shuffle });
-  const obj = {};
-  wordList.forEach(item => {
-    obj[item.id] = item;
-  });
-  return obj;
-  // return new Map(wordList.map(item => [item.id, item])); // Map goes wrong in production build
+  return new Map(wordList.map(item => [item.id, item])); // Map goes wrong in production build
 };
