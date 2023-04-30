@@ -5,6 +5,7 @@ export const configInitialState = {
   language: DEFAULT_CONFIG.language,
   fontSize: DEFAULT_CONFIG.fontSize,
   fontStyle: DEFAULT_CONFIG.fontStyle,
+  colorMode: DEFAULT_CONFIG.colorMode,
 };
 
 export const configReducer = (state, action) => {

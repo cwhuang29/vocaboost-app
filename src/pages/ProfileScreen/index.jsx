@@ -90,13 +90,14 @@ const AdvertisementModal = ({ iconColor }) => {
 };
 
 const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 };
-const normalDeviceStyle = { marginBottom: 3, avatarSize: '2xl', headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 4 };
+const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 4 };
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [isSmallDevice, setIsSmallDevice] = useState(false);
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const { signIn, signOut } = useContext(AuthContext);
   const isFocused = useIsFocused();
@@ -105,7 +106,6 @@ const ProfileScreen = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const iconColor = isDarkMode(colorMode) ? colors.vhdark[50] : colors.vhlight[50];
   const avatarColor = isDarkMode(colorMode) ? '#5F6FBA' : '#394374';
-  const [isSmallDevice, setIsSmallDevice] = useState(false);
 
   useEffect(() => {
     const setup = async () => {
@@ -257,7 +257,7 @@ const ProfileScreen = () => {
             placeholder='Choose Language'
             isDisabled={loading}
           />
-          <Heading size={deviceStyle.menuHeadingSize}>Font Size</Heading>
+          <Heading size={deviceStyle.menuHeadingSize}>Font size and style</Heading>
           <Select
             options={FONT_SIZE}
             displayFunc={s => toCapitalize(FONT_SIZE[s])}
@@ -266,7 +266,6 @@ const ProfileScreen = () => {
             placeholder='Choose Font Size'
             isDisabled={loading}
           />
-          <Heading size={deviceStyle.menuHeadingSize}>Font Style</Heading>
           <Select
             options={FONT_STYLE}
             displayFunc={s => FONT_STYLE_DISPLAY[FONT_STYLE[s]]}
@@ -279,12 +278,14 @@ const ProfileScreen = () => {
           <HStack mt={0.2} alignItems='center'>
             <SunIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
             <Switch
+              isChecked={isDarkMode(config.colorMode)}
+              onToggle={onColorModeChange}
               mx={4}
               size='md'
-              trackColor={{ false: '#DFDFDF', true: '#C5C5C5' }}
-              thumbColor={colorMode === COLOR_MODE.DARK.toLowerCase() ? 'vhlight.200' : 'vhdark.200'}
-              isChecked={isDarkMode(colorMode)}
-              onToggle={onColorModeChange}
+              onTrackColor='#ABABAB'
+              onThumbColor='vhdark.200'
+              offTrackColor='#DFDFDF'
+              offThumbColor='vhlight.200'
             />
             <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
           </HStack>
