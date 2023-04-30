@@ -6,7 +6,6 @@ import { useFonts } from 'expo-font';
 import { NativeBaseProvider, useColorMode, useTheme } from 'native-base';
 
 import HomeScreen from 'pages/HomeScreen';
-import LoginScreen from 'pages/LoginScreen';
 import ProfileScreen from 'pages/ProfileScreen';
 import SplashScreen from 'pages/SplashScreen';
 import StudyScreen from 'pages/StudyScreen';
@@ -92,8 +91,7 @@ const AppCore = () => {
           <Stack.Screen name='BottomTab' component={BottomTab} />
           <Stack.Screen name='Home' component={HomeScreen} />
           <Stack.Screen name='Study' component={StudyScreen} />
-          <Stack.Screen name='Profile' component={ProfileScreen} />
-          <Stack.Screen name='Login' component={LoginScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
+          <Stack.Screen name='Profile' component={ProfileScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
         </Stack.Navigator>
       </AuthContext.Provider>
     </NavigationContainer>
