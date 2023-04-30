@@ -6,7 +6,7 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import PropTypes from 'prop-types';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
-import { Box, Icon, IconButton, Switch, Text, View } from 'native-base';
+import { Box, Icon, IconButton, Text, View } from 'native-base';
 
 import SplashScreen from 'pages/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
@@ -17,7 +17,6 @@ import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
-import useToggle from 'shared/hooks/useToggle';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
@@ -29,6 +28,7 @@ import { getLocalDate } from 'shared/utils/time';
 import { genWordDetailList } from 'shared/utils/word';
 
 import FinishStudy from './FinishStudy';
+import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
 
 const getWebSocketURL = () => `${apis.HOST}${apis.V1.SETTING_COLLECTED_WORDS}`;
@@ -95,9 +95,9 @@ const StudyScreen = ({ route }) => {
   const [wordData, setWordData] = useState({});
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
-  const allWordsList = useMemo(() => getWordsList(route.params.type), [route.params.type]);
+  const [shuffle, setShuffle] = useState(true);
+  const allWordsList = useMemo(() => shuffleArray(getWordsList(route.params.type), [route.params.type]));
   const allWordsObject = useMemo(() => getWordsObjectFromList(allWordsList), [allWordsList]);
-  const [shuffle, setShuffle] = useToggle(false);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
   // const connStatus = getWSConnStatusDisplay(readyState);
 
@@ -259,9 +259,9 @@ const StudyScreen = ({ route }) => {
           </View>
           <View flex={1} px={6}>
             <Box display='flex' flexDirection='row' justifyContent='space-between'>
-              <Switch isChecked={shuffle} onToggle={setShuffle} />
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
+              <SortingMenu shuffle={shuffle} setShuffle={setShuffle} />
             </Box>
           </View>
         </>
