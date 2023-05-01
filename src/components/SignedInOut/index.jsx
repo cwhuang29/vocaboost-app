@@ -2,9 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
+import { exchangeCodeAsync, makeRedirectUri, ResponseType, useAuthRequest, useAutoDiscovery } from 'expo-auth-session';
+import * as WebBrowser from 'expo-web-browser';
 // eslint-disable-next-line import/no-unresolved
 import { GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
 import { AntDesign } from '@expo/vector-icons';
+
+import { Button, Text } from 'native-base';
 
 import { BottomAlert } from 'components/Alerts';
 import { ALERT_TYPES } from 'shared/constants';
@@ -18,20 +22,80 @@ import logger from 'shared/utils/logger';
 import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 import { getLocalDate } from 'shared/utils/time';
 
+import jwtDecode from 'jwt-decode';
+
 import { showGoogleLoginErr } from './loginHelper';
 
 const authIcon = { [AUTH_TYPE.LOGIN]: 'logout', [AUTH_TYPE.LOGOUT]: 'login' };
 
 const authDelay = { [AUTH_TYPE.LOGIN]: 60, [AUTH_TYPE.LOGOUT]: 750 };
 
+const msOauthEndpoint = 'https://login.microsoftonline.com/common/v2.0';
+
+const msOauthScopes = ['openid', 'profile', 'email', 'offline_access'];
+
+const CLIENT_ID = '';
+
+WebBrowser.maybeCompleteAuthSession(); // Dismiss the web popup. Oterwise the popup window will not close
+
 const SignedInOut = ({ setLoading, setUserInfo, setConfig }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [alertData, setAlertData] = useState({});
   const { signIn, signOut } = useContext(AuthContext);
   const iconColor = useIconStyle();
+  const discovery = useAutoDiscovery(msOauthEndpoint); // Since account is a personal account and not in a tenant, so need to bypass the tenant-level login
+  const [request, response, promptAsync] = useAuthRequest(
+    {
+      clientId: CLIENT_ID,
+      scopes: msOauthScopes,
+      responseType: ResponseType.Code,
+      codeChallenge: 'vocaboost411',
+      redirectUri: makeRedirectUri({ scheme: 'msauth.vocaboost.com', path: 'auth' }), // Redirect url: msauth.vocaboost.com://auth
+    },
+    discovery
+  );
   const authStatus = isSignedIn ? AUTH_TYPE.LOGIN : AUTH_TYPE.LOGOUT;
   const icon = authIcon[authStatus];
   const delay = authDelay[authStatus];
+
+  const getMSOauthAccessToken = async authCode => {
+    try {
+      const tokenResult = await exchangeCodeAsync(
+        {
+          code: authCode,
+          clientId: CLIENT_ID,
+          redirectUri: makeRedirectUri({ scheme: 'msauth.vocaboost.com', path: 'auth' }), // Same as above
+          scopes: msOauthScopes,
+          grant_type: 'authorization_code',
+          extraParams: { code_verifier: request?.codeVerifier || '' },
+        },
+        discovery
+      );
+      return tokenResult;
+    } catch (err) {
+      logger(`MS Oauth login error: ${err}`);
+    }
+    return null;
+  };
+
+  React.useEffect(() => {
+    const getToken = async () => {
+      const { code } = response.params; // The authorization code that the app requested. The app can use the authorization code to request an access token for the target resource. Authorization codes are short lived, typically expiring after about 10 minutes.
+      const tokenResult = await getMSOauthAccessToken(code);
+      if (tokenResult) {
+        const { idToken } = tokenResult;
+        const res = jwtDecode(idToken);
+        logger(`MS Oauth login result: ${JSON.stringify(res)}`);
+      }
+    };
+    if (response?.type === 'success') {
+      getToken();
+    }
+  }, [response]);
+
+  const msOauthButtonOnPress = () => {
+    promptAsync(); // A web browser will open up and prompt the user for authentication
+  };
 
   useEffect(() => {
     const setup = async () => {
@@ -94,6 +158,9 @@ const SignedInOut = ({ setLoading, setUserInfo, setConfig }) => {
 
   return (
     <>
+      <Button variant='vh1' top={30} right={4} isDisabled={!request} onPress={msOauthButtonOnPress}>
+        <Text>MS Login</Text>
+      </Button>
       <Pressable onLongPress={onPress} style={{ zIndex: MAX_Z_INDEX }} delayLongPress={delay}>
         <AntDesign
           name={icon}
