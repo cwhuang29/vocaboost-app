@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Pressable } from 'react-native';
+import { Image, Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 import { exchangeCodeAsync, makeRedirectUri, ResponseType, useAuthRequest, useAutoDiscovery } from 'expo-auth-session';
@@ -18,10 +18,12 @@ import { WELCOME_MSG } from 'shared/constants/messages';
 import { MAX_Z_INDEX } from 'shared/constants/styles';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
+import oauthService from 'shared/services/oauth.service';
 import logger from 'shared/utils/logger';
 import { transformGoogleLoginResp } from 'shared/utils/loginAPIFormatter';
 import { getLocalDate } from 'shared/utils/time';
 
+import { Buffer } from 'buffer';
 import jwtDecode from 'jwt-decode';
 
 import { showGoogleLoginErr } from './loginHelper';
@@ -40,6 +42,7 @@ WebBrowser.maybeCompleteAuthSession(); // Dismiss the web popup. Oterwise the po
 
 const SignedInOut = ({ setLoading, setUserInfo, setConfig }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [avatar, setAvatar] = useState('');
   const [alertData, setAlertData] = useState({});
   const { signIn, signOut } = useContext(AuthContext);
   const iconColor = useIconStyle();
@@ -79,17 +82,21 @@ const SignedInOut = ({ setLoading, setUserInfo, setConfig }) => {
   };
 
   React.useEffect(() => {
-    const getToken = async () => {
+    const getAzureUserData = async () => {
       const { code } = response.params; // The authorization code that the app requested. The app can use the authorization code to request an access token for the target resource. Authorization codes are short lived, typically expiring after about 10 minutes.
       const tokenResult = await getMSOauthAccessToken(code);
       if (tokenResult) {
-        const { idToken } = tokenResult;
-        const res = jwtDecode(idToken);
-        logger(`MS Oauth login result: ${JSON.stringify(res)}`);
+        const { accessToken, idToken } = tokenResult;
+        const userData = jwtDecode(idToken);
+        logger(`MS Oauth login result: ${JSON.stringify(userData)}`);
+
+        const avatarBinary = await oauthService.getAzureUserPhoto(accessToken);
+        const avatarString = Buffer.from(avatarBinary, 'binary').toString('base64'); // Convert binary image to base64 string
+        setAvatar(avatarString);
       }
     };
     if (response?.type === 'success') {
-      getToken();
+      getAzureUserData();
     }
   }, [response]);
 
@@ -156,6 +163,8 @@ const SignedInOut = ({ setLoading, setUserInfo, setConfig }) => {
 
   const onPress = authStatus === AUTH_TYPE.LOGIN ? oauthSignOut : oauthSignIn;
 
+  const base64Icon = `data:image/png;base64,${avatar}`;
+
   return (
     <>
       <Button variant='vh1' top={30} right={4} isDisabled={!request} onPress={msOauthButtonOnPress}>
@@ -172,6 +181,7 @@ const SignedInOut = ({ setLoading, setUserInfo, setConfig }) => {
           style={{ transform: [{ rotateY: authStatus === AUTH_TYPE.LOGIN ? '180deg' : '0deg' }] }}
         />
       </Pressable>
+      <Image alt='Text profile pic' style={{ width: 100, height: 80, borderWidth: 1, borderColor: 'red' }} source={{ uri: base64Icon }} />
       {alertData.type && <BottomAlert {...alertData} bottom={4} />}
     </>
   );
