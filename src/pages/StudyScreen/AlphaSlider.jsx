@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Box, Slider, Text } from 'native-base';
 
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWZ';
 
 const AlphaSlider = ({ handleSelectedLetterChange }) => {
   const [selectedLetter, setSelectedLetter] = useState('A');
@@ -24,7 +24,7 @@ const AlphaSlider = ({ handleSelectedLetterChange }) => {
         maxW='300'
         defaultValue={0}
         minValue={0}
-        maxValue={25}
+        maxValue={23}
         step={1}
         colorScheme='yellow'
         accessibilityLabel='Alphabet Slider'

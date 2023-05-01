@@ -152,20 +152,18 @@ const StudyScreen = ({ route }) => {
   }, [shuffle]);
 
   useUpdateEffect(() => {
-    const isDefaultWordListAndIsNotRandomMode = true; // TODO Revise var name and add condition
-    if (!isDefaultWordListAndIsNotRandomMode) {
+    if (route.params.type === WORD_LIST_TYPE.COLLECTED || shuffle) {
       return;
     }
-    const newWordList = allWordsList
-      .filter(w => w.word[0].toUpperCase() === selectedLetter)
-      .sort((w1, w2) => {
-        if (w1.word > w2.word) return 1;
-        if (w1.word < w2.word) return -1;
-        return 0;
-      });
+    const newWordList = allWordsList.sort((w1, w2) => {
+      if (w1.word > w2.word) return 1;
+      if (w1.word < w2.word) return -1;
+      return 0;
+    });
+    const startIndex = newWordList.findIndex(w => w.word.charAt(0).toUpperCase() === selectedLetter);
     setWordList(newWordList);
-    setWordIndex(0);
-    setWordData(newWordList[0]);
+    setWordIndex(startIndex);
+    setWordData(newWordList[startIndex]);
   }, [selectedLetter]);
 
   useEffect(() => {
