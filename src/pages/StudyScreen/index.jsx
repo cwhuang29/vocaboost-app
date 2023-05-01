@@ -151,14 +151,22 @@ const StudyScreen = ({ route }) => {
     setWordData(newWordList[0]);
   }, [shuffle]);
 
-  const handleSelectedLetterChange = () => {
-    setSelectedLetter(selectedLetter);
-    const startIndex = wordList.findIndex(word => word.charAt(0).toUpperCase() === selectedLetter);
-    const newWordList = [...wordList.slice(startIndex), ...wordList.slice(0, startIndex)];
+  useUpdateEffect(() => {
+    const isDefaultWordListAndIsNotRandomMode = true; // TODO Revise var name and add condition
+    if (!isDefaultWordListAndIsNotRandomMode) {
+      return;
+    }
+    const newWordList = allWordsList
+      .filter(w => w.word[0].toUpperCase() === selectedLetter)
+      .sort((w1, w2) => {
+        if (w1.word > w2.word) return 1;
+        if (w1.word < w2.word) return -1;
+        return 0;
+      });
     setWordList(newWordList);
     setWordIndex(0);
     setWordData(newWordList[0]);
-  };
+  }, [selectedLetter]);
 
   useEffect(() => {
     const setupWebSocket = async () => {
@@ -270,7 +278,7 @@ const StudyScreen = ({ route }) => {
           </View>
           {!shuffle ? (
             <Box mb={5}>
-              <AlphaSlider onSelectedLetterChange={handleSelectedLetterChange} />
+              <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
             </Box>
           ) : null}
           <View flex={1} px={6}>
