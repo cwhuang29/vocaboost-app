@@ -28,6 +28,7 @@ import { getLocalDate } from 'shared/utils/time';
 import { genWordDetailList } from 'shared/utils/word';
 
 import AlphaSlider from './AlphaSlider';
+import CollectedSortingMenu from './CollectedSortingMenu';
 import FinishStudy from './FinishStudy';
 import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
@@ -96,9 +97,12 @@ const StudyScreen = ({ route }) => {
   const [wordData, setWordData] = useState({});
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
-  const [shuffle, setShuffle] = useState(true);
+  const [shuffle, setShuffle] = useState(route.params.type !== WORD_LIST_TYPE.COLLECTED);
   const [selectedLetter, setSelectedLetter] = useState('A');
-  const allWordsList = useMemo(() => shuffleArray(getWordsList(route.params.type), [route.params.type]));
+  const allWordsList = useMemo(() => {
+    const wordsList = getWordsList(route.params.type);
+    return shuffle ? shuffleArray(wordsList) : wordsList;
+  }, [route.params.type, shuffle]);
   const allWordsObject = useMemo(() => getWordsObjectFromList(allWordsList), [allWordsList]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
   // const connStatus = getWSConnStatusDisplay(readyState);
@@ -274,16 +278,20 @@ const StudyScreen = ({ route }) => {
               </TouchableOpacity>
             </Box>
           </View>
-          {!shuffle ? (
+          {route.params.type === WORD_LIST_TYPE.COLLECTED ? null : (
             <Box mb={5}>
               <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
             </Box>
-          ) : null}
+          )}
           <View flex={1} px={6}>
             <Box display='flex' flexDirection='row' justifyContent='space-between'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
-              <SortingMenu shuffle={shuffle} setShuffle={setShuffle} />
+              {route.params.type === WORD_LIST_TYPE.COLLECTED ? (
+                <CollectedSortingMenu shuffle={shuffle} setShuffle={setShuffle} />
+              ) : (
+                <SortingMenu shuffle={shuffle} setShuffle={setShuffle} />
+              )}
             </Box>
           </View>
         </>
