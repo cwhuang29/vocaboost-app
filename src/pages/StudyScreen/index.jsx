@@ -88,6 +88,13 @@ const UndoIconButton = ({ onPress }) => {
   );
 };
 
+const sortAlphabetically = wordList =>
+  [...wordList].sort((w1, w2) => {
+    if (w1.word > w2.word) return 1;
+    if (w1.word < w2.word) return -1;
+    return 0;
+  });
+
 const StudyScreen = ({ route }) => {
   const accessToken = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -144,11 +151,7 @@ const StudyScreen = ({ route }) => {
     } else if (route.params.type === WORD_LIST_TYPE.COLLECTED) {
       newWordList = extractCollectedWordsByTime(allWordsObject, config.collectedWords);
     } else {
-      newWordList = [...wordList].sort((w1, w2) => {
-        if (w1.word > w2.word) return 1;
-        if (w1.word < w2.word) return -1;
-        return 0;
-      });
+      newWordList = sortAlphabetically(allWordsList);
     }
     setWordList(newWordList);
     setWordIndex(0);
@@ -159,11 +162,7 @@ const StudyScreen = ({ route }) => {
     if (route.params.type === WORD_LIST_TYPE.COLLECTED || shuffle) {
       return;
     }
-    const newWordList = allWordsList.sort((w1, w2) => {
-      if (w1.word > w2.word) return 1;
-      if (w1.word < w2.word) return -1;
-      return 0;
-    });
+    const newWordList = sortAlphabetically(allWordsList);
     const startIndex = newWordList.findIndex(w => w.word.charAt(0).toUpperCase() === selectedLetter);
     setWordList(newWordList);
     setWordIndex(startIndex);
@@ -278,7 +277,7 @@ const StudyScreen = ({ route }) => {
               </TouchableOpacity>
             </Box>
           </View>
-          {route.params.type === WORD_LIST_TYPE.COLLECTED ? null : (
+          {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
             <Box mb={5}>
               <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
             </Box>

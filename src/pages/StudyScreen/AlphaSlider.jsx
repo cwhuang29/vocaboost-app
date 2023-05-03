@@ -6,7 +6,7 @@ import { Box, Slider, Text } from 'native-base';
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWZ';
 
 const AlphaSlider = ({ handleSelectedLetterChange }) => {
-  const [selectedLetter, setSelectedLetter] = useState('A');
+  const [selectedLetter, setSelectedLetter] = useState(alphabet[0]);
 
   const handleSliderChange = value => {
     const letter = alphabet.charAt(value);
@@ -24,7 +24,7 @@ const AlphaSlider = ({ handleSelectedLetterChange }) => {
         maxW='300'
         defaultValue={0}
         minValue={0}
-        maxValue={23}
+        maxValue={alphabet.length - 1}
         step={1}
         colorScheme='yellow'
         accessibilityLabel='Alphabet Slider'
