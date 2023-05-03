@@ -36,7 +36,7 @@ const DisplayText = ({ children, size, shrink, fontStyle }) => (
   </Text>
 );
 
-const Detail = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
+const WordCard = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
   display && (
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
@@ -79,7 +79,7 @@ DisplayText.defaultProps = {
   shrink: 1,
 };
 
-Detail.propTypes = {
+WordCard.propTypes = {
   display: PropTypes.bool,
   wordData: PropTypes.object.isRequired,
   language: PropTypes.string.isRequired,
@@ -90,8 +90,8 @@ Detail.propTypes = {
   onCollectWord: PropTypes.func.isRequired,
 };
 
-Detail.defaultProps = {
+WordCard.defaultProps = {
   display: true,
 };
 
-export default Detail;
+export default WordCard;
