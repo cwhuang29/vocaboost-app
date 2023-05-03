@@ -28,7 +28,6 @@ import { getLocalDate } from 'shared/utils/time';
 import { genWordDetailList } from 'shared/utils/word';
 
 import AlphaSlider from './AlphaSlider';
-import CollectedSortingMenu from './CollectedSortingMenu';
 import FinishStudy from './FinishStudy';
 import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
@@ -105,6 +104,7 @@ const StudyScreen = ({ route }) => {
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
   const [shuffle, setShuffle] = useState(route.params.type !== WORD_LIST_TYPE.COLLECTED);
+  const [alphabetize, setAlphabetize] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('A');
   const allWordsList = useMemo(() => {
     const wordsList = getWordsList(route.params.type);
@@ -286,11 +286,7 @@ const StudyScreen = ({ route }) => {
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
-              {route.params.type === WORD_LIST_TYPE.COLLECTED ? (
-                <CollectedSortingMenu shuffle={shuffle} setShuffle={setShuffle} />
-              ) : (
-                <SortingMenu shuffle={shuffle} setShuffle={setShuffle} />
-              )}
+              <SortingMenu type={route.params.type} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
             </Box>
           </View>
         </>
