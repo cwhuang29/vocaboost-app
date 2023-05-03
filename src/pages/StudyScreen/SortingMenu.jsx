@@ -11,41 +11,40 @@ const SortingMenuTrigger = props => (
   </Pressable>
 );
 
-const SortingMenu = ({ type, shuffle, setShuffle, alphabetize, setAlphabetize }) => (
-  <Menu w='200' trigger={SortingMenuTrigger} mr={2}>
-    {type === WORD_LIST_TYPE.COLLECTED && (
-      <Menu.Item
-        onPress={() => {
-          setShuffle(false);
-          setAlphabetize(false);
-        }}
-        isDisabled={!shuffle && !alphabetize}
-      >
-        <Text fontSize='md'>Sort by time</Text>
+const SortingMenu = ({ type, shuffle, setShuffle, alphabetize, setAlphabetize }) => {
+  const sortByTimeOnPress = () => {
+    setShuffle(false);
+    setAlphabetize(false);
+  };
+
+  const shuffleOnPress = () => {
+    setShuffle(true);
+    setAlphabetize(false);
+  };
+
+  const sortByAlphabeticalOrder = () => {
+    setAlphabetize(true);
+    setShuffle(false);
+  };
+
+  return (
+    <Menu w='200' trigger={SortingMenuTrigger} mr={2}>
+      {type === WORD_LIST_TYPE.COLLECTED && (
+        <Menu.Item onPress={sortByTimeOnPress} isDisabled={!shuffle && !alphabetize}>
+          <Text fontSize='md'>Sort by time</Text>
+        </Menu.Item>
+      )}
+      <Menu.Item onPress={shuffleOnPress} isDisabled={shuffle}>
+        <Text fontSize='md'>Shuffle</Text>
       </Menu.Item>
-    )}
-    <Menu.Item
-      onPress={() => {
-        setShuffle(true);
-        setAlphabetize(false);
-      }}
-      isDisabled={shuffle}
-    >
-      <Text fontSize='md'>Shuffle</Text>
-    </Menu.Item>
-    {type !== WORD_LIST_TYPE.COLLECTED && (
-      <Menu.Item
-        onPress={() => {
-          setAlphabetize(true);
-          setShuffle(false);
-        }}
-        isDisabled={alphabetize}
-      >
-        <Text fontSize='md'>Alphabetize</Text>
-      </Menu.Item>
-    )}
-  </Menu>
-);
+      {type !== WORD_LIST_TYPE.COLLECTED && (
+        <Menu.Item onPress={sortByAlphabeticalOrder} isDisabled={alphabetize}>
+          <Text fontSize='md'>Alphabetize</Text>
+        </Menu.Item>
+      )}
+    </Menu>
+  );
+};
 
 SortingMenu.propTypes = {
   type: PropTypes.string.isRequired,
