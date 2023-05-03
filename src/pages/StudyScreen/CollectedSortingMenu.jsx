@@ -5,18 +5,18 @@ import { Box, HamburgerIcon, Menu, Pressable, Text } from 'native-base';
 
 const SortingMenuTrigger = props => (
   <Pressable accessibilityLabel='Default word lists sorting menu' {...props}>
-    <HamburgerIcon />
+    <HamburgerIcon size={6} />
   </Pressable>
 );
 
 const CollectedSortingMenu = ({ shuffle, setShuffle }) => (
   <Box w='99%' alignItems='center'>
-    <Menu w='170' trigger={SortingMenuTrigger}>
+    <Menu w='99%' trigger={SortingMenuTrigger} mr={5}>
       <Menu.Item onPress={() => setShuffle(false)} isDisabled={!shuffle}>
-        <Text>Sort by time</Text>
+        <Text fontSize='md'>Sort by time</Text>
       </Menu.Item>
       <Menu.Item onPress={() => setShuffle(true)} isDisabled={shuffle}>
-        <Text>Shuffle</Text>
+        <Text fontSize='md'>Shuffle</Text>
       </Menu.Item>
     </Menu>
   </Box>

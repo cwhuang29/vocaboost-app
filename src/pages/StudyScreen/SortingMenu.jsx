@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Box, HamburgerIcon, Menu, Pressable, Text } from 'native-base';
+import { HamburgerIcon, Menu, Pressable, Text } from 'native-base';
 
 const SortingMenuTrigger = props => (
   <Pressable accessibilityLabel='Default word lists sorting menu' {...props}>
-    <HamburgerIcon />
+    <HamburgerIcon size={6} />
   </Pressable>
 );
 
 const SortingMenu = ({ shuffle, setShuffle }) => (
-  <Box w='99%' alignItems='center'>
-    <Menu w='170' trigger={SortingMenuTrigger}>
+    <Menu w='160' trigger={SortingMenuTrigger} margin={5} padding={3}>
       <Menu.Item onPress={() => setShuffle(true)} isDisabled={shuffle}>
-        <Text>Shuffle</Text>
+        <Text fontSize='md'>Shuffle</Text>
       </Menu.Item>
       <Menu.Item onPress={() => setShuffle(false)} isDisabled={!shuffle}>
-        <Text>Alphabetize</Text>
+        <Text fontSize='md'>Alphabetize</Text>
       </Menu.Item>
     </Menu>
-  </Box>
 );
 
 SortingMenu.propTypes = {

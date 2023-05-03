@@ -283,7 +283,7 @@ const StudyScreen = ({ route }) => {
             </Box>
           )}
           <View flex={1} px={6}>
-            <Box display='flex' flexDirection='row' justifyContent='space-between'>
+            <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
               {route.params.type === WORD_LIST_TYPE.COLLECTED ? (
