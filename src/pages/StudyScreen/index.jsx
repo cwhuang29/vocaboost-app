@@ -17,6 +17,7 @@ import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
@@ -24,28 +25,31 @@ import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
-import { genWordDetailMap } from 'shared/utils/word';
+import { genWordDetailList } from 'shared/utils/word';
 
-import Detail from './Detail';
+import AlphaSlider from './AlphaSlider';
 import FinishStudy from './FinishStudy';
+import SortingMenu from './SortingMenu';
+import WordCard from './WordCard';
 
 const getWebSocketURL = () => `${apis.HOST}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
-const getWords = type => {
+const getWordsList = type => {
   const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
-  return genWordDetailMap({ type: queryType });
+  return genWordDetailList({ type: queryType });
 };
 
-// Note: Map goes wrong in production build
-// const filterCollectedWords = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
-
-const filterCollectedWords = (wordsMap, ids) => {
-  const map = {};
-  ids.forEach(id => {
-    map[id] = wordsMap[id];
+const getWordsObjectFromList = wordList => {
+  const obj = {};
+  wordList.forEach((item, idx) => {
+    obj[item.id] = wordList[idx];
   });
-  return map;
+  return obj;
 };
+
+// Note: Map works in simulator but errors out in production build
+// const extractCollectedWordsByTime = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
+const extractCollectedWordsByTime = (wordObj, ids) => ids.map(id => wordObj[id]);
 
 const SpeakerIconButton = ({ onPress }) => {
   const onPressThenStop = e => {
@@ -83,18 +87,31 @@ const UndoIconButton = ({ onPress }) => {
   );
 };
 
+const sortAlphabetically = wordList =>
+  [...wordList].sort((w1, w2) => {
+    if (w1.word > w2.word) return 1;
+    if (w1.word < w2.word) return -1;
+    return 0;
+  });
+
 const StudyScreen = ({ route }) => {
   const accessToken = useRef(null);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
-  const [currIdx, setCurrIdx] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [wordList, setWordList] = useState(null);
+  const [wordData, setWordData] = useState({});
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
-  const allWordsMap = useMemo(() => getWords(route.params.type), [route.params.type]);
-  const [wordsMap, setWordsMap] = useState(null);
-  const [wordsMapKeys, setWordsMapKeys] = useState(null);
+  const [shuffle, setShuffle] = useState(route.params.type !== WORD_LIST_TYPE.COLLECTED);
+  const [alphabetize, setAlphabetize] = useState(false);
+  const [selectedLetter, setSelectedLetter] = useState('A');
+  const allWordsList = useMemo(() => {
+    const wordsList = getWordsList(route.params.type);
+    return shuffle ? shuffleArray(wordsList) : wordsList;
+  }, [route.params.type, shuffle]);
+  const allWordsObject = useMemo(() => getWordsObjectFromList(allWordsList), [allWordsList]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
-  const [wordData, setWordData] = useState({});
   // const connStatus = getWSConnStatusDisplay(readyState);
 
   useEffect(() => {
@@ -119,15 +136,38 @@ const StudyScreen = ({ route }) => {
       accessToken.current = token;
       setConfig(finalConfig);
 
-      const wMap = route.params.type === WORD_LIST_TYPE.COLLECTED ? filterCollectedWords(allWordsMap, finalConfig.collectedWords) : allWordsMap;
-      const wMapKeys = shuffleArray(Object.keys(wMap));
-      setWordsMap(wMap);
-      setWordsMapKeys(wMapKeys);
-      setWordData(wMap[wMapKeys[currIdx]]);
+      const wList = route.params.type === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(allWordsObject, finalConfig.collectedWords) : allWordsList;
+      setWordList(wList);
+      setWordData(wList[wordIndex]);
       setLoading(false);
     };
     setup();
   }, []);
+
+  useUpdateEffect(() => {
+    let newWordList = [];
+    if (shuffle) {
+      newWordList = shuffleArray(wordList);
+    } else if (route.params.type === WORD_LIST_TYPE.COLLECTED) {
+      newWordList = extractCollectedWordsByTime(allWordsObject, config.collectedWords);
+    } else {
+      newWordList = sortAlphabetically(allWordsList);
+    }
+    setWordList(newWordList);
+    setWordIndex(0);
+    setWordData(newWordList[0]);
+  }, [shuffle]);
+
+  useUpdateEffect(() => {
+    if (route.params.type === WORD_LIST_TYPE.COLLECTED || shuffle) {
+      return;
+    }
+    const newWordList = sortAlphabetically(allWordsList);
+    const startIndex = newWordList.findIndex(w => w.word.charAt(0).toUpperCase() === selectedLetter);
+    setWordList(newWordList);
+    setWordIndex(startIndex);
+    setWordData(newWordList[startIndex]);
+  }, [selectedLetter]);
 
   useEffect(() => {
     const setupWebSocket = async () => {
@@ -160,17 +200,6 @@ const StudyScreen = ({ route }) => {
     wsMessageOnReceive();
   }, [lastJsonMessage]);
 
-  const onPress = () => {
-    setCurrIdx(prevIdx => (prevIdx + 1 < wordsMapKeys.length ? prevIdx + 1 : 0));
-    setWordData(wordsMap[wordsMapKeys[currIdx + 1 < wordsMapKeys.length ? currIdx + 1 : 0]]);
-  };
-
-  const onCopyText = text => () => {
-    Clipboard.setString(text);
-    setDisplayCopyText(true);
-    setTimeout(() => setDisplayCopyText(false), COPY_TEXT_ALERT_TIME_PERIOD);
-  };
-
   const onCollectWord =
     ({ id, isCollected }) =>
     async () => {
@@ -185,9 +214,20 @@ const StudyScreen = ({ route }) => {
       }
     };
 
+  const onCopyText = text => () => {
+    Clipboard.setString(text);
+    setDisplayCopyText(true);
+    setTimeout(() => setDisplayCopyText(false), COPY_TEXT_ALERT_TIME_PERIOD);
+  };
+
+  const onPress = () => {
+    setWordIndex(prevIdx => (prevIdx + 1 < wordList.length ? prevIdx + 1 : 0));
+    setWordData(wordList[wordIndex + 1 < wordList.length ? wordIndex + 1 : 0]);
+  };
+
   const undoIconOnPress = () => {
-    setCurrIdx(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordsMapKeys.length - 1));
-    setWordData(wordsMap[wordsMapKeys[currIdx > 0 ? currIdx - 1 : wordsMapKeys.length - 1]]);
+    setWordIndex(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordList.length - 1));
+    setWordData(wordList[wordIndex > 0 ? wordIndex - 1 : wordList.length - 1]);
   };
 
   const speackerIconOnPress = text => () => {
@@ -223,7 +263,7 @@ const StudyScreen = ({ route }) => {
           <View flex={6} px={8} justifyContent='flex-start'>
             <Box width='100%'>
               <TouchableOpacity onPress={onPress} width='100%'>
-                <Detail
+                <WordCard
                   wordData={wordData}
                   language={config.language}
                   fontSize={config.fontSize}
@@ -237,10 +277,16 @@ const StudyScreen = ({ route }) => {
               </TouchableOpacity>
             </Box>
           </View>
+          {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
+            <Box mb={5}>
+              <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
+            </Box>
+          )}
           <View flex={1} px={6}>
-            <Box display='flex' flexDirection='row' justifyContent='space-between'>
+            <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
+              <SortingMenu type={route.params.type} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
             </Box>
           </View>
         </>
