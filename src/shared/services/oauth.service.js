@@ -3,9 +3,9 @@ import { extractErrorMessage } from 'shared/utils/handleErrorMessage';
 
 import axios from 'axios';
 
-const getAzureUserPhoto = accessToken =>
+const getAzureUserPhoto = ({ accessToken }) =>
   axios
-    .get(API.OAUTH.AZURE.AVATAR, {
+    .get(API.OAUTH.AZURE.AVATAR_360, {
       headers: { Authorization: `Bearer ${accessToken}` },
       responseType: 'arraybuffer', // Note: blob is a browser-only option
     })
