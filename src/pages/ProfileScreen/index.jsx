@@ -133,13 +133,11 @@ const ProfileScreen = () => {
 
   const deviceStyle = isSmallDevice ? smallDeviceStyle : normalDeviceStyle;
 
-  const isAvatarBase64 = userInfo?.avatar?.startsWith('data');
-
   return init ? (
     <SplashScreen />
   ) : (
     <Box safeAreaY='12' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-      <Box alignItems='center' position='absolute' style={{ top: 48, right: 20 }}>
+      <Box alignItems='center' position='absolute' style={{ top: 52, right: 20 }}>
         <AdvertisementModal iconColor={iconColor} />
         <SignedInOut
           setLoading={setLoading}
@@ -161,14 +159,14 @@ const ProfileScreen = () => {
       </Avatar>
       <Center mb={deviceStyle.marginBottom}>
         <Heading size={deviceStyle.headingSize} mb={3}>
-          {userInfo?.firstName ?? ' '}
+          {userInfo?.firstName ?? ''}
         </Heading>
         <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
           You have collected{' '}
           <Text bold color='vhlight.800'>
             {config.collectedWords?.length ?? '0'}
           </Text>{' '}
-          words!{String(isAvatarBase64)}
+          words!
         </Text>
       </Center>
       <VStack space={deviceStyle.spacing}>
