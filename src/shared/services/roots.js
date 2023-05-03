@@ -1,13 +1,14 @@
-import apis, { ALLOWED_RETRY_ENDPOINTS, REQ_RETRY_COUNT } from 'shared/constants/apis';
+import { ALLOWED_RETRY_ENDPOINTS, REQ_RETRY_COUNT } from 'shared/constants/apis';
 import { HEADER_CSRF_TOKEN, HEADER_RETRY_COUNT, HEADER_SOURCE } from 'shared/constants/headers';
 import { STORAGE_AUTH_TOKEN } from 'shared/constants/storage';
 import storage from 'shared/storage';
+import { getBaseURL } from 'shared/utils/api';
 import logger from 'shared/utils/logger';
 
 import axios from 'axios';
 
 const httpConfig = {
-  baseURL: apis.HOST,
+  baseURL: getBaseURL(),
   withCredentials: true, // Indicates whether or not cross-site Access-Control requests should be made using credentials
   xsrfHeaderName: HEADER_CSRF_TOKEN, // the name of the http header that carries the xsrf token value
   xsrfCookieName: 'csrftoken', // The name of the cookie to use as a value for xsrf token
@@ -24,7 +25,7 @@ const beforeReqIsSend = async config => {
   if (token && !config.headers.Authorization) {
     Object.assign(config.headers, { ...config.headers, Authorization: `Bearer ${token}` });
   }
-  logger(config);
+  logger(`Axios send request. Method: ${config.method}. Base URL: ${config.baseURL}. URL: ${config.url}. Headers: ${config.headers}. `);
   return config;
 };
 
