@@ -17,6 +17,7 @@ import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+import { ALPHABET } from 'shared/constants/words/alphabet';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
@@ -105,7 +106,7 @@ const StudyScreen = ({ route }) => {
   const [displayCopyText, setDisplayCopyText] = useState(false);
   const [shuffle, setShuffle] = useState(route.params.type !== WORD_LIST_TYPE.COLLECTED);
   const [alphabetize, setAlphabetize] = useState(false);
-  const [selectedLetter, setSelectedLetter] = useState('A');
+  const [selectedLetter, setSelectedLetter] = useState(ALPHABET[0]);
   const allWordsList = useMemo(() => {
     const wordsList = getWordsList(route.params.type);
     return shuffle ? shuffleArray(wordsList) : wordsList;
