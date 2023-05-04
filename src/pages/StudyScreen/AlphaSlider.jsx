@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Box, Slider, Text } from 'native-base';
 
 import { ALPHABET } from 'shared/constants/words/alphabet';
 
-const AlphaSlider = ({ handleSelectedLetterChange }) => {
-  const [selectedLetter, setSelectedLetter] = useState(ALPHABET[0]);
-
+const AlphaSlider = ({ selectedLetter, setSelectedLetter, setIsUndoing }) => {
   const handleSliderChange = value => {
     const letter = ALPHABET.charAt(value);
     setSelectedLetter(letter);
-    handleSelectedLetterChange(letter);
+    setIsUndoing(false);
   };
 
   return (
@@ -40,7 +38,9 @@ const AlphaSlider = ({ handleSelectedLetterChange }) => {
 };
 
 AlphaSlider.propTypes = {
-  handleSelectedLetterChange: PropTypes.func.isRequired,
+  selectedLetter: PropTypes.string.isRequired,
+  setSelectedLetter: PropTypes.func.isRequired,
+  setIsUndoing: PropTypes.func.isRequired,
 };
 
 export default AlphaSlider;
