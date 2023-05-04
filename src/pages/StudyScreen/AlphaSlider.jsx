@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Box, Slider, Text } from 'native-base';
 
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWZ';
+import { ALPHABET } from 'shared/constants/words/alphabet';
 
-const AlphaSlider = ({ handleSelectedLetterChange }) => {
-  const [selectedLetter, setSelectedLetter] = useState(alphabet[0]);
-
+const AlphaSlider = ({ selectedLetter, setSelectedLetter, setIsUndoing }) => {
   const handleSliderChange = value => {
-    const letter = alphabet.charAt(value);
+    const letter = ALPHABET.charAt(value);
     setSelectedLetter(letter);
-    handleSelectedLetterChange(letter);
+    setIsUndoing(false);
   };
 
   return (
@@ -24,7 +22,7 @@ const AlphaSlider = ({ handleSelectedLetterChange }) => {
         maxW='300'
         defaultValue={0}
         minValue={0}
-        maxValue={alphabet.length - 1}
+        maxValue={ALPHABET.length - 1}
         step={1}
         colorScheme='yellow'
         accessibilityLabel='Alphabet Slider'
@@ -40,7 +38,9 @@ const AlphaSlider = ({ handleSelectedLetterChange }) => {
 };
 
 AlphaSlider.propTypes = {
-  handleSelectedLetterChange: PropTypes.func.isRequired,
+  selectedLetter: PropTypes.string.isRequired,
+  setSelectedLetter: PropTypes.func.isRequired,
+  setIsUndoing: PropTypes.func.isRequired,
 };
 
 export default AlphaSlider;

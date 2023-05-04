@@ -17,6 +17,7 @@ import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+import { ALPHABET } from 'shared/constants/words/alphabet';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
@@ -94,6 +95,8 @@ const sortAlphabetically = wordList =>
     return 0;
   });
 
+const getFirstLetter = word => word.charAt(0).toUpperCase();
+
 const StudyScreen = ({ route }) => {
   const accessToken = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -105,7 +108,8 @@ const StudyScreen = ({ route }) => {
   const [displayCopyText, setDisplayCopyText] = useState(false);
   const [shuffle, setShuffle] = useState(route.params.type !== WORD_LIST_TYPE.COLLECTED);
   const [alphabetize, setAlphabetize] = useState(false);
-  const [selectedLetter, setSelectedLetter] = useState('A');
+  const [selectedLetter, setSelectedLetter] = useState(ALPHABET[0]);
+  const [isUndoing, setIsUndoing] = useState(false);
   const allWordsList = useMemo(() => {
     const wordsList = getWordsList(route.params.type);
     return shuffle ? shuffleArray(wordsList) : wordsList;
@@ -159,15 +163,22 @@ const StudyScreen = ({ route }) => {
   }, [shuffle]);
 
   useUpdateEffect(() => {
-    if (route.params.type === WORD_LIST_TYPE.COLLECTED || shuffle) {
+    if (route.params.type === WORD_LIST_TYPE.COLLECTED || shuffle || isUndoing) {
       return;
     }
     const newWordList = sortAlphabetically(allWordsList);
-    const startIndex = newWordList.findIndex(w => w.word.charAt(0).toUpperCase() === selectedLetter);
+    const startIndex = newWordList.findIndex(w => getFirstLetter(w.word) === selectedLetter);
     setWordList(newWordList);
     setWordIndex(startIndex);
     setWordData(newWordList[startIndex]);
-  }, [selectedLetter]);
+    setIsUndoing(false);
+  }, [selectedLetter, isUndoing]);
+
+  useUpdateEffect(() => {
+    if (Object.keys(wordData).length > 0 && getFirstLetter(wordData.word) !== selectedLetter) {
+      setSelectedLetter(getFirstLetter(wordData.word));
+    }
+  }, [wordData.word]);
 
   useEffect(() => {
     const setupWebSocket = async () => {
@@ -226,6 +237,7 @@ const StudyScreen = ({ route }) => {
   };
 
   const undoIconOnPress = () => {
+    setIsUndoing(true);
     setWordIndex(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordList.length - 1));
     setWordData(wordList[wordIndex > 0 ? wordIndex - 1 : wordList.length - 1]);
   };
@@ -279,7 +291,7 @@ const StudyScreen = ({ route }) => {
           </View>
           {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
             <Box mb={5}>
-              <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
+              <AlphaSlider selectedLetter={selectedLetter} setSelectedLetter={setSelectedLetter} setIsUndoing={setIsUndoing} />
             </Box>
           )}
           <View flex={1} px={6}>
