@@ -60,7 +60,7 @@ const SpeakerIconButton = ({ onPress }) => {
     <IconButton
       icon={<Icon as={AntDesign} name='sound' />}
       onPress={onPressThenStop}
-      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '38' }}
+      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '30' }}
       _pressed={{
         bg: 'base.black:alpha.10',
         rounded: 'full',
@@ -78,7 +78,7 @@ const UndoIconButton = ({ onPress }) => {
     <IconButton
       icon={<Icon as={Ionicons} name='chevron-back' />}
       onPress={onPressThenStop}
-      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '38' }}
+      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '30' }}
       _pressed={{
         bg: 'base.black:alpha.10',
         rounded: 'full',
