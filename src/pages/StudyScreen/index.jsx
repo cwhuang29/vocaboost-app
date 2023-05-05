@@ -87,6 +87,25 @@ const UndoIconButton = ({ onPress }) => {
   );
 };
 
+const StarIconButton = ({ isCollected, onPress }) => {
+  const iconName = isCollected ? 'star' : 'staro';
+  const onPressThenStop = e => {
+    e.preventDefault();
+    onPress();
+  };
+  return (
+    <IconButton
+      icon={<Icon as={AntDesign} name={iconName} />}
+      onPress={onPressThenStop}
+      _icon={{ color: 'vhlight.700', size: '28' }}
+      _pressed={{
+        bg: '',
+        _icon: { name: 'star', color: 'vhlight.700:alpha.50', size: '28' },
+      }}
+    />
+  );
+};
+
 const sortAlphabetically = wordList =>
   [...wordList].sort((w1, w2) => {
     if (w1.word > w2.word) return 1;
@@ -286,6 +305,7 @@ const StudyScreen = ({ route }) => {
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
+              <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
               <SortingMenu type={route.params.type} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
             </Box>
           </View>
@@ -305,6 +325,11 @@ SpeakerIconButton.propTypes = {
 };
 
 UndoIconButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
+};
+
+StarIconButton.propTypes = {
+  isCollected: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
 };
 

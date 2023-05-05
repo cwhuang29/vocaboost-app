@@ -1,9 +1,8 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import PropTypes from 'prop-types';
-import { AntDesign } from '@expo/vector-icons';
 
-import { Box, Icon, IconButton, Stack, Text, VStack } from 'native-base';
+import { Box, Stack, Text, VStack } from 'native-base';
 
 import LANGS from 'shared/constants/i18n';
 import { PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
@@ -11,32 +10,13 @@ import { constructWordExample } from 'shared/utils/highlight';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
 
-const StarIconButton = ({ isCollected, onPress }) => {
-  const iconName = isCollected ? 'star' : 'staro';
-  const onPressThenStop = e => {
-    e.preventDefault();
-    onPress();
-  };
-  return (
-    <IconButton
-      icon={<Icon as={AntDesign} name={iconName} />}
-      onPress={onPressThenStop}
-      _icon={{ color: 'vhlight.700', size: '30' }}
-      _pressed={{
-        bg: '',
-        _icon: { name: 'star', color: 'vhlight.700:alpha.50', size: '30' },
-      }}
-    />
-  );
-};
-
 const DisplayText = ({ children, size, shrink, fontStyle }) => (
   <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
     {children}
   </Text>
 );
 
-const WordCard = ({ display, wordData, language, fontSize, fontStyle, isCollected, onCopyText, onCollectWord }) =>
+const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText }) =>
   display && (
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
@@ -45,7 +25,6 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, isCollecte
             {toCapitalize(wordData.word)}
           </DisplayText>
         </Pressable>
-        <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
       </VStack>
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
         <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
@@ -62,10 +41,7 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, isCollecte
     </Box>
   );
 
-StarIconButton.propTypes = {
-  isCollected: PropTypes.bool.isRequired,
-  onPress: PropTypes.func.isRequired,
-};
+
 
 DisplayText.propTypes = {
   children: PropTypes.string.isRequired,
