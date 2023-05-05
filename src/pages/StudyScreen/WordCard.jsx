@@ -41,8 +41,6 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
     </Box>
   );
 
-
-
 DisplayText.propTypes = {
   children: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
@@ -61,9 +59,7 @@ WordCard.propTypes = {
   language: PropTypes.string.isRequired,
   fontSize: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
-  isCollected: PropTypes.bool.isRequired,
   onCopyText: PropTypes.func.isRequired,
-  onCollectWord: PropTypes.func.isRequired,
 };
 
 WordCard.defaultProps = {

@@ -296,11 +296,13 @@ const StudyScreen = ({ route }) => {
               </TouchableOpacity>
             </Box>
           </View>
-          {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
-            <Box mb={5}>
-              <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
-            </Box>
-          )}
+          <View flex={1}>
+            {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
+              <Box mb={5}>
+                <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
+              </Box>
+            )}
+          </View>
           <View flex={1} px={6}>
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
               <UndoIconButton onPress={undoIconOnPress} />
