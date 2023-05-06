@@ -22,7 +22,7 @@ const TopAlert = ({ type, title, content, link }) => {
   return show ? (
     <Box safeAreaTop='8' zIndex={MAX_Z_INDEX} top={5} position='absolute' alignSelf='center'>
       <Center>
-        <Alert maxW='95%' minW='95%' status={ALERT_STYLE[type]} colorScheme='info'>
+        <Alert maxW='98%' minW='98%' status={ALERT_STYLE[type]} colorScheme='info'>
           <VStack space={1} flexShrink={1} w='100%'>
             <HStack flexShrink={1} space={2} alignItems='center' justifyContent='space-between'>
               <HStack flexShrink={1} space={2} alignItems='center'>

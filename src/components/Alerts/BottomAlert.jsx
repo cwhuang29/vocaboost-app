@@ -22,7 +22,7 @@ const BottomAlert = ({ type, title, content, link, ts, bottom }) => {
   return show ? (
     <Box safeAreaTop='5' zIndex={MAX_Z_INDEX} bottom={bottom} position='absolute' alignSelf='center'>
       <Center>
-        <Alert maxW='100%' minW='100%' status={ALERT_STYLE[type]} colorScheme='info'>
+        <Alert maxW='98%' minW='98%' status={ALERT_STYLE[type]} colorScheme='info'>
           <VStack space={0.3} flexShrink={1} w='100%'>
             <HStack flexShrink={1} alignItems='center'>
               <Alert.Icon />

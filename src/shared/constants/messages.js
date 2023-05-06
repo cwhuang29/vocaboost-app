@@ -75,8 +75,8 @@ export const SIGNOUT_FAILED_MSG = {
 };
 
 export const CONNECTED_WORDS_FAILED_MSG = {
-  TITLE: "You haven't login yet",
-  CONTENT: 'Login to keep your collection safely',
+  TITLE: "You haven't logged in yet",
+  CONTENT: 'Login to keep your collection safely.',
 };
 
 export default msg;

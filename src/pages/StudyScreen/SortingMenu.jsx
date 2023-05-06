@@ -7,7 +7,7 @@ import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 
 const SortingMenuTrigger = props => (
   <Pressable accessibilityLabel='Default word lists sorting menu' {...props}>
-    <HamburgerIcon size={8} margin={3} />
+    <HamburgerIcon size={6} margin={3} />
   </Pressable>
 );
 

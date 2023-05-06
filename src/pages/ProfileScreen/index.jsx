@@ -136,88 +136,90 @@ const ProfileScreen = () => {
   return init ? (
     <SplashScreen />
   ) : (
-    <Box safeAreaY='12' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-      <Box alignItems='center' position='absolute' style={{ top: 52, right: 20 }}>
-        <AdvertisementModal iconColor={iconColor} />
-        <SignedInOut
-          setLoading={setLoading}
-          setUserInfo={setUserInfo}
-          setAlert={setAlertData}
-          setConfig={payload => dispatch({ type: CONFIG_STATUS.OVERRIDE_BY_SERVER, payload })}
-        />
-      </Box>
-
-      <Avatar
-        mb={deviceStyle.marginBottom}
-        size={deviceStyle.avatarSize}
-        alignSelf='center'
-        source={{ uri: userInfo?.avatar ?? null }}
-        _light={{ bg: 'vhlight.200' }}
-        _dark={{ bg: 'vhdark.200' }}
-      >
-        <AntDesign name='user' size={112} color={avatarColor} />
-      </Avatar>
-      <Center mb={deviceStyle.marginBottom}>
-        <Heading size={deviceStyle.headingSize} mb={3}>
-          {userInfo?.firstName ?? ''}
-        </Heading>
-        <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
-          You have collected{' '}
-          <Text bold color='vhlight.800'>
-            {config.collectedWords?.length ?? '0'}
-          </Text>{' '}
-          words!
-        </Text>
-      </Center>
-      <VStack space={deviceStyle.spacing}>
-        <Heading size={deviceStyle.headingSize} alignSelf='center'>
-          Settings
-        </Heading>
-        <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
-        <Select
-          options={LANGS_SUPPORTED}
-          displayFunc={l => LANGS_DISPLAY[l]}
-          value={config.language ?? DEFAULT_CONFIG.language}
-          onChange={val => onLanguageChange(val)}
-          placeholder='Choose Language'
-          isDisabled={loading}
-        />
-        <Heading size={deviceStyle.menuHeadingSize}>Font size</Heading>
-        <Select
-          options={FONT_SIZE}
-          displayFunc={s => toCapitalize(FONT_SIZE[s])}
-          value={config.fontSize ?? DEFAULT_CONFIG.fontSize}
-          onChange={val => onFontSizeChange(val)}
-          placeholder='Choose Font Size'
-          isDisabled={loading}
-        />
-        <Heading size={deviceStyle.menuHeadingSize}>Font style</Heading>
-        <Select
-          options={FONT_STYLE}
-          displayFunc={s => FONT_STYLE_DISPLAY[FONT_STYLE[s]]}
-          value={config.fontStyle ?? DEFAULT_CONFIG.fontStyle}
-          onChange={val => onFontStyleChange(val)}
-          placeholder='Choose Font Style'
-          isDisabled={loading}
-        />
-        <Heading size={deviceStyle.menuHeadingSize}>Color Mode</Heading>
-        <HStack mt={0.2} alignItems='center'>
-          <SunIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
-          <Switch
-            isChecked={isDarkMode(config.colorMode)}
-            onToggle={onColorModeChange}
-            mx={4}
-            size='md'
-            onTrackColor='#ABABAB'
-            onThumbColor='vhdark.200'
-            offTrackColor='#DFDFDF'
-            offThumbColor='vhlight.200'
+    <>
+      <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+        <Box height={7} />
+        <Box alignItems='center' position='absolute' style={{ top: 66, right: 20 }}>
+          <AdvertisementModal iconColor={iconColor} />
+          <SignedInOut
+            setLoading={setLoading}
+            setUserInfo={setUserInfo}
+            setAlert={setAlertData}
+            setConfig={payload => dispatch({ type: CONFIG_STATUS.OVERRIDE_BY_SERVER, payload })}
           />
-          <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
-        </HStack>
-      </VStack>
+        </Box>
+        <Avatar
+          mb={deviceStyle.marginBottom}
+          size={deviceStyle.avatarSize}
+          alignSelf='center'
+          source={{ uri: userInfo?.avatar ?? null }}
+          _light={{ bg: 'vhlight.200' }}
+          _dark={{ bg: 'vhdark.200' }}
+        >
+          <AntDesign name='user' size={112} color={avatarColor} />
+        </Avatar>
+        <Center mb={deviceStyle.marginBottom}>
+          <Heading size={deviceStyle.headingSize} mb={3}>
+            {userInfo?.firstName ?? ''}
+          </Heading>
+          <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+            You have collected{' '}
+            <Text bold color='vhlight.800'>
+              {config.collectedWords?.length ?? '0'}
+            </Text>{' '}
+            words!
+          </Text>
+        </Center>
+        <VStack space={deviceStyle.spacing}>
+          <Heading size={deviceStyle.headingSize} alignSelf='center'>
+            Settings
+          </Heading>
+          <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
+          <Select
+            options={LANGS_SUPPORTED}
+            displayFunc={l => LANGS_DISPLAY[l]}
+            value={config.language ?? DEFAULT_CONFIG.language}
+            onChange={val => onLanguageChange(val)}
+            placeholder='Choose Language'
+            isDisabled={loading}
+          />
+          <Heading size={deviceStyle.menuHeadingSize}>Font size</Heading>
+          <Select
+            options={FONT_SIZE}
+            displayFunc={s => toCapitalize(FONT_SIZE[s])}
+            value={config.fontSize ?? DEFAULT_CONFIG.fontSize}
+            onChange={val => onFontSizeChange(val)}
+            placeholder='Choose Font Size'
+            isDisabled={loading}
+          />
+          <Heading size={deviceStyle.menuHeadingSize}>Font style</Heading>
+          <Select
+            options={FONT_STYLE}
+            displayFunc={s => FONT_STYLE_DISPLAY[FONT_STYLE[s]]}
+            value={config.fontStyle ?? DEFAULT_CONFIG.fontStyle}
+            onChange={val => onFontStyleChange(val)}
+            placeholder='Choose Font Style'
+            isDisabled={loading}
+          />
+          <Heading size={deviceStyle.menuHeadingSize}>Color Mode</Heading>
+          <HStack mt={0.2} alignItems='center'>
+            <SunIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
+            <Switch
+              isChecked={isDarkMode(config.colorMode)}
+              onToggle={onColorModeChange}
+              mx={4}
+              size='md'
+              onTrackColor='#ABABAB'
+              onThumbColor='vhdark.200'
+              offTrackColor='#DFDFDF'
+              offThumbColor='vhlight.200'
+            />
+            <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
+          </HStack>
+        </VStack>
+      </Box>
       {!isObjectEmpty(alertData) && <BottomAlert {...alertData} bottom={4} />}
-    </Box>
+    </>
   );
 };
 

@@ -61,7 +61,7 @@ const SpeakerIconButton = ({ onPress }) => {
     <IconButton
       icon={<Icon as={AntDesign} name='sound' />}
       onPress={onPressThenStop}
-      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '38' }}
+      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '30' }}
       _pressed={{
         bg: 'base.black:alpha.10',
         rounded: 'full',
@@ -79,10 +79,29 @@ const UndoIconButton = ({ onPress }) => {
     <IconButton
       icon={<Icon as={Ionicons} name='chevron-back' />}
       onPress={onPressThenStop}
-      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '38' }}
+      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '30' }}
       _pressed={{
         bg: 'base.black:alpha.10',
         rounded: 'full',
+      }}
+    />
+  );
+};
+
+const StarIconButton = ({ isCollected, onPress }) => {
+  const iconName = isCollected ? 'star' : 'staro';
+  const onPressThenStop = e => {
+    e.preventDefault();
+    onPress();
+  };
+  return (
+    <IconButton
+      icon={<Icon as={AntDesign} name={iconName} />}
+      onPress={onPressThenStop}
+      _icon={{ color: 'vhlight.700', size: '28' }}
+      _pressed={{
+        bg: '',
+        _icon: { name: 'star', color: 'vhlight.700:alpha.50', size: '28' },
       }}
     />
   );
@@ -261,10 +280,10 @@ const StudyScreen = ({ route }) => {
             display={displayCopyText ? 'flex' : 'none'}
             bgColor='base.black:alpha.20'
             position='absolute'
-            top={70}
             p={1.5}
             m={1}
             flex={1}
+            style={{ top: 56 }}
             alignSelf='center'
             rounded='lg'
           >
@@ -289,15 +308,18 @@ const StudyScreen = ({ route }) => {
               </TouchableOpacity>
             </Box>
           </View>
-          {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
-            <Box mb={5}>
-              <AlphaSlider selectedLetter={selectedLetter} setSelectedLetter={setSelectedLetter} setIsUndoing={setIsUndoing} />
-            </Box>
-          )}
-          <View flex={1} px={6}>
+          <View flex={1}>
+            {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
+              <Box mb={5}>
+                <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
+              </Box>
+            )}
+          </View>
+          <View flex={1.2} px={6}>
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
+              <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
               <SortingMenu type={route.params.type} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
             </Box>
           </View>
@@ -317,6 +339,11 @@ SpeakerIconButton.propTypes = {
 };
 
 UndoIconButton.propTypes = {
+  onPress: PropTypes.func.isRequired,
+};
+
+StarIconButton.propTypes = {
+  isCollected: PropTypes.bool.isRequired,
   onPress: PropTypes.func.isRequired,
 };
 
