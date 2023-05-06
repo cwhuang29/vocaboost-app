@@ -1,1 +1,28 @@
-export const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWZ';
+export const GRE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWZ';
+
+export const GRE_ALPHABET_INDEX = {
+  A: 0,
+  B: 168,
+  C: 223,
+  D: 389,
+  E: 532,
+  F: 652,
+  G: 708,
+  H: 736,
+  I: 772,
+  J: 911,
+  K: 926,
+  L: 927,
+  M: 965,
+  N: 1034,
+  O: 1053,
+  P: 1094,
+  Q: 1258,
+  R: 1270,
+  S: 1356,
+  T: 1464,
+  U: 1517,
+  V: 1552,
+  W: 1588,
+  Z: 1596,
+};
