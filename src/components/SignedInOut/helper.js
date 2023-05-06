@@ -54,7 +54,6 @@ export const getAzureUserData = async ({ discovery, request, response }) => {
     const avatarBinary = await oauthService.getAzureUserPhoto({ accessToken });
     const avatarString = Buffer.from(avatarBinary, 'binary').toString('base64'); // Convert binary image to base64 string
     const avatar = `data:image/png;base64,${avatarString}`;
-    // Usage: <Image style={{ width: 100, height: 80, borderWidth: 1, borderColor: 'red' }} source={{ uri: base64Icon }} />
     const userInfo = { ...userData, idToken, scope, avatar };
     return { loginMethod: LOGIN_METHOD.AZURE, userInfo };
   } catch (err) {

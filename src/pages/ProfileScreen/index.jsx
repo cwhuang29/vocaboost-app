@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react';
-import { Dimensions, Pressable, View } from 'react-native';
+import { Dimensions, Pressable } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import { AntDesign } from '@expo/vector-icons';
@@ -136,9 +136,10 @@ const ProfileScreen = () => {
   return init ? (
     <SplashScreen />
   ) : (
-    <View flex={1}>
-      <Box safeAreaY='12' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-        <Box alignItems='center' position='absolute' style={{ top: 52, right: 20 }}>
+    <>
+      <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+        <Box height={7} />
+        <Box alignItems='center' position='absolute' style={{ top: 66, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} />
           <SignedInOut
             setLoading={setLoading}
@@ -147,7 +148,6 @@ const ProfileScreen = () => {
             setConfig={payload => dispatch({ type: CONFIG_STATUS.OVERRIDE_BY_SERVER, payload })}
           />
         </Box>
-
         <Avatar
           mb={deviceStyle.marginBottom}
           size={deviceStyle.avatarSize}
@@ -219,7 +219,7 @@ const ProfileScreen = () => {
         </VStack>
       </Box>
       {!isObjectEmpty(alertData) && <BottomAlert {...alertData} bottom={4} />}
-    </View>
+    </>
   );
 };
 

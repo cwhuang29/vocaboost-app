@@ -268,10 +268,10 @@ const StudyScreen = ({ route }) => {
             display={displayCopyText ? 'flex' : 'none'}
             bgColor='base.black:alpha.20'
             position='absolute'
-            top={70}
             p={1.5}
             m={1}
             flex={1}
+            style={{ top: 56 }}
             alignSelf='center'
             rounded='lg'
           >
@@ -303,7 +303,7 @@ const StudyScreen = ({ route }) => {
               </Box>
             )}
           </View>
-          <View flex={1} px={6}>
+          <View flex={1.2} px={6}>
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
