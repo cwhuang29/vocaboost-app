@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 import { Box, Slider, Text } from 'native-base';
 
-import { ALPHABET } from 'shared/constants/words/alphabet';
+const AlphabetSlider = ({ alphabets, selectedLetter, onChange }) => {
+  const index = alphabets.indexOf(selectedLetter);
 
-const AlphaSlider = ({ selectedLetter, setSelectedLetter, setIsUndoing }) => {
   const handleSliderChange = value => {
-    const letter = ALPHABET.charAt(value);
-    setSelectedLetter(letter);
-    setIsUndoing(false);
+    const letter = alphabets.charAt(value);
+    onChange(letter);
   };
 
   return (
@@ -20,9 +19,10 @@ const AlphaSlider = ({ selectedLetter, setSelectedLetter, setIsUndoing }) => {
       <Slider
         w='3/4'
         maxW='300'
+        value={index}
         defaultValue={0}
         minValue={0}
-        maxValue={ALPHABET.length - 1}
+        maxValue={alphabets.length - 1}
         step={1}
         colorScheme='yellow'
         accessibilityLabel='Alphabet Slider'
@@ -37,10 +37,10 @@ const AlphaSlider = ({ selectedLetter, setSelectedLetter, setIsUndoing }) => {
   );
 };
 
-AlphaSlider.propTypes = {
+AlphabetSlider.propTypes = {
+  alphabets: PropTypes.string.isRequired,
   selectedLetter: PropTypes.string.isRequired,
-  setSelectedLetter: PropTypes.func.isRequired,
-  setIsUndoing: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
-export default AlphaSlider;
+export default AlphabetSlider;

@@ -17,7 +17,6 @@ import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
-import { ALPHABET } from 'shared/constants/words/alphabet';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
@@ -26,21 +25,26 @@ import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
-import { genWordDetailList } from 'shared/utils/word';
+import { genWordDetailList, getWordListAlphabetsIndex, getWordListFirstAlphabets } from 'shared/utils/word';
 
-import AlphaSlider from './AlphaSlider';
+import AlphabetSlider from './AlphabetSlider';
 import FinishStudy from './FinishStudy';
 import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
 
 const getWebSocketURL = () => `${apis.HOST}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
-const getWordsList = type => {
+const getWordList = ({ type }) => {
   const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
   return genWordDetailList({ type: queryType });
 };
 
-const getWordsObjectFromList = wordList => {
+const getEntireWordList = ({ type, shuffle }) => {
+  const wordsList = getWordList({ type });
+  return shuffle ? shuffleArray(wordsList) : wordsList;
+};
+
+const transformWordListToObject = wordList => {
   const obj = {};
   wordList.forEach((item, idx) => {
     obj[item.id] = wordList[idx];
@@ -48,9 +52,23 @@ const getWordsObjectFromList = wordList => {
   return obj;
 };
 
+const getAlphabets = ({ type }) => {
+  const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
+  return getWordListFirstAlphabets({ type: queryType });
+};
+
 // Note: Map works in simulator but errors out in production build
 // const extractCollectedWordsByTime = (wordsMap, ids) => new Map(ids.reduce((acc, cur) => [...acc, [cur, wordsMap.get(cur)]], []));
 const extractCollectedWordsByTime = (wordObj, ids) => ids.map(id => wordObj[id]);
+
+const sortAlphabetically = wordList =>
+  [...wordList].sort((w1, w2) => {
+    if (w1.word > w2.word) return 1;
+    if (w1.word < w2.word) return -1;
+    return 0;
+  });
+
+const getFirstLetter = word => word.charAt(0).toUpperCase();
 
 const SpeakerIconButton = ({ onPress }) => {
   const onPressThenStop = e => {
@@ -107,33 +125,23 @@ const StarIconButton = ({ isCollected, onPress }) => {
   );
 };
 
-const sortAlphabetically = wordList =>
-  [...wordList].sort((w1, w2) => {
-    if (w1.word > w2.word) return 1;
-    if (w1.word < w2.word) return -1;
-    return 0;
-  });
-
-const getFirstLetter = word => word.charAt(0).toUpperCase();
-
 const StudyScreen = ({ route }) => {
+  const routeType = route.params.type;
   const accessToken = useRef(null);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
+  const [alphabets, setAlphabets] = useState('');
+  const [alphabetsIndex, setAlphabetsIndex] = useState({});
   const [wordIndex, setWordIndex] = useState(0);
   const [wordList, setWordList] = useState(null);
-  const [wordData, setWordData] = useState({});
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
-  const [shuffle, setShuffle] = useState(route.params.type !== WORD_LIST_TYPE.COLLECTED);
+  const [shuffle, setShuffle] = useState(routeType !== WORD_LIST_TYPE.COLLECTED);
   const [alphabetize, setAlphabetize] = useState(false);
-  const [selectedLetter, setSelectedLetter] = useState(ALPHABET[0]);
-  const [isUndoing, setIsUndoing] = useState(false);
-  const allWordsList = useMemo(() => {
-    const wordsList = getWordsList(route.params.type);
-    return shuffle ? shuffleArray(wordsList) : wordsList;
-  }, [route.params.type, shuffle]);
-  const allWordsObject = useMemo(() => getWordsObjectFromList(allWordsList), [allWordsList]);
+  const [selectedLetter, setSelectedLetter] = useState('');
+  const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle }), [routeType, shuffle]);
+  const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
+  const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
   // const connStatus = getWSConnStatusDisplay(readyState);
 
@@ -159,9 +167,15 @@ const StudyScreen = ({ route }) => {
       accessToken.current = token;
       setConfig(finalConfig);
 
-      const wList = route.params.type === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(allWordsObject, finalConfig.collectedWords) : allWordsList;
+      const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
       setWordList(wList);
-      setWordData(wList[wordIndex]);
+
+      const alp = getAlphabets({ type: routeType });
+      const alpIndex = getWordListAlphabetsIndex({ type: routeType });
+      setAlphabets(alp);
+      setAlphabetsIndex(alpIndex);
+      setSelectedLetter(alp[0]);
+
       setLoading(false);
     };
     setup();
@@ -171,33 +185,21 @@ const StudyScreen = ({ route }) => {
     let newWordList = [];
     if (shuffle) {
       newWordList = shuffleArray(wordList);
-    } else if (route.params.type === WORD_LIST_TYPE.COLLECTED) {
-      newWordList = extractCollectedWordsByTime(allWordsObject, config.collectedWords);
+    } else if (routeType === WORD_LIST_TYPE.COLLECTED) {
+      newWordList = extractCollectedWordsByTime(entireWordListObject, config.collectedWords);
     } else {
-      newWordList = sortAlphabetically(allWordsList);
+      newWordList = entireWordListSortByAlphabet;
     }
     setWordList(newWordList);
     setWordIndex(0);
-    setWordData(newWordList[0]);
   }, [shuffle]);
 
   useUpdateEffect(() => {
-    if (route.params.type === WORD_LIST_TYPE.COLLECTED || shuffle || isUndoing) {
-      return;
+    const word = wordList[wordIndex]?.word;
+    if (word && getFirstLetter(word) !== selectedLetter) {
+      setSelectedLetter(getFirstLetter(word));
     }
-    const newWordList = sortAlphabetically(allWordsList);
-    const startIndex = newWordList.findIndex(w => getFirstLetter(w.word) === selectedLetter);
-    setWordList(newWordList);
-    setWordIndex(startIndex);
-    setWordData(newWordList[startIndex]);
-    setIsUndoing(false);
-  }, [selectedLetter, isUndoing]);
-
-  useUpdateEffect(() => {
-    if (Object.keys(wordData).length > 0 && getFirstLetter(wordData.word) !== selectedLetter) {
-      setSelectedLetter(getFirstLetter(wordData.word));
-    }
-  }, [wordData.word]);
+  }, [wordIndex]);
 
   useEffect(() => {
     const setupWebSocket = async () => {
@@ -230,6 +232,15 @@ const StudyScreen = ({ route }) => {
     wsMessageOnReceive();
   }, [lastJsonMessage]);
 
+  const alphabetSliderOnChange = letter => {
+    if (routeType === WORD_LIST_TYPE.COLLECTED || shuffle) {
+      return;
+    }
+    const newIndex = alphabetsIndex[letter];
+    setSelectedLetter(letter);
+    setWordIndex(newIndex);
+  };
+
   const onCollectWord =
     ({ id, isCollected }) =>
     async () => {
@@ -250,22 +261,21 @@ const StudyScreen = ({ route }) => {
     setTimeout(() => setDisplayCopyText(false), COPY_TEXT_ALERT_TIME_PERIOD);
   };
 
-  const onPress = () => {
-    setWordIndex(prevIdx => (prevIdx + 1 < wordList.length ? prevIdx + 1 : 0));
-    setWordData(wordList[wordIndex + 1 < wordList.length ? wordIndex + 1 : 0]);
-  };
-
-  const undoIconOnPress = () => {
-    setIsUndoing(true);
-    setWordIndex(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordList.length - 1));
-    setWordData(wordList[wordIndex > 0 ? wordIndex - 1 : wordList.length - 1]);
-  };
-
   const speackerIconOnPress = text => () => {
     Tts.speak(text);
   };
 
-  const isCollected = loading || isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
+  const onPress = () => {
+    setWordIndex(prevIdx => (prevIdx + 1 < wordList.length ? prevIdx + 1 : 0));
+  };
+
+  const undoIconOnPress = () => {
+    setWordIndex(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordList.length - 1));
+  };
+
+  const wordData = loading ? {} : wordList[wordIndex];
+
+  const isCollected = isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
   return loading ? (
     <SplashScreen />
@@ -309,9 +319,9 @@ const StudyScreen = ({ route }) => {
             </Box>
           </View>
           <View flex={1}>
-            {route.params.type !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
+            {routeType !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
               <Box mb={5}>
-                <AlphaSlider handleSelectedLetterChange={setSelectedLetter} />
+                <AlphabetSlider alphabets={alphabets} selectedLetter={selectedLetter} onChange={alphabetSliderOnChange} />
               </Box>
             )}
           </View>
@@ -320,7 +330,7 @@ const StudyScreen = ({ route }) => {
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
               <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
-              <SortingMenu type={route.params.type} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
+              <SortingMenu type={routeType} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
             </Box>
           </View>
         </>
