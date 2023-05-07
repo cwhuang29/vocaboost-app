@@ -277,6 +277,8 @@ const StudyScreen = ({ route }) => {
 
   const isCollected = isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
+  const showSlider = routeType !== WORD_LIST_TYPE.COLLECTED && !shuffle;
+
   return loading ? (
     <SplashScreen />
   ) : (
@@ -301,38 +303,37 @@ const StudyScreen = ({ route }) => {
               Copied!
             </Text>
           </Box>
-          <View flex={6} px={8} justifyContent='flex-start'>
-            <Box width='100%'>
-              <TouchableOpacity onPress={onPress} width='100%'>
-                <WordCard
-                  wordData={wordData}
-                  language={config.language}
-                  fontSize={config.fontSize}
-                  fontStyle={config.fontStyle}
-                  isCollected={isCollected}
-                  onPress={onPress}
-                  onCopyText={onCopyText(wordData.word ?? '')}
-                  onCollectWord={onCollectWord}
-                />
-                <Box height='100%' />
-              </TouchableOpacity>
-            </Box>
-          </View>
-          <View flex={1}>
-            {routeType !== WORD_LIST_TYPE.COLLECTED && !shuffle && (
-              <Box mb={5}>
-                <AlphabetSlider alphabets={alphabets} selectedLetter={selectedLetter} onChange={alphabetSliderOnChange} />
+          <View flex={8} px={8} justifyContent='flex-start'>
+            <View flex={1}>
+              <Box width='100%'>
+                <TouchableOpacity onPress={onPress} width='100%'>
+                  <WordCard
+                    wordData={wordData}
+                    language={config.language}
+                    fontSize={config.fontSize}
+                    fontStyle={config.fontStyle}
+                    isCollected={isCollected}
+                    onPress={onPress}
+                    onCopyText={onCopyText(wordData.word ?? '')}
+                    onCollectWord={onCollectWord}
+                  />
+                  <Box height='100%' />
+                </TouchableOpacity>
               </Box>
-            )}
-          </View>
-          <View flex={1.2} px={6}>
-            <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center'>
+              {showSlider && (
+                <Box marginTop='auto' pb={7}>
+                  <AlphabetSlider alphabets={alphabets} selectedLetter={selectedLetter} onChange={alphabetSliderOnChange} />
+                </Box>
+              )}
+            </View>
+            <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' marginTop='auto'>
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
               <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
               <SortingMenu type={routeType} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
             </Box>
           </View>
+          <View flex={0.9} />
         </>
       )}
       {alertData.type && <BottomAlert {...alertData} bottom={50} />}
