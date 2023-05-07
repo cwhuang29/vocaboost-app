@@ -31,7 +31,7 @@ const authDelay = { [AUTH_TYPE.LOGIN]: 0, [AUTH_TYPE.LOGOUT]: 800 };
 
 WebBrowser.maybeCompleteAuthSession(); // Dismiss the web popup. Oterwise the popup window will not close
 
-const SignedInOut = ({ setLoading, setUserInfo, setConfig, setAlert }) => {
+const SignedInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [loginType, setLoginType] = useState();
   const [showOauthLogo, setShowOauthLogo] = useState(false);
@@ -148,7 +148,9 @@ const SignedInOut = ({ setLoading, setUserInfo, setConfig, setAlert }) => {
     oauthAzureSignInOnPress();
   };
 
-  const azureSignInDisabled = !request;
+  const googleSignInDisabled = loading;
+
+  const azureSignInDisabled = loading || !request;
 
   const shouldShowOauthLogo = showOauthLogo && authStatus === AUTH_TYPE.LOGOUT;
 
@@ -156,12 +158,17 @@ const SignedInOut = ({ setLoading, setUserInfo, setConfig, setAlert }) => {
     <>
       <Box height={5} />
       <Pressable onPress={handleSignIn} onLongPress={handleSignOut} style={{ zIndex: MAX_Z_INDEX }} delayLongPress={authDelay[AUTH_TYPE.LOGOUT]}>
-        <AntDesign name={icon} size={iconSize} color={iconColor} style={{ transform: [{ rotateY: authStatus === AUTH_TYPE.LOGIN ? '180deg' : '0deg' }] }} />
+        <AntDesign
+          name={icon}
+          size={iconSize}
+          color={iconColor}
+          style={{ opacity: loading ? 0.3 : 1, transform: [{ rotateY: authStatus === AUTH_TYPE.LOGIN ? '180deg' : '0deg' }] }}
+        />
       </Pressable>
       {shouldShowOauthLogo && (
         <>
           <Box height={5} />
-          <OauthIconButton icon='google' size={iconSize} color={iconColor} onPress={googleOnPress} />
+          <OauthIconButton icon='google' size={iconSize} color={iconColor} onPress={googleOnPress} disabled={googleSignInDisabled} />
           <Box height={5} />
           <OauthIconButton icon='microsoft' size={iconSize} color={iconColor} onPress={azureOnPress} disabled={azureSignInDisabled} />
         </>
@@ -171,6 +178,7 @@ const SignedInOut = ({ setLoading, setUserInfo, setConfig, setAlert }) => {
 };
 
 SignedInOut.propTypes = {
+  loading: PropTypes.bool,
   setLoading: PropTypes.func,
   setUserInfo: PropTypes.func,
   setConfig: PropTypes.func,
@@ -178,6 +186,7 @@ SignedInOut.propTypes = {
 };
 
 SignedInOut.defaultProps = {
+  loading: false,
   setLoading: () => {},
   setUserInfo: () => {},
   setConfig: () => {},
