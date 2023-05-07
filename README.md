@@ -26,4 +26,4 @@ Available in English, Spanish, Chinese, Japanese, Korean and Thai. VocaBoost all
 
 ![Home Screen](demo/screenshot1.png) | ![Study Screen](demo/screenshot2.png) | ![Collection](demo/screenshot3.png) | ![Sorting Options](demo/screenshot7.png)
 :-:|:-:|:-:|:-:
-![Light/Dark Mode](demo/screenshot5.png) | ![Information Pop-up](demo/screenshot4.png) |  ![pp](demo/screenshot6.png)
+![Light/Dark Mode](demo/screenshot5.png) | ![Information Pop-up](demo/screenshot4.png) |  ![SSO Login](demo/screenshot6.png)
