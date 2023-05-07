@@ -142,6 +142,7 @@ const ProfileScreen = () => {
         <Box alignItems='center' position='absolute' style={{ top: 72, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} />
           <SignedInOut
+            loading={loading}
             setLoading={setLoading}
             setUserInfo={setUserInfo}
             setAlert={setAlertData}
