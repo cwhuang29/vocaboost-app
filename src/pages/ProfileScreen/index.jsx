@@ -138,8 +138,8 @@ const ProfileScreen = () => {
   ) : (
     <>
       <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-        <Box height={7} />
-        <Box alignItems='center' position='absolute' style={{ top: 66, right: 20 }}>
+        <Box height={9} />
+        <Box alignItems='center' position='absolute' style={{ top: 72, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} />
           <SignedInOut
             setLoading={setLoading}
