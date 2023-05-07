@@ -18,7 +18,7 @@ const AlphabetSlider = ({ alphabets, selectedLetter, onChange }) => {
       </Box>
       <Slider
         w='3/4'
-        maxW='300'
+        maxW='80%'
         value={index}
         defaultValue={0}
         minValue={0}
