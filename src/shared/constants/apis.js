@@ -19,6 +19,10 @@ const apis = {
 
 export default apis;
 
+export const EVENT_TRACKING_ENDPOINT = {
+  V1: '/v1',
+};
+
 export const REQ_RETRY_COUNT = 3;
 
 export const ALLOWED_RETRY_ENDPOINTS = [apis.V1.LOGIN, apis.V1.ME];

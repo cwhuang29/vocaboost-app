@@ -18,6 +18,7 @@ import { authInitialState, authReducer } from 'shared/reducers/auth';
 import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import { getLatestConfigOnLogin } from 'shared/utils/config';
+import { createLoginEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
 import { colorModeManager, fontsMap, isDarkMode } from 'shared/utils/style';
 import defaultTheme from 'shared/utils/theme';
@@ -62,6 +63,7 @@ const AppCore = () => {
           throw new Error(SIGNIN_FAILED_MSG);
         }
         const { token, isNewUser, user } = resp || {};
+        createLoginEvent({ token });
         await Promise.all([storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);
         dispatch({ type: AUTH_STATUS.SIGN_IN, payload: { token } });
         let latestConfig = null;
