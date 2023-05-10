@@ -20,7 +20,7 @@ module.exports = function (api) {
           root: ['./src'],
           alias: {
             assets: './src/assets',
-            pages: './src/pages',
+            screens: './src/screens',
             components: './src/components',
             shared: './src/shared',
           },

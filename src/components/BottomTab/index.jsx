@@ -5,8 +5,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { useColorMode, useTheme } from 'native-base';
 
-import HomeScreen from 'pages/HomeScreen';
-import ProfileScreen from 'pages/ProfileScreen';
+import HomeScreen from 'screens/HomeScreen';
+import ProfileScreen from 'screens/ProfileScreen';
 import { isDarkMode } from 'shared/utils/style';
 
 const Tab = createMaterialBottomTabNavigator();

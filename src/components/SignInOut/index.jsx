@@ -31,7 +31,7 @@ const authDelay = { [AUTH_TYPE.LOGIN]: 0, [AUTH_TYPE.LOGOUT]: 800 };
 
 WebBrowser.maybeCompleteAuthSession(); // Dismiss the web popup. Oterwise the popup window will not close
 
-const SignedInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) => {
+const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [loginType, setLoginType] = useState();
   const [showOauthLogo, setShowOauthLogo] = useState(false);
@@ -177,7 +177,7 @@ const SignedInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) 
   );
 };
 
-SignedInOut.propTypes = {
+SignInOut.propTypes = {
   loading: PropTypes.bool,
   setLoading: PropTypes.func,
   setUserInfo: PropTypes.func,
@@ -185,7 +185,7 @@ SignedInOut.propTypes = {
   setAlert: PropTypes.func,
 };
 
-SignedInOut.defaultProps = {
+SignInOut.defaultProps = {
   loading: false,
   setLoading: () => {},
   setUserInfo: () => {},
@@ -193,4 +193,4 @@ SignedInOut.defaultProps = {
   setAlert: () => {},
 };
 
-export default SignedInOut;
+export default SignInOut;

@@ -6,10 +6,10 @@ import { AntDesign } from '@expo/vector-icons';
 
 import { Avatar, Box, Center, Heading, HStack, Link, Modal, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
 
-import SplashScreen from 'pages/SplashScreen';
+import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { Select } from 'components/Selects';
-import SignedInOut from 'components/SignedInOut';
+import SignInOut from 'components/SignInOut';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
 import { COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants';
 import apis from 'shared/constants/apis';
@@ -141,7 +141,7 @@ const ProfileScreen = () => {
         <Box height={9} />
         <Box alignItems='center' position='absolute' style={{ top: 72, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} />
-          <SignedInOut
+          <SignInOut
             loading={loading}
             setLoading={setLoading}
             setUserInfo={setUserInfo}
