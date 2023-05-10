@@ -57,7 +57,7 @@
           ["^\\u0000"],
           ["^react", "@react", "^redux", "^prop-types", "^expo", "^formik", "^yup", "^@"],
           ["^native-base", "^@mui", "^styled-components"],
-          ["^pages", "^components", "^shared", "^assets"],
+          ["^screens", "^components", "^shared", "^assets"],
           ["^.+.s?css$"],
           ["^[^.]"],
           ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$", "^\\.\\.(?!/?$)", "^\\.\\./?$"]

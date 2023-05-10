@@ -8,7 +8,7 @@ import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 import { Box, Icon, IconButton, Text, View } from 'native-base';
 
-import SplashScreen from 'pages/SplashScreen';
+import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';

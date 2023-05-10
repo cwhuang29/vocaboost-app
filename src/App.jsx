@@ -5,10 +5,10 @@ import { useFonts } from 'expo-font';
 
 import { NativeBaseProvider, useColorMode, useTheme } from 'native-base';
 
-import HomeScreen from 'pages/HomeScreen';
-import ProfileScreen from 'pages/ProfileScreen';
-import SplashScreen from 'pages/SplashScreen';
-import StudyScreen from 'pages/StudyScreen';
+import HomeScreen from 'screens/HomeScreen';
+import ProfileScreen from 'screens/ProfileScreen';
+import SplashScreen from 'screens/SplashScreen';
+import StudyScreen from 'screens/StudyScreen';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
 import { SIGNIN_FAILED_MSG } from 'shared/constants/messages';
