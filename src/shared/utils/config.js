@@ -43,7 +43,7 @@ export const getLatestConfig = async config => {
     }
     if (isStale) {
       const latestConfig = { ...data, updatedAt: convertUTCToLocalTime(data.updatedAt) };
-      logger(`APP config is outdated. Store latest config from backend: ${latestConfig}`);
+      logger(`APP config is outdated. Store latest config from backend: ${JSON.stringify(latestConfig)}`);
       ret = latestConfig;
     }
   } catch (err) {
