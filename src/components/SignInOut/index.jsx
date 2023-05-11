@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Pressable } from 'react-native';
+import { Alert, Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 import { makeRedirectUri, ResponseType, useAuthRequest, useAutoDiscovery } from 'expo-auth-session';
@@ -24,6 +24,7 @@ import { transformOAuthLoginData } from 'shared/utils/oauth/formatter';
 
 import { getAzureUserData, getGoogleUserData, getSignInToBackendErrorMsg, getWelcomeNewUserMsg, oauthGoogleSignOut, showGoogleSignInError } from './helper';
 import OauthIconButton from './OauthIconButton';
+import { AZURE_LOGIN_CONFIRM_MSG } from 'shared/constants/messages';
 
 const authIcon = { [AUTH_TYPE.LOGIN]: 'logout', [AUTH_TYPE.LOGOUT]: 'login' };
 
@@ -143,9 +144,16 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
     oauthGoogleSignIn();
   };
 
-  const azureOnPress = () => {
+  const azureSignIn = () => {
     setLoginType(LOGIN_METHOD.AZURE);
     oauthAzureSignInOnPress();
+  };
+
+  const azureOnPress = () => {
+    Alert.alert(AZURE_LOGIN_CONFIRM_MSG.TITLE, AZURE_LOGIN_CONFIRM_MSG.CONTENT, [
+      { text: 'Cancel' },
+      { text: 'Confirm', onPress: azureSignIn, isPreferred: true },
+    ]);
   };
 
   const googleSignInDisabled = loading;
