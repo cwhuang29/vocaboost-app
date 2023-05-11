@@ -25,7 +25,8 @@ const beforeReqIsSend = async config => {
   if (token && !config.headers.Authorization) {
     Object.assign(config.headers, { ...config.headers, Authorization: `Bearer ${token}` });
   }
-  logger(`Axios send request. Method: ${config.method}. Base URL: ${config.baseURL}. URL: ${config.url}. Headers: ${config.headers}. `);
+  const msg = `(Axios) Method: ${config.method}. URL: ${config.baseURL}${config.url}. Headers: ${config.headers}. Payload: ${JSON.stringify(config.data)}`;
+  logger(msg);
   return config;
 };
 
@@ -33,9 +34,13 @@ const respMiddleware = async err => {
   const { status } = err.response;
   const { url } = err.config;
   const tried = Number(err.config.headers[HEADER_RETRY_COUNT]) || 0;
+  const allowedRetryEndpoint = ALLOWED_RETRY_ENDPOINTS.includes(url);
+
+  const msg = `(Axios) Request failed. Status: ${status}. URL: ${url}. Has tried: ${tried + 1} times. Is allowed retry endpoint: ${allowedRetryEndpoint}`;
+  logger(msg);
 
   Object.assign(err.config.headers, { ...err.config.headers, [HEADER_RETRY_COUNT]: tried + 1 });
-  if (status > 500 && tried < REQ_RETRY_COUNT && ALLOWED_RETRY_ENDPOINTS.includes(url)) {
+  if (status > 500 && tried < REQ_RETRY_COUNT && allowedRetryEndpoint) {
     const resp = await fetch.request(err.config);
     return resp;
   }

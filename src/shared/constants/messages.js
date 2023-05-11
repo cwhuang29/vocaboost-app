@@ -79,4 +79,9 @@ export const CONNECTED_WORDS_FAILED_MSG = {
   CONTENT: 'Login to keep your collection safely.',
 };
 
+export const AZURE_LOGIN_CONFIRM_MSG = {
+  TITLE: 'Continue with Microsoft',
+  CONTENT: 'To sign in with Microsoft account, make sure you have set up name and account picture.',
+};
+
 export default msg;
