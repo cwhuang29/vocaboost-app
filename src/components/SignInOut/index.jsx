@@ -13,15 +13,14 @@ import { Box } from 'native-base';
 import { AUTH_TYPE } from 'shared/constants/auth';
 import { LOGIN_METHOD } from 'shared/constants/loginType';
 import { AZURE_LOGIN_CONFIRM_MSG } from 'shared/constants/messages';
-import { STORAGE_USER } from 'shared/constants/storage';
 import { MAX_Z_INDEX } from 'shared/constants/styles';
 import { useAuthContext } from 'shared/hooks/useAuthContext';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { azureCodeChallenge, azureOauthEndpoint, azureOauthScopes, azureRedirectUriObj } from 'shared/oauth/azure';
-import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { transformOAuthLoginData } from 'shared/utils/oauth/formatter';
+import { getUser } from 'shared/utils/storage';
 
 import { getAzureUserData, getGoogleUserData, getSignInToBackendErrorMsg, getWelcomeNewUserMsg, oauthGoogleSignOut, showGoogleSignInError } from './helper';
 import OauthIconButton from './OauthIconButton';
@@ -58,7 +57,7 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
 
   useEffect(() => {
     const setup = async () => {
-      const uInfo = await storage.getData(STORAGE_USER);
+      const uInfo = await getUser();
       setIsSignedIn(!isObjectEmpty(uInfo));
     };
     setup();

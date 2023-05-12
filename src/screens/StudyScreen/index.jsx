@@ -14,7 +14,7 @@ import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
-import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
+import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import useStudyScreenMonitor from 'shared/hooks/useStudyScreenMonitor';
@@ -22,9 +22,10 @@ import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
-import { createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
+import { createEnterStudyScreenEvent, createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
+import { getAuthToken, getConfig } from 'shared/utils/storage';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailList, getWordListAlphabetsIndex, getWordListFirstAlphabets } from 'shared/utils/word';
@@ -130,7 +131,6 @@ const StarIconButton = ({ isCollected, onPress }) => {
 const StudyScreen = ({ navigation, route }) => {
   const routeType = route.params.type;
   const accessToken = useRef(null);
-  const user = useRef({});
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
   const [alphabets, setAlphabets] = useState('');
@@ -158,15 +158,19 @@ const StudyScreen = ({ navigation, route }) => {
   }, []);
 
   useEffect(() => {
+    createEnterStudyScreenEvent();
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', () => {
-      createLeaveStudyScreenEvent({ userId: user.current.uuid ?? '', wordCount, timeElapsed });
+      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
     });
     return unsubscribe;
-  }, [user.current.uuid, wordCount, timeElapsed]);
+  }, [wordCount, timeElapsed]);
 
   useEffect(() => {
     const setup = async () => {
-      const [c, token, u] = await Promise.all([storage.getData(STORAGE_CONFIG), storage.getData(STORAGE_AUTH_TOKEN), storage.getData(STORAGE_USER)]);
+      const [c, token] = await Promise.all([getConfig(), getAuthToken()]);
       if (!token) {
         setAlertData({
           type: ALERT_TYPES.WARNING,
@@ -176,7 +180,6 @@ const StudyScreen = ({ navigation, route }) => {
         });
       }
       accessToken.current = token;
-      user.current = u ?? {};
       const finalConfig = c ?? DEFAULT_CONFIG;
       setConfig(finalConfig);
 
