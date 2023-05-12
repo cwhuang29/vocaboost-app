@@ -27,7 +27,7 @@ const tabBarIcon = {
 const TabBarIcon = props => {
   const iconColor = useReverseIconStyle();
   const icon = tabBarIcon[props.route.name.toLowerCase()];
-  const style = { marginTop: -5 };
+  const style = { marginTop: -3 };
   return <IconButton iconColor={iconColor} style={style} icon={props.focused ? icon.focused : icon.unfocused} size={26} />;
 };
 
@@ -57,7 +57,7 @@ const BottomTab = () => {
       initialRouteName='Home'
       activeColor={activeColor}
       inactiveColor={inactiveColor}
-      safeAreaInsets={{ bottom: -12 }}
+      safeAreaInsets={{ bottom: -10 }}
       barStyle={{ backgroundColor: inactiveColor, opacity: 0.95, paddingHorizontal: 0, paddingBottom: 20 }}
       screenOptions={({ route }) => ({
         tabBarIcon: getTagBarIcon({ route }),
