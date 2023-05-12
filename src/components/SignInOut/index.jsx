@@ -164,7 +164,13 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
   return (
     <>
       <Box height={5} />
-      <Pressable onPress={handleSignIn} onLongPress={handleSignOut} style={{ zIndex: MAX_Z_INDEX }} delayLongPress={authDelay[AUTH_TYPE.LOGOUT]}>
+      <Pressable
+        disabled={loading}
+        onPress={handleSignIn}
+        onLongPress={handleSignOut}
+        style={{ zIndex: MAX_Z_INDEX }}
+        delayLongPress={authDelay[AUTH_TYPE.LOGOUT]}
+      >
         <AntDesign
           name={icon}
           size={iconSize}

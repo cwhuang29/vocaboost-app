@@ -20,7 +20,7 @@ import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import { getLatestConfigOnLogin } from 'shared/utils/config';
 import { getDeviceInfo } from 'shared/utils/devices';
-import { createLoginEvent, createLogoutEvent } from 'shared/utils/eventTracking';
+import { createEnterAppEvent, createLoginEvent, createLogoutEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
 import { colorModeManager, fontsMap, isDarkMode } from 'shared/utils/style';
 import defaultTheme from 'shared/utils/theme';
@@ -35,6 +35,10 @@ const AppCore = () => {
   const { colors } = useTheme();
   const { colorMode } = useColorMode();
   const bgColor = isDarkMode(colorMode) ? colors.vhdark[1100] : colors.vhlight[1100];
+
+  useEffect(() => {
+    createEnterAppEvent();
+  }, []);
 
   useEffect(() => {
     if (fontsLoaded) {

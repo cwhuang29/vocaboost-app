@@ -6,7 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { MAX_Z_INDEX } from 'shared/constants/styles';
 
 const OauthIconButton = ({ icon, onPress, color, size, disabled }) => (
-  <Pressable onPress={onPress} style={{ zIndex: MAX_Z_INDEX }}>
+  <Pressable disabled={disabled} onPress={onPress} style={{ zIndex: MAX_Z_INDEX }}>
     <FontAwesome5 name={icon} color={color} size={size} opacity={disabled ? 0.3 : 1} />
   </Pressable>
 );
