@@ -7,3 +7,9 @@ export const useIconStyle = () => {
   const { colorMode } = useColorMode();
   return isDarkMode(colorMode) ? colors.vhdark[50] : colors.vhlight[50];
 };
+
+export const useReverseIconStyle = () => {
+  const { colors } = useTheme();
+  const { colorMode } = useColorMode();
+  return !isDarkMode(colorMode) ? colors.vhdark[50] : colors.vhlight[50];
+};

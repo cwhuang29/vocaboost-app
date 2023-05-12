@@ -18,7 +18,7 @@ const HomeBox = ({ text, imgXml, onPress }) => (
           <SvgXml xml={imgXml} width='100%' height='100%' />
         </AspectRatio>
         <Box p={5} _light={{ bgColor: 'vhlight.100' }} _dark={{ bgColor: 'vhdark.100' }}>
-          <Heading fontWeight='bold' size='md' ml='-1' textAlign='center' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
+          <Heading size='md' ml='-1' textAlign='center' _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
             {text}
           </Heading>
         </Box>
@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <Center flex={1} justifyContent='center' bgColor={bgColor}>
-      <VStack mt={4} space={8} alignItems='center'>
+      <VStack mt={4} space='16' alignItems='center'>
         <HomeBox text='GRE' imgXml={WordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
         <HomeBox text='Collected' imgXml={CollectedWordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>

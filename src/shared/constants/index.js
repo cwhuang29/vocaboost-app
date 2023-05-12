@@ -47,6 +47,7 @@ export const FONT_SIZE = {
 };
 
 export const FONT_STYLE = {
+  CERA: 'CERA',
   ROBOTO: 'ROBOTO',
   GARAMOND: 'GARAMOND',
   KALAM: 'KALAM',

@@ -4,7 +4,7 @@ import { useIsFocused } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import { AntDesign } from '@expo/vector-icons';
 
-import { Avatar, Box, Center, Heading, HStack, Link, Modal, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
+import { Avatar, Box, Center, HStack, Link, Modal, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
@@ -65,8 +65,8 @@ const AdvertisementModal = ({ iconColor }) => {
   );
 };
 
-const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'md', menuHeadingSize: 'sm', textSize: 'sm', spacing: 2 };
-const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: 'lg', menuHeadingSize: 'md', textSize: 'md', spacing: 4 };
+const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'xl', menuHeadingSize: 'sm', textSize: 'sm', spacing: 1 };
+const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: '2xl', menuHeadingSize: 'md', textSize: 'md', spacing: 3.5 };
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -160,10 +160,10 @@ const ProfileScreen = () => {
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
         <Center mb={deviceStyle.marginBottom}>
-          <Heading size={deviceStyle.headingSize} mb={3}>
+          <Text size={deviceStyle.headingSize} mb={3}>
             {userInfo?.firstName ?? ''}
-          </Heading>
-          <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)} fontFamily={(config.fontStyle ?? DEFAULT_CONFIG.fontStyle).toLowerCase()}>
+          </Text>
+          <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)}>
             You have collected{' '}
             <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
@@ -172,10 +172,10 @@ const ProfileScreen = () => {
           </Text>
         </Center>
         <VStack space={deviceStyle.spacing}>
-          <Heading size={deviceStyle.headingSize} alignSelf='center'>
+          <Text size={deviceStyle.headingSize} alignSelf='center'>
             Settings
-          </Heading>
-          <Heading size={deviceStyle.menuHeadingSize}>Language</Heading>
+          </Text>
+          <Text size={deviceStyle.menuHeadingSize}>Language</Text>
           <Select
             options={LANGS_SUPPORTED}
             displayFunc={l => LANGS_DISPLAY[l]}
@@ -184,7 +184,7 @@ const ProfileScreen = () => {
             placeholder='Choose Language'
             isDisabled={loading}
           />
-          <Heading size={deviceStyle.menuHeadingSize}>Font size</Heading>
+          <Text size={deviceStyle.menuHeadingSize}>Font size</Text>
           <Select
             options={FONT_SIZE}
             displayFunc={s => toCapitalize(FONT_SIZE[s])}
@@ -193,7 +193,7 @@ const ProfileScreen = () => {
             placeholder='Choose Font Size'
             isDisabled={loading}
           />
-          <Heading size={deviceStyle.menuHeadingSize}>Font style</Heading>
+          <Text size={deviceStyle.menuHeadingSize}>Font style</Text>
           <Select
             options={FONT_STYLE}
             displayFunc={s => FONT_STYLE_DISPLAY[FONT_STYLE[s]]}
@@ -202,11 +202,11 @@ const ProfileScreen = () => {
             placeholder='Choose Font Style'
             isDisabled={loading}
           />
-          <Heading size={deviceStyle.menuHeadingSize}>Color Mode</Heading>
+          <Text size={deviceStyle.menuHeadingSize}>Color Mode</Text>
           <HStack mt={0.2} alignItems='center'>
             <SunIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
             <Switch
-              isChecked={isDarkMode(config.colorMode)}
+              isChecked={isDarkMode(colorMode)}
               onToggle={onColorModeChange}
               mx={4}
               size='md'
