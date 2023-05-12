@@ -14,15 +14,18 @@ import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
-import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
+import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+import useStudyScreenMonitor from 'shared/hooks/useStudyScreenMonitor';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
+import { createEnterStudyScreenEvent, createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
+import { getAuthToken, getConfig } from 'shared/utils/storage';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
 import { genWordDetailList, getWordListAlphabetsIndex, getWordListFirstAlphabets } from 'shared/utils/word';
@@ -125,7 +128,7 @@ const StarIconButton = ({ isCollected, onPress }) => {
   );
 };
 
-const StudyScreen = ({ route }) => {
+const StudyScreen = ({ navigation, route }) => {
   const routeType = route.params.type;
   const accessToken = useRef(null);
   const [loading, setLoading] = useState(true);
@@ -142,8 +145,10 @@ const StudyScreen = ({ route }) => {
   const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle }), [routeType, shuffle]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
-  const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
+  const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL()); // TODO If user is not signed in, don't run ws code
   // const connStatus = getWSConnStatusDisplay(readyState);
+  const wordData = loading ? {} : wordList[wordIndex];
+  const { wordCount, timeElapsed } = useStudyScreenMonitor(wordData);
 
   useEffect(() => {
     Tts.setDefaultLanguage(LANGS.en_US);
@@ -153,8 +158,19 @@ const StudyScreen = ({ route }) => {
   }, []);
 
   useEffect(() => {
+    createEnterStudyScreenEvent();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('beforeRemove', () => {
+      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
+    });
+    return unsubscribe;
+  }, [wordCount, timeElapsed]);
+
+  useEffect(() => {
     const setup = async () => {
-      const [c, token] = await Promise.all([storage.getData(STORAGE_CONFIG), storage.getData(STORAGE_AUTH_TOKEN)]);
+      const [c, token] = await Promise.all([getConfig(), getAuthToken()]);
       if (!token) {
         setAlertData({
           type: ALERT_TYPES.WARNING,
@@ -163,8 +179,8 @@ const StudyScreen = ({ route }) => {
           ts: getLocalDate().toString(),
         });
       }
-      const finalConfig = c ?? DEFAULT_CONFIG;
       accessToken.current = token;
+      const finalConfig = c ?? DEFAULT_CONFIG;
       setConfig(finalConfig);
 
       const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
@@ -273,8 +289,6 @@ const StudyScreen = ({ route }) => {
     setWordIndex(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordList.length - 1));
   };
 
-  const wordData = loading ? {} : wordList[wordIndex];
-
   const isCollected = isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
   const showSlider = routeType !== WORD_LIST_TYPE.COLLECTED && !shuffle;
@@ -342,6 +356,7 @@ const StudyScreen = ({ route }) => {
 };
 
 StudyScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
 };
 

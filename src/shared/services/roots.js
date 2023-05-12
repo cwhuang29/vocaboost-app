@@ -1,9 +1,8 @@
 import { ALLOWED_RETRY_ENDPOINTS, REQ_RETRY_COUNT } from 'shared/constants/apis';
 import { HEADER_CSRF_TOKEN, HEADER_RETRY_COUNT, HEADER_SOURCE } from 'shared/constants/headers';
-import { STORAGE_AUTH_TOKEN } from 'shared/constants/storage';
-import storage from 'shared/storage';
 import { getBaseURL } from 'shared/utils/api';
 import logger from 'shared/utils/logger';
+import { getAuthToken } from 'shared/utils/storage';
 
 import axios from 'axios';
 
@@ -20,7 +19,7 @@ const httpConfig = {
 const fetch = axios.create(httpConfig);
 
 const beforeReqIsSend = async config => {
-  const token = await storage.getData(STORAGE_AUTH_TOKEN);
+  const token = await getAuthToken();
 
   if (token && !config.headers.Authorization) {
     Object.assign(config.headers, { ...config.headers, Authorization: `Bearer ${token}` });

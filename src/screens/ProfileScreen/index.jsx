@@ -16,13 +16,14 @@ import apis from 'shared/constants/apis';
 import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
-import { STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
+import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { FONT_STYLE_DISPLAY, MAX_Z_INDEX } from 'shared/constants/styles';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import { isObjectEmpty } from 'shared/utils/misc';
+import { getConfig, getUser } from 'shared/utils/storage';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize, isDarkMode } from 'shared/utils/style';
 
@@ -82,7 +83,7 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     const setup = async () => {
-      const [latestUserInfo, latestConfig] = await Promise.all([storage.getData(STORAGE_USER), storage.getData(STORAGE_CONFIG)]);
+      const [latestUserInfo, latestConfig] = await Promise.all([getUser(), getConfig()]);
       setUserInfo(latestUserInfo);
       dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: latestConfig ?? DEFAULT_CONFIG });
       setInit(false);
@@ -96,7 +97,7 @@ const ProfileScreen = () => {
         return;
       }
       setLoading(true);
-      const latestConfig = await storage.getData(STORAGE_CONFIG);
+      const latestConfig = await getConfig();
       dispatch({ type: CONFIG_STATUS.OVERRIDE_ALL, payload: latestConfig ?? DEFAULT_CONFIG });
       setLoading(false);
     };

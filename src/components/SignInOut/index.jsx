@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
@@ -12,19 +12,18 @@ import { Box } from 'native-base';
 
 import { AUTH_TYPE } from 'shared/constants/auth';
 import { LOGIN_METHOD } from 'shared/constants/loginType';
-import { STORAGE_USER } from 'shared/constants/storage';
+import { AZURE_LOGIN_CONFIRM_MSG } from 'shared/constants/messages';
 import { MAX_Z_INDEX } from 'shared/constants/styles';
-import { AuthContext } from 'shared/hooks/useAuthContext';
+import { useAuthContext } from 'shared/hooks/useAuthContext';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { azureCodeChallenge, azureOauthEndpoint, azureOauthScopes, azureRedirectUriObj } from 'shared/oauth/azure';
-import storage from 'shared/storage';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { transformOAuthLoginData } from 'shared/utils/oauth/formatter';
+import { getUser } from 'shared/utils/storage';
 
 import { getAzureUserData, getGoogleUserData, getSignInToBackendErrorMsg, getWelcomeNewUserMsg, oauthGoogleSignOut, showGoogleSignInError } from './helper';
 import OauthIconButton from './OauthIconButton';
-import { AZURE_LOGIN_CONFIRM_MSG } from 'shared/constants/messages';
 
 const authIcon = { [AUTH_TYPE.LOGIN]: 'logout', [AUTH_TYPE.LOGOUT]: 'login' };
 
@@ -36,7 +35,7 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [loginType, setLoginType] = useState();
   const [showOauthLogo, setShowOauthLogo] = useState(false);
-  const { signIn, signOut } = useContext(AuthContext);
+  const { signIn, signOut } = useAuthContext();
   const discovery = useAutoDiscovery(azureOauthEndpoint); // Since account is a personal account and not in a tenant, so need to bypass the tenant-level login
   const [request, response, promptAsync] = useAuthRequest(
     {
@@ -58,7 +57,7 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
 
   useEffect(() => {
     const setup = async () => {
-      const uInfo = await storage.getData(STORAGE_USER);
+      const uInfo = await getUser();
       setIsSignedIn(!isObjectEmpty(uInfo));
     };
     setup();
@@ -165,7 +164,13 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
   return (
     <>
       <Box height={5} />
-      <Pressable onPress={handleSignIn} onLongPress={handleSignOut} style={{ zIndex: MAX_Z_INDEX }} delayLongPress={authDelay[AUTH_TYPE.LOGOUT]}>
+      <Pressable
+        disabled={loading}
+        onPress={handleSignIn}
+        onLongPress={handleSignOut}
+        style={{ zIndex: MAX_Z_INDEX }}
+        delayLongPress={authDelay[AUTH_TYPE.LOGOUT]}
+      >
         <AntDesign
           name={icon}
           size={iconSize}
