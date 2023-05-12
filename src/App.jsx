@@ -14,10 +14,12 @@ import { AUTH_STATUS } from 'shared/actionTypes/auth';
 import { SIGNIN_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
+import { DeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
 import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
 import { getLatestConfigOnLogin } from 'shared/utils/config';
+import { getDeviceInfo } from 'shared/utils/devices';
 import { createLoginEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
 import { colorModeManager, fontsMap, isDarkMode } from 'shared/utils/style';
@@ -28,6 +30,7 @@ const Stack = createNativeStackNavigator();
 const AppCore = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
   const [fontsHasLoaded, setFontsHasLoaded] = useState(false);
+  const [deviceInfo, setDeviceInfo] = useState({});
   const [fontsLoaded] = useFonts(fontsMap);
   const { colors } = useTheme();
   const { colorMode } = useColorMode();
@@ -45,6 +48,14 @@ const AppCore = () => {
       dispatch({ type: AUTH_STATUS.RESTORE_TOKEN, payload: { token } });
     };
     tryRestoreToken();
+  }, []);
+
+  useEffect(() => {
+    const loadDeviceInfo = async () => {
+      const dInfo = await getDeviceInfo();
+      setDeviceInfo(dInfo);
+    };
+    loadDeviceInfo();
   }, []);
 
   const authContext = useMemo(
@@ -83,19 +94,21 @@ const AppCore = () => {
     <SplashScreen />
   ) : (
     <NavigationContainer>
-      <AuthContext.Provider value={authContext}>
-        <Stack.Navigator
-          screenOptions={{
-            contentStyle: { backgroundColor: bgColor },
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name='BottomTab' component={BottomTab} />
-          <Stack.Screen name='Home' component={HomeScreen} />
-          <Stack.Screen name='Study' component={StudyScreen} />
-          <Stack.Screen name='Profile' component={ProfileScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
-        </Stack.Navigator>
-      </AuthContext.Provider>
+      <DeviceInfoContext.Provider value={deviceInfo}>
+        <AuthContext.Provider value={authContext}>
+          <Stack.Navigator
+            screenOptions={{
+              contentStyle: { backgroundColor: bgColor },
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name='BottomTab' component={BottomTab} />
+            <Stack.Screen name='Home' component={HomeScreen} />
+            <Stack.Screen name='Study' component={StudyScreen} />
+            <Stack.Screen name='Profile' component={ProfileScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
+          </Stack.Navigator>
+        </AuthContext.Provider>
+      </DeviceInfoContext.Provider>
     </NavigationContainer>
   );
 };

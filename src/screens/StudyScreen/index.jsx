@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
-import DeviceInfo from 'react-native-device-info';
 import Tts from 'react-native-tts';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Clipboard from '@react-native-clipboard/clipboard';
@@ -132,7 +131,6 @@ const StudyScreen = ({ navigation, route }) => {
   const routeType = route.params.type;
   const accessToken = useRef(null);
   const user = useRef({});
-  const deviceId = useRef(null);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
   const [alphabets, setAlphabets] = useState('');
@@ -161,10 +159,10 @@ const StudyScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', () => {
-      createLeaveStudyScreenEvent({ deviceId: deviceId.current, userId: user.current.uuid ?? '', wordCount, timeElapsed });
+      createLeaveStudyScreenEvent({ userId: user.current.uuid ?? '', wordCount, timeElapsed });
     });
     return unsubscribe;
-  }, [deviceId.current, user.current.uuid, wordCount, timeElapsed]);
+  }, [user.current.uuid, wordCount, timeElapsed]);
 
   useEffect(() => {
     const setup = async () => {
@@ -190,9 +188,6 @@ const StudyScreen = ({ navigation, route }) => {
       setAlphabets(alp);
       setAlphabetsIndex(alpIndex);
       setSelectedLetter(alp[0]);
-
-      const uId = await DeviceInfo.getUniqueId();
-      deviceId.current = uId;
 
       setLoading(false);
     };
