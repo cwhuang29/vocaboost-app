@@ -11,7 +11,7 @@ import SplashScreen from 'screens/SplashScreen';
 import StudyScreen from 'screens/StudyScreen';
 import BottomTab from 'components/BottomTab';
 import { AUTH_STATUS } from 'shared/actionTypes/auth';
-import { SIGNIN_FAILED_MSG } from 'shared/constants/messages';
+import { SIGNIN_FAILED_MSG, SIGNOUT_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { DeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
@@ -73,10 +73,13 @@ const AppCore = () => {
       signIn: async data => {
         const resp = await authService.login(data).catch(err => {
           logger(`Login error: ${JSON.stringify(err)}`);
-          return null;
+          return { failed: true, ...err };
         });
-        if (!resp) {
-          throw new Error(SIGNIN_FAILED_MSG);
+        if (resp.failed) {
+          const { title, content } = resp;
+          const e = new Error();
+          Object.assign(e, { title: title || SIGNIN_FAILED_MSG.TITLE, content: content || SIGNOUT_FAILED_MSG.CONTENT });
+          throw e;
         }
         const { token, isNewUser, user } = resp || {};
         await Promise.all([createLoginEvent({ token }), storage.setData(STORAGE_USER, user), storage.setData(STORAGE_AUTH_TOKEN, token)]);

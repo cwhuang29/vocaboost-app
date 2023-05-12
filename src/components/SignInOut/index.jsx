@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 import { makeRedirectUri, ResponseType, useAuthRequest, useAutoDiscovery } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 // eslint-disable-next-line import/no-unresolved
-import { AZURE_LOGIN_CLIENT_ID, GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
+import { AZURE_LOGIN_CLIENT_ID, GOOGLE_LOGIN_ANDROID_CLIENT_ID, GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
 import { AntDesign } from '@expo/vector-icons';
 
 import { Box } from 'native-base';
 
+import { ALERT_TYPES } from 'shared/constants';
 import { AUTH_TYPE } from 'shared/constants/auth';
 import { LOGIN_METHOD } from 'shared/constants/loginType';
 import { AZURE_LOGIN_CONFIRM_MSG } from 'shared/constants/messages';
@@ -21,8 +22,9 @@ import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { transformOAuthLoginData } from 'shared/utils/oauth/formatter';
 import { getUser } from 'shared/utils/storage';
+import { getLocalDate } from 'shared/utils/time';
 
-import { getAzureUserData, getGoogleUserData, getSignInToBackendErrorMsg, getWelcomeNewUserMsg, oauthGoogleSignOut, showGoogleSignInError } from './helper';
+import { getAzureUserData, getGoogleUserData, getWelcomeNewUserMsg, oauthGoogleSignOut, showGoogleSignInError } from './helper';
 import OauthIconButton from './OauthIconButton';
 
 const authIcon = { [AUTH_TYPE.LOGIN]: 'logout', [AUTH_TYPE.LOGOUT]: 'login' };
@@ -64,7 +66,11 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
   }, []);
 
   useEffect(() => {
-    GoogleSignin.configure({ iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID });
+    // Note: cannot use both properties at the same time!
+    GoogleSignin.configure({
+      webClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID, // TODO
+      iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID,
+    });
   }, []);
 
   const signInToBackend = async ({ loginMethod, data }) => {
@@ -80,7 +86,12 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
       setUserInfo(latestUser);
       setIsSignedIn(true);
     } catch (err) {
-      setAlert(getSignInToBackendErrorMsg());
+      setAlert({
+        type: ALERT_TYPES.ERROR,
+        title: err.title,
+        content: err.content,
+        ts: getLocalDate().toString(),
+      });
     }
   };
 

@@ -6,9 +6,12 @@
     "start-prod": "expo start --no-dev --minify",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' --config ./.prettierrc --ignore-unknown",
     "lint": "eslint src --fix",
+    "build-dev-and": "eas build --profile dev --platform android",
     "build-dev-ios": "eas build --profile dev --platform ios",
+    "build-preview-and": "eas build --profile preview --platform android",
     "build-preview-ios": "eas build --profile preview --platform ios",
     "build-production-ios": "eas build --profile production --platform ios",
+    "load-and": "eas build:run -p android",
     "load-ios": "eas build:run -p ios"
   },
   "dependencies": {

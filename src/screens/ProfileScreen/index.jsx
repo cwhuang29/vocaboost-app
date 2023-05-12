@@ -33,6 +33,36 @@ const ExternalLink = ({ link, text }) => (
   </Link>
 );
 
+// TODO
+const iOSModalBody = () => (
+  <>
+    <Text size='xs' mb={4}>
+      VocaBoost&nbsp;
+      <ExternalLink link={EXTENSION_LINK} text='extension' />
+      &nbsp;highlights GRE words on every web page you visit. Collect unfamiliar words when browsing webpages, and review them on this app.
+    </Text>
+    <Text size='xs'>
+      Visit our&nbsp;
+      <ExternalLink link={apis.OFFICAIL_HOME_PAGE} text='official website' />
+      &nbsp;and feel free to leave a comment&nbsp;
+      <ExternalLink link={GOOGLE_FORM_LINK} text='here' />.
+    </Text>
+  </>
+);
+
+const AndroidModalBody = () => (
+  <>
+    <Text size='xs' mb={4}>
+      VocaBoost extension highlights GRE words on every web page you visit. Collect unfamiliar words when browsing webpages, and review them on this app.
+    </Text>
+    <VStack space={2}>
+      <ExternalLink link={EXTENSION_LINK} text='Download extension' />
+      <ExternalLink link={apis.OFFICAIL_HOME_PAGE} text='Go to official website' />
+      <ExternalLink link={GOOGLE_FORM_LINK} text='Let us know your opinion' />
+    </VStack>
+  </>
+);
+
 const AdvertisementModal = ({ iconColor }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -47,17 +77,7 @@ const AdvertisementModal = ({ iconColor }) => {
               Boost Your Performance
             </Modal.Header>
             <Modal.Body style={{ alignItems: 'flex-start' }}>
-              <Text size='xs' mb={4}>
-                VocaBoost&nbsp;
-                <ExternalLink link={EXTENSION_LINK} text='extension' />
-                &nbsp;highlights GRE words on every web page you visit. Collect unfamiliar words when browsing webpages, and review them on this app.
-              </Text>
-              <Text size='xs'>
-                Visit our&nbsp;
-                <ExternalLink link={apis.OFFICAIL_HOME_PAGE} text='official website' />
-                &nbsp;and feel free to leave a comment&nbsp;
-                <ExternalLink link={GOOGLE_FORM_LINK} text='here' />.
-              </Text>
+              <AndroidModalBody />
             </Modal.Body>
           </Modal.Content>
         </Modal>

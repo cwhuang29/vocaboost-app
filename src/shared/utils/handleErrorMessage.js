@@ -15,7 +15,8 @@ export const extractErrorMessage = err => {
     };
   } else if (err.request) {
     // The request was made but no response was received
-    errMsg = { title: msg.UNKNOWN_ERROR, content: msg.TRY_AGAIN_LATER };
+    // There is no err.response and err.code might be 'ERR_NETWORK'
+    errMsg = { title: msg.NETWORK_ISSUE, content: msg.TRY_AGAIN_LATER };
   } else {
     // Something happened in setting up the request that triggered an Error
     errMsg = { title: `${msg.UNKNOWN_ERROR} (${err.message})`, content: msg.TRY_AGAIN };

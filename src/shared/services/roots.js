@@ -30,6 +30,9 @@ const beforeReqIsSend = async config => {
 };
 
 const respMiddleware = async err => {
+  if (err.code === 'ERR_NETWORK') {
+    return Promise.reject(err);
+  }
   const { status } = err.response;
   const { url } = err.config;
   const tried = Number(err.config.headers[HEADER_RETRY_COUNT]) || 0;
