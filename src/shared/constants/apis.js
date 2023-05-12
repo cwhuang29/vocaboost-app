@@ -19,7 +19,7 @@ const apis = {
 
 export default apis;
 
-export const EVENT_TRACKING_ENDPOINT = {
+export const EVENT_TRACKING_API = {
   V1: '/v1',
 };
 

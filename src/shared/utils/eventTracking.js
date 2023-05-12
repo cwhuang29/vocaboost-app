@@ -11,3 +11,7 @@ export const createLoginEvent = ({ token }) => {
   const { uuid, loginMethod } = decodeAuthToken(token);
   createEventTracking({ type: EVENT_TYPE.LOGIN, uuid, loginMethod });
 };
+
+export const createLeaveStudyScreenEvent = ({ deviceId, userId, wordCount, timeElapsed }) => {
+  createEventTracking({ type: EVENT_TYPE.LEAVE_STUDY_SCREEN, deviceId, userId, wordCount, timeElapsed });
+};

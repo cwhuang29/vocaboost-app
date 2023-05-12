@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import Tts from 'react-native-tts';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Clipboard from '@react-native-clipboard/clipboard';
@@ -14,13 +15,15 @@ import { ALERT_TYPES } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
-import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG } from 'shared/constants/storage';
+import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+import useStudyScreenMonitor from 'shared/hooks/useStudyScreenMonitor';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
+import { createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getLocalDate } from 'shared/utils/time';
@@ -125,9 +128,11 @@ const StarIconButton = ({ isCollected, onPress }) => {
   );
 };
 
-const StudyScreen = ({ route }) => {
+const StudyScreen = ({ navigation, route }) => {
   const routeType = route.params.type;
   const accessToken = useRef(null);
+  const user = useRef({});
+  const deviceId = useRef(null);
   const [loading, setLoading] = useState(true);
   const [config, setConfig] = useState({});
   const [alphabets, setAlphabets] = useState('');
@@ -144,6 +149,8 @@ const StudyScreen = ({ route }) => {
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
   // const connStatus = getWSConnStatusDisplay(readyState);
+  const wordData = loading ? {} : wordList[wordIndex];
+  const { wordCount, timeElapsed } = useStudyScreenMonitor(wordData);
 
   useEffect(() => {
     Tts.setDefaultLanguage(LANGS.en_US);
@@ -153,8 +160,15 @@ const StudyScreen = ({ route }) => {
   }, []);
 
   useEffect(() => {
+    const unsubscribe = navigation.addListener('beforeRemove', () => {
+      createLeaveStudyScreenEvent({ deviceId: deviceId.current, userId: user.current.uuid ?? '', wordCount, timeElapsed });
+    });
+    return unsubscribe;
+  }, [deviceId.current, user.current.uuid, wordCount, timeElapsed]);
+
+  useEffect(() => {
     const setup = async () => {
-      const [c, token] = await Promise.all([storage.getData(STORAGE_CONFIG), storage.getData(STORAGE_AUTH_TOKEN)]);
+      const [c, token, u] = await Promise.all([storage.getData(STORAGE_CONFIG), storage.getData(STORAGE_AUTH_TOKEN), storage.getData(STORAGE_USER)]);
       if (!token) {
         setAlertData({
           type: ALERT_TYPES.WARNING,
@@ -163,8 +177,9 @@ const StudyScreen = ({ route }) => {
           ts: getLocalDate().toString(),
         });
       }
-      const finalConfig = c ?? DEFAULT_CONFIG;
       accessToken.current = token;
+      user.current = u ?? {};
+      const finalConfig = c ?? DEFAULT_CONFIG;
       setConfig(finalConfig);
 
       const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
@@ -175,6 +190,9 @@ const StudyScreen = ({ route }) => {
       setAlphabets(alp);
       setAlphabetsIndex(alpIndex);
       setSelectedLetter(alp[0]);
+
+      const uId = await DeviceInfo.getUniqueId();
+      deviceId.current = uId;
 
       setLoading(false);
     };
@@ -273,8 +291,6 @@ const StudyScreen = ({ route }) => {
     setWordIndex(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordList.length - 1));
   };
 
-  const wordData = loading ? {} : wordList[wordIndex];
-
   const isCollected = isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
   const showSlider = routeType !== WORD_LIST_TYPE.COLLECTED && !shuffle;
@@ -342,6 +358,7 @@ const StudyScreen = ({ route }) => {
 };
 
 StudyScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
 };
 
