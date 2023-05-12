@@ -12,7 +12,7 @@ const themeSetting = {
       600: '#91B5A9',
       700: '#EDC673',
       800: '#D98481',
-      900: '#F1F0F3',
+      900: '#E9E8EA',
       1000: '#494268',
       1100: '#FEF8F4',
     },
@@ -26,7 +26,7 @@ const themeSetting = {
       600: '#A5D2B7',
       700: '#EDCA7F',
       800: '#D98481',
-      900: '#F1F0F3',
+      900: '#030303',
       1000: '#A9CFA1',
       1100: '#393D44',
     },
@@ -75,9 +75,10 @@ const themeSetting = {
       },
       defaultProps: { size: 'md' },
       sizes: {
-        xl: { fontSize: '34', lineHeight: '45' },
+        '2xl': { fontSize: '30', lineHeight: '42' },
+        xl: { fontSize: '26', lineHeight: '38' },
         lg: { fontSize: '23', lineHeight: '32', letterSpacing: '0.02em' },
-        md: { fontSize: '20.4', lineHeight: '30' },
+        md: { fontSize: '20.4', lineHeight: '28' },
         sm: { fontSize: '19', lineHeight: '28' },
         xs: { fontSize: '16' },
         '2xs': { fontSize: '14' },
@@ -99,44 +100,59 @@ const themeSetting = {
     },
   },
   fontConfig: {
+    Cera: {
+      300: { normal: 'Cera-Light' },
+      400: { normal: 'Cera-Medium' },
+      500: { normal: 'Cera-Medium' },
+      600: { normal: 'Cera-Medium' },
+      700: { normal: 'Cera-Bold' },
+    },
     Roboto: {
       300: { normal: 'Roboto-Regular' },
       400: { normal: 'Roboto-Medium' }, // Roboto-Regular
       500: { normal: 'Roboto-Medium' },
-      600: { normal: 'Roboto-Bold' },
+      600: { normal: 'Roboto-Medium' },
+      700: { normal: 'Roboto-Bold' },
     },
     Garamond: {
       300: { normal: 'Garamond-Medium' },
       400: { normal: 'Garamond-SemiBold' },
       500: { normal: 'Garamond-SemiBold' },
-      600: { normal: 'Garamond-Bold' },
+      600: { normal: 'Garamond-SemiBold' },
+      700: { normal: 'Garamond-Bold' },
     },
     Kalam: {
       300: { normal: 'Kalam-Light' },
       400: { normal: 'Kalam-Regular' },
       500: { normal: 'Kalam-Regular' },
-      600: { normal: 'Kalam-Bold' },
+      600: { normal: 'Kalam-Regular' },
+      700: { normal: 'Kalam-Bold' },
     },
     Kumincho: {
       300: { normal: 'Kumincho-Regular' },
       400: { normal: 'Kumincho-Regular' },
       500: { normal: 'Kumincho-Regular' },
       600: { normal: 'Kumincho-Regular' },
+      700: { normal: 'Kumincho-Regular' },
     },
     PlayfairDisplay: {
       300: { normal: 'PlayfairDisplay-Medium' }, // Regular
       400: { normal: 'PlayfairDisplay-Bold' },
       500: { normal: 'PlayfairDisplay-Bold' },
       600: { normal: 'PlayfairDisplay-Bold' },
+      700: { normal: 'PlayfairDisplay-Bold' },
     },
   },
   fonts: {
     // Default font weight is 400
+    cera: 'Cera',
     roboto: 'Roboto',
     garamond: 'Garamond',
     kalam: 'Kalam',
     kumincho: 'Kumincho',
     playfairdisplay: 'PlayfairDisplay',
+    heading: 'Cera',
+    body: 'Cera',
   },
   config: {
     useSystemColorMode: true, // Default system color mode

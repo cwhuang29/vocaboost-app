@@ -21,7 +21,7 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
         <Pressable onLongPress={onCopyText}>
-          <DisplayText size='xl' shrink={0} fontStyle={fontStyle}>
+          <DisplayText size='2xl' shrink={0} fontStyle={fontStyle}>
             {toCapitalize(wordData.word)}
           </DisplayText>
         </Pressable>

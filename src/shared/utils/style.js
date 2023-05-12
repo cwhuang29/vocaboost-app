@@ -1,6 +1,9 @@
 import { COLOR_MODE, FONT_SIZE } from 'shared/constants';
 import { STORAGE_COLOR_MODE } from 'shared/constants/storage';
 import storage from 'shared/storage';
+import CeraBold from 'assets/fonts/Cera-Bold.otf';
+import CeraLight from 'assets/fonts/Cera-Light.otf';
+import CeraMedium from 'assets/fonts/Cera-Medium.otf';
 import GaramondBold from 'assets/fonts/Garamond-Bold.ttf';
 import GaramondMedium from 'assets/fonts/Garamond-Medium.ttf';
 import GaramondSemiBold from 'assets/fonts/Garamond-SemiBold.ttf';
@@ -15,6 +18,9 @@ import RobotoMedium from 'assets/fonts/Roboto-Medium.ttf';
 import RobotoRegular from 'assets/fonts/Roboto-Regular.ttf';
 
 export const fontsMap = {
+  'Cera-Light': CeraLight,
+  'Cera-Medium': CeraMedium,
+  'Cera-Bold': CeraBold,
   'Roboto-Regular': RobotoRegular,
   'Roboto-Medium': RobotoMedium,
   'Roboto-Bold': RobotoBold,

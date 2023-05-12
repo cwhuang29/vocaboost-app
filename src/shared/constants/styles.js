@@ -32,6 +32,7 @@ export const ALERT_STYLE = {
 };
 
 export const FONT_STYLE_DISPLAY = {
+  CERA: 'Cera',
   ROBOTO: 'Roboto',
   GARAMOND: 'Garamond',
   KALAM: 'Kalam',
