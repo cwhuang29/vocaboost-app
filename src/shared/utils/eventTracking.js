@@ -4,7 +4,7 @@ import { decodeAuthToken } from 'shared/utils/auth';
 import { getLocalDate } from 'shared/utils/time';
 
 const createEventTracking = payload => {
-  eventTrackingService.createEventTracking({ ...payload, ts: getLocalDate() });
+  // eventTrackingService.createEventTracking({ ...payload, ts: getLocalDate() }).catch(err => err);
 };
 
 export const createLoginEvent = ({ token }) => {

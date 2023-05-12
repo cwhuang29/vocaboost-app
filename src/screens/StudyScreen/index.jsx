@@ -147,7 +147,7 @@ const StudyScreen = ({ navigation, route }) => {
   const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle }), [routeType, shuffle]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
-  const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL());
+  const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL()); // TODO If user is not signed in, don't run ws code
   // const connStatus = getWSConnStatusDisplay(readyState);
   const wordData = loading ? {} : wordList[wordIndex];
   const { wordCount, timeElapsed } = useStudyScreenMonitor(wordData);
