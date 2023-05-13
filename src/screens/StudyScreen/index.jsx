@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Tts from 'react-native-tts';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Clipboard from '@react-native-clipboard/clipboard';
+import { useFocusEffect } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
@@ -10,8 +11,7 @@ import { Box, Icon, IconButton, Text, View } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
-import { ALERT_TYPES } from 'shared/constants';
-import { STORAGE_CONFIG_DEBOUNCE_DELAY } from 'shared/constants';
+import { ALERT_TYPES, STORAGE_CONFIG_DEBOUNCE_DELAY } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
@@ -144,7 +144,7 @@ const StudyScreen = ({ navigation, route }) => {
   const [shuffle, setShuffle] = useState(routeType !== WORD_LIST_TYPE.COLLECTED);
   const [alphabetize, setAlphabetize] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
-  const debouncedConfig = useDebounce(config,STORAGE_CONFIG_DEBOUNCE_DELAY);
+  const debouncedConfig = useDebounce(config, STORAGE_CONFIG_DEBOUNCE_DELAY);
   const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle }), [routeType, shuffle]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
@@ -184,8 +184,6 @@ const StudyScreen = ({ navigation, route }) => {
       }
       accessToken.current = token;
       const finalConfig = c ?? DEFAULT_CONFIG;
-      // TODELETE
-      console.log("config=", c);
       setConfig(finalConfig);
 
       const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
@@ -202,15 +200,24 @@ const StudyScreen = ({ navigation, route }) => {
     setup();
   }, []);
 
-  // TODO: debouncedConfig useEffect
-  useEffect(() => {
-    const updateStorage = async () => {
-      if (debouncedConfig) {
-        await storage.setData(STORAGE_CONFIG, debouncedConfig);
-      }
+  const updateStorage = async () => {
+    if (debouncedConfig) {
+      await storage.setData(STORAGE_CONFIG, debouncedConfig);
     }
+  };
+
+  useEffect(() => {
     updateStorage();
   }, [debouncedConfig]);
+
+  useFocusEffect(
+    useCallback(
+      () => () => {
+        updateStorage();
+      },
+      []
+    )
+  );
 
   useUpdateEffect(() => {
     let newWordList = [];
@@ -227,13 +234,12 @@ const StudyScreen = ({ navigation, route }) => {
     const time = getLocalDate();
     let updatedStudyOptions = { ...config.studyOptions[routeType] };
     if (!shuffle) {
-      updatedStudyOptions = { ...config.studyOptions[routeType], mode: routeType === WORD_LIST_TYPE.COLLECTED ? 'sortByTime' : 'alphabetize' }
+      updatedStudyOptions = { ...config.studyOptions[routeType], mode: routeType === WORD_LIST_TYPE.COLLECTED ? 'sortByTime' : 'alphabetize' };
     } else {
       updatedStudyOptions = { ...config.studyOptions[routeType], mode: 'shuffle', wordId: null };
     }
-    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions }}, updatedAt: time};
+    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions } }, updatedAt: time };
     setConfig(newConfig);
-
   }, [shuffle]);
 
   useUpdateEffect(() => {
@@ -244,7 +250,7 @@ const StudyScreen = ({ navigation, route }) => {
     if (!shuffle) {
       const time = getLocalDate();
       const updatedStudyOptions = { ...config.studyOptions[routeType] };
-      const newConfig = {...config, studyOptions: {...config.studyOptions, [routeType]: {...updatedStudyOptions, wordId: wordIndex}}, updatedAt: time }
+      const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions, wordId: wordIndex } }, updatedAt: time };
       setConfig(newConfig);
     }
   }, [wordIndex]);
