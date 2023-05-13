@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Alert, Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
@@ -16,8 +16,10 @@ import { LOGIN_METHOD } from 'shared/constants/loginType';
 import { AZURE_LOGIN_CONFIRM_MSG } from 'shared/constants/messages';
 import { MAX_Z_INDEX } from 'shared/constants/styles';
 import { useAuthContext } from 'shared/hooks/useAuthContext';
+import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { azureCodeChallenge, azureOauthEndpoint, azureOauthScopes, azureRedirectUriObj } from 'shared/oauth/azure';
+import { deviceIsAndroid } from 'shared/utils/devices';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { transformOAuthLoginData } from 'shared/utils/oauth/formatter';
@@ -49,6 +51,8 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
     },
     discovery
   );
+  const deviceInfo = useDeviceInfoContext();
+  const isAndroid = useMemo(() => deviceIsAndroid(deviceInfo), []);
   const iconColor = useIconStyle();
   const authStatus = isSignedIn ? AUTH_TYPE.LOGIN : AUTH_TYPE.LOGOUT;
   const icon = authIcon[authStatus];
@@ -67,10 +71,9 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
 
   useEffect(() => {
     // Note: cannot use both properties at the same time!
-    GoogleSignin.configure({
-      webClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID, // TODO
-      iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID,
-    });
+    const googleSigninConfig = { android: { webClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID }, ios: { iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID } };
+    const c = isAndroid ? googleSigninConfig.android : googleSigninConfig.ios;
+    GoogleSignin.configure(c);
   }, []);
 
   const signInToBackend = async ({ loginMethod, data }) => {
