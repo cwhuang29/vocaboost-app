@@ -181,6 +181,9 @@ const StudyScreen = ({ navigation, route }) => {
       }
       accessToken.current = token;
       const finalConfig = c ?? DEFAULT_CONFIG;
+      // TODELETE
+      // console.log("config=", c);
+      // console.log("DEFAULT_CONFIG=", DEFAULT_CONFIG);
       setConfig(finalConfig);
 
       const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
@@ -208,6 +211,8 @@ const StudyScreen = ({ navigation, route }) => {
     }
     setWordList(newWordList);
     setWordIndex(0);
+
+    // TODO: update config when shuffle changes
   }, [shuffle]);
 
   useUpdateEffect(() => {
@@ -215,7 +220,19 @@ const StudyScreen = ({ navigation, route }) => {
     if (word && getFirstLetter(word) !== selectedLetter) {
       setSelectedLetter(getFirstLetter(word));
     }
+    if (!shuffle) {
+      const time = getLocalDate();
+      const updatedStudyOptions = { ...config.studyOptions[routeType] };
+      const newConfig = {...config, studyOptions: {...config.studyOptions, [routeType]: {...updatedStudyOptions, wordId: wordIndex}}, updatedAt: time }
+      setConfig(newConfig);
+    }
   }, [wordIndex]);
+
+  // TODO: update config when alphabetize changes
+  // useEffect(() => {
+  //   const updatedStudyOptions = { ...config.studyOptions[routeType] };
+  //   const newConfig = { ...config, studyOptions: {...config}, updatedAt: time };
+  // }, [alphabetize]);
 
   useEffect(() => {
     const setupWebSocket = async () => {
@@ -264,7 +281,7 @@ const StudyScreen = ({ navigation, route }) => {
       const collectedWords = isCollected ? config.collectedWords.filter(wordId => wordId !== id) : [...config.collectedWords, id];
       const newConfig = { ...config, collectedWords, updatedAt: time };
 
-      await storage.setData(STORAGE_CONFIG, newConfig);
+      // await storage.setData(STORAGE_CONFIG, newConfig);
       setConfig(newConfig);
       if (accessToken.current) {
         sendJsonMessage({ data: collectedWords, accessToken: accessToken.current, ts: time });

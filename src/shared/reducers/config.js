@@ -6,6 +6,7 @@ export const configInitialState = {
   fontSize: DEFAULT_CONFIG.fontSize,
   fontStyle: DEFAULT_CONFIG.fontStyle,
   colorMode: DEFAULT_CONFIG.colorMode,
+  studyOptions: DEFAULT_CONFIG.studyOptions
 };
 
 export const configReducer = (state, action) => {
@@ -22,7 +23,7 @@ export const configReducer = (state, action) => {
       return { ...state, colorMode: payload.colorMode };
     case CONFIG_STATUS.OVERRIDE_BY_SERVER:
       // For now only these properties are stored in database
-      return { ...state, language: payload.language, collectedWords: payload.collectedWords, updatedAt: payload.updatedAt };
+      return { ...state, language: payload.language, collectedWords: payload.collectedWords, studyOptions: payload.studyOptions, updatedAt: payload.updatedAt };
     case CONFIG_STATUS.OVERRIDE_ALL:
       return { ...payload };
     default:
