@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { IconButton, useTheme as useThemeRN } from 'react-native-paper';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import PropTypes from 'prop-types';
@@ -8,7 +8,9 @@ import { useColorMode, useTheme } from 'native-base';
 import HomeScreen from 'screens/HomeScreen';
 import ProfileScreen from 'screens/ProfileScreen';
 import DefaultText from 'components/Text/DefaultText';
+import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import { useReverseIconStyle } from 'shared/hooks/useIconStyle';
+import { deviceIsAndroid } from 'shared/utils/devices';
 import { isDarkMode } from 'shared/utils/style';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -45,6 +47,8 @@ const TabBarLabel = ({ children, color }) => (
 const BottomTab = () => {
   const theme = useThemeRN();
   const { colors } = useTheme();
+  const deviceInfo = useDeviceInfoContext();
+  const isAndroid = useMemo(() => deviceIsAndroid(deviceInfo), []);
   const { colorMode } = useColorMode();
   const activeColor = isDarkMode(colorMode) ? colors.vhdark[900] : colors.vhlight[900];
   const inactiveColor = isDarkMode(colorMode) ? colors.vhdark[1000] : colors.vhlight[1000];
@@ -57,8 +61,8 @@ const BottomTab = () => {
       initialRouteName='Home'
       activeColor={activeColor}
       inactiveColor={inactiveColor}
-      safeAreaInsets={{ bottom: -10 }}
-      barStyle={{ backgroundColor: inactiveColor, opacity: 0.95, paddingHorizontal: 0, paddingBottom: 20 }}
+      safeAreaInsets={{ bottom: isAndroid ? 0 : -10 }}
+      barStyle={{ backgroundColor: inactiveColor, opacity: 0.95, paddingHorizontal: 0, paddingBottom: isAndroid ? 0 : 20 }}
       screenOptions={({ route }) => ({
         tabBarIcon: getTagBarIcon({ route }),
       })}
