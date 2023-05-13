@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useMemo, useReducer, useState } from 'react';
 import { Dimensions, Pressable } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import PropTypes from 'prop-types';
@@ -18,10 +18,12 @@ import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { FONT_STYLE_DISPLAY, MAX_Z_INDEX } from 'shared/constants/styles';
+import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
+import { deviceIsIphone } from 'shared/utils/devices';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getConfig, getUser } from 'shared/utils/storage';
 import { toCapitalize } from 'shared/utils/stringHelpers';
@@ -97,6 +99,8 @@ const ProfileScreen = () => {
   const [alertData, setAlertData] = useState({});
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const isFocused = useIsFocused();
+  const deviceInfo = useDeviceInfoContext();
+  const isIphone = useMemo(() => deviceIsIphone(deviceInfo), []);
   const { colorMode, toggleColorMode } = useColorMode();
   const iconColor = useIconStyle();
   const avatarColor = isDarkMode(colorMode) ? '#5F6FBA' : '#394374';
@@ -159,8 +163,8 @@ const ProfileScreen = () => {
   ) : (
     <>
       <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-        <Box height={9} />
-        <Box alignItems='center' position='absolute' style={{ top: 72, right: 20 }}>
+        {isIphone && <Box height={9} />}
+        <Box alignItems='center' position='absolute' style={{ top: isIphone ? 70 : 39, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} />
           <SignInOut
             loading={loading}

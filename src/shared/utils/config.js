@@ -9,7 +9,7 @@ import { convertUTCToLocalTime } from './time';
 export const DEFAULT_CONFIG = {
   language: LANGS.en,
   fontSize: FONT_SIZE.MEDIUM,
-  fontStyle: FONT_STYLE.ROBOTO,
+  fontStyle: FONT_STYLE.CERA,
   colorMode: COLOR_MODE.LIGHT,
   collectedWords: [],
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
