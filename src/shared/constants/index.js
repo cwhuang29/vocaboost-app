@@ -77,3 +77,5 @@ export const COLOR_MODE = {
 };
 
 export const ALERT_TIMEOUT = 3000;
+
+export const STORAGE_CONFIG_DEBOUNCE_DELAY = 5000;

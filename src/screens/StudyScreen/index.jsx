@@ -11,12 +11,14 @@ import { Box, Icon, IconButton, Text, View } from 'native-base';
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { ALERT_TYPES } from 'shared/constants';
+import { STORAGE_CONFIG_DEBOUNCE_DELAY } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+import useDebounce from 'shared/hooks/useDebounce';
 import useStudyScreenMonitor from 'shared/hooks/useStudyScreenMonitor';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
@@ -142,6 +144,7 @@ const StudyScreen = ({ navigation, route }) => {
   const [shuffle, setShuffle] = useState(routeType !== WORD_LIST_TYPE.COLLECTED);
   const [alphabetize, setAlphabetize] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
+  const debouncedConfig = useDebounce(config,STORAGE_CONFIG_DEBOUNCE_DELAY);
   const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle }), [routeType, shuffle]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
@@ -182,8 +185,7 @@ const StudyScreen = ({ navigation, route }) => {
       accessToken.current = token;
       const finalConfig = c ?? DEFAULT_CONFIG;
       // TODELETE
-      // console.log("config=", c);
-      // console.log("DEFAULT_CONFIG=", DEFAULT_CONFIG);
+      console.log("config=", c);
       setConfig(finalConfig);
 
       const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
@@ -199,6 +201,16 @@ const StudyScreen = ({ navigation, route }) => {
     };
     setup();
   }, []);
+
+  // TODO: debouncedConfig useEffect
+  useEffect(() => {
+    const updateStorage = async () => {
+      if (debouncedConfig) {
+        await storage.setData(STORAGE_CONFIG, debouncedConfig);
+      }
+    }
+    updateStorage();
+  }, [debouncedConfig]);
 
   useUpdateEffect(() => {
     let newWordList = [];
