@@ -212,7 +212,16 @@ const StudyScreen = ({ navigation, route }) => {
     setWordList(newWordList);
     setWordIndex(0);
 
-    // TODO: update config when shuffle changes
+    const time = getLocalDate();
+    let updatedStudyOptions = { ...config.studyOptions[routeType] };
+    if (!shuffle) {
+      updatedStudyOptions = { ...config.studyOptions[routeType], mode: routeType === WORD_LIST_TYPE.COLLECTED ? 'sortByTime' : 'alphabetize' }
+    } else {
+      updatedStudyOptions = { ...config.studyOptions[routeType], mode: 'shuffle', wordId: null };
+    }
+    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions }}, updatedAt: time};
+    setConfig(newConfig);
+
   }, [shuffle]);
 
   useUpdateEffect(() => {
@@ -227,12 +236,6 @@ const StudyScreen = ({ navigation, route }) => {
       setConfig(newConfig);
     }
   }, [wordIndex]);
-
-  // TODO: update config when alphabetize changes
-  // useEffect(() => {
-  //   const updatedStudyOptions = { ...config.studyOptions[routeType] };
-  //   const newConfig = { ...config, studyOptions: {...config}, updatedAt: time };
-  // }, [alphabetize]);
 
   useEffect(() => {
     const setupWebSocket = async () => {
