@@ -49,7 +49,7 @@ export const getAzureUserData = async ({ discovery, request, response }) => {
   try {
     const { accessToken, idToken, scope } = tokenResult;
     const userData = jwtDecode(idToken);
-    logger(`MS Oauth get user data result: ${JSON.stringify(userData)}`);
+    logger(`Azure Oauth get user data result: ${JSON.stringify(userData)}`);
 
     const avatarBinary = await oauthService.getAzureUserPhoto({ accessToken });
     const avatarString = Buffer.from(avatarBinary, 'binary').toString('base64'); // Convert binary image to base64 string
@@ -57,7 +57,7 @@ export const getAzureUserData = async ({ discovery, request, response }) => {
     const userInfo = { ...userData, idToken, scope, avatar };
     return { loginMethod: LOGIN_METHOD.AZURE, userInfo };
   } catch (err) {
-    logger(`Azure get user data error: ${err}`);
+    logger(`Azure OAuth get user data error: ${JSON.stringify(err)}`);
   }
   return null;
 };

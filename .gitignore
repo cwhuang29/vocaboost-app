@@ -25,8 +25,10 @@ npm-debug.log*
 
 # credentials
 .env
+google-services.json
 google-services-secret-web.json
 google-services-secret-chrome.json
+google-services-secret-android.json
 google-services-secret-ios.plist
 
 # Expo

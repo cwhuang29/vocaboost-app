@@ -12,6 +12,7 @@ const msg = {
   PERMISSION_DENIED: 'You are not allowed to perform this action',
   REQUEST_IS_HANDLING: 'Your request is being processed. Hold on please',
   LOGIN_REQUIRED: 'You have to login first',
+  NETWORK_ISSUE: 'There is a network issue',
 };
 
 export const validateMsg = {

@@ -12,3 +12,11 @@ export const getDeviceInfo = async () => {
   // {"uniqueId":"<string>","manufacturer":"Apple","appVersion":"1.1.0.1.1.1","systemVersion":"16.4","deviceId":"iPhone14,2","isTablet":false}
   return { uniqueId, manufacturer, appVersion, systemVersion, deviceId, isTablet };
 };
+
+export const deviceIsIOS = info => info.manufacturer === 'Apple';
+
+export const deviceIsAndroid = info => info.manufacturer === 'Google';
+
+export const deviceIsTablet = info => !!info.isTablet;
+
+export const deviceIsIphone = info => info.deviceId.startsWith('iPhone');

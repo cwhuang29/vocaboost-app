@@ -1,10 +1,9 @@
-import React, { useEffect, useReducer, useState } from 'react';
-import { Dimensions, Pressable } from 'react-native';
+import React, { useEffect, useMemo, useReducer, useState } from 'react';
+import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
-import PropTypes from 'prop-types';
 import { AntDesign } from '@expo/vector-icons';
 
-import { Avatar, Box, Center, HStack, Link, Modal, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
+import { Avatar, Box, Center, HStack, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
@@ -12,59 +11,22 @@ import { Select } from 'components/Selects';
 import SignInOut from 'components/SignInOut';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
 import { COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants';
-import apis from 'shared/constants/apis';
 import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
-import { EXTENSION_LINK, GOOGLE_FORM_LINK } from 'shared/constants/link';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
-import { FONT_STYLE_DISPLAY, MAX_Z_INDEX } from 'shared/constants/styles';
+import { FONT_STYLE_DISPLAY } from 'shared/constants/styles';
+import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
+import { deviceIsAndroid, deviceIsIphone } from 'shared/utils/devices';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getConfig, getUser } from 'shared/utils/storage';
 import { toCapitalize } from 'shared/utils/stringHelpers';
-import { getTextSize, isDarkMode } from 'shared/utils/style';
+import { isDarkMode } from 'shared/utils/style';
 
-const ExternalLink = ({ link, text }) => (
-  <Link isExternal href={link} _text={{ fontSize: 16, color: 'blue.500', fontWeight: 'bold' }} mx={0}>
-    {text}
-  </Link>
-);
-
-const AdvertisementModal = ({ iconColor }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  return (
-    <>
-      <Pressable onPress={() => setIsOpen(true)} style={{ zIndex: MAX_Z_INDEX }}>
-        <AntDesign name='bulb1' size={36} color={iconColor} />
-      </Pressable>
-      <Center>
-        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} _backdrop={{ _dark: { bg: 'coolGray.800' }, bg: 'warmGray.500' }}>
-          <Modal.Content maxW='95%' minW='92%' maxH='500' _light={{ bgColor: 'vhlight.300' }} _dark={{ bgColor: 'vhdark.300' }}>
-            <Modal.Header _light={{ bgColor: 'vhlight.300' }} _dark={{ bgColor: 'vhdark.300' }}>
-              Boost Your Performance
-            </Modal.Header>
-            <Modal.Body style={{ alignItems: 'flex-start' }}>
-              <Text size='xs' mb={4}>
-                VocaBoost&nbsp;
-                <ExternalLink link={EXTENSION_LINK} text='extension' />
-                &nbsp;highlights GRE words on every web page you visit. Collect unfamiliar words when browsing webpages, and review them on this app.
-              </Text>
-              <Text size='xs'>
-                Visit our&nbsp;
-                <ExternalLink link={apis.OFFICAIL_HOME_PAGE} text='official website' />
-                &nbsp;and feel free to leave a comment&nbsp;
-                <ExternalLink link={GOOGLE_FORM_LINK} text='here' />.
-              </Text>
-            </Modal.Body>
-          </Modal.Content>
-        </Modal>
-      </Center>
-    </>
-  );
-};
+import AdvertisementModal from './AdvertisementModal';
 
 const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'xl', menuHeadingSize: 'sm', textSize: 'sm', spacing: 1 };
 const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: '2xl', menuHeadingSize: 'md', textSize: 'md', spacing: 3.5 };
@@ -77,6 +39,9 @@ const ProfileScreen = () => {
   const [alertData, setAlertData] = useState({});
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const isFocused = useIsFocused();
+  const deviceInfo = useDeviceInfoContext();
+  const isIphone = useMemo(() => deviceIsIphone(deviceInfo), []);
+  const isAndroid = useMemo(() => deviceIsAndroid(deviceInfo), []);
   const { colorMode, toggleColorMode } = useColorMode();
   const iconColor = useIconStyle();
   const avatarColor = isDarkMode(colorMode) ? '#5F6FBA' : '#394374';
@@ -139,9 +104,9 @@ const ProfileScreen = () => {
   ) : (
     <>
       <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-        <Box height={9} />
-        <Box alignItems='center' position='absolute' style={{ top: 72, right: 20 }}>
-          <AdvertisementModal iconColor={iconColor} />
+        {isIphone && <Box height={9} />}
+        <Box alignItems='center' position='absolute' style={{ top: isIphone ? 70 : 39, right: 20 }}>
+          <AdvertisementModal iconColor={iconColor} isAndroid={isAndroid} />
           <SignInOut
             loading={loading}
             setLoading={setLoading}
@@ -164,7 +129,7 @@ const ProfileScreen = () => {
           <Text size={deviceStyle.headingSize} mb={3}>
             {userInfo?.firstName ?? ''}
           </Text>
-          <Text size={getTextSize(config.fontSize ?? DEFAULT_CONFIG.fontSize)}>
+          <Text>
             You have collected{' '}
             <Text bold color='vhlight.800'>
               {config.collectedWords?.length ?? '0'}
@@ -223,15 +188,6 @@ const ProfileScreen = () => {
       {!isObjectEmpty(alertData) && <BottomAlert {...alertData} bottom={4} />}
     </>
   );
-};
-
-AdvertisementModal.propTypes = {
-  iconColor: PropTypes.string.isRequired,
-};
-
-ExternalLink.propTypes = {
-  link: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
 };
 
 export default ProfileScreen;

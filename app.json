@@ -24,6 +24,7 @@
     "android": {
       "package": "vocaboost.com",
       "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/icons/logo.png",
         "backgroundColor": "#ffffff"

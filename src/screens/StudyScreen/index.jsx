@@ -347,7 +347,7 @@ const StudyScreen = ({ navigation, route }) => {
               <SortingMenu type={routeType} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
             </Box>
           </View>
-          <View flex={0.9} />
+          <View flex={0.5} />
         </>
       )}
       {alertData.type && <BottomAlert {...alertData} bottom={50} />}

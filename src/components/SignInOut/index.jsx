@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Alert, Pressable } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import PropTypes from 'prop-types';
 import { makeRedirectUri, ResponseType, useAuthRequest, useAutoDiscovery } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 // eslint-disable-next-line import/no-unresolved
-import { AZURE_LOGIN_CLIENT_ID, GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
+import { AZURE_LOGIN_CLIENT_ID, GOOGLE_LOGIN_ANDROID_CLIENT_ID, GOOGLE_LOGIN_IOS_CLIENT_ID } from '@env';
 import { AntDesign } from '@expo/vector-icons';
 
 import { Box } from 'native-base';
 
+import { ALERT_TYPES } from 'shared/constants';
 import { AUTH_TYPE } from 'shared/constants/auth';
 import { LOGIN_METHOD } from 'shared/constants/loginType';
 import { AZURE_LOGIN_CONFIRM_MSG } from 'shared/constants/messages';
 import { MAX_Z_INDEX } from 'shared/constants/styles';
 import { useAuthContext } from 'shared/hooks/useAuthContext';
+import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { azureCodeChallenge, azureOauthEndpoint, azureOauthScopes, azureRedirectUriObj } from 'shared/oauth/azure';
+import { deviceIsAndroid } from 'shared/utils/devices';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { transformOAuthLoginData } from 'shared/utils/oauth/formatter';
 import { getUser } from 'shared/utils/storage';
+import { getLocalDate } from 'shared/utils/time';
 
-import { getAzureUserData, getGoogleUserData, getSignInToBackendErrorMsg, getWelcomeNewUserMsg, oauthGoogleSignOut, showGoogleSignInError } from './helper';
+import { getAzureUserData, getGoogleUserData, getWelcomeNewUserMsg, oauthGoogleSignOut, showGoogleSignInError } from './helper';
 import OauthIconButton from './OauthIconButton';
 
 const authIcon = { [AUTH_TYPE.LOGIN]: 'logout', [AUTH_TYPE.LOGOUT]: 'login' };
@@ -47,6 +51,8 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
     },
     discovery
   );
+  const deviceInfo = useDeviceInfoContext();
+  const isAndroid = useMemo(() => deviceIsAndroid(deviceInfo), []);
   const iconColor = useIconStyle();
   const authStatus = isSignedIn ? AUTH_TYPE.LOGIN : AUTH_TYPE.LOGOUT;
   const icon = authIcon[authStatus];
@@ -64,7 +70,10 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
   }, []);
 
   useEffect(() => {
-    GoogleSignin.configure({ iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID });
+    // Note: cannot use both properties at the same time!
+    const googleSigninConfig = { android: { webClientId: GOOGLE_LOGIN_ANDROID_CLIENT_ID }, ios: { iosClientId: GOOGLE_LOGIN_IOS_CLIENT_ID } };
+    const c = isAndroid ? googleSigninConfig.android : googleSigninConfig.ios;
+    GoogleSignin.configure(c);
   }, []);
 
   const signInToBackend = async ({ loginMethod, data }) => {
@@ -80,7 +89,12 @@ const SignInOut = ({ loading, setLoading, setUserInfo, setConfig, setAlert }) =>
       setUserInfo(latestUser);
       setIsSignedIn(true);
     } catch (err) {
-      setAlert(getSignInToBackendErrorMsg());
+      setAlert({
+        type: ALERT_TYPES.ERROR,
+        title: err.title,
+        content: err.content,
+        ts: getLocalDate().toString(),
+      });
     }
   };
 
