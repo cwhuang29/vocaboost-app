@@ -1,5 +1,5 @@
 import LANGS from 'shared/constants/i18n';
-import { COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants/index';
+import { COLOR_MODE, FONT_SIZE, FONT_STYLE, SORTING_MODE } from 'shared/constants/index';
 import userService from 'shared/services/user.service';
 import { isArray, isObject } from 'shared/utils/misc';
 
@@ -12,7 +12,7 @@ export const DEFAULT_CONFIG = {
   fontStyle: FONT_STYLE.CERA,
   colorMode: COLOR_MODE.LIGHT,
   collectedWords: [],
-  studyOptions: { GRE: { mode: 'shuffle', wordId: null }, COLLECTED: { mode: 'sortByTime', wordId: 0 } },
+  studyOptions: { GRE: { mode: SORTING_MODE.SHUFFLE, wordId: null }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } },
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
 };
 

@@ -105,7 +105,7 @@ const themeSetting = {
       400: { normal: 'Cera-Medium' },
       500: { normal: 'Cera-Medium' },
       600: { normal: 'Cera-Medium' },
-      // 700: { normal: 'Cera-Bold' },
+      700: { normal: 'Cera-Bold' },
     },
     Roboto: {
       300: { normal: 'Roboto-Regular' },

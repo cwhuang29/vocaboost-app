@@ -11,7 +11,7 @@ import { Box, Icon, IconButton, Text, View } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
-import { ALERT_TYPES, STORAGE_CONFIG_DEBOUNCE_DELAY } from 'shared/constants';
+import { ALERT_TYPES, SORTING_MODE, STORAGE_CONFIG_DEBOUNCE_DELAY } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
@@ -187,8 +187,8 @@ const StudyScreen = ({ navigation, route }) => {
       setConfig(finalConfig);
 
       let wList;
-      const {mode, wordId} = finalConfig.studyOptions[routeType];
-      if (mode === 'alphabetize') {
+      const { mode, wordId } = finalConfig.studyOptions[routeType];
+      if (mode === SORTING_MODE.ALPHABETIZE) {
         wList = entireWordListSortByAlphabet;
         const alp = getAlphabets({ type: routeType });
         const alpIndex = getWordListAlphabetsIndex({ type: routeType });
@@ -204,7 +204,7 @@ const StudyScreen = ({ navigation, route }) => {
           }
         }
         setSelectedLetter(alp[startingLetter]);
-      } else if (mode === 'sortByTime') {
+      } else if (mode === SORTING_MODE.CHRONOLOGICAL) {
         wList = extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords);
       } else {
         wList = entireWordList;
@@ -250,9 +250,12 @@ const StudyScreen = ({ navigation, route }) => {
     const time = getLocalDate();
     let updatedStudyOptions = { ...config.studyOptions[routeType] };
     if (!shuffle) {
-      updatedStudyOptions = { ...config.studyOptions[routeType], mode: routeType === WORD_LIST_TYPE.COLLECTED ? 'sortByTime' : 'alphabetize' };
+      updatedStudyOptions = {
+        ...config.studyOptions[routeType],
+        mode: routeType === WORD_LIST_TYPE.COLLECTED ? SORTING_MODE.CHRONOLOGICAL : SORTING_MODE.ALPHABETIZE,
+      };
     } else {
-      updatedStudyOptions = { ...config.studyOptions[routeType], mode: 'shuffle', wordId: null };
+      updatedStudyOptions = { ...config.studyOptions[routeType], mode: SORTING_MODE.SHUFFLE, wordId: null };
     }
     const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions } }, updatedAt: time };
     setConfig(newConfig);
