@@ -15,7 +15,11 @@ export const getDeviceInfo = async () => {
 
 export const deviceIsIOS = info => info.manufacturer === 'Apple';
 
-export const deviceIsAndroid = info => info.manufacturer === 'Google';
+export const deviceIsGoogle = info => info.manufacturer.toLowerCase() === 'google';
+
+export const deviceIsHTC = info => info.manufacturer.toLowerCase() === 'htc';
+
+export const deviceIsAndroid = info => !deviceIsIOS(info);
 
 export const deviceIsTablet = info => !!info.isTablet;
 
