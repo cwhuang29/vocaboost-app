@@ -141,7 +141,7 @@ const StudyScreen = ({ navigation, route }) => {
   const [wordList, setWordList] = useState(null);
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
-  const [shuffle, setShuffle] = useState(routeType !== WORD_LIST_TYPE.COLLECTED);
+  const [shuffle, setShuffle] = useState(routeType !== WORD_LIST_TYPE.COLLECTED); // TODO: init shuffle according to config? but is config loaded at this point?
   const [alphabetize, setAlphabetize] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
   const debouncedConfig = useDebounce(config, STORAGE_CONFIG_DEBOUNCE_DELAY);
@@ -184,16 +184,41 @@ const StudyScreen = ({ navigation, route }) => {
       }
       accessToken.current = token;
       const finalConfig = c ?? DEFAULT_CONFIG;
-      setConfig(finalConfig);
+      setConfig(DEFAULT_CONFIG)
+      // setConfig(finalConfig);
 
-      const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
+      // console.log("finalConfig=", finalConfig);
+
+      // TODO: setup word list mode and wordIndex according to config.studyOptions
+      let wList;
+      const {mode, wordId} = finalConfig.studyOptions[routeType];
+
+      if (mode === 'alphabetize') {
+        console.log('---------mode=alphabetize---------');
+        wList = entireWordListSortByAlphabet;
+        const alp = getAlphabets({ type: routeType });
+        const alpIndex = getWordListAlphabetsIndex({ type: routeType });
+        setAlphabets(alp);
+        setAlphabetsIndex(alpIndex);
+
+        let startingLetter = 0;
+        for (const [letter, index] in Object.entries(alpIndex)) {
+          if (wordId >= index) {
+            startingLetter = letter;
+          } else {
+            break;
+          }
+        }
+        console.log("startingLetter=", startingLetter)
+        setSelectedLetter(alp[startingLetter]);
+      } else if (mode === 'sortByTime') {
+        console.log('---------mode=sortByTime---------');
+        wList = extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords);
+      } else {
+        console.log('---------mode=shuffle---------');
+        wList = entireWordList;
+      }
       setWordList(wList);
-
-      const alp = getAlphabets({ type: routeType });
-      const alpIndex = getWordListAlphabetsIndex({ type: routeType });
-      setAlphabets(alp);
-      setAlphabetsIndex(alpIndex);
-      setSelectedLetter(alp[0]);
 
       setLoading(false);
     };
@@ -203,6 +228,9 @@ const StudyScreen = ({ navigation, route }) => {
   const updateStorage = async () => {
     if (debouncedConfig) {
       await storage.setData(STORAGE_CONFIG, debouncedConfig);
+      // TODO: delete log
+      console.log("debouncedConfig saved to storage:");
+      console.log(config);
     }
   };
 
