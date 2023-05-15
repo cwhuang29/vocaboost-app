@@ -30,7 +30,6 @@ const Stack = createNativeStackNavigator();
 
 const AppCore = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
-  const [fontsLoading, setFontsLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const [deviceInfo, setDeviceInfo] = useState({});
   const [fontsLoaded] = useFonts(fontsMap);
@@ -53,12 +52,6 @@ const AppCore = () => {
     tryRestoreToken();
     setupConfig();
   }, []);
-
-  useEffect(() => {
-    if (fontsLoaded) {
-      setFontsLoading(false);
-    }
-  }, [fontsLoaded]);
 
   useEffect(() => {
     const loadDeviceInfo = async () => {
@@ -103,10 +96,10 @@ const AppCore = () => {
     []
   );
 
-  const notReady = loading || fontsLoading || state.isLoading;
+  const notReady = loading || !fontsLoaded || state.isLoading;
 
   return notReady ? (
-    <SplashScreen />
+    <SplashScreen showMessage={fontsLoaded} />
   ) : (
     <NavigationContainer>
       <DeviceInfoContext.Provider value={deviceInfo}>
