@@ -76,8 +76,7 @@ const getFirstLetter = word => word.charAt(0).toUpperCase();
 
 const getWordListByConfig = ({ config, routeType, alphabets, entireWordList, entireWordListObject, entireWordListSortByAlphabet }) => {
   const { mode } = config.studyOptions[routeType];
-  const isShuffle = mode === SORTING_MODE.SHUFFLE;
-  const wordIndex = isShuffle ? 0 : config.studyOptions[routeType].wordId;
+  const wordIndex = mode === SORTING_MODE.SHUFFLE ? 0 : config.studyOptions[routeType].wordId;
 
   let wordList = [];
   let selectedLetter = null;
@@ -97,7 +96,7 @@ const getWordListByConfig = ({ config, routeType, alphabets, entireWordList, ent
       wordList = entireWordList;
     }
   }
-  return { wordList, selectedLetter, wordIndex, isShuffle };
+  return { wordList, selectedLetter, wordIndex, sortingMode: mode };
 };
 
 const StudyScreen = ({ navigation, route }) => {
@@ -111,11 +110,10 @@ const StudyScreen = ({ navigation, route }) => {
   const [wordList, setWordList] = useState(null);
   const [alertData, setAlertData] = useState({});
   const [displayCopyText, setDisplayCopyText] = useState(false);
-  const [shuffle, setShuffle] = useState(routeType !== WORD_LIST_TYPE.COLLECTED);
-  const [alphabetize, setAlphabetize] = useState(false);
+  const [sortingMode, setSortingMode] = useState(SORTING_MODE.SHUFFLE);
   const [selectedLetter, setSelectedLetter] = useState('');
   const debouncedConfig = useDebounce(config);
-  const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle }), [routeType, shuffle]);
+  const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle: sortingMode === SORTING_MODE.SHUFFLE }), [routeType, sortingMode]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL()); // TODO If user is not signed in, don't run ws code
@@ -156,7 +154,7 @@ const StudyScreen = ({ navigation, route }) => {
       wordList: wList,
       selectedLetter: sLetter,
       wordIndex: wIndex,
-      isShuffle,
+      sortingMode: sMode,
     } = getWordListByConfig({
       config: finalConfig,
       routeType,
@@ -167,8 +165,7 @@ const StudyScreen = ({ navigation, route }) => {
     });
     setWordList(wList);
     setWordIndex(wIndex);
-    setShuffle(isShuffle);
-    setAlphabetize(!isShuffle);
+    setSortingMode(sMode);
     if (sLetter) {
       setSelectedLetter(sLetter);
     }
@@ -188,40 +185,52 @@ const StudyScreen = ({ navigation, route }) => {
     }
   };
 
-  const onShuffleChange = () => {
+  const onSortingModeChange = () => {
     if (loading) {
       return;
     }
     let newWordList = [];
-    if (shuffle) {
+    if (sortingMode === SORTING_MODE.SHUFFLE) {
       newWordList = shuffleArray(wordList);
     } else if (routeType === WORD_LIST_TYPE.COLLECTED) {
       newWordList = extractCollectedWordsByTime(entireWordListObject, config.collectedWords);
     } else {
       newWordList = entireWordListSortByAlphabet;
     }
+
+    const newStudyOptions = { ...config.studyOptions[routeType], mode: sortingMode };
+    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...newStudyOptions } }, updatedAt: getLocalDate() };
+
     setWordList(newWordList);
     setWordIndex(config.studyOptions[routeType].wordId ?? 0);
-
-    const time = getLocalDate();
-    let updatedStudyOptions = { ...config.studyOptions[routeType] };
-    if (shuffle) {
-      updatedStudyOptions = { ...config.studyOptions[routeType], mode: SORTING_MODE.SHUFFLE };
-    } else {
-      updatedStudyOptions = {
-        ...config.studyOptions[routeType],
-        mode: routeType === WORD_LIST_TYPE.COLLECTED ? SORTING_MODE.CHRONOLOGICAL : SORTING_MODE.ALPHABETIZE,
-      };
-    }
-    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions } }, updatedAt: time };
     setConfig(newConfig);
   };
 
-  const onWordIndexChange = () => {
+  const tryUpdateSelectedLetter = () => {
     const { word } = wordList[wordIndex];
     if (word && getFirstLetter(word) !== selectedLetter) {
       setSelectedLetter(getFirstLetter(word));
     }
+  };
+
+  const updateStudyOptions = () => {
+    if (sortingMode === SORTING_MODE.SHUFFLE) {
+      return;
+    }
+    const newConfig = {
+      ...config,
+      studyOptions: {
+        ...config.studyOptions,
+        [routeType]: { ...config.studyOptions[routeType], wordId: wordIndex },
+      },
+      updatedAt: getLocalDate(),
+    };
+    setConfig(newConfig);
+  };
+
+  const onWordIndexChange = () => {
+    tryUpdateSelectedLetter();
+    updateStudyOptions();
   };
 
   useEffect(() => {
@@ -233,8 +242,8 @@ const StudyScreen = ({ navigation, route }) => {
   }, [debouncedConfig]);
 
   useUpdateEffect(() => {
-    onShuffleChange();
-  }, [shuffle]);
+    onSortingModeChange();
+  }, [sortingMode]);
 
   useUpdateEffect(() => {
     onWordIndexChange();
@@ -243,24 +252,6 @@ const StudyScreen = ({ navigation, route }) => {
   useEffect(() => {
     createEnterStudyScreenEvent();
   }, []);
-
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('beforeRemove', () => {
-      updateStorageInstantly();
-      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
-    });
-    return unsubscribe;
-  }, [wordCount, timeElapsed]);
-
-  useUpdateEffect(() => {
-    if (shuffle) {
-      return;
-    }
-    const time = getLocalDate();
-    const updatedStudyOptions = { ...config.studyOptions[routeType] };
-    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions, wordId: wordIndex } }, updatedAt: time };
-    setConfig(newConfig);
-  }, [wordIndex]);
 
   const setupWebSocket = async () => {
     // Note that readyState only turns to OPEN once
@@ -295,8 +286,16 @@ const StudyScreen = ({ navigation, route }) => {
     wsMessageOnReceive();
   }, [lastJsonMessage]);
 
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('beforeRemove', () => {
+      updateStorageInstantly();
+      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
+    });
+    return unsubscribe;
+  }, [wordCount, timeElapsed]);
+
   const alphabetSliderOnChange = letter => {
-    if (routeType === WORD_LIST_TYPE.COLLECTED || shuffle) {
+    if (sortingMode === SORTING_MODE.SHUFFLE) {
       return;
     }
     const newIndex = alphabetsIndex[letter];
@@ -339,7 +338,7 @@ const StudyScreen = ({ navigation, route }) => {
 
   const isCollected = isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
-  const showSlider = routeType !== WORD_LIST_TYPE.COLLECTED && !shuffle;
+  const showSlider = sortingMode === SORTING_MODE.ALPHABETIZE;
 
   return loading ? (
     <SplashScreen />
@@ -392,7 +391,7 @@ const StudyScreen = ({ navigation, route }) => {
               <UndoIconButton onPress={undoIconOnPress} />
               <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
               <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
-              <SortingMenu type={routeType} shuffle={shuffle} setShuffle={setShuffle} alphabetize={alphabetize} setAlphabetize={setAlphabetize} />
+              <SortingMenu sortingMode={sortingMode} setSortingMode={setSortingMode} type={routeType} />
             </Box>
           </View>
           <View flex={0.5} />

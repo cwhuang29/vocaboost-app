@@ -18737,7 +18737,7 @@ export default [
           th: 'ความสุขที่ยิ่งใหญ่โดยเฉพาะเพราะความสำเร็จ',
         },
         partsOfSpeech: 'noun',
-        example: '歡騰',
+        example: 'The patrolmen broke into joyous jubilation, some even crying tears of happiness',
       },
     ],
   },

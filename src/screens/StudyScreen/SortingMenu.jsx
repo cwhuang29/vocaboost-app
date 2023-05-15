@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { HamburgerIcon, Menu, Pressable, Text } from 'native-base';
 
+import { SORTING_MODE } from 'shared/constants';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 
 const SortingMenuTrigger = props => (
@@ -11,34 +12,31 @@ const SortingMenuTrigger = props => (
   </Pressable>
 );
 
-const SortingMenu = ({ type, shuffle, setShuffle, alphabetize, setAlphabetize }) => {
+const SortingMenu = ({ type, sortingMode, setSortingMode }) => {
   const sortByTimeOnPress = () => {
-    setShuffle(false);
-    setAlphabetize(false);
+    setSortingMode(SORTING_MODE.CHRONOLOGICAL);
   };
 
   const shuffleOnPress = () => {
-    setShuffle(true);
-    setAlphabetize(false);
+    setSortingMode(SORTING_MODE.SHUFFLE);
   };
 
   const sortByAlphabeticalOrder = () => {
-    setShuffle(false);
-    setAlphabetize(true);
+    setSortingMode(SORTING_MODE.ALPHABETIZE);
   };
 
   return (
     <Menu w='200' trigger={SortingMenuTrigger} mr={2}>
       {type === WORD_LIST_TYPE.COLLECTED && (
-        <Menu.Item onPress={sortByTimeOnPress} isDisabled={!shuffle && !alphabetize}>
+        <Menu.Item onPress={sortByTimeOnPress} isDisabled={sortingMode === SORTING_MODE.CHRONOLOGICAL}>
           <Text fontSize='md'>Sort by time</Text>
         </Menu.Item>
       )}
-      <Menu.Item onPress={shuffleOnPress} isDisabled={shuffle}>
+      <Menu.Item onPress={shuffleOnPress} isDisabled={sortingMode === SORTING_MODE.SHUFFLE}>
         <Text fontSize='md'>Shuffle</Text>
       </Menu.Item>
       {type !== WORD_LIST_TYPE.COLLECTED && (
-        <Menu.Item onPress={sortByAlphabeticalOrder} isDisabled={alphabetize}>
+        <Menu.Item onPress={sortByAlphabeticalOrder} isDisabled={sortingMode === SORTING_MODE.ALPHABETIZE}>
           <Text fontSize='md'>Alphabetize</Text>
         </Menu.Item>
       )}
@@ -48,10 +46,8 @@ const SortingMenu = ({ type, shuffle, setShuffle, alphabetize, setAlphabetize })
 
 SortingMenu.propTypes = {
   type: PropTypes.string.isRequired,
-  shuffle: PropTypes.bool.isRequired,
-  setShuffle: PropTypes.func.isRequired,
-  alphabetize: PropTypes.bool.isRequired,
-  setAlphabetize: PropTypes.func.isRequired,
+  sortingMode: PropTypes.string.isRequired,
+  setSortingMode: PropTypes.func.isRequired,
 };
 
 export default SortingMenu;
