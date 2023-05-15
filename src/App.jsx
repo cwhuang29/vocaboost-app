@@ -18,10 +18,11 @@ import { DeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
 import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
-import { getLatestConfigOnLogin } from 'shared/utils/config';
+import { getLatestConfigOnLogin, setupDefaultConfig } from 'shared/utils/config';
 import { getDeviceInfo } from 'shared/utils/devices';
 import { createEnterAppEvent, createLoginEvent, createLogoutEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
+import { isObjectEmpty } from 'shared/utils/misc';
 import { colorModeManager, fontsMap, isDarkMode } from 'shared/utils/style';
 import defaultTheme from 'shared/utils/theme';
 
@@ -29,7 +30,8 @@ const Stack = createNativeStackNavigator();
 
 const AppCore = () => {
   const [state, dispatch] = useReducer(authReducer, authInitialState);
-  const [fontsHasLoaded, setFontsHasLoaded] = useState(false);
+  const [fontsLoading, setFontsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [deviceInfo, setDeviceInfo] = useState({});
   const [fontsLoaded] = useFonts(fontsMap);
   const { colors } = useTheme();
@@ -42,7 +44,7 @@ const AppCore = () => {
 
   useEffect(() => {
     if (fontsLoaded) {
-      setFontsHasLoaded(true);
+      setFontsLoading(false);
     }
   }, [fontsLoaded]);
 
@@ -52,6 +54,14 @@ const AppCore = () => {
       dispatch({ type: AUTH_STATUS.RESTORE_TOKEN, payload: { token } });
     };
     tryRestoreToken();
+  }, []);
+
+  useEffect(() => {
+    const setupConfig = async () => {
+      await setupDefaultConfig();
+      setLoading(false);
+    };
+    setupConfig();
   }, []);
 
   useEffect(() => {
@@ -87,7 +97,7 @@ const AppCore = () => {
         let latestConfig = null;
         if (!isNewUser) {
           latestConfig = await getLatestConfigOnLogin();
-          if (latestConfig) {
+          if (isObjectEmpty(latestConfig)) {
             await storage.setData(STORAGE_CONFIG, latestConfig);
           }
         }
@@ -97,7 +107,9 @@ const AppCore = () => {
     []
   );
 
-  return !fontsHasLoaded || state.isLoading ? (
+  const notReady = loading || fontsLoading || state.isLoading;
+
+  return notReady ? (
     <SplashScreen />
   ) : (
     <NavigationContainer>
