@@ -12,7 +12,7 @@ export const DEFAULT_CONFIG = {
   fontStyle: FONT_STYLE.CERA,
   colorMode: COLOR_MODE.LIGHT,
   collectedWords: [],
-  studyOptions: { GRE: { mode: SORTING_MODE.SHUFFLE, wordId: null }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } },
+  studyOptions: { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } },
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
 };
 

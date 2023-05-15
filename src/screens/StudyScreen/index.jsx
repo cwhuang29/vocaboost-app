@@ -171,6 +171,27 @@ const StudyScreen = ({ navigation, route }) => {
     return unsubscribe;
   }, [wordCount, timeElapsed]);
 
+  const getStudyOptions = () => {
+    let wList;
+    const { mode } = finalConfig.studyOptions[routeType];
+    if (mode === SORTING_MODE.ALPHABETIZE) {
+      wList = entireWordListSortByAlphabet;
+      const alp = getAlphabets({ type: routeType });
+      const alpIndex = getWordListAlphabetsIndex({ type: routeType });
+      setAlphabets(alp);
+      setAlphabetsIndex(alpIndex);
+
+      const { wordId } = finalConfig.studyOptions[routeType];
+      const startingLetter = wList[wordId][0];
+      setSelectedLetter(startingLetter);
+    } else if (mode === SORTING_MODE.CHRONOLOGICAL) {
+      wList = extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords);
+    } else {
+      wList = entireWordList;
+    }
+    return wList;
+  };
+
   useEffect(() => {
     const setup = async () => {
       const [c, token] = await Promise.all([getConfig(), getAuthToken()]);
@@ -186,29 +207,7 @@ const StudyScreen = ({ navigation, route }) => {
       const finalConfig = c ?? DEFAULT_CONFIG;
       setConfig(finalConfig);
 
-      let wList;
-      const { mode, wordId } = finalConfig.studyOptions[routeType];
-      if (mode === SORTING_MODE.ALPHABETIZE) {
-        wList = entireWordListSortByAlphabet;
-        const alp = getAlphabets({ type: routeType });
-        const alpIndex = getWordListAlphabetsIndex({ type: routeType });
-        setAlphabets(alp);
-        setAlphabetsIndex(alpIndex);
-
-        let startingLetter = 0;
-        for (const [letter, index] in Object.entries(alpIndex)) {
-          if (wordId >= index) {
-            startingLetter = letter;
-          } else {
-            break;
-          }
-        }
-        setSelectedLetter(alp[startingLetter]);
-      } else if (mode === SORTING_MODE.CHRONOLOGICAL) {
-        wList = extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords);
-      } else {
-        wList = entireWordList;
-      }
+      wList = getStudyOptions();
       setWordList(wList);
 
       setLoading(false);
@@ -320,9 +319,8 @@ const StudyScreen = ({ navigation, route }) => {
       const time = getLocalDate();
       const collectedWords = isCollected ? config.collectedWords.filter(wordId => wordId !== id) : [...config.collectedWords, id];
       const newConfig = { ...config, collectedWords, updatedAt: time };
-
-      // await storage.setData(STORAGE_CONFIG, newConfig);
       setConfig(newConfig);
+
       if (accessToken.current) {
         sendJsonMessage({ data: collectedWords, accessToken: accessToken.current, ts: time });
       }
