@@ -6,6 +6,7 @@ export const configInitialState = {
   fontSize: DEFAULT_CONFIG.fontSize,
   fontStyle: DEFAULT_CONFIG.fontStyle,
   colorMode: DEFAULT_CONFIG.colorMode,
+  studyOptions: DEFAULT_CONFIG.studyOptions,
 };
 
 export const configReducer = (state, action) => {

@@ -4,19 +4,19 @@ import Tts from 'react-native-tts';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Clipboard from '@react-native-clipboard/clipboard';
 import PropTypes from 'prop-types';
-import { AntDesign, Ionicons } from '@expo/vector-icons';
 
-import { Box, Icon, IconButton, Text, View } from 'native-base';
+import { Box, Text, View } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
-import { ALERT_TYPES } from 'shared/constants';
+import { ALERT_TYPES, SORTING_MODE } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
+import useDebounce from 'shared/hooks/useDebounce';
 import useStudyScreenMonitor from 'shared/hooks/useStudyScreenMonitor';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
@@ -32,6 +32,7 @@ import { genWordDetailList, getWordListAlphabetsIndex, getWordListFirstAlphabets
 
 import AlphabetSlider from './AlphabetSlider';
 import FinishStudy from './FinishStudy';
+import { SpeakerIconButton, StarIconButton, UndoIconButton } from './IconButton';
 import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
 
@@ -73,59 +74,30 @@ const sortAlphabetically = wordList =>
 
 const getFirstLetter = word => word.charAt(0).toUpperCase();
 
-const SpeakerIconButton = ({ onPress }) => {
-  const onPressThenStop = e => {
-    e.preventDefault();
-    onPress();
-  };
-  return (
-    <IconButton
-      icon={<Icon as={AntDesign} name='sound' />}
-      onPress={onPressThenStop}
-      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '30' }}
-      _pressed={{
-        bg: 'base.black:alpha.10',
-        rounded: 'full',
-      }}
-    />
-  );
-};
+const getWordListByConfig = ({ config, routeType, alphabets, entireWordList, entireWordListObject, entireWordListSortByAlphabet }) => {
+  const { mode } = config.studyOptions[routeType];
+  const isShuffle = mode === SORTING_MODE.SHUFFLE;
+  const wordIndex = isShuffle ? 0 : config.studyOptions[routeType].wordId;
 
-const UndoIconButton = ({ onPress }) => {
-  const onPressThenStop = e => {
-    e.preventDefault();
-    onPress();
-  };
-  return (
-    <IconButton
-      icon={<Icon as={Ionicons} name='chevron-back' />}
-      onPress={onPressThenStop}
-      _icon={{ _light: { color: 'vhlight.50' }, _dark: { color: 'vhdark.50' }, size: '30' }}
-      _pressed={{
-        bg: 'base.black:alpha.10',
-        rounded: 'full',
-      }}
-    />
-  );
-};
-
-const StarIconButton = ({ isCollected, onPress }) => {
-  const iconName = isCollected ? 'star' : 'staro';
-  const onPressThenStop = e => {
-    e.preventDefault();
-    onPress();
-  };
-  return (
-    <IconButton
-      icon={<Icon as={AntDesign} name={iconName} />}
-      onPress={onPressThenStop}
-      _icon={{ color: 'vhlight.700', size: '28' }}
-      _pressed={{
-        bg: '',
-        _icon: { name: 'star', color: 'vhlight.700:alpha.50', size: '28' },
-      }}
-    />
-  );
+  let wordList = [];
+  let selectedLetter = null;
+  if (routeType === WORD_LIST_TYPE.COLLECTED) {
+    wordList = extractCollectedWordsByTime(entireWordListObject, config.collectedWords);
+    if (mode === SORTING_MODE.SHUFFLE) {
+      wordList = shuffleArray(wordList);
+    }
+  }
+  if (routeType === WORD_LIST_TYPE.GRE) {
+    if (mode === SORTING_MODE.ALPHABETIZE) {
+      wordList = entireWordListSortByAlphabet;
+      const { wordId } = config.studyOptions[routeType];
+      const startingLetter = getFirstLetter(wordList[wordId]?.word || alphabets[0]);
+      selectedLetter = startingLetter;
+    } else {
+      wordList = entireWordList;
+    }
+  }
+  return { wordList, selectedLetter, wordIndex, isShuffle };
 };
 
 const StudyScreen = ({ navigation, route }) => {
@@ -142,13 +114,13 @@ const StudyScreen = ({ navigation, route }) => {
   const [shuffle, setShuffle] = useState(routeType !== WORD_LIST_TYPE.COLLECTED);
   const [alphabetize, setAlphabetize] = useState(false);
   const [selectedLetter, setSelectedLetter] = useState('');
+  const debouncedConfig = useDebounce(config);
   const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle }), [routeType, shuffle]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
   const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL()); // TODO If user is not signed in, don't run ws code
   // const connStatus = getWSConnStatusDisplay(readyState);
-  const wordData = loading ? {} : wordList[wordIndex];
-  const { wordCount, timeElapsed } = useStudyScreenMonitor(wordData);
+  const { wordCount, timeElapsed } = useStudyScreenMonitor(wordList?.[wordIndex]);
 
   useEffect(() => {
     Tts.setDefaultLanguage(LANGS.en_US);
@@ -157,47 +129,69 @@ const StudyScreen = ({ navigation, route }) => {
     Tts.setIgnoreSilentSwitch('ignore'); // Play audio even if the silent switch is set
   }, []);
 
-  useEffect(() => {
-    createEnterStudyScreenEvent();
-  }, []);
+  const setup = async () => {
+    const [c, token] = await Promise.all([getConfig(), getAuthToken()]);
+    if (!token) {
+      setAlertData({
+        type: ALERT_TYPES.WARNING,
+        title: CONNECTED_WORDS_FAILED_MSG.TITLE,
+        content: CONNECTED_WORDS_FAILED_MSG.CONTENT,
+        ts: getLocalDate().toString(),
+      });
+    }
+    accessToken.current = token;
+    const finalConfig = isObjectEmpty(c) ? DEFAULT_CONFIG : c;
+    const { mode, wordId } = finalConfig.studyOptions[routeType];
+    if (mode !== SORTING_MODE.SHUFFLE && wordId == null) {
+      finalConfig.studyOptions[routeType].wordId = 0;
+    }
+    setConfig(finalConfig);
 
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('beforeRemove', () => {
-      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
+    const alp = getAlphabets({ type: routeType });
+    const alpIndex = getWordListAlphabetsIndex({ type: routeType });
+    setAlphabets(alp);
+    setAlphabetsIndex(alpIndex);
+
+    const {
+      wordList: wList,
+      selectedLetter: sLetter,
+      wordIndex: wIndex,
+      isShuffle,
+    } = getWordListByConfig({
+      config: finalConfig,
+      routeType,
+      alphabets: alp,
+      entireWordList,
+      entireWordListObject,
+      entireWordListSortByAlphabet,
     });
-    return unsubscribe;
-  }, [wordCount, timeElapsed]);
+    setWordList(wList);
+    setWordIndex(wIndex);
+    setShuffle(isShuffle);
+    setAlphabetize(!isShuffle);
+    if (sLetter) {
+      setSelectedLetter(sLetter);
+    }
 
-  useEffect(() => {
-    const setup = async () => {
-      const [c, token] = await Promise.all([getConfig(), getAuthToken()]);
-      if (!token) {
-        setAlertData({
-          type: ALERT_TYPES.WARNING,
-          title: CONNECTED_WORDS_FAILED_MSG.TITLE,
-          content: CONNECTED_WORDS_FAILED_MSG.CONTENT,
-          ts: getLocalDate().toString(),
-        });
-      }
-      accessToken.current = token;
-      const finalConfig = c ?? DEFAULT_CONFIG;
-      setConfig(finalConfig);
+    setLoading(false);
+  };
 
-      const wList = routeType === WORD_LIST_TYPE.COLLECTED ? extractCollectedWordsByTime(entireWordListObject, finalConfig.collectedWords) : entireWordList;
-      setWordList(wList);
+  const updateStorageInstantly = async () => {
+    if (!isObjectEmpty(config)) {
+      storage.setData(STORAGE_CONFIG, config);
+    }
+  };
 
-      const alp = getAlphabets({ type: routeType });
-      const alpIndex = getWordListAlphabetsIndex({ type: routeType });
-      setAlphabets(alp);
-      setAlphabetsIndex(alpIndex);
-      setSelectedLetter(alp[0]);
+  const updateStorage = async () => {
+    if (!isObjectEmpty(debouncedConfig)) {
+      storage.setData(STORAGE_CONFIG, debouncedConfig);
+    }
+  };
 
-      setLoading(false);
-    };
-    setup();
-  }, []);
-
-  useUpdateEffect(() => {
+  const onShuffleChange = () => {
+    if (loading) {
+      return;
+    }
     let newWordList = [];
     if (shuffle) {
       newWordList = shuffleArray(wordList);
@@ -207,44 +201,97 @@ const StudyScreen = ({ navigation, route }) => {
       newWordList = entireWordListSortByAlphabet;
     }
     setWordList(newWordList);
-    setWordIndex(0);
-  }, [shuffle]);
+    setWordIndex(config.studyOptions[routeType].wordId ?? 0);
 
-  useUpdateEffect(() => {
-    const word = wordList[wordIndex]?.word;
+    const time = getLocalDate();
+    let updatedStudyOptions = { ...config.studyOptions[routeType] };
+    if (shuffle) {
+      updatedStudyOptions = { ...config.studyOptions[routeType], mode: SORTING_MODE.SHUFFLE };
+    } else {
+      updatedStudyOptions = {
+        ...config.studyOptions[routeType],
+        mode: routeType === WORD_LIST_TYPE.COLLECTED ? SORTING_MODE.CHRONOLOGICAL : SORTING_MODE.ALPHABETIZE,
+      };
+    }
+    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions } }, updatedAt: time };
+    setConfig(newConfig);
+  };
+
+  const onWordIndexChange = () => {
+    const { word } = wordList[wordIndex];
     if (word && getFirstLetter(word) !== selectedLetter) {
       setSelectedLetter(getFirstLetter(word));
     }
+  };
+
+  useEffect(() => {
+    setup();
+  }, []);
+
+  useEffect(() => {
+    updateStorage();
+  }, [debouncedConfig]);
+
+  useUpdateEffect(() => {
+    onShuffleChange();
+  }, [shuffle]);
+
+  useUpdateEffect(() => {
+    onWordIndexChange();
   }, [wordIndex]);
 
   useEffect(() => {
-    const setupWebSocket = async () => {
-      // Note that readyState only turns to OPEN once
-      if (readyState !== ReadyState.OPEN || accessToken.current === null) {
-        return;
-      }
-      if (accessToken.current) {
-        sendJsonMessage({ data: config.collectedWords, accessToken: accessToken.current, ts: config.updatedAt });
-      }
-    };
+    createEnterStudyScreenEvent();
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('beforeRemove', () => {
+      updateStorageInstantly();
+      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
+    });
+    return unsubscribe;
+  }, [wordCount, timeElapsed]);
+
+  useUpdateEffect(() => {
+    if (shuffle) {
+      return;
+    }
+    const time = getLocalDate();
+    const updatedStudyOptions = { ...config.studyOptions[routeType] };
+    const newConfig = { ...config, studyOptions: { ...config.studyOptions, [routeType]: { ...updatedStudyOptions, wordId: wordIndex } }, updatedAt: time };
+    setConfig(newConfig);
+  }, [wordIndex]);
+
+  const setupWebSocket = async () => {
+    // Note that readyState only turns to OPEN once
+    if (readyState !== ReadyState.OPEN || accessToken.current === null) {
+      return;
+    }
+    if (accessToken.current) {
+      sendJsonMessage({ data: config.collectedWords, accessToken: accessToken.current, ts: config.updatedAt });
+    }
+  };
+
+  const wsMessageOnReceive = async () => {
+    if (lastJsonMessage === null) {
+      return;
+    }
+    const { isStale, data, ts, error } = lastJsonMessage;
+    if (error && !isStale) {
+      logger(`Update config to server error: ${error}`);
+    }
+    if (isStale) {
+      await storage.setData(STORAGE_CONFIG, { ...config, collectedWords: data, updatedAt: ts });
+      setConfig(prev => ({ ...prev, collectedWords: data, updatedAt: ts }));
+      logger('Just updated the latest config from server!');
+    }
+  };
+
+  useEffect(() => {
     setupWebSocket();
   }, [readyState]);
 
   useEffect(() => {
-    const wsMessageOnReceive = async () => {
-      if (lastJsonMessage === null) {
-        return;
-      }
-      const { isStale, data, ts, error } = lastJsonMessage;
-      if (error && !isStale) {
-        logger(`Update config to server error: ${error}`);
-      }
-      if (isStale) {
-        await storage.setData(STORAGE_CONFIG, { ...config, collectedWords: data, updatedAt: ts });
-        setConfig(prev => ({ ...prev, collectedWords: data, updatedAt: ts }));
-        logger('Just updated the latest config from server!');
-      }
-    };
     wsMessageOnReceive();
   }, [lastJsonMessage]);
 
@@ -263,9 +310,8 @@ const StudyScreen = ({ navigation, route }) => {
       const time = getLocalDate();
       const collectedWords = isCollected ? config.collectedWords.filter(wordId => wordId !== id) : [...config.collectedWords, id];
       const newConfig = { ...config, collectedWords, updatedAt: time };
-
-      await storage.setData(STORAGE_CONFIG, newConfig);
       setConfig(newConfig);
+
       if (accessToken.current) {
         sendJsonMessage({ data: collectedWords, accessToken: accessToken.current, ts: time });
       }
@@ -288,6 +334,8 @@ const StudyScreen = ({ navigation, route }) => {
   const undoIconOnPress = () => {
     setWordIndex(prevIdx => (prevIdx > 0 ? prevIdx - 1 : wordList.length - 1));
   };
+
+  const wordData = loading ? {} : wordList[wordIndex];
 
   const isCollected = isObjectEmpty(wordData) ? false : config.collectedWords.includes(wordData.id);
 
@@ -358,19 +406,6 @@ const StudyScreen = ({ navigation, route }) => {
 StudyScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired,
-};
-
-SpeakerIconButton.propTypes = {
-  onPress: PropTypes.func.isRequired,
-};
-
-UndoIconButton.propTypes = {
-  onPress: PropTypes.func.isRequired,
-};
-
-StarIconButton.propTypes = {
-  isCollected: PropTypes.bool.isRequired,
-  onPress: PropTypes.func.isRequired,
 };
 
 export default StudyScreen;

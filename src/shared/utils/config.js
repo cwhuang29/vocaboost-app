@@ -1,9 +1,12 @@
 import LANGS from 'shared/constants/i18n';
-import { COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants/index';
+import { COLOR_MODE, FONT_SIZE, FONT_STYLE, SORTING_MODE } from 'shared/constants/index';
+import { STORAGE_CONFIG } from 'shared/constants/storage';
 import userService from 'shared/services/user.service';
-import { isArray, isObject } from 'shared/utils/misc';
+import storage from 'shared/storage';
+import { isArray, isObject, isObjectEmpty } from 'shared/utils/misc';
 
 import logger from './logger';
+import { getConfig } from './storage';
 import { convertUTCToLocalTime } from './time';
 
 export const DEFAULT_CONFIG = {
@@ -12,6 +15,7 @@ export const DEFAULT_CONFIG = {
   fontStyle: FONT_STYLE.CERA,
   colorMode: COLOR_MODE.LIGHT,
   collectedWords: [],
+  studyOptions: { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } },
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
 };
 
@@ -53,3 +57,13 @@ export const getLatestConfig = async config => {
 };
 
 export const getLatestConfigOnLogin = async () => getLatestConfig(DEFAULT_CONFIG);
+
+export const setupDefaultConfig = async () => {
+  const config = await getConfig();
+  if (!isObjectEmpty(config)) {
+    return false;
+  }
+
+  await storage.setData(STORAGE_CONFIG, DEFAULT_CONFIG);
+  return true;
+};

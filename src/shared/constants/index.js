@@ -77,3 +77,9 @@ export const COLOR_MODE = {
 };
 
 export const ALERT_TIMEOUT = 3000;
+
+export const SORTING_MODE = {
+  ALPHABETIZE: 'ALPHABETIZE',
+  SHUFFLE: 'SHUFFLE',
+  CHRONOLOGICAL: 'CHRONOLOGICAL',
+};

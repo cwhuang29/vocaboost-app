@@ -23,8 +23,8 @@ const SortingMenu = ({ type, shuffle, setShuffle, alphabetize, setAlphabetize })
   };
 
   const sortByAlphabeticalOrder = () => {
-    setAlphabetize(true);
     setShuffle(false);
+    setAlphabetize(true);
   };
 
   return (
