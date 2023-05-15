@@ -38,8 +38,20 @@ const AppCore = () => {
   const { colorMode } = useColorMode();
   const bgColor = isDarkMode(colorMode) ? colors.vhdark[1100] : colors.vhlight[1100];
 
+  const tryRestoreToken = async () => {
+    const token = await storage.getData(STORAGE_AUTH_TOKEN);
+    dispatch({ type: AUTH_STATUS.RESTORE_TOKEN, payload: { token } });
+  };
+
+  const setupConfig = async () => {
+    await setupDefaultConfig();
+    setLoading(false);
+  };
+
   useEffect(() => {
     createEnterAppEvent();
+    tryRestoreToken();
+    setupConfig();
   }, []);
 
   useEffect(() => {
@@ -47,22 +59,6 @@ const AppCore = () => {
       setFontsLoading(false);
     }
   }, [fontsLoaded]);
-
-  useEffect(() => {
-    const tryRestoreToken = async () => {
-      const token = await storage.getData(STORAGE_AUTH_TOKEN);
-      dispatch({ type: AUTH_STATUS.RESTORE_TOKEN, payload: { token } });
-    };
-    tryRestoreToken();
-  }, []);
-
-  useEffect(() => {
-    const setupConfig = async () => {
-      await setupDefaultConfig();
-      setLoading(false);
-    };
-    setupConfig();
-  }, []);
 
   useEffect(() => {
     const loadDeviceInfo = async () => {

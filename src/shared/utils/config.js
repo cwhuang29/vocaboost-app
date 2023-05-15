@@ -60,10 +60,16 @@ export const getLatestConfigOnLogin = async () => getLatestConfig(DEFAULT_CONFIG
 
 export const setupDefaultConfig = async () => {
   const config = await getConfig();
-  if (!isObjectEmpty(config)) {
-    return false;
+  if (isObjectEmpty(config)) {
+    await storage.setData(STORAGE_CONFIG, DEFAULT_CONFIG);
+    return true;
   }
 
-  await storage.setData(STORAGE_CONFIG, DEFAULT_CONFIG);
-  return true;
+  if (isObjectEmpty(config.studyOptions)) {
+    Object.assign(config, { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } });
+    await storage.setData(STORAGE_CONFIG, config);
+    return true;
+  }
+
+  return false;
 };
