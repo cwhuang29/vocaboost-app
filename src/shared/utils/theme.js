@@ -32,6 +32,7 @@ const themeSetting = {
     },
     base: {
       white: '#fafafa',
+      gray: '#808080',
       black: '#181818',
       blue: '#7dd3fc',
       pink: '#fb7185',
