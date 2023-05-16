@@ -367,6 +367,11 @@ const StudyScreen = ({ navigation, route }) => {
           <View flex={8} px={8} justifyContent='flex-start'>
             <View flex={1}>
               <Box width='100%'>
+                {routeType === WORD_LIST_TYPE.COLLECTED && (
+                  <Text size='xs' color='base.gray' fontFamily={config.fontStyle.toLowerCase()} alignSelf='center'>
+                    {wordIndex + 1} / {wordList.length}
+                  </Text>
+                )}
                 <TouchableOpacity onPress={onPress} width='100%'>
                   <WordCard
                     wordData={wordData}
