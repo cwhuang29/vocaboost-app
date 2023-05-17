@@ -29,13 +29,13 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
         <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
           <Stack space={3}>
-            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${
-              meaning[LANGS[language]] || meaning[LANGS.en]
-            }`}</DisplayText>
+            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
+              {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}
+            </DisplayText>
             {showBilingual && (
-              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} colorLight='base.gray' colorDark='base.gray'>{`${
-                PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]
-              } ${meaning[LANGS.en]}`}</DisplayText>
+              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} colorLight='base.gray' colorDark='base.gray'>
+                {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`}
+              </DisplayText>
             )}
             <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
               {constructWordExample(example)}
