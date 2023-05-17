@@ -37,7 +37,6 @@ const ProfileScreen = () => {
   const [loading, setLoading] = useState(false);
   const [isSmallDevice, setIsSmallDevice] = useState(false);
   const [alertData, setAlertData] = useState({});
-  const [showBilingual, setShowBilingual] = useState(false);
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const isFocused = useIsFocused();
   const deviceInfo = useDeviceInfoContext();
@@ -93,8 +92,7 @@ const ProfileScreen = () => {
   };
 
   const onShowBiligualChange = () => {
-    const value = !showBilingual;
-    setShowBilingual(value);
+    const value = !config.showBilingual;
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_SHOW_BILINGUAL, payload: { showBilingual: value } });
   };
 
@@ -190,7 +188,7 @@ const ProfileScreen = () => {
             />
             <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
           </HStack>
-          <Checkbox value={showBilingual} onChange={onShowBiligualChange}>
+          <Checkbox value={config.showBilingual} onChange={onShowBiligualChange}>
             Show Bilingual Definition
           </Checkbox>
         </VStack>
