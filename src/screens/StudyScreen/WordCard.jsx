@@ -59,7 +59,7 @@ DisplayText.defaultProps = {
   size: 'md',
   shrink: 1,
   colorLight: 'vhlight.50',
-  colorDark: 'vhdark,50',
+  colorDark: 'vhdark.50',
 };
 
 WordCard.propTypes = {
