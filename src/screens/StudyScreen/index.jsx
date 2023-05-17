@@ -139,6 +139,18 @@ const StudyScreen = ({ navigation, route }) => {
     }
     accessToken.current = token;
     const finalConfig = isObjectEmpty(c) ? DEFAULT_CONFIG : c;
+    // TODO: delete
+    console.log('finalConfig=', finalConfig);
+    // {
+    //   "collectedWords": [865, 1209, 1617, 214, 616],
+    //   "colorMode": "LIGHT",
+    //   "fontSize": "MEDIUM",
+    //   "fontStyle": "CERA",
+    //   "language": "en",
+    //   "showBilingual": false,
+    //   "studyOptions": {"COLLECTED": {"mode": "CHRONOLOGICAL", "wordId": 2}, "GRE": {"mode": "SHUFFLE", "wordId": 1274}},
+    //   "updatedAt": "2023-05-16T23:15:38.072Z"
+    // }
     const { mode, wordId } = finalConfig.studyOptions[routeType];
     if (mode !== SORTING_MODE.SHUFFLE && wordId == null) {
       finalConfig.studyOptions[routeType].wordId = 0;
@@ -382,6 +394,7 @@ const StudyScreen = ({ navigation, route }) => {
                     onPress={onPress}
                     onCopyText={onCopyText(wordData.word ?? '')}
                     onCollectWord={onCollectWord}
+                    showBilingual={config.showBilingual}
                   />
                   <Box height='100%' />
                 </TouchableOpacity>

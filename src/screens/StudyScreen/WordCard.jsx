@@ -16,7 +16,7 @@ const DisplayText = ({ children, size, shrink, fontStyle }) => (
   </Text>
 );
 
-const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText }) =>
+const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText, showBilingual }) =>
   display && (
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
@@ -32,6 +32,9 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
             <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${
               meaning[LANGS[language]] || meaning[LANGS.en]
             }`}</DisplayText>
+            {showBilingual && (
+              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`}</DisplayText>
+            )}
             <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
               {constructWordExample(example)}
             </DisplayText>
@@ -60,6 +63,7 @@ WordCard.propTypes = {
   fontSize: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
   onCopyText: PropTypes.func.isRequired,
+  showBilingual: PropTypes.bool.isRequired,
 };
 
 WordCard.defaultProps = {
