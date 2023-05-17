@@ -10,13 +10,13 @@ import { constructWordExample } from 'shared/utils/highlight';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
 
-const DisplayText = ({ children, size, shrink, fontStyle }) => (
-  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
+const DisplayText = ({ children, size, shrink, fontStyle, colorLight, colorDark }) => (
+  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: colorLight }} _dark={{ color: colorDark }}>
     {children}
   </Text>
 );
 
-const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText }) =>
+const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText, showBilingual }) =>
   display && (
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
@@ -29,9 +29,14 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
         <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
           <Stack space={3}>
-            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${
-              meaning[LANGS[language]] || meaning[LANGS.en]
-            }`}</DisplayText>
+            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
+              {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}
+            </DisplayText>
+            {showBilingual && (
+              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} colorLight='base.gray' colorDark='base.gray'>
+                {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`}
+              </DisplayText>
+            )}
             <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
               {constructWordExample(example)}
             </DisplayText>
@@ -46,11 +51,15 @@ DisplayText.propTypes = {
   fontStyle: PropTypes.string.isRequired,
   size: PropTypes.string,
   shrink: PropTypes.number,
+  colorLight: PropTypes.string,
+  colorDark: PropTypes.string,
 };
 
 DisplayText.defaultProps = {
   size: 'md',
   shrink: 1,
+  colorLight: 'vhlight.50',
+  colorDark: 'vhdark.50',
 };
 
 WordCard.propTypes = {
@@ -60,6 +69,7 @@ WordCard.propTypes = {
   fontSize: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
   onCopyText: PropTypes.func.isRequired,
+  showBilingual: PropTypes.bool.isRequired,
 };
 
 WordCard.defaultProps = {

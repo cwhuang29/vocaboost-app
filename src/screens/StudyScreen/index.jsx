@@ -382,6 +382,7 @@ const StudyScreen = ({ navigation, route }) => {
                     onPress={onPress}
                     onCopyText={onCopyText(wordData.word ?? '')}
                     onCollectWord={onCollectWord}
+                    showBilingual={config.showBilingual}
                   />
                   <Box height='100%' />
                 </TouchableOpacity>

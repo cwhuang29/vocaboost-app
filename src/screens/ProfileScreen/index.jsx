@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
-import { Avatar, Box, Center, HStack, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
+import { Avatar, Box, Center, Checkbox, HStack, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
@@ -89,6 +89,11 @@ const ProfileScreen = () => {
 
   const onFontStyleChange = val => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_STYLE, payload: { fontStyle: val } });
+  };
+
+  const onShowBiligualChange = () => {
+    const value = !config.showBilingual;
+    updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_SHOW_BILINGUAL, payload: { showBilingual: value } });
   };
 
   const onColorModeChange = () => {
@@ -183,6 +188,9 @@ const ProfileScreen = () => {
             />
             <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
           </HStack>
+          <Checkbox value={config.showBilingual} onChange={onShowBiligualChange} colorScheme='gray' isDisabled={config.language === 'en'}>
+            Show Bilingual Definition
+          </Checkbox>
         </VStack>
       </Box>
       {!isObjectEmpty(alertData) && <BottomAlert {...alertData} bottom={4} />}
