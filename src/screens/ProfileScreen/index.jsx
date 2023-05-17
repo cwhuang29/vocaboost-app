@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
-import { Avatar, Box, Center, HStack, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
+import { Avatar, Box, Center, Checkbox, HStack, MoonIcon, SunIcon, Switch, Text, useColorMode, VStack } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
@@ -37,6 +37,7 @@ const ProfileScreen = () => {
   const [loading, setLoading] = useState(false);
   const [isSmallDevice, setIsSmallDevice] = useState(false);
   const [alertData, setAlertData] = useState({});
+  const [showBilingual, setShowBilingual] = useState(false);
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const isFocused = useIsFocused();
   const deviceInfo = useDeviceInfoContext();
@@ -89,6 +90,12 @@ const ProfileScreen = () => {
 
   const onFontStyleChange = val => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_STYLE, payload: { fontStyle: val } });
+  };
+
+  const onShowBiligualChange = () => {
+    const value = !showBilingual;
+    setShowBilingual(value);
+    updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_SHOW_BILINGUAL, payload: { showBilingual: value } });
   };
 
   const onColorModeChange = () => {
@@ -183,6 +190,9 @@ const ProfileScreen = () => {
             />
             <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
           </HStack>
+          <Checkbox value={showBilingual} onChange={onShowBiligualChange}>
+            Show Bilingual Definition
+          </Checkbox>
         </VStack>
       </Box>
       {!isObjectEmpty(alertData) && <BottomAlert {...alertData} bottom={4} />}
