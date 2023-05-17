@@ -10,11 +10,15 @@ import { constructWordExample } from 'shared/utils/highlight';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
 
-const DisplayText = ({ children, size, shrink, fontStyle }) => (
-  <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: 'vhlight.50' }} _dark={{ color: 'vhdark.50' }}>
-    {children}
-  </Text>
-);
+const DisplayText = ({ children, size, shrink, fontStyle, isBilingual }) => {
+  const colorLight = isBilingual ? 'base.gray' : 'vhlight.50';
+  const colorDark = isBilingual ? 'base.gray' : 'vhdark.50';
+  return (
+    <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: colorLight }} _dark={{ color: colorDark }}>
+      {children}
+    </Text>
+  );
+};
 
 const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText, showBilingual }) =>
   display && (
@@ -33,7 +37,9 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
               meaning[LANGS[language]] || meaning[LANGS.en]
             }`}</DisplayText>
             {showBilingual && (
-              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`}</DisplayText>
+              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} isBilingual>{`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${
+                meaning[LANGS.en]
+              }`}</DisplayText>
             )}
             <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
               {constructWordExample(example)}
@@ -49,11 +55,13 @@ DisplayText.propTypes = {
   fontStyle: PropTypes.string.isRequired,
   size: PropTypes.string,
   shrink: PropTypes.number,
+  isBilingual: PropTypes.bool,
 };
 
 DisplayText.defaultProps = {
   size: 'md',
   shrink: 1,
+  isBilingual: false,
 };
 
 WordCard.propTypes = {

@@ -188,7 +188,7 @@ const ProfileScreen = () => {
             />
             <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
           </HStack>
-          <Checkbox value={config.showBilingual} onChange={onShowBiligualChange}>
+          <Checkbox value={config.showBilingual} onChange={onShowBiligualChange} colorScheme='gray'>
             Show Bilingual Definition
           </Checkbox>
         </VStack>
