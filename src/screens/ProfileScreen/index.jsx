@@ -187,7 +187,7 @@ const ProfileScreen = () => {
             />
             <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
           </HStack>
-          {config.language !== LANGS.en && (
+          {config.language !== LANGS_SUPPORTED.en && (
             <Checkbox
               mt={0.5}
               value={config.showBilingual}
