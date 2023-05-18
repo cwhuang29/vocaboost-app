@@ -91,9 +91,8 @@ const ProfileScreen = () => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_FONT_STYLE, payload: { fontStyle: val } });
   };
 
-  const onShowBiligualChange = () => {
-    const value = !config.showBilingual;
-    updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_SHOW_BILINGUAL, payload: { showBilingual: value } });
+  const onShowBiligualChange = val => {
+    updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_SHOW_BILINGUAL, payload: { showBilingual: val } });
   };
 
   const onColorModeChange = () => {
@@ -109,7 +108,7 @@ const ProfileScreen = () => {
   ) : (
     <>
       <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-        {isIphone && <Box height={9} />}
+        {isIphone && <Box height={5} />}
         <Box alignItems='center' position='absolute' style={{ top: isIphone ? 70 : 39, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} isAndroid={isAndroid} />
           <SignInOut
@@ -188,9 +187,17 @@ const ProfileScreen = () => {
             />
             <MoonIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
           </HStack>
-          <Checkbox value={config.showBilingual} onChange={onShowBiligualChange} colorScheme='gray' isDisabled={config.language === 'en'}>
-            Show Bilingual Definition
-          </Checkbox>
+          {config.language !== LANGS.en && (
+            <Checkbox
+              mt={0.5}
+              value={config.showBilingual}
+              onChange={onShowBiligualChange}
+              isDisabled={loading || config.language === LANGS_SUPPORTED.en}
+              colorScheme='gray'
+            >
+              Show Bilingual Definition
+            </Checkbox>
+          )}
         </VStack>
       </Box>
       {!isObjectEmpty(alertData) && <BottomAlert {...alertData} bottom={4} />}

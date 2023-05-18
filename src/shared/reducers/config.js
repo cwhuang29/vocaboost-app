@@ -3,6 +3,7 @@ import { DEFAULT_CONFIG } from 'shared/utils/config';
 
 export const configInitialState = {
   language: DEFAULT_CONFIG.language,
+  showBilingual: DEFAULT_CONFIG.showBilingual,
   fontSize: DEFAULT_CONFIG.fontSize,
   fontStyle: DEFAULT_CONFIG.fontStyle,
   colorMode: DEFAULT_CONFIG.colorMode,
@@ -15,6 +16,8 @@ export const configReducer = (state, action) => {
   switch (type) {
     case CONFIG_STATUS.UPDATE_LANGUAGE:
       return { ...state, language: payload.language };
+    case CONFIG_STATUS.UPDATE_SHOW_BILINGUAL:
+      return { ...state, showBilingual: payload.showBilingual };
     case CONFIG_STATUS.UPDATE_FONT_SIZE:
       return { ...state, fontSize: payload.fontSize };
     case CONFIG_STATUS.UPDATE_FONT_STYLE:

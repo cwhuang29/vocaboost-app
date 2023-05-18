@@ -14,7 +14,7 @@ export const DEFAULT_CONFIG = {
   fontSize: FONT_SIZE.MEDIUM,
   fontStyle: FONT_STYLE.CERA,
   colorMode: COLOR_MODE.LIGHT,
-  showBilingual: false,
+  showBilingual: true,
   collectedWords: [],
   studyOptions: { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } },
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
@@ -66,11 +66,20 @@ export const setupDefaultConfig = async () => {
     return true;
   }
 
-  if (isObjectEmpty(config.studyOptions)) {
-    Object.assign(config, { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } });
-    await storage.setData(STORAGE_CONFIG, config);
-    return true;
+  let update = false;
+
+  if (!Object.hasOwn(config, 'showBilingual')) {
+    update = true;
+    Object.assign(config, { showBilingual: true });
   }
 
-  return false;
+  if (isObjectEmpty(config.studyOptions)) {
+    update = true;
+    Object.assign(config, { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } });
+  }
+
+  if (update) {
+    await storage.setData(STORAGE_CONFIG, config);
+  }
+  return update;
 };
