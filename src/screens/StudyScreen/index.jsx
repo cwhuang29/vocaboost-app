@@ -11,7 +11,7 @@ import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
 import { ALERT_TYPES, SORTING_MODE } from 'shared/constants';
 import apis from 'shared/constants/apis';
-import LANGS from 'shared/constants/i18n';
+import LANGS, { LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
@@ -340,6 +340,8 @@ const StudyScreen = ({ navigation, route }) => {
 
   const showSlider = sortingMode === SORTING_MODE.ALPHABETIZE;
 
+  const showBilingual = config.showBilingual && config.language !== LANGS_SUPPORTED.en;
+
   return loading ? (
     <SplashScreen />
   ) : (
@@ -382,7 +384,7 @@ const StudyScreen = ({ navigation, route }) => {
                     onPress={onPress}
                     onCopyText={onCopyText(wordData.word ?? '')}
                     onCollectWord={onCollectWord}
-                    showBilingual={config.showBilingual}
+                    showBilingual={showBilingual}
                   />
                   <Box height='100%' />
                 </TouchableOpacity>
