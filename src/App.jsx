@@ -3,10 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 
-import { NativeBaseProvider, useColorMode, useTheme } from 'native-base';
+import { NativeBaseProvider, useTheme } from 'native-base';
 
-import HomeScreen from 'screens/HomeScreen';
-import ProfileScreen from 'screens/ProfileScreen';
 import SplashScreen from 'screens/SplashScreen';
 import StudyScreen from 'screens/StudyScreen';
 import BottomTab from 'components/BottomTab';
@@ -15,6 +13,7 @@ import { SIGNIN_FAILED_MSG, SIGNOUT_FAILED_MSG } from 'shared/constants/messages
 import { STORAGE_AUTH_TOKEN, STORAGE_CONFIG, STORAGE_USER } from 'shared/constants/storage';
 import { AuthContext } from 'shared/hooks/useAuthContext';
 import { DeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
+import { useIsDarkMode } from 'shared/hooks/useIsDarkMode';
 import { authInitialState, authReducer } from 'shared/reducers/auth';
 import authService from 'shared/services/auth.service';
 import storage from 'shared/storage';
@@ -23,7 +22,7 @@ import { getDeviceInfo } from 'shared/utils/devices';
 import { createEnterAppEvent, createLoginEvent, createLogoutEvent } from 'shared/utils/eventTracking';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
-import { colorModeManager, fontsMap, isDarkMode } from 'shared/utils/style';
+import { colorModeManager, fontsMap } from 'shared/utils/style';
 import defaultTheme from 'shared/utils/theme';
 
 const Stack = createNativeStackNavigator();
@@ -34,8 +33,8 @@ const AppCore = () => {
   const [deviceInfo, setDeviceInfo] = useState({});
   const [fontsLoaded] = useFonts(fontsMap);
   const { colors } = useTheme();
-  const { colorMode } = useColorMode();
-  const bgColor = isDarkMode(colorMode) ? colors.vhdark[1100] : colors.vhlight[1100];
+  const isDarkMode = useIsDarkMode();
+  const bgColor = isDarkMode ? colors.vhdark[1100] : colors.vhlight[1100];
 
   const tryRestoreToken = async () => {
     const token = await storage.getData(STORAGE_AUTH_TOKEN);
@@ -111,9 +110,7 @@ const AppCore = () => {
             }}
           >
             <Stack.Screen name='BottomTab' component={BottomTab} />
-            <Stack.Screen name='Home' component={HomeScreen} />
             <Stack.Screen name='Study' component={StudyScreen} />
-            <Stack.Screen name='Profile' component={ProfileScreen} options={{ animationTypeForReplace: state.isSignout ? 'pop' : 'push' }} />
           </Stack.Navigator>
         </AuthContext.Provider>
       </DeviceInfoContext.Provider>
