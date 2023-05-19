@@ -72,7 +72,7 @@ const AppCore = () => {
       signIn: async data => {
         const resp = await authService.login(data).catch(err => {
           logger(`Login error: ${JSON.stringify(err)}`);
-          return { failed: true, ...err };
+          return { ...err, failed: true };
         });
         if (resp.failed) {
           const { title, content } = resp;

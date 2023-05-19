@@ -75,8 +75,10 @@ const ProfileScreen = () => {
   }, []);
 
   const updateConfigToStorage = async ({ type, payload }) => {
+    setLoading(true);
     await storage.setData(STORAGE_CONFIG, { ...config, ...payload });
     dispatch({ type, payload });
+    setLoading(false);
   };
 
   const onLanguageChange = val => {
@@ -191,6 +193,7 @@ const ProfileScreen = () => {
             <Checkbox
               mt={0.5}
               value={config.showBilingual}
+              defaultIsChecked={!!config.showBilingual}
               onChange={onShowBiligualChange}
               isDisabled={loading || config.language === LANGS_SUPPORTED.en}
               colorScheme='gray'
