@@ -83,3 +83,8 @@ export const SORTING_MODE = {
   SHUFFLE: 'SHUFFLE',
   CHRONOLOGICAL: 'CHRONOLOGICAL',
 };
+
+export const DEVICE_PLATFORM = {
+  ios: 'ios',
+  android: 'android',
+};

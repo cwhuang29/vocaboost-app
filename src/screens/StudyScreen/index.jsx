@@ -20,6 +20,7 @@ import useDebounce from 'shared/hooks/useDebounce';
 import useStudyScreenMonitor from 'shared/hooks/useStudyScreenMonitor';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
+import { getBaseURL } from 'shared/utils/api';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import { createEnterStudyScreenEvent, createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
@@ -36,7 +37,7 @@ import { SpeakerIconButton, StarIconButton, UndoIconButton } from './IconButton'
 import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
 
-const getWebSocketURL = () => `${apis.HOST}${apis.V1.SETTING_COLLECTED_WORDS}`;
+const getWebSocketURL = () => `${getBaseURL()}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
 const getWordList = ({ type }) => {
   const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
