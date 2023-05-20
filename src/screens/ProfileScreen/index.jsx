@@ -132,8 +132,8 @@ const ProfileScreen = () => {
           <AntDesign name='user' size={112} color={avatarColor} />
         </Avatar>
         <Center mb={deviceStyle.marginBottom}>
-          <Text size={deviceStyle.headingSize} mb={3}>
-            {userInfo?.firstName ?? ''}
+          <Text size={deviceStyle.headingSize} mb={2}>
+            {userInfo?.firstName ?? ' '}
           </Text>
           <Text>
             You have collected{' '}
@@ -175,13 +175,13 @@ const ProfileScreen = () => {
             isDisabled={loading}
           />
           <Text size={deviceStyle.menuHeadingSize}>Color Mode</Text>
-          <HStack mt={0.2} alignItems='center'>
+          <HStack alignItems='center'>
             <SunIcon size='6' _light={{ color: 'vhlight.700' }} _dark={{ color: 'vhdark.700' }} />
             <Switch
               isChecked={isDarkMode(colorMode)}
               onToggle={onColorModeChange}
               mx={4}
-              size='md'
+              size='sm'
               onTrackColor='#ABABAB'
               onThumbColor='vhdark.200'
               offTrackColor='#DFDFDF'
@@ -191,7 +191,7 @@ const ProfileScreen = () => {
           </HStack>
           {config.language !== LANGS_SUPPORTED.en && (
             <Checkbox
-              mt={0.5}
+              mt={0.4}
               value={config.showBilingual}
               defaultIsChecked={!!config.showBilingual}
               onChange={onShowBiligualChange}
