@@ -29,7 +29,7 @@ import { isDarkMode } from 'shared/utils/style';
 import AdvertisementModal from './AdvertisementModal';
 
 const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'xl', menuHeadingSize: 'sm', textSize: 'sm', spacing: 1 };
-const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: '2xl', menuHeadingSize: 'md', textSize: 'md', spacing: 3.5 };
+const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: '2xl', menuHeadingSize: 'md', textSize: 'md', spacing: 3 };
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -109,9 +109,9 @@ const ProfileScreen = () => {
     <SplashScreen />
   ) : (
     <>
-      <Box safeAreaY='10' safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-        {isIphone && <Box height={5} />}
-        <Box alignItems='center' position='absolute' style={{ top: isIphone ? 70 : 39, right: 20 }}>
+      <Box safeAreaY={isIphone ? '10' : '1'} safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+        {isIphone && <Box height={3} />}
+        <Box alignItems='center' position='absolute' style={{ top: isIphone ? 70 : 19, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} isAndroid={isAndroid} />
           <SignInOut
             loading={loading}
