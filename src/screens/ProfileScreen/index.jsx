@@ -20,7 +20,7 @@ import { useIconStyle } from 'shared/hooks/useIconStyle';
 import { configInitialState, configReducer } from 'shared/reducers/config';
 import storage from 'shared/storage';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
-import { deviceIsAndroid, deviceIsIphone } from 'shared/utils/devices';
+import { deviceIsAndroid, deviceIsIOS } from 'shared/utils/devices';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getConfig, getUser } from 'shared/utils/storage';
 import { toCapitalize } from 'shared/utils/stringHelpers';
@@ -28,7 +28,7 @@ import { isDarkMode } from 'shared/utils/style';
 
 import AdvertisementModal from './AdvertisementModal';
 
-const smallDeviceStyle = { marginBottom: 2, avatarSize: 'xl', headingSize: 'xl', menuHeadingSize: 'sm', textSize: 'sm', spacing: 1 };
+const smallDeviceStyle = { marginBottom: 1, avatarSize: 'xl', headingSize: 'xl', menuHeadingSize: 'sm', textSize: 'sm', spacing: 1 };
 const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: '2xl', menuHeadingSize: 'md', textSize: 'md', spacing: 3 };
 
 const ProfileScreen = () => {
@@ -40,7 +40,7 @@ const ProfileScreen = () => {
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const isFocused = useIsFocused();
   const deviceInfo = useDeviceInfoContext();
-  const isIphone = useMemo(() => deviceIsIphone(deviceInfo), []);
+  const isIOS = useMemo(() => deviceIsIOS(deviceInfo), []);
   const isAndroid = useMemo(() => deviceIsAndroid(deviceInfo), []);
   const { colorMode, toggleColorMode } = useColorMode();
   const iconColor = useIconStyle();
@@ -105,13 +105,15 @@ const ProfileScreen = () => {
 
   const deviceStyle = isSmallDevice ? smallDeviceStyle : normalDeviceStyle;
 
+  const needMoreSpace = isIOS && !isSmallDevice;
+
   return init ? (
     <SplashScreen />
   ) : (
     <>
-      <Box safeAreaY={isIphone ? '10' : '1'} safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
-        {isIphone && <Box height={3} />}
-        <Box alignItems='center' position='absolute' style={{ top: isIphone ? 70 : 19, right: 20 }}>
+      <Box safeAreaY={needMoreSpace ? '8' : '4'} safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
+        {needMoreSpace && <Box height={9} />}
+        <Box alignItems='center' position='absolute' style={{ top: needMoreSpace ? 70 : 20, right: 20 }}>
           <AdvertisementModal iconColor={iconColor} isAndroid={isAndroid} />
           <SignInOut
             loading={loading}
