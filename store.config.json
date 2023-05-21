@@ -1,7 +1,7 @@
 {
   "configVersion": 0,
   "apple": {
-    "version": "1.1.0",
+    "version": "1.2.0",
     "copyright": "2023 VocaBoost Authors",
     "release": {
       "automaticRelease": true
@@ -10,7 +10,7 @@
       "ru": {
         "title": "VocaBoost",
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -21,7 +21,7 @@
       "no": {
         "title": "VocaBoost",
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -31,7 +31,7 @@
       },
       "fr-FR": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -42,7 +42,7 @@
       },
       "en-CA": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -53,7 +53,7 @@
       },
       "ro": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -64,7 +64,7 @@
       },
       "hr": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -75,7 +75,7 @@
       },
       "it": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -86,7 +86,7 @@
       },
       "uk": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -97,7 +97,7 @@
       },
       "fi": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -108,7 +108,7 @@
       },
       "tr": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -119,7 +119,7 @@
       },
       "hi": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -141,7 +141,7 @@
       },
       "sk": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -152,7 +152,7 @@
       },
       "da": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -163,7 +163,7 @@
       },
       "hu": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -174,7 +174,7 @@
       },
       "ar-SA": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -185,7 +185,7 @@
       },
       "pt-BR": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -196,7 +196,7 @@
       },
       "de-DE": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -207,7 +207,7 @@
       },
       "es-MX": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expanda la funcionalidad de inicio de sesión para admitir cuentas de Microsoft.\nIntegre la función de texto a voz.\nAgregue traducciones al japonés, coreano y tailandés.\nImplemente opciones de clasificación de listas de palabras.\n Mejore la interfaz de usuario.",
+        "releaseNotes": "Expanda la funcionalidad de inicio de sesión para admitir cuentas de Microsoft.\nIntegre la función de texto a voz.\nAgregue traducciones al japonés, coreano y tailandés.\nImplemente opciones de clasificación de listas de palabras.\n Mejore la interfaz de usuario.\nAdmite definición bilingüe.",
         "description": "VocaBoost lo ayuda a mejorar su vocabulario GRE de manera efectiva.\n\nVocaBoost está diseñado para ayudar a los hablantes no nativos de inglés a mejorar sus habilidades lingüísticas y prepararse para el examen GRE. Con más de 1500 de las frases y el vocabulario GRE más utilizados, VocaBoost es una herramienta esencial para cualquier persona que busque mejorar su dominio del inglés.\n\nDisponible en inglés, español, chino, japonés, coreano y tailandés, VocaBoost le permite repasar el vocabulario en su idioma preferido.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Repase 1500 vocabulario GRE esencial y prepárese para el examen sin esfuerzo. Admite definiciones y ejemplos en más de 6 idiomas.",
@@ -229,7 +229,7 @@
       },
       "en-US": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -251,7 +251,7 @@
       },
       "fr-CA": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -262,7 +262,7 @@
       },
       "en-GB": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -273,7 +273,7 @@
       },
       "id": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -284,7 +284,7 @@
       },
       "es-ES": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expanda la funcionalidad de inicio de sesión para admitir cuentas de Microsoft.\nIntegre la función de texto a voz.\nAgregue traducciones al japonés, coreano y tailandés.\nImplemente opciones de clasificación de listas de palabras.\n Mejore la interfaz de usuario.",
+        "releaseNotes": "Expanda la funcionalidad de inicio de sesión para admitir cuentas de Microsoft.\nIntegre la función de texto a voz.\nAgregue traducciones al japonés, coreano y tailandés.\nImplemente opciones de clasificación de listas de palabras.\n Mejore la interfaz de usuario.\nAdmite definición bilingüe.",
         "description": "VocaBoost lo ayuda a mejorar su vocabulario GRE de manera efectiva.\n\nVocaBoost está diseñado para ayudar a los hablantes no nativos de inglés a mejorar sus habilidades lingüísticas y prepararse para el examen GRE. Con más de 1500 de las frases y el vocabulario GRE más utilizados, VocaBoost es una herramienta esencial para cualquier persona que busque mejorar su dominio del inglés.\n\nDisponible en inglés, español, chino, japonés, coreano y tailandés, VocaBoost le permite repasar el vocabulario en su idioma preferido.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Repase 1500 vocabulario GRE esencial y prepárese para el examen sin esfuerzo. Admite definiciones y ejemplos en más de 6 idiomas.",
@@ -295,7 +295,7 @@
       },
       "en-AU": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
         "promoText": "Review 1500 essential GRE vocabulary and prepare for the exam effortlessly. Support definitions and examples in 6+ languages.",
@@ -306,7 +306,7 @@
       },
       "zh-Hans": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "支援微软帐号登入。 \n增加朗读功能。 \n新增日语、韩语以及泰语翻译。 \n支援单字排序选单。 \n优化使用者介面。 \n",
+        "releaseNotes": "支援微软帐号登入。 \n增加朗读功能。 \n新增日语、韩语以及泰语翻译。 \n支援单字排序选单。 \n优化使用者介面。\n支援双语解释。",
         "description": "VocaBoost 帮助您有效地提高 GRE 字汇量。 \n\nVocaBoost 帮助您提升英文能力并为 GRE 考试做准备。 VocaBoost 拥有超过 1500 个最常用的 GRE 词汇和短语，是任何想要提升英语水平的人的必备工具。支援英语、西班牙语、中文、日语、韩语以及泰语，让您自由选择偏好的语言进行学习。",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "学习", "英检", "检定", "英文"],
         "promoText": "轻松复习最常考的1500个GRE单字以及它们的翻译和例句，支援6种语言以上的定义及例句。",
@@ -317,7 +317,7 @@
       },
       "zh-Hant": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "支援微軟帳號登入。\n增加朗讀功能。\n新增日語、韓語以及泰語翻譯。\n支援單字排序選單。\n優化使用者介面。\n",
+        "releaseNotes": "支援微軟帳號登入。\n增加朗讀功能。\n新增日語、韓語以及泰語翻譯。\n支援單字排序選單。\n優化使用者介面。\n支援雙語解釋。",
         "description": "VocaBoost 幫助您有效地提高 GRE 字彙量。\n\nVocaBoost 幫助您提升英文能力並為 GRE 考試做準備。 VocaBoost 擁有超過 1500 個最常用的 GRE 詞彙和短語，是任何想要提升英語水平的人的必備工具。支援英語、西班牙語、中文、日語、韓語以及泰語，讓您自由選擇偏好的語言進行學習。",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study", "學習", "英檢", "檢定", "英文"],
         "promoText": "輕鬆複習最常考的1500個GRE單字以及它們的翻譯和例句，支援6種語言以上的定義及例句。",
@@ -328,7 +328,7 @@
       },
       "el": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -339,7 +339,7 @@
       },
       "he": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -350,7 +350,7 @@
       },
       "pt-PT": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -361,7 +361,7 @@
       },
       "ms": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -372,7 +372,7 @@
       },
       "vi": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -383,7 +383,7 @@
       },
       "cs": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -394,7 +394,7 @@
       },
       "pl": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -405,7 +405,7 @@
       },
       "ca": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -416,7 +416,7 @@
       },
       "sv": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
@@ -427,7 +427,7 @@
       },
       "nl-NL": {
         "marketingUrl": "https://www.vocabularyboost.com/",
-        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nImprove the user interface.",
+        "releaseNotes": "Expand the login functionality to support Microsoft accounts.\nIntegrate text-to-speech feature.\nAdd Japanese, Korean, and Thai translations.\nImplement word list sorting options.\nSupport bilingual definition.",
         "title": "VocaBoost",
         "description": "VocaBoost helps you improve your GRE vocabulary in an effective way.\n\nVocaBoost is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.\n\nAvailable in English, Spanish, Chinese, Japanese, Korean and Thai, VocaBoost allows you to review vocabulary in your preferred language.",
         "keywords": ["english", "vocabulary", "word", "gre", "learn", "exam", "study"],
