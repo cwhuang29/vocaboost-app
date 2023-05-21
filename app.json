@@ -3,7 +3,7 @@
     "name": "VocabularyBoost",
     "slug": "vocabularyboost",
     "owner": "cwhuang29",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
     "orientation": "portrait",
     "icon": "./src/assets/icons/logo-square.png",
@@ -17,13 +17,14 @@
     "scheme": "msauth.vocaboost.com",
     "ios": {
       "bundleIdentifier": "vocaboost.com",
-      "buildNumber": "1.1.1",
+      "buildNumber": "1.2.0",
       "supportsTablet": true,
       "googleServicesFile": "./google-services-secret-ios.plist"
     },
     "android": {
       "package": "vocaboost.com",
-      "versionCode": 1,
+      "versionCode": 2,
+      "permissions": ["com.google.android.gms.permission.AD_ID"],
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/icons/logo.png",
