@@ -20,7 +20,7 @@ Available in English, Spanish, Chinese, Japanese, Korean and Thai. VocaBoost all
 
 ## System Architecture
 
-![System Architecture](demo/vocaboost-system-architecture.jpg)
+![System Architecture](demo/vocaboost-system-architecture.png)
 
 ## Demo
 
