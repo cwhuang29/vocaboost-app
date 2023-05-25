@@ -317,11 +317,11 @@ const StudyScreen = ({ navigation, route }) => {
       }
     };
 
-  const onCopyText = text => () => {
+  const onCopyText = (text) => {
     Clipboard.setString(text);
     setDisplayCopyText(true);
     setTimeout(() => setDisplayCopyText(false), COPY_TEXT_ALERT_TIME_PERIOD);
-  };
+  }
 
   const speackerIconOnPress = text => () => {
     Tts.speak(text);
@@ -383,7 +383,7 @@ const StudyScreen = ({ navigation, route }) => {
                     fontStyle={config.fontStyle}
                     isCollected={isCollected}
                     onPress={onPress}
-                    onCopyText={onCopyText(wordData.word ?? '')}
+                    onCopyText={onCopyText}
                     onCollectWord={onCollectWord}
                     showBilingual={showBilingual}
                   />

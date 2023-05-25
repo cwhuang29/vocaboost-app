@@ -10,6 +10,7 @@ import { constructWordExample } from 'shared/utils/highlight';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
 
+
 const DisplayText = ({ children, size, shrink, fontStyle, colorLight, colorDark }) => (
   <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: colorLight }} _dark={{ color: colorDark }}>
     {children}
@@ -20,7 +21,7 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
   display && (
     <Box>
       <VStack space={3} justifyContent='space-around' alignSelf='center'>
-        <Pressable onLongPress={onCopyText}>
+        <Pressable onLongPress={() => onCopyText(wordData.word)}>
           <DisplayText size='2xl' shrink={0} fontStyle={fontStyle}>
             {toCapitalize(wordData.word)}
           </DisplayText>
@@ -29,17 +30,23 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
       {wordData.detail.map(({ meaning, partsOfSpeech, example }) => (
         <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
           <Stack space={3}>
-            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
-              {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}
-            </DisplayText>
-            {showBilingual && (
-              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} colorLight='base.gray' colorDark='base.gray'>
-                {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`}
+            <Pressable onLongPress={() => onCopyText(meaning[LANGS[language]] || meaning[LANGS.en])}>
+              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
+                {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`}
               </DisplayText>
+            </Pressable>
+            {showBilingual && (
+              <Pressable onLongPress={() => onCopyText(meaning[LANGS.en])}>
+                <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} colorLight='base.gray' colorDark='base.gray'>
+                  {`${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`}
+                </DisplayText>
+              </Pressable>
             )}
-            <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
-              {constructWordExample(example)}
-            </DisplayText>
+            <Pressable onLongPress={() => onCopyText(constructWordExample(example))}>
+              <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
+                {constructWordExample(example)}
+              </DisplayText>
+            </Pressable>
           </Stack>
         </Box>
       ))}
