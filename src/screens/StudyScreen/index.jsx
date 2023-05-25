@@ -383,7 +383,7 @@ const StudyScreen = ({ navigation, route }) => {
                     fontStyle={config.fontStyle}
                     isCollected={isCollected}
                     onPress={onPress}
-                    onCopyText={onCopyText(wordData.word ?? '')}
+                    onCopyText={onCopyText}
                     onCollectWord={onCollectWord}
                     showBilingual={showBilingual}
                   />
