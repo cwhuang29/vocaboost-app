@@ -334,7 +334,7 @@ const StudyScreen = ({ navigation, route }) => {
       const wordText = wordData.word;
       Tts.speak(wordText);
 
-      wordData.detail.map(({ meaning, partsOfSpeech, example }) => {
+      wordData.detail.forEach(({ meaning, partsOfSpeech, example }) => {
         const meaningText = `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[config.language]] || meaning[LANGS.en]}`;
         const meaningTextEng = showBilingual && `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`;
         const exampleText = constructWordExample(example);
