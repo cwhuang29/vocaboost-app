@@ -9,7 +9,7 @@ import { Box, Text, View } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
-import { ALERT_TYPES, SORTING_MODE } from 'shared/constants';
+import { ALERT_TYPES, PARTS_OF_SPEECH_SHORTHAND, SORTING_MODE } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import LANGS, { LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
@@ -24,6 +24,7 @@ import { getBaseURL } from 'shared/utils/api';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
 import { createEnterStudyScreenEvent, createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
+import { constructWordExample } from 'shared/utils/highlight';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getAuthToken, getConfig } from 'shared/utils/storage';
@@ -327,6 +328,25 @@ const StudyScreen = ({ navigation, route }) => {
     Tts.speak(text);
   };
 
+  const onPressSpeakAll =
+    ({ wordData, showBilingual }) =>
+    () => {
+      const wordText = wordData.word;
+      Tts.speak(wordText);
+
+      wordData.detail.map(({ meaning, partsOfSpeech, example }) => {
+        const meaningText = `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[config.language]] || meaning[LANGS.en]}`;
+        const meaningTextEng = showBilingual && `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`;
+        const exampleText = constructWordExample(example);
+
+        Tts.speak(meaningText);
+        if (showBilingual) {
+          Tts.speak(meaningTextEng);
+        }
+        Tts.speak(exampleText);
+      });
+    };
+
   const onPress = () => {
     setWordIndex(prevIdx => (prevIdx + 1 < wordList.length ? prevIdx + 1 : 0));
   };
@@ -398,7 +418,7 @@ const StudyScreen = ({ navigation, route }) => {
             </View>
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' marginTop='auto'>
               <UndoIconButton onPress={undoIconOnPress} />
-              <SpeakerIconButton onPress={onPressSpeak(wordData.word)} />
+              <SpeakerIconButton onPress={onPressSpeakAll({ wordData, showBilingual })} />
               <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
               <SortingMenu sortingMode={sortingMode} setSortingMode={setSortingMode} type={routeType} />
             </Box>
