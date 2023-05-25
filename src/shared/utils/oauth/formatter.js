@@ -1,4 +1,5 @@
 import { LOGIN_METHOD } from 'shared/constants/loginType';
+import { getLocalDate } from 'shared/utils/time';
 
 const transformGoogleOAuthLoginData = data => ({
   loginMethod: LOGIN_METHOD.GOOGLE,
@@ -25,11 +26,14 @@ const transformAzureOAuthLoginData = data => ({
 });
 
 export const transformOAuthLoginData = ({ loginMethod, data }) => {
+  const base = { ts: getLocalDate() };
+  let customized = {};
+
   if (loginMethod === LOGIN_METHOD.GOOGLE) {
-    return transformGoogleOAuthLoginData(data);
+    customized = transformGoogleOAuthLoginData(data);
   }
   if (loginMethod === LOGIN_METHOD.AZURE) {
-    return transformAzureOAuthLoginData(data);
+    customized = transformAzureOAuthLoginData(data);
   }
-  return {};
+  return { ...base, ...customized };
 };
