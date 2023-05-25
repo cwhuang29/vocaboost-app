@@ -323,7 +323,7 @@ const StudyScreen = ({ navigation, route }) => {
     setTimeout(() => setDisplayCopyText(false), COPY_TEXT_ALERT_TIME_PERIOD);
   };
 
-  const speackerIconOnPress = text => () => {
+  const onPressSpeak = text => () => {
     Tts.speak(text);
   };
 
@@ -382,7 +382,7 @@ const StudyScreen = ({ navigation, route }) => {
                     fontSize={config.fontSize}
                     fontStyle={config.fontStyle}
                     isCollected={isCollected}
-                    onPress={onPress}
+                    onPressSpeak={onPressSpeak}
                     onCopyText={onCopyText}
                     onCollectWord={onCollectWord}
                     showBilingual={showBilingual}
@@ -398,7 +398,7 @@ const StudyScreen = ({ navigation, route }) => {
             </View>
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' marginTop='auto'>
               <UndoIconButton onPress={undoIconOnPress} />
-              <SpeakerIconButton onPress={speackerIconOnPress(wordData.word)} />
+              <SpeakerIconButton onPress={onPressSpeak(wordData.word)} />
               <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
               <SortingMenu sortingMode={sortingMode} setSortingMode={setSortingMode} type={routeType} />
             </Box>

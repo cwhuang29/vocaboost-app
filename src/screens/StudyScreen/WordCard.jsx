@@ -16,14 +16,14 @@ const DisplayText = ({ children, size, shrink, fontStyle, colorLight, colorDark 
   </Text>
 );
 
-const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText, showBilingual }) => {
+const WordCard = ({ display, wordData, language, fontSize, fontStyle, onPressSpeak, onCopyText, showBilingual }) => {
   const wordText = wordData.word;
 
   return (
     display && (
       <Box>
         <VStack space={3} justifyContent='space-around' alignSelf='center'>
-          <Pressable onLongPress={onCopyText(wordText)}>
+          <Pressable onPress={onPressSpeak(wordText)} onLongPress={onCopyText(wordText)}>
             <DisplayText size='2xl' shrink={0} fontStyle={fontStyle}>
               {toCapitalize(wordText)}
             </DisplayText>
@@ -36,19 +36,19 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText
           return (
             <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
               <Stack space={3}>
-                <Pressable onLongPress={onCopyText(meaningText)}>
+                <Pressable onPress={onPressSpeak(meaningText)} onLongPress={onCopyText(meaningText)}>
                   <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
                     {meaningText}
                   </DisplayText>
                 </Pressable>
                 {showBilingual && (
-                  <Pressable onLongPress={onCopyText(meaningTextEng)}>
+                  <Pressable onPress={onPressSpeak(meaningTextEng)} onLongPress={onCopyText(meaningTextEng)}>
                     <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} colorLight='base.gray' colorDark='base.gray'>
                       {meaningTextEng}
                     </DisplayText>
                   </Pressable>
                 )}
-                <Pressable onLongPress={onCopyText(exampleText)}>
+                <Pressable onPress={onPressSpeak(exampleText)} onLongPress={onCopyText(exampleText)}>
                   <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
                     {exampleText}
                   </DisplayText>
@@ -84,6 +84,7 @@ WordCard.propTypes = {
   language: PropTypes.string.isRequired,
   fontSize: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
+  onPressSpeak: PropTypes.func.isRequired,
   onCopyText: PropTypes.func.isRequired,
   showBilingual: PropTypes.bool.isRequired,
 };
