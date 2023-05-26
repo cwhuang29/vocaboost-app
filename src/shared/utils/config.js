@@ -1,4 +1,4 @@
-import LANGS from 'shared/constants/i18n';
+import { LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { COLOR_MODE, FONT_SIZE, FONT_STYLE, SORTING_MODE } from 'shared/constants/index';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import userService from 'shared/services/user.service';
@@ -10,7 +10,7 @@ import { getConfig } from './storage';
 import { convertUTCToLocalTime } from './time';
 
 export const DEFAULT_CONFIG = {
-  language: LANGS.en,
+  language: LANGS_SUPPORTED.en,
   fontSize: FONT_SIZE.MEDIUM,
   fontStyle: FONT_STYLE.CERA,
   colorMode: COLOR_MODE.LIGHT,

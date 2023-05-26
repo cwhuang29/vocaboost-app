@@ -27,6 +27,7 @@ import { createEnterStudyScreenEvent, createLeaveStudyScreenEvent } from 'shared
 import { constructWordExample } from 'shared/utils/highlight';
 import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
+import { getSpeechLanguage } from 'shared/utils/speech';
 import { getAuthToken, getConfig } from 'shared/utils/storage';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
@@ -101,6 +102,8 @@ const getWordListByConfig = ({ config, routeType, alphabets, entireWordList, ent
   return { wordList, selectedLetter, wordIndex, sortingMode: mode };
 };
 
+const defaultSpeechLang = getSpeechLanguage();
+
 const StudyScreen = ({ navigation, route }) => {
   const routeType = route.params.type;
   const accessToken = useRef(null);
@@ -123,8 +126,8 @@ const StudyScreen = ({ navigation, route }) => {
   const { wordCount, timeElapsed } = useStudyScreenMonitor(wordList?.[wordIndex]);
 
   useEffect(() => {
-    Tts.setDefaultLanguage(LANGS.en_US);
-    Tts.setDefaultRate(0.5);
+    Tts.setDefaultLanguage(defaultSpeechLang);
+    Tts.setDefaultRate(0.55);
     Tts.setDucking(true); // Lowering other applications output level while speaking
     Tts.setIgnoreSilentSwitch('ignore'); // Play audio even if the silent switch is set
   }, []);
@@ -324,24 +327,33 @@ const StudyScreen = ({ navigation, route }) => {
     setTimeout(() => setDisplayCopyText(false), COPY_TEXT_ALERT_TIME_PERIOD);
   };
 
-  const onPressSpeak = text => () => {
-    Tts.speak(text);
-  };
+  const onPressSpeak =
+    ({ text, language }) =>
+    () => {
+      if (language) {
+        Tts.setDefaultLanguage(getSpeechLanguage({ language }));
+      }
+      Tts.speak(text);
+      if (language) {
+        Tts.setDefaultLanguage(defaultSpeechLang);
+      }
+    };
 
   const onPressSpeakAll =
-    ({ wordData, showBilingual }) =>
+    ({ wordData }) =>
     () => {
-      const wordText = wordData.word;
-      Tts.speak(wordText);
+      const needChangeLanguage = config.language !== LANGS_SUPPORTED.en;
+      Tts.speak(wordData.word);
 
-      wordData.detail.forEach(({ meaning, partsOfSpeech, example }) => {
-        const meaningText = `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[config.language]] || meaning[LANGS.en]}`;
-        const meaningTextEng = showBilingual && `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`;
+      wordData.detail.forEach(({ meaning, example }) => {
+        const meaningText = meaning[LANGS_SUPPORTED[config.language]] || meaning[LANGS_SUPPORTED.en];
         const exampleText = constructWordExample(example);
-
+        if (needChangeLanguage) {
+          Tts.setDefaultLanguage(getSpeechLanguage({ language: config.language }));
+        }
         Tts.speak(meaningText);
-        if (showBilingual) {
-          Tts.speak(meaningTextEng);
+        if (needChangeLanguage) {
+          Tts.setDefaultLanguage(defaultSpeechLang);
         }
         Tts.speak(exampleText);
       });
@@ -418,7 +430,7 @@ const StudyScreen = ({ navigation, route }) => {
             </View>
             <Box display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' marginTop='auto'>
               <UndoIconButton onPress={undoIconOnPress} />
-              <SpeakerIconButton onPress={onPressSpeakAll({ wordData, showBilingual })} />
+              <SpeakerIconButton onPress={onPressSpeakAll({ wordData })} />
               <StarIconButton isCollected={isCollected} onPress={onCollectWord({ id: wordData.id, isCollected })} />
               <SortingMenu sortingMode={sortingMode} setSortingMode={setSortingMode} type={routeType} />
             </Box>
