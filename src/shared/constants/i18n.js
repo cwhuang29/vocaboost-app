@@ -19,13 +19,12 @@ export const LANGS_SUPPORTED = {
 };
 
 export default LANGS = {
-  en: 'en',
-  es: 'es',
-  en_US: 'en_US',
-  en_UK: 'en_UK',
-  zh_TW: 'zh_TW',
-  zh_CN: 'zh_CN',
-  ja: 'ja',
-  ko: 'ko',
-  th: 'th',
+  en_US: 'en-US',
+  en_UK: 'en-UK',
+  es_ES: 'es-ES',
+  zh_TW: 'zh-TW',
+  zh_CN: 'zh-CN',
+  ja_JP: 'ja-JP',
+  ko_KR: 'ko-KR',
+  th_TH: 'th-TH',
 };

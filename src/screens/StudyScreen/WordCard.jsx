@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 import { Box, Stack, Text, VStack } from 'native-base';
 
-import LANGS from 'shared/constants/i18n';
+import { LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
 import { constructWordExample } from 'shared/utils/highlight';
+import { getSpeechLanguage } from 'shared/utils/speech';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
 
@@ -16,39 +17,42 @@ const DisplayText = ({ children, size, shrink, fontStyle, colorLight, colorDark 
   </Text>
 );
 
-const WordCard = ({ display, wordData, language, fontSize, fontStyle, onCopyText, showBilingual }) => {
+const WordCard = ({ display, wordData, language, fontSize, fontStyle, onPressSpeak, onCopyText, showBilingual }) => {
   const wordText = wordData.word;
+  const speechLang = getSpeechLanguage({ language });
 
   return (
     display && (
       <Box>
         <VStack space={3} justifyContent='space-around' alignSelf='center'>
-          <Pressable onLongPress={onCopyText(wordText)}>
+          <Pressable onPress={onPressSpeak({ text: wordText })} onLongPress={onCopyText(wordText)}>
             <DisplayText size='2xl' shrink={0} fontStyle={fontStyle}>
               {toCapitalize(wordText)}
             </DisplayText>
           </Pressable>
         </VStack>
         {wordData.detail.map(({ meaning, partsOfSpeech, example }) => {
-          const meaningText = `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS[language]] || meaning[LANGS.en]}`;
-          const meaningTextEng = `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS.en]}`;
+          const meaningText = `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS_SUPPORTED[language]] || meaning[LANGS_SUPPORTED.en]}`;
+          const meaningTextEng = `${PARTS_OF_SPEECH_SHORTHAND[partsOfSpeech]} ${meaning[LANGS_SUPPORTED.en]}`;
           const exampleText = constructWordExample(example);
+          const meaningTextSpeech = meaning[LANGS_SUPPORTED[language]] || meaning[LANGS_SUPPORTED.en];
+          const meaningTextEngSpeech = meaning[LANGS_SUPPORTED.en];
           return (
-            <Box key={`${partsOfSpeech}-${meaning[LANGS.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
+            <Box key={`${partsOfSpeech}-${meaning[LANGS_SUPPORTED.en].slice(0, 20)}-${example.slice(0, 20)}`} pt={8}>
               <Stack space={3}>
-                <Pressable onLongPress={onCopyText(meaningText)}>
+                <Pressable onPress={onPressSpeak({ text: meaningTextSpeech, language })} onLongPress={onCopyText(meaningText)}>
                   <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
                     {meaningText}
                   </DisplayText>
                 </Pressable>
                 {showBilingual && (
-                  <Pressable onLongPress={onCopyText(meaningTextEng)}>
+                  <Pressable onPress={onPressSpeak({ text: meaningTextEngSpeech })} onLongPress={onCopyText(meaningTextEng)}>
                     <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle} colorLight='base.gray' colorDark='base.gray'>
                       {meaningTextEng}
                     </DisplayText>
                   </Pressable>
                 )}
-                <Pressable onLongPress={onCopyText(exampleText)}>
+                <Pressable onPress={onPressSpeak({ text: exampleText })} onLongPress={onCopyText(exampleText)}>
                   <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
                     {exampleText}
                   </DisplayText>
@@ -84,6 +88,7 @@ WordCard.propTypes = {
   language: PropTypes.string.isRequired,
   fontSize: PropTypes.string.isRequired,
   fontStyle: PropTypes.string.isRequired,
+  onPressSpeak: PropTypes.func.isRequired,
   onCopyText: PropTypes.func.isRequired,
   showBilingual: PropTypes.bool.isRequired,
 };
