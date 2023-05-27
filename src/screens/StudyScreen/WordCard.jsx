@@ -7,9 +7,9 @@ import { Box, Stack, Text, VStack } from 'native-base';
 import { LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { PARTS_OF_SPEECH_SHORTHAND } from 'shared/constants/index';
 import { constructWordExample } from 'shared/utils/highlight';
+import { getSpeechLanguage } from 'shared/utils/speech';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
-import { getSpeechLanguage } from 'shared/utils/speech';
 
 const DisplayText = ({ children, size, shrink, fontStyle, colorLight, colorDark }) => (
   <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: colorLight }} _dark={{ color: colorDark }}>
