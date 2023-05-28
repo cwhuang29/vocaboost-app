@@ -8,7 +8,8 @@ import { AspectRatio, Box, Center, Heading, useColorMode, useTheme, VStack } fro
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import CollectedWordListSvg from 'shared/svgs/collectedWordListSvg';
-import WordListSvg from 'shared/svgs/wordListSvg';
+import WordListSvg1 from 'shared/svgs/wordListSvg1';
+import WordListSvg2 from 'shared/svgs/wordListSvg2';
 import { deviceIsTablet } from 'shared/utils/devices';
 import { isDarkMode } from 'shared/utils/style';
 
@@ -50,8 +51,8 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Center bgColor={bgColor} safeAreaTop={3} justifyContent='center' flex={1}>
       <VStack space={space}>
-        <HomeBox text='TOEFL' imgXml={WordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.TOEFL })} />
-        <HomeBox text='GRE' imgXml={WordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
+        <HomeBox text='TOEFL' imgXml={WordListSvg1} onPress={onPress({ type: WORD_LIST_TYPE.TOEFL })} />
+        <HomeBox text='GRE' imgXml={WordListSvg2} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
         <HomeBox text='Collected' imgXml={CollectedWordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>
     </Center>
