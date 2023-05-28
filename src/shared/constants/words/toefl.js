@@ -50331,25 +50331,6 @@ export default [
     ],
   },
   {
-    id: 12650,
-    word: 'later',
-    detail: [
-      {
-        meaning: {
-          en: 'At a subsequent time.',
-          es: '',
-          zh_TW: '',
-          zh_CN: '',
-          ja: '',
-          ko: '',
-          th: '',
-        },
-        partsOfSpeech: 'adverb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12651,
     word: 'lateral',
     detail: [
