@@ -15,13 +15,13 @@ import { isDarkMode } from 'shared/utils/style';
 
 const HomeBox = ({ text, imgXml, onPress }) => {
   const deviceInfo = useDeviceInfoContext();
-  const maxWidth = deviceIsTablet(deviceInfo) ? '550' : '320';
+  const maxWidth = deviceIsTablet(deviceInfo) ? '390' : '300';
   const wordBoxPadding = deviceIsTablet(deviceInfo) ? 5 : 3;
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Box alignItems='center' mt={3} mx={3} style={{ maxWidth: 550 }}>
-        <Box rounded='xl' overflow='hidden' w='90%' maxW={maxWidth}>
+      <Box alignItems='center' mt={4} mx={4} style={{ maxWidth: 390 }}>
+        <Box rounded='xl' overflow='hidden' w='85%' maxW={maxWidth}>
           <AspectRatio w='100%' ratio={16 / 9}>
             <SvgXml xml={imgXml} width='100%' height='100%' />
           </AspectRatio>
@@ -50,7 +50,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <Center bgColor={bgColor} safeAreaTop={3} justifyContent='center' flex={1}>
-      <VStack space={space}>
+      <VStack space={space} pt={3}>
         <HomeBox text='TOEFL' imgXml={WordListSvg1} onPress={onPress({ type: WORD_LIST_TYPE.TOEFL })} />
         <HomeBox text='GRE' imgXml={WordListSvg2} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
         <HomeBox text='Collected' imgXml={CollectedWordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />

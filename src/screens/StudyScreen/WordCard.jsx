@@ -50,7 +50,7 @@ const WordCard = ({ display, wordData, language, fontSize, fontStyle, onPressSpe
                     </DisplayText>
                   </Pressable>
                 )}
-                <Pressable onPress={onPressSpeak({ text: exampleText })} onLongPress={onCopyText(exampleText)}>
+                <Pressable onLongPress={onCopyText(exampleText)}>
                   <DisplayText size={getTextSize(fontSize)} fontStyle={fontStyle}>
                     {exampleText}
                   </DisplayText>

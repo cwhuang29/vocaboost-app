@@ -131,7 +131,7 @@ const StudyScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     Tts.setDefaultLanguage(defaultSpeechLang);
-    Tts.setDefaultRate(0.55);
+    Tts.setDefaultRate(0.51);
     Tts.setDucking(true); // Lowering other applications output level while speaking
     Tts.setIgnoreSilentSwitch('ignore'); // Play audio even if the silent switch is set
   }, []);
@@ -395,7 +395,7 @@ const StudyScreen = ({ navigation, route }) => {
             p={1.5}
             m={1}
             flex={1}
-            style={{ top: 56 }}
+            style={{ top: 48 }}
             alignSelf='center'
             rounded='lg'
           >
