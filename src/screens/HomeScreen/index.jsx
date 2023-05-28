@@ -40,6 +40,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Center flex={1} justifyContent='center' bgColor={bgColor}>
       <VStack mt={4} space='16' alignItems='center'>
+        <HomeBox text='TOEFL' imgXml={WordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.TOEFL })} />
         <HomeBox text='GRE' imgXml={WordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
         <HomeBox text='Collected' imgXml={CollectedWordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>

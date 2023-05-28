@@ -1,6 +1,5 @@
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
-import { WORD_LIST } from 'shared/constants/words';
-import { GRE_ALPHABET, GRE_ALPHABET_INDEX } from 'shared/constants/words/alphabet';
+import { GRE_ALPHABET, GRE_ALPHABET_INDEX, TOEFL_ALPHABET, TOEFL_ALPHABET_INDEX, WORD_LIST } from 'shared/constants/words';
 
 import { shuffleArray } from './arrayHelpers';
 
@@ -27,6 +26,8 @@ export const getWordListFirstAlphabets = ({ type }) => {
   switch (type) {
     case WORD_LIST_TYPE.GRE:
       return GRE_ALPHABET;
+    case WORD_LIST_TYPE.TOEFL:
+      return TOEFL_ALPHABET;
     default:
       return '';
   }
@@ -36,7 +37,11 @@ export const getWordListAlphabetsIndex = ({ type }) => {
   switch (type) {
     case WORD_LIST_TYPE.GRE:
       return GRE_ALPHABET_INDEX;
+    case WORD_LIST_TYPE.TOEFL:
+      return TOEFL_ALPHABET_INDEX;
     default:
       return {};
   }
 };
+
+export const isToeflWord = ({ id }) => id > 10000;

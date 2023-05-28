@@ -89,7 +89,7 @@ const getWordListByConfig = ({ config, routeType, alphabets, entireWordList, ent
       wordList = shuffleArray(wordList);
     }
   }
-  if (routeType === WORD_LIST_TYPE.GRE) {
+  if (routeType === WORD_LIST_TYPE.TOEFL || routeType === WORD_LIST_TYPE.GRE) {
     if (mode === SORTING_MODE.ALPHABETIZE) {
       wordList = entireWordListSortByAlphabet;
       const { wordId } = config.studyOptions[routeType];
@@ -294,7 +294,7 @@ const StudyScreen = ({ navigation, route }) => {
   useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', () => {
       updateStorageInstantly();
-      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
+      createLeaveStudyScreenEvent({ studyType: routeType, wordCount, timeElapsed });
     });
     return unsubscribe;
   }, [wordCount, timeElapsed]);

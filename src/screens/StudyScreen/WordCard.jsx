@@ -11,6 +11,16 @@ import { getSpeechLanguage } from 'shared/utils/speech';
 import { toCapitalize } from 'shared/utils/stringHelpers';
 import { getTextSize } from 'shared/utils/style';
 
+// const wordType = isToeflWord(wordData) ? 'TOEFL' : 'GRE';
+// <Badge colorScheme='info'>{wordType}</Badge>
+// <Box alignSelf='center'>
+//   <Pressable onLongPress={onCopyText(wordText)}>
+//     <DisplayText size='2xl' shrink={0} fontStyle={fontStyle}>
+//       {toCapitalize(wordText)}
+//     </DisplayText>
+//   </Pressable>
+// </Box>
+
 const DisplayText = ({ children, size, shrink, fontStyle, colorLight, colorDark }) => (
   <Text size={size} flexShrink={shrink} fontFamily={fontStyle.toLowerCase()} _light={{ color: colorLight }} _dark={{ color: colorDark }}>
     {children}
