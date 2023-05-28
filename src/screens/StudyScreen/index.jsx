@@ -73,8 +73,8 @@ const extractCollectedWordsByTime = (wordObj, ids) => ids.map(id => wordObj[id])
 
 const sortAlphabetically = wordList =>
   [...wordList].sort((w1, w2) => {
-    if (w1.word > w2.word) return 1;
-    if (w1.word < w2.word) return -1;
+    if (w1.id > w2.id) return 1;
+    if (w1.id < w2.id) return -1;
     return 0;
   });
 
