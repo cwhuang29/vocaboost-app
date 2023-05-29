@@ -11,7 +11,6 @@ import { Select } from 'components/Selects';
 import SignInOut from 'components/SignInOut';
 import { CONFIG_STATUS } from 'shared/actionTypes/config';
 import { COLOR_MODE, FONT_SIZE, FONT_STYLE } from 'shared/constants';
-import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { LANGS_DISPLAY, LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { FONT_STYLE_DISPLAY } from 'shared/constants/styles';
@@ -24,7 +23,7 @@ import { deviceIsAndroid, deviceIsIOS } from 'shared/utils/devices';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getConfig, getUser } from 'shared/utils/storage';
 import { toCapitalize } from 'shared/utils/stringHelpers';
-import { isDarkMode, profileDeviceStyle } from 'shared/utils/style';
+import { getIsSmallDevice, isDarkMode, profileDeviceStyle } from 'shared/utils/style';
 
 import AdvertisementModal from './AdvertisementModal';
 
@@ -32,7 +31,7 @@ const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [isSmallDevice, setIsSmallDevice] = useState(false);
+  const isSmallDevice = getIsSmallDevice();
   const [alertData, setAlertData] = useState({});
   const [config, dispatch] = useReducer(configReducer, configInitialState);
   const isFocused = useIsFocused();
@@ -65,11 +64,6 @@ const ProfileScreen = () => {
     };
     getLatestConfig();
   }, [isFocused]);
-
-  useEffect(() => {
-    const windowHeight = Dimensions.get('window').height;
-    setIsSmallDevice(windowHeight <= SMALL_DEVICE_HEIGHT);
-  }, []);
 
   const updateConfigToStorage = async ({ type, payload }) => {
     setLoading(true);

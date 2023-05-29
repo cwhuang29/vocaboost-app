@@ -12,13 +12,7 @@ import CollectedWordListSvg from 'shared/svgs/collectedWordListSvg';
 import WordListSvg1 from 'shared/svgs/wordListSvg1';
 import WordListSvg2 from 'shared/svgs/wordListSvg2';
 import { deviceIsTablet } from 'shared/utils/devices';
-import { homeDeviceStyle, isDarkMode } from 'shared/utils/style';
-
-const getIsSmallDevice = () => {
-  // Although dimensions are available immediately, they may change (e.g due to device rotation, foldable devices etc)
-  const windowHeight = Dimensions.get('window').height;
-  return windowHeight <= SMALL_DEVICE_HEIGHT;
-};
+import { getIsSmallDevice, homeDeviceStyle, isDarkMode } from 'shared/utils/style';
 
 const HomeBox = ({ text, imgXml, onPress }) => {
   const deviceInfo = useDeviceInfoContext();
