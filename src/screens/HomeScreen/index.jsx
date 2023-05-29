@@ -1,10 +1,11 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Dimensions, TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import PropTypes from 'prop-types';
 
 import { AspectRatio, Box, Center, Heading, useColorMode, useTheme, VStack } from 'native-base';
 
+import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import CollectedWordListSvg from 'shared/svgs/collectedWordListSvg';
@@ -13,16 +14,27 @@ import WordListSvg2 from 'shared/svgs/wordListSvg2';
 import { deviceIsTablet } from 'shared/utils/devices';
 import { isDarkMode } from 'shared/utils/style';
 
+const smallDeviceStyle = { ratio: 2.7 };
+const normalDeviceStyle = { ratio: 1.8 };
+
+const getIsSmallDevice = () => {
+  // Although dimensions are available immediately, they may change (e.g due to device rotation, foldable devices etc)
+  const windowHeight = Dimensions.get('window').height;
+  return windowHeight <= SMALL_DEVICE_HEIGHT;
+}
+
 const HomeBox = ({ text, imgXml, onPress }) => {
   const deviceInfo = useDeviceInfoContext();
   const maxWidth = deviceIsTablet(deviceInfo) ? '390' : '300';
   const wordBoxPadding = deviceIsTablet(deviceInfo) ? 5 : 3;
+  const isSmallDevice = getIsSmallDevice();
+  const deviceStyle = isSmallDevice ? smallDeviceStyle : normalDeviceStyle;
 
   return (
     <TouchableOpacity onPress={onPress}>
       <Box alignItems='center' mt={4} mx={4} style={{ maxWidth: 390 }}>
         <Box rounded='xl' overflow='hidden' w='85%' maxW={maxWidth}>
-          <AspectRatio w='100%' ratio={16 / 9}>
+          <AspectRatio w='100%' ratio={deviceStyle.ratio}>
             <SvgXml xml={imgXml} width='100%' height='100%' />
           </AspectRatio>
           <Box p={wordBoxPadding} _light={{ bgColor: 'vhlight.100' }} _dark={{ bgColor: 'vhdark.100' }}>
