@@ -6,7 +6,7 @@ Available in English, Spanish, Chinese, Japanese, Korean and Thai. VocaBoost all
 
 - View VocaBoost official website on [here](https://www.vocabularyboost.com/).
 - Install VocaBoost extension on [Chrome Web Store](https://chrome.google.com/webstore/detail/vocaboost-gre-vocabulary/gfkmbmplhjdoejicgmaldndkcnnpplho).
-- Install VocaBoost app on [App Store](https://apps.apple.com/app/vocabboost/id6447704480).
+- Install VocaBoost app on [App Store](https://apps.apple.com/app/vocabboost/id6447704480) and [Google Play Store](https://play.google.com/store/apps/details?id=vocaboost.com).
 
 ## Features
 

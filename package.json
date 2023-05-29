@@ -12,6 +12,8 @@
     "build-production-ios": "eas build --profile production --platform ios",
     "load-and": "eas build:run -p android",
     "load-ios": "eas build:run -p ios",
+    "submit-and": "eas submit -p android",
+    "submit-ios": "eas submit -p ios",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,json}' --config ./.prettierrc --ignore-unknown",
     "lint": "eslint src --fix"
   },
