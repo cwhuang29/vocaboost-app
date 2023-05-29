@@ -24,12 +24,9 @@ import { deviceIsAndroid, deviceIsIOS } from 'shared/utils/devices';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getConfig, getUser } from 'shared/utils/storage';
 import { toCapitalize } from 'shared/utils/stringHelpers';
-import { isDarkMode } from 'shared/utils/style';
+import { isDarkMode, profileDeviceStyle } from 'shared/utils/style';
 
 import AdvertisementModal from './AdvertisementModal';
-
-const smallDeviceStyle = { marginBottom: 1, avatarSize: 'xl', headingSize: 'xl', menuHeadingSize: 'sm', textSize: 'sm', spacing: 1 };
-const normalDeviceStyle = { marginBottom: 3, avatarSize: 120, headingSize: '2xl', menuHeadingSize: 'md', textSize: 'md', spacing: 3 };
 
 const ProfileScreen = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -103,7 +100,7 @@ const ProfileScreen = () => {
     updateConfigToStorage({ type: CONFIG_STATUS.UPDATE_COLOR_MODE, payload: { colorMode: value } });
   };
 
-  const deviceStyle = isSmallDevice ? smallDeviceStyle : normalDeviceStyle;
+  const deviceStyle = isSmallDevice ? profileDeviceStyle.small : profileDeviceStyle.normal;
 
   const needMoreSpace = isIOS && !isSmallDevice;
 

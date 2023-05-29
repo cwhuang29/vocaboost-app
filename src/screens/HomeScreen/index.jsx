@@ -12,23 +12,20 @@ import CollectedWordListSvg from 'shared/svgs/collectedWordListSvg';
 import WordListSvg1 from 'shared/svgs/wordListSvg1';
 import WordListSvg2 from 'shared/svgs/wordListSvg2';
 import { deviceIsTablet } from 'shared/utils/devices';
-import { isDarkMode } from 'shared/utils/style';
-
-const smallDeviceStyle = { ratio: 2.7 };
-const normalDeviceStyle = { ratio: 1.8 };
+import { homeDeviceStyle, isDarkMode } from 'shared/utils/style';
 
 const getIsSmallDevice = () => {
   // Although dimensions are available immediately, they may change (e.g due to device rotation, foldable devices etc)
   const windowHeight = Dimensions.get('window').height;
   return windowHeight <= SMALL_DEVICE_HEIGHT;
-}
+};
 
 const HomeBox = ({ text, imgXml, onPress }) => {
   const deviceInfo = useDeviceInfoContext();
   const maxWidth = deviceIsTablet(deviceInfo) ? '390' : '300';
   const wordBoxPadding = deviceIsTablet(deviceInfo) ? 5 : 3;
   const isSmallDevice = getIsSmallDevice();
-  const deviceStyle = isSmallDevice ? smallDeviceStyle : normalDeviceStyle;
+  const deviceStyle = isSmallDevice ? homeDeviceStyle.small : homeDeviceStyle.normal;
 
   return (
     <TouchableOpacity onPress={onPress}>

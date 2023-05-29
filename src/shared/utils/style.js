@@ -67,3 +67,13 @@ export const colorModeManager = {
     }
   },
 };
+
+export const profileDeviceStyle = {
+  small: { marginBottom: 1, avatarSize: 'xl', headingSize: 'xl', menuHeadingSize: 'sm', textSize: 'sm', spacing: 1 },
+  normal: { marginBottom: 3, avatarSize: 120, headingSize: '2xl', menuHeadingSize: 'md', textSize: 'md', spacing: 3 },
+};
+
+export const homeDeviceStyle = {
+  small: { ratio: 2.7 },
+  normal: { ratio: 1.8 },
+};
