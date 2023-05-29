@@ -9,6 +9,12 @@ import logger from './logger';
 import { getConfig } from './storage';
 import { convertUTCToLocalTime } from './time';
 
+const DEFAULT_STUDY_OPTIONS = {
+  TOEFL: { mode: SORTING_MODE.SHUFFLE },
+  GRE: { mode: SORTING_MODE.SHUFFLE },
+  COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 },
+};
+
 export const DEFAULT_CONFIG = {
   language: LANGS_SUPPORTED.en,
   fontSize: FONT_SIZE.MEDIUM,
@@ -16,7 +22,7 @@ export const DEFAULT_CONFIG = {
   colorMode: COLOR_MODE.LIGHT,
   showBilingual: true,
   collectedWords: [],
-  studyOptions: { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } },
+  studyOptions: DEFAULT_STUDY_OPTIONS,
   updatedAt: new Date('Sat Apr 01 2000 00:00:00'),
 };
 
@@ -59,6 +65,7 @@ export const getLatestConfig = async config => {
 
 export const getLatestConfigOnLogin = async () => getLatestConfig(DEFAULT_CONFIG);
 
+// Every time default config is updated due to new features added, this function should changed accordingly
 export const setupDefaultConfig = async () => {
   const config = await getConfig();
   if (isObjectEmpty(config)) {
@@ -75,7 +82,12 @@ export const setupDefaultConfig = async () => {
 
   if (isObjectEmpty(config.studyOptions)) {
     update = true;
-    Object.assign(config, { GRE: { mode: SORTING_MODE.SHUFFLE }, COLLECTED: { mode: SORTING_MODE.CHRONOLOGICAL, wordId: 0 } });
+    Object.assign(config, { studyOptions: DEFAULT_STUDY_OPTIONS });
+  }
+
+  if (isObjectEmpty(config.studyOptions.TOEFL)) {
+    update = true;
+    Object.assign(config.studyOptions, { ...config.studyOptions, TOEFL: DEFAULT_STUDY_OPTIONS.TOEFL });
   }
 
   if (update) {

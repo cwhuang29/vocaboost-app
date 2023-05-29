@@ -9,20 +9,22 @@ import { Box, Text, View } from 'native-base';
 
 import SplashScreen from 'screens/SplashScreen';
 import { BottomAlert } from 'components/Alerts';
-import { ALERT_TYPES, PARTS_OF_SPEECH_SHORTHAND, SORTING_MODE } from 'shared/constants';
+import { ALERT_TYPES, SORTING_MODE } from 'shared/constants';
 import apis from 'shared/constants/apis';
-import LANGS, { LANGS_SUPPORTED } from 'shared/constants/i18n';
+import { LANGS_SUPPORTED } from 'shared/constants/i18n';
 import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import useDebounce from 'shared/hooks/useDebounce';
+import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import useStudyScreenMonitor from 'shared/hooks/useStudyScreenMonitor';
 import useUpdateEffect from 'shared/hooks/useUpdateEffect';
 import storage from 'shared/storage';
 import { getBaseURL } from 'shared/utils/api';
 import { shuffleArray } from 'shared/utils/arrayHelpers';
 import { DEFAULT_CONFIG } from 'shared/utils/config';
+import { deviceIsTablet } from 'shared/utils/devices';
 import { createEnterStudyScreenEvent, createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
 import { constructWordExample } from 'shared/utils/highlight';
 import logger from 'shared/utils/logger';
@@ -31,9 +33,10 @@ import { getSpeechLanguage } from 'shared/utils/speech';
 import { getAuthToken, getConfig } from 'shared/utils/storage';
 import { getLocalDate } from 'shared/utils/time';
 // import { getWSConnStatusDisplay } from 'shared/utils/messages';
-import { genWordDetailList, getWordListAlphabetsIndex, getWordListFirstAlphabets } from 'shared/utils/word';
+import { genWordDetailList, getWordListAlphabetsIndex, getWordListFirstAlphabets, isToeflWord } from 'shared/utils/word';
 
 import AlphabetSlider from './AlphabetSlider';
+import CollectedWordsTooltip from './CollectedWordsTooltip';
 import FinishStudy from './FinishStudy';
 import { SpeakerIconButton, StarIconButton, UndoIconButton } from './IconButton';
 import SortingMenu from './SortingMenu';
@@ -70,8 +73,8 @@ const extractCollectedWordsByTime = (wordObj, ids) => ids.map(id => wordObj[id])
 
 const sortAlphabetically = wordList =>
   [...wordList].sort((w1, w2) => {
-    if (w1.word > w2.word) return 1;
-    if (w1.word < w2.word) return -1;
+    if (w1.id > w2.id) return 1;
+    if (w1.id < w2.id) return -1;
     return 0;
   });
 
@@ -89,7 +92,7 @@ const getWordListByConfig = ({ config, routeType, alphabets, entireWordList, ent
       wordList = shuffleArray(wordList);
     }
   }
-  if (routeType === WORD_LIST_TYPE.GRE) {
+  if (routeType === WORD_LIST_TYPE.TOEFL || routeType === WORD_LIST_TYPE.GRE) {
     if (mode === SORTING_MODE.ALPHABETIZE) {
       wordList = entireWordListSortByAlphabet;
       const { wordId } = config.studyOptions[routeType];
@@ -118,6 +121,7 @@ const StudyScreen = ({ navigation, route }) => {
   const [sortingMode, setSortingMode] = useState(SORTING_MODE.SHUFFLE);
   const [selectedLetter, setSelectedLetter] = useState('');
   const debouncedConfig = useDebounce(config);
+  const deviceInfo = useDeviceInfoContext();
   const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle: sortingMode === SORTING_MODE.SHUFFLE }), [routeType, sortingMode]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
@@ -127,7 +131,7 @@ const StudyScreen = ({ navigation, route }) => {
 
   useEffect(() => {
     Tts.setDefaultLanguage(defaultSpeechLang);
-    Tts.setDefaultRate(0.55);
+    Tts.setDefaultRate(0.51);
     Tts.setDucking(true); // Lowering other applications output level while speaking
     Tts.setIgnoreSilentSwitch('ignore'); // Play audio even if the silent switch is set
   }, []);
@@ -294,7 +298,7 @@ const StudyScreen = ({ navigation, route }) => {
   useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', () => {
       updateStorageInstantly();
-      createLeaveStudyScreenEvent({ wordCount, timeElapsed });
+      createLeaveStudyScreenEvent({ studyType: routeType, wordCount, timeElapsed });
     });
     return unsubscribe;
   }, [wordCount, timeElapsed]);
@@ -391,7 +395,7 @@ const StudyScreen = ({ navigation, route }) => {
             p={1.5}
             m={1}
             flex={1}
-            style={{ top: 56 }}
+            style={{ top: 48 }}
             alignSelf='center'
             rounded='lg'
           >
@@ -399,14 +403,15 @@ const StudyScreen = ({ navigation, route }) => {
               Copied!
             </Text>
           </Box>
-          <View flex={8} px={8} justifyContent='flex-start'>
+          <View flex={8} px={8} justifyContent='flex-start' mx={deviceIsTablet(deviceInfo) ? 32 : 0}>
             <View flex={1}>
               <Box width='100%'>
-                {routeType === WORD_LIST_TYPE.COLLECTED && (
-                  <Text size='xs' color='base.gray' fontFamily={config.fontStyle.toLowerCase()} alignSelf='center'>
-                    {wordIndex + 1} / {wordList.length}
-                  </Text>
-                )}
+                <CollectedWordsTooltip
+                  display={routeType === WORD_LIST_TYPE.COLLECTED}
+                  progress={`${wordIndex + 1} / ${wordList.length}`}
+                  wordType={isToeflWord(wordData) ? 'TOEFL' : 'GRE'}
+                  config={config}
+                />
                 <TouchableOpacity onPress={onPress} width='100%'>
                   <WordCard
                     wordData={wordData}

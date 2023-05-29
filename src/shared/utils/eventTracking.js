@@ -34,8 +34,8 @@ export const createEnterStudyScreenEvent = () => {
   createEvent({ type: EVENT_TYPE.ENTER_STUDY_SCREEN });
 };
 
-export const createLeaveStudyScreenEvent = ({ wordCount, timeElapsed }) => {
-  createEvent({ type: EVENT_TYPE.LEAVE_STUDY_SCREEN, data: { wordCount, timeElapsed } });
+export const createLeaveStudyScreenEvent = ({ studyType, wordCount, timeElapsed }) => {
+  createEvent({ type: EVENT_TYPE.LEAVE_STUDY_SCREEN, data: { studyType, wordCount, timeElapsed } });
 };
 
 export const createEnterAppEvent = () => {

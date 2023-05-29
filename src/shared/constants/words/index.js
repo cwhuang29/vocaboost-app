@@ -5,3 +5,5 @@ export const WORD_LIST = {
   GRE: GRE_WORD_LIST,
   TOEFL: TOEFL_WORD_LIST,
 };
+
+export * from './alphabet';

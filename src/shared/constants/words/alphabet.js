@@ -1,4 +1,34 @@
+export const TOEFL_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWYZ';
+
 export const GRE_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWZ';
+
+export const TOEFL_ALPHABET_INDEX = {
+  A: 0,
+  B: 466,
+  C: 647,
+  D: 1088,
+  E: 1460,
+  F: 1759,
+  G: 1945,
+  H: 2051,
+  I: 2152,
+  J: 2587,
+  K: 2617,
+  L: 2628,
+  M: 2780,
+  N: 3039,
+  O: 3138,
+  P: 3299,
+  Q: 3845,
+  R: 3872,
+  S: 4144,
+  T: 4510,
+  U: 4697,
+  V: 4780,
+  W: 4898,
+  Y: 4936,
+  Z: 4937,
+};
 
 export const GRE_ALPHABET_INDEX = {
   A: 0,
