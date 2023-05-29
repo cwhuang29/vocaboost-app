@@ -1,6 +1,6 @@
 # VocaBoost - A GRE Vocabulary Learning APP
 
-VocaBoost helps you improve your GRE vocabulary in an effective way. The APP is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 of the most commonly used GRE vocabulary and phrases, VocaBoost is an essential tool for anyone looking to boost their English proficiency.
+VocaBoost helps you improve your GRE and TOEFL vocabulary in an effective way. The APP is designed to help non-native English speakers improve their language skills and prepare for the GRE exam. With over 1500 most commonly used GRE vocabulary and 5000 important TOEFL vocabulary, VocaBoost is an essential tool for anyone looking to boost their English proficiency.
 
 Available in English, Spanish, Chinese, Japanese, Korean and Thai. VocaBoost allows you to review vocabulary in your preferred language.
 
