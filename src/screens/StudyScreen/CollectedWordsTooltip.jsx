@@ -42,8 +42,8 @@ Badge.propTypes = {
 
 CollectedWordsTooltip.propTypes = {
   display: PropTypes.bool.isRequired,
+  progress: PropTypes.string.isRequired,
   wordType: PropTypes.string.isRequired,
-  progress: PropTypes.number.isRequired,
   config: PropTypes.object.isRequired,
 };
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useReducer, useState } from 'react';
-import { Dimensions } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 
