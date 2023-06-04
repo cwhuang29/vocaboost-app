@@ -1,11 +1,10 @@
 import React from 'react';
-import { Dimensions, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import PropTypes from 'prop-types';
 
 import { AspectRatio, Box, Center, Heading, useColorMode, useTheme, VStack } from 'native-base';
 
-import { SMALL_DEVICE_HEIGHT } from 'shared/constants/dimensions';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import CollectedWordListSvg from 'shared/svgs/collectedWordListSvg';
