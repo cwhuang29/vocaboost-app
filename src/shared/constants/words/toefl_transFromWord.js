@@ -1,43 +1,5 @@
 export default [
   {
-    id: 10001,
-    word: 'abase',
-    detail: [
-      {
-        meaning: {
-          en: 'To lower in position, estimation, or the like; degrade.',
-          es: 'humillar',
-          zh_TW: '阿巴斯',
-          zh_CN: '阿巴斯',
-          ja: '廃止します',
-          ko: 'abase',
-          th: 'การสละ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10002,
-    word: 'abbess',
-    detail: [
-      {
-        meaning: {
-          en: 'The lady superior of a nunnery.',
-          es: 'abadesa',
-          zh_TW: '阿伯斯',
-          zh_CN: '阿伯斯',
-          ja: '修道院',
-          ko: 'Abbess',
-          th: 'เจ้าอาวาส',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10003,
     word: 'abbey',
     detail: [
@@ -200,7 +162,7 @@ export default [
           zh_TW: '助長',
           zh_CN: '助长',
           ja: 'アベット',
-          ko: 'Abet',
+          ko: '(나쁜 일을) 사주하다[교사하다]',
           th: 'ก่อกวน',
         },
         partsOfSpeech: 'verb',
@@ -299,25 +261,6 @@ export default [
           th: 'น่าสังเวช',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10017,
-    word: 'abjure',
-    detail: [
-      {
-        meaning: {
-          en: 'To recant, renounce, repudiate under oath.',
-          es: 'abjurar de',
-          zh_TW: 'abjure',
-          zh_CN: 'abjure',
-          ja: 'アビュア',
-          ko: 'abjure',
-          th: 'การละทิ้ง',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -542,7 +485,7 @@ export default [
           zh_TW: '刪節',
           zh_CN: '删节',
           ja: 'アプリッジ',
-          ko: 'Abridge',
+          ko: '(책·희곡 등을) 요약[축약]하다',
           th: 'ทำให้ขูด',
         },
         partsOfSpeech: 'verb',
@@ -641,25 +584,6 @@ export default [
           th: 'การฆ่า',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10035,
-    word: 'abscond',
-    detail: [
-      {
-        meaning: {
-          en: 'To depart suddenly and secretly, as for the purpose of escaping arrest.',
-          es: 'fugarse',
-          zh_TW: '潛逃',
-          zh_CN: '潜逃',
-          ja: 'abscond',
-          ko: '탈영하다',
-          th: 'หลบหนี',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -1301,7 +1225,7 @@ export default [
           es: 'abordar',
           zh_TW: '招呼',
           zh_CN: '招呼',
-          ja: 'Accost',
+          ja: '呼び掛ける',
           ko: '인사',
           th: 'กล่าวโทษ',
         },
@@ -1325,25 +1249,6 @@ export default [
           th: 'บัญชี',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10071,
-    word: 'accouter',
-    detail: [
-      {
-        meaning: {
-          en: 'To dress.',
-          es: 'accidente',
-          zh_TW: '加速器',
-          zh_CN: '加速器',
-          ja: 'Accouter',
-          ko: 'accouter',
-          th: 'ผู้ที่ได้รับความนิยม',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -1520,25 +1425,6 @@ export default [
     ],
   },
   {
-    id: 10081,
-    word: 'acerbity',
-    detail: [
-      {
-        meaning: {
-          en: 'Sourness, with bitterness and astringency.',
-          es: 'acerbidad',
-          zh_TW: 'Acerbity',
-          zh_CN: 'Acerbity',
-          ja: 'アセルビティ',
-          ko: '쓴맛',
-          th: 'ความเป็นไปได้',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10082,
     word: 'acetate',
     detail: [
@@ -1591,25 +1477,6 @@ export default [
           th: 'ปวด',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10085,
-    word: 'achillean',
-    detail: [
-      {
-        meaning: {
-          en: 'Invulnerable.',
-          es: 'Achillean',
-          zh_TW: '阿基利安',
-          zh_CN: '阿基利安',
-          ja: 'アキリア',
-          ko: 'Achillean',
-          th: 'Achillean',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -1703,25 +1570,6 @@ export default [
           ja: '了承',
           ko: '승인',
           th: 'การรับทราบ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10091,
-    word: 'acme',
-    detail: [
-      {
-        meaning: {
-          en: 'The highest point, or summit.',
-          es: 'cumbre',
-          zh_TW: 'Acme',
-          zh_CN: 'Acme',
-          ja: 'acme',
-          ko: '절정',
-          th: 'Acme',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -2147,25 +1995,6 @@ export default [
     ],
   },
   {
-    id: 10114,
-    word: 'adduce',
-    detail: [
-      {
-        meaning: {
-          en: 'To bring forward or name for consideration.',
-          es: 'aducir',
-          zh_TW: 'adduce',
-          zh_CN: 'adduce',
-          ja: 'アジック',
-          ko: 'Adduce',
-          th: 'เพิ่ม',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10115,
     word: 'adhere',
     detail: [
@@ -2470,25 +2299,6 @@ export default [
     ],
   },
   {
-    id: 10131,
-    word: 'adroit',
-    detail: [
-      {
-        meaning: {
-          en: 'Having skill in the use of the bodily or mental powers.',
-          es: 'hábil',
-          zh_TW: 'adroit',
-          zh_CN: 'adroit',
-          ja: '器用',
-          ko: 'adroit',
-          th: 'ความคลั่งไคล้',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10132,
     word: 'adulterant',
     detail: [
@@ -2755,25 +2565,6 @@ export default [
     ],
   },
   {
-    id: 10146,
-    word: 'aerostat',
-    detail: [
-      {
-        meaning: {
-          en: 'A balloon or other apparatus floating in or sustained by the air.',
-          es: 'aeróstato',
-          zh_TW: 'Aerostat',
-          zh_CN: 'Aerostat',
-          ja: 'aerostat',
-          ko: 'Aerostat',
-          th: 'เครื่องบิน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10147,
     word: 'aerostatics',
     detail: [
@@ -2788,25 +2579,6 @@ export default [
           th: 'เครื่องบิน',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10148,
-    word: 'affable',
-    detail: [
-      {
-        meaning: {
-          en: 'Easy to approach.',
-          es: 'afable',
-          zh_TW: '和aff',
-          zh_CN: '和aff',
-          ja: '親しみやすい',
-          ko: '상냥한',
-          th: 'น่ารัก',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -3496,63 +3268,6 @@ export default [
     ],
   },
   {
-    id: 10185,
-    word: 'alder',
-    detail: [
-      {
-        meaning: {
-          en: 'Any shrub or small tree of the genus Alumnus, of the oak family.',
-          es: 'aliso',
-          zh_TW: '奧爾德',
-          zh_CN: '奥尔德',
-          ja: '代議員',
-          ko: '알더',
-          th: 'เสียงดัง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10186,
-    word: 'alderman',
-    detail: [
-      {
-        meaning: {
-          en: 'A member of a municipal legislative body, who usually exercises also certain judicial functions.',
-          es: 'concejal',
-          zh_TW: '奧爾德曼',
-          zh_CN: '奥尔德曼',
-          ja: '市会議員',
-          ko: '구청장',
-          th: 'เทศมนตรี',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10187,
-    word: 'aldermanship',
-    detail: [
-      {
-        meaning: {
-          en: 'The dignity, condition, office, or term of office of an alderman.',
-          es: 'flexibilidad',
-          zh_TW: '奧爾德大學',
-          zh_CN: '奥尔德大学',
-          ja: 'アルダーマンシップ',
-          ko: '고정제',
-          th: 'การเลียนแบบ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10188,
     word: 'alias',
     detail: [
@@ -3681,25 +3396,6 @@ export default [
           th: 'ด่าง',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10195,
-    word: 'allay',
-    detail: [
-      {
-        meaning: {
-          en: 'To calm the violence or reduce the intensity of; mitigate.',
-          es: 'aliviar',
-          zh_TW: '艾爾',
-          zh_CN: '艾尔',
-          ja: '和らげる',
-          ko: 'Allay',
-          th: 'ระงับ',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -4085,25 +3781,6 @@ export default [
     ],
   },
   {
-    id: 10216,
-    word: 'alto',
-    detail: [
-      {
-        meaning: {
-          en: 'The lowest or deepest female voice or part.',
-          es: 'Alto',
-          zh_TW: '阿爾托',
-          zh_CN: '阿尔托',
-          ja: 'アルト',
-          ko: '알토',
-          th: 'อัลโต',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10217,
     word: 'altruism',
     detail: [
@@ -4192,25 +3869,6 @@ export default [
           ja: 'アマチュア',
           ko: '아마추어',
           th: 'มือสมัครเล่น',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10222,
-    word: 'amatory',
-    detail: [
-      {
-        meaning: {
-          en: 'Designed to excite love.',
-          es: 'amatorio',
-          zh_TW: 'amigation',
-          zh_CN: 'amigation',
-          ja: '魅力的',
-          ko: 'andatory',
-          th: 'เจ้าชู้',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -4503,25 +4161,6 @@ export default [
     ],
   },
   {
-    id: 10238,
-    word: 'ampersand',
-    detail: [
-      {
-        meaning: {
-          en: 'The character &; and.',
-          es: 'amperantador',
-          zh_TW: 'andand',
-          zh_CN: 'andand',
-          ja: 'アンパサンド',
-          ko: '앰퍼 랜드',
-          th: 'แอมป์และ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10239,
     word: 'amphibious',
     detail: [
@@ -4655,25 +4294,6 @@ export default [
     ],
   },
   {
-    id: 10246,
-    word: 'anagram',
-    detail: [
-      {
-        meaning: {
-          en: 'The letters of a word or phrase so transposed as to make a different word or phrase.',
-          es: 'anagrama',
-          zh_TW: 'Anagram',
-          zh_CN: 'Anagram',
-          ja: 'アナグラム',
-          ko: '철자 바꾸기',
-          th: 'แอนนาแกรม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10247,
     word: 'analogous',
     detail: [
@@ -4762,25 +4382,6 @@ export default [
           ja: 'アナーキー',
           ko: '무정부 상태',
           th: 'อนาธิปไตย',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10252,
-    word: 'anathema',
-    detail: [
-      {
-        meaning: {
-          en: 'Anything forbidden, as by social usage.',
-          es: 'anatema',
-          zh_TW: 'anathema',
-          zh_CN: 'anathema',
-          ja: '嫌悪感',
-          ko: '저주',
-          th: 'คำสาปแช่ง',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -5011,25 +4612,6 @@ export default [
           th: 'การเคลื่อนไหว',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10265,
-    word: 'animadvert',
-    detail: [
-      {
-        meaning: {
-          en: 'To pass criticism or censure.',
-          es: 'censurar',
-          zh_TW: 'Animadvert',
-          zh_CN: 'Animadvert',
-          ja: 'Animadvert',
-          ko: 'Animadvert',
-          th: 'animadvert',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -5349,7 +4931,7 @@ export default [
           zh_TW: '前編',
           zh_CN: '前编',
           ja: 'アンテセデ',
-          ko: 'elecede',
+          ko: '…에 선행하다, 앞서다',
           th: 'ม่านตา',
         },
         partsOfSpeech: 'verb',
@@ -5391,82 +4973,6 @@ export default [
           th: 'antechamber',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10285,
-    word: 'antedate',
-    detail: [
-      {
-        meaning: {
-          en: 'To assign or affix a date to earlier than the actual one.',
-          es: 'antedatar',
-          zh_TW: '抗議',
-          zh_CN: '抗议',
-          ja: 'アンテダート',
-          ko: 'antedate',
-          th: 'antedate',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10286,
-    word: 'antediluvian',
-    detail: [
-      {
-        meaning: {
-          en: 'Of or pertaining to the times, things, events before the great flood in the days of Noah.',
-          es: 'antediluviano',
-          zh_TW: '抗甲列維亞人',
-          zh_CN: '抗甲列维亚人',
-          ja: 'アンテディルビアン',
-          ko: '아주 늙은 사람',
-          th: 'antediluvian',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10287,
-    word: 'antemeridian',
-    detail: [
-      {
-        meaning: {
-          en: 'Before noon.',
-          es: 'Antes del meridiano',
-          zh_TW: 'Antemeridian',
-          zh_CN: 'Antemeridian',
-          ja: 'アンテメリディアン',
-          ko: 'antemeridian',
-          th: 'Antemeridian',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10288,
-    word: 'antemundane',
-    detail: [
-      {
-        meaning: {
-          en: "Pertaining to time before the world's creation.",
-          es: 'antaño',
-          zh_TW: '勢力',
-          zh_CN: '势力',
-          ja: 'アンサンデン',
-          ko: 'antemundane',
-          th: 'antemundane',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -5939,7 +5445,7 @@ export default [
           zh_CN: '抗毒素',
           ja: '抗毒素',
           ko: '항독소',
-          th: 'antitoxin',
+          th: 'ยาต้านพิษ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -7182,25 +6688,6 @@ export default [
     ],
   },
   {
-    id: 10379,
-    word: 'arrogate',
-    detail: [
-      {
-        meaning: {
-          en: 'To take, demand, or claim, especially presumptuously or without reasons or grounds.',
-          es: 'apropiarse',
-          zh_TW: 'Argogate',
-          zh_CN: 'Argogate',
-          ja: 'arrogate',
-          ko: '오만',
-          th: 'แอบอ้าง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10380,
     word: 'artful',
     detail: [
@@ -7481,25 +6968,6 @@ export default [
           th: 'ความทะเยอทะยาน',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10395,
-    word: 'aspire',
-    detail: [
-      {
-        meaning: {
-          en: 'To have an earnest desire, wish, or longing, as for something high and good, not yet attained.',
-          es: 'aspirar',
-          zh_TW: 'Aspire',
-          zh_CN: 'Aspire',
-          ja: '志す',
-          ko: '열망',
-          th: 'ปรารถนา',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -7866,44 +7334,6 @@ export default [
     ],
   },
   {
-    id: 10415,
-    word: 'athirst',
-    detail: [
-      {
-        meaning: {
-          en: 'Wanting water.',
-          es: 'sediento',
-          zh_TW: '阿特斯特',
-          zh_CN: '阿特斯特',
-          ja: 'athirst',
-          ko: 'Athirst',
-          th: 'คนเจ้าชู้',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10416,
-    word: 'athwart',
-    detail: [
-      {
-        meaning: {
-          en: 'From side to side.',
-          es: 'contra',
-          zh_TW: 'Athwart',
-          zh_CN: 'Athwart',
-          ja: 'アスワート',
-          ko: '어긋나게',
-          th: 'แอ ธ วอร์ต',
-        },
-        partsOfSpeech: 'adverb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10417,
     word: 'atomizer',
     detail: [
@@ -8037,25 +7467,6 @@ export default [
     ],
   },
   {
-    id: 10424,
-    word: 'auburn',
-    detail: [
-      {
-        meaning: {
-          en: 'Reddish-brown, said usually of the hair.',
-          es: 'castaño',
-          zh_TW: '奧本',
-          zh_CN: '奥本',
-          ja: 'オーバーン',
-          ko: '오번',
-          th: 'สีน้ำตาลแดง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10425,
     word: 'audacious',
     detail: [
@@ -8151,25 +7562,6 @@ export default [
     ],
   },
   {
-    id: 10430,
-    word: 'augur',
-    detail: [
-      {
-        meaning: {
-          en: 'To predict.',
-          es: 'augur',
-          zh_TW: '奧古爾',
-          zh_CN: '奥古尔',
-          ja: '占い師',
-          ko: '예언자',
-          th: 'เครื่องปั่นป่วน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10431,
     word: 'augustinian',
     detail: [
@@ -8258,25 +7650,6 @@ export default [
           ja: '耳介',
           ko: '귀의',
           th: 'เกี่ยวกับหู',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10436,
-    word: 'auriferous',
-    detail: [
-      {
-        meaning: {
-          en: 'Containing gold.',
-          es: 'aurífero',
-          zh_TW: 'auriferic',
-          zh_CN: 'auriferic',
-          ja: 'オーリファー',
-          ko: '분위기',
-          th: 'เกี่ยวกับออเรีย',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -8828,25 +8201,6 @@ export default [
           ja: 'つつじ',
           ko: '진달래',
           th: 'แอซเลีย',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10466,
-    word: 'azure',
-    detail: [
-      {
-        meaning: {
-          en: 'The color of the sky.',
-          es: 'azur',
-          zh_TW: 'azure',
-          zh_CN: 'azure',
-          ja: 'azure',
-          ko: '하늘빛',
-          th: 'สีฟ้า',
         },
         partsOfSpeech: 'noun',
         example: '',
