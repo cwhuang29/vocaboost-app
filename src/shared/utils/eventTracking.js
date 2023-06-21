@@ -18,7 +18,7 @@ const createEvent = async payload => {
     ts: getLocalDate(),
   };
   logger(`(Event tracking). Event type: ${p.type}, metrics: ${JSON.stringify(p)}`);
-  // eventTrackingService.createEventTracking(p).catch(err => err);
+  eventTrackingService.createEventTracking(p).catch(err => err);
 };
 
 export const createLoginEvent = ({ token }) => {
