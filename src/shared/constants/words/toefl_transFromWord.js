@@ -6612,25 +6612,6 @@ export default [
     ],
   },
   {
-    id: 10375,
-    word: 'arrant',
-    detail: [
-      {
-        meaning: {
-          en: 'Notoriously bad.',
-          es: 'redomado',
-          zh_TW: 'arrant',
-          zh_CN: 'arrant',
-          ja: '並べ替え',
-          ko: '대단한',
-          th: 'การสั่งซื้อ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10376,
     word: 'arrear',
     detail: [
@@ -8303,25 +8284,6 @@ export default [
     ],
   },
   {
-    id: 10472,
-    word: 'baize',
-    detail: [
-      {
-        meaning: {
-          en: 'A single-colored napped woolen fabric used for table-covers, curtains, etc.',
-          es: 'bayeta',
-          zh_TW: 'baize',
-          zh_CN: 'baize',
-          ja: 'バイズ',
-          ko: 'Baize',
-          th: 'บ่น',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10473,
     word: 'bale',
     detail: [
@@ -8336,25 +8298,6 @@ export default [
           th: 'มัด',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10474,
-    word: 'baleful',
-    detail: [
-      {
-        meaning: {
-          en: 'Malignant.',
-          es: 'funesto',
-          zh_TW: 'Baleful',
-          zh_CN: 'Baleful',
-          ja: 'baleful',
-          ko: '해로운',
-          th: 'น่าเกรงขาม',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -8412,25 +8355,6 @@ export default [
           th: 'ซ้ำซาก',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10478,
-    word: 'barcarole',
-    detail: [
-      {
-        meaning: {
-          en: 'A boat-song of Venetian gondoliers.',
-          es: 'barcarola',
-          zh_TW: 'Barcarole',
-          zh_CN: 'Barcarole',
-          ja: 'バーカロール',
-          ko: '곤돌라',
-          th: 'บาร์แคโรล',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -8778,25 +8702,6 @@ export default [
     ],
   },
   {
-    id: 10497,
-    word: 'bedaub',
-    detail: [
-      {
-        meaning: {
-          en: 'To smear over, as with something oily or sticky.',
-          es: 'embadurnar',
-          zh_TW: 'Bedaub',
-          zh_CN: 'Bedaub',
-          ja: 'bedaub',
-          ko: '천하게 꾸미다',
-          th: 'คนโง่',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10498,
     word: 'bedeck',
     detail: [
@@ -8830,25 +8735,6 @@ export default [
           th: 'เบ็ดเตล็ด',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10500,
-    word: 'befog',
-    detail: [
-      {
-        meaning: {
-          en: 'To confuse.',
-          es: 'nublar',
-          zh_TW: 'befog',
-          zh_CN: 'befog',
-          ja: 'befog',
-          ko: '흐리게 하다',
-          th: 'ทำให้เสีย',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -9424,25 +9310,6 @@ export default [
     ],
   },
   {
-    id: 10531,
-    word: 'besmear',
-    detail: [
-      {
-        meaning: {
-          en: 'To smear over, as with any oily or sticky substance.',
-          es: 'embadurnar',
-          zh_TW: 'besmear',
-          zh_CN: 'besmear',
-          ja: 'besmear',
-          ko: '비밀',
-          th: 'ทำให้เบาบาง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10532,
     word: 'bestial',
     detail: [
@@ -9481,44 +9348,6 @@ export default [
     ],
   },
   {
-    id: 10534,
-    word: 'bestride',
-    detail: [
-      {
-        meaning: {
-          en: 'To get or sit upon astride, as a horse.',
-          es: 'cabalgar',
-          zh_TW: 'Bestride',
-          zh_CN: 'Bestride',
-          ja: 'BestRide',
-          ko: '걸리다',
-          th: 'สุดยอด',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10535,
-    word: 'bethink',
-    detail: [
-      {
-        meaning: {
-          en: 'To remind oneself.',
-          es: 'recordar',
-          zh_TW: 'Bethink',
-          zh_CN: 'Bethink',
-          ja: 'Bethink',
-          ko: '생각해 내다',
-          th: 'เบ ธ งก',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10536,
     word: 'betide',
     detail: [
@@ -9533,25 +9362,6 @@ export default [
           th: 'เดิมพัน',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10537,
-    word: 'betimes',
-    detail: [
-      {
-        meaning: {
-          en: 'In good season or time.',
-          es: 'a tiempo',
-          zh_TW: 'Betimes',
-          zh_CN: 'Betimes',
-          ja: '賭け',
-          ko: '일찍',
-          th: 'การเดิมพัน',
-        },
-        partsOfSpeech: 'adverb',
         example: '',
       },
     ],
@@ -9644,25 +9454,6 @@ export default [
           zh_CN: '参考书目',
           ja: '書誌',
           ko: '서지',
-          th: 'บรรณานุกรม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10543,
-    word: 'bibliomania',
-    detail: [
-      {
-        meaning: {
-          en: 'The passion for collecting books.',
-          es: 'bibliomanía',
-          zh_TW: 'bibliomania',
-          zh_CN: 'bibliomania',
-          ja: 'Bibliomania',
-          ko: 'Bibliomania',
           th: 'บรรณานุกรม',
         },
         partsOfSpeech: 'noun',
@@ -9766,25 +9557,6 @@ export default [
     ],
   },
   {
-    id: 10549,
-    word: 'bigamist',
-    detail: [
-      {
-        meaning: {
-          en: 'One who has two spouses at the same time.',
-          es: 'bígamo',
-          zh_TW: 'bigamist',
-          zh_CN: 'bigamist',
-          ja: 'bigamist',
-          ko: 'bigamist',
-          th: 'ผู้ยิ่งใหญ่',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10550,
     word: 'bigamy',
     detail: [
@@ -9797,25 +9569,6 @@ export default [
           ja: '重婚',
           ko: '중혼',
           th: 'บิ๊กมี',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10551,
-    word: 'bight',
-    detail: [
-      {
-        meaning: {
-          en: 'A slightly receding bay between headlands, formed by a long curve of a coast-line.',
-          es: 'ensenada',
-          zh_TW: 'bight',
-          zh_CN: 'bight',
-          ja: 'バイト',
-          ko: '바이트',
-          th: 'ก๋วยเตี๋ยว',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -10165,25 +9918,6 @@ export default [
     ],
   },
   {
-    id: 10570,
-    word: 'boatswain',
-    detail: [
-      {
-        meaning: {
-          en: 'A subordinate officer of a vessel, who has general charge of the rigging, anchors, etc.',
-          es: 'contramaestre',
-          zh_TW: 'Boatswain',
-          zh_CN: 'Boatswain',
-          ja: 'ボートウェイン',
-          ko: '갑판장',
-          th: 'เรือ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10571,
     word: 'bodice',
     detail: [
@@ -10253,25 +9987,6 @@ export default [
           ja: 'ボレ',
           ko: '교회 점토',
           th: 'บ่อ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10575,
-    word: 'bolero',
-    detail: [
-      {
-        meaning: {
-          en: 'A Spanish dance, illustrative of the passion of love, accompanied by caste nets and singing.',
-          es: 'bolero',
-          zh_TW: 'Bolero',
-          zh_CN: 'Bolero',
-          ja: 'ボレロ',
-          ko: '볼레로',
-          th: 'บอลโล่',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -10540,25 +10255,6 @@ export default [
           th: 'อุดมสมบูรณ์',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10590,
-    word: 'bowdlerize',
-    detail: [
-      {
-        meaning: {
-          en: 'To expurgate in editing (a literary composition) by omitting words or passages.',
-          es: 'expurgar',
-          zh_TW: 'Bowdlerize',
-          zh_CN: 'Bowdlerize',
-          ja: 'bowdlerize',
-          ko: '활성화',
-          th: 'ทำให้โบกมือ',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -11210,25 +10906,6 @@ export default [
     ],
   },
   {
-    id: 10625,
-    word: 'browbeat',
-    detail: [
-      {
-        meaning: {
-          en: 'To overwhelm, or attempt to do so, by stern, haughty, or rude address or manner.',
-          es: 'atemorizar',
-          zh_TW: 'Browbeat',
-          zh_CN: 'Browbeat',
-          ja: 'Browbeat',
-          ko: '브로우 비트',
-          th: 'การเรียกร้อง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10626,
     word: 'brusque',
     detail: [
@@ -11552,25 +11229,6 @@ export default [
     ],
   },
   {
-    id: 10643,
-    word: 'bursar',
-    detail: [
-      {
-        meaning: {
-          en: 'A treasurer.',
-          es: 'tesorero',
-          zh_TW: 'Bursar',
-          zh_CN: 'Bursar',
-          ja: 'ブルサー',
-          ko: 'Bursar',
-          th: 'BURSAR',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10644,
     word: 'bustle',
     detail: [
@@ -11704,25 +11362,6 @@ export default [
     ],
   },
   {
-    id: 10651,
-    word: 'cacophony',
-    detail: [
-      {
-        meaning: {
-          en: 'A disagreeable, harsh, or discordant sound or combination of sounds or tones.',
-          es: 'cacofonía',
-          zh_TW: 'cacophony',
-          zh_CN: 'cacophony',
-          ja: '不協和音',
-          ko: '불협화음',
-          th: 'เสียงขรม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10652,
     word: 'cadaverous',
     detail: [
@@ -11813,25 +11452,6 @@ export default [
           th: 'หว่านล้อม',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10657,
-    word: 'cajolery',
-    detail: [
-      {
-        meaning: {
-          en: 'Delusive speech.',
-          es: 'halagos',
-          zh_TW: 'Cajolery',
-          zh_CN: 'Cajolery',
-          ja: '佞弁',
-          ko: 'Cajolery',
-          th: 'การเย้ยหยัน',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -12193,25 +11813,6 @@ export default [
           th: 'ไม่สามารถ',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10677,
-    word: 'cantata',
-    detail: [
-      {
-        meaning: {
-          en: 'A choral composition.',
-          es: 'cantata',
-          zh_TW: 'CANTATA',
-          zh_CN: 'CANTATA',
-          ja: 'カンタータ',
-          ko: '칸타타',
-          th: 'คานตา',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -12977,25 +12578,6 @@ export default [
     ],
   },
   {
-    id: 10718,
-    word: 'centiliter',
-    detail: [
-      {
-        meaning: {
-          en: 'A hundredth of a liter.',
-          es: 'centilitro',
-          zh_TW: 'Centiliter',
-          zh_CN: 'Centiliter',
-          ja: 'センチリットル',
-          ko: 'Centiliter',
-          th: 'เซนติเกรอร์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10719,
     word: 'centimeter',
     detail: [
@@ -13167,25 +12749,6 @@ export default [
     ],
   },
   {
-    id: 10728,
-    word: 'chancery',
-    detail: [
-      {
-        meaning: {
-          en: 'A court of equity, as distinguished from a common-law court.',
-          es: 'chancería',
-          zh_TW: 'Chancery',
-          zh_CN: 'Chancery',
-          ja: 'チャンス',
-          ko: '공문서 보관소',
-          th: 'ศาลฎีกา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10729,
     word: 'chaos',
     detail: [
@@ -13276,25 +12839,6 @@ export default [
           th: 'ช่องว่าง',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10734,
-    word: 'chasten',
-    detail: [
-      {
-        meaning: {
-          en: 'To purify by affliction.',
-          es: 'castigar',
-          zh_TW: 'chasten',
-          zh_CN: 'chasten',
-          ja: 'チャステン',
-          ko: '벌하다',
-          th: 'ตีสอน',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -13865,25 +13409,6 @@ export default [
           th: 'ความลับ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10765,
-    word: 'clangor',
-    detail: [
-      {
-        meaning: {
-          en: 'Clanking or a ringing, as of arms, chains, or bells; clamor.',
-          es: 'estruendo',
-          zh_TW: 'Clangor',
-          zh_CN: 'Clangor',
-          ja: 'クランゴール',
-          ko: '클랜 고르',
-          th: 'เสียงก้อง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -15290,25 +14815,6 @@ export default [
           th: 'ส่วนประกอบ',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10840,
-    word: 'comport',
-    detail: [
-      {
-        meaning: {
-          en: 'To conduct or behave (oneself).',
-          es: 'portarse',
-          zh_TW: 'comport',
-          zh_CN: 'comport',
-          ja: 'コート',
-          ko: '어울리다',
-          th: 'การรวมกัน',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -18316,25 +17822,6 @@ export default [
     ],
   },
   {
-    id: 10999,
-    word: 'coquette',
-    detail: [
-      {
-        meaning: {
-          en: 'A flirt.',
-          es: 'coqueta',
-          zh_TW: 'Coquette',
-          zh_CN: 'Coquette',
-          ja: 'コケット',
-          ko: '요염한 여자',
-          th: 'คนขี้เกียจ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11000,
     word: 'cornice',
     detail: [
@@ -19076,25 +18563,6 @@ export default [
     ],
   },
   {
-    id: 11039,
-    word: 'courser',
-    detail: [
-      {
-        meaning: {
-          en: 'A fleet and spirited horse.',
-          es: 'corcel',
-          zh_TW: 'Courser',
-          zh_CN: 'Courser',
-          ja: 'コースター',
-          ko: '준마',
-          th: 'ผู้ให้บริการ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11040,
     word: 'courtesy',
     detail: [
@@ -19646,25 +19114,6 @@ export default [
     ],
   },
   {
-    id: 11069,
-    word: 'cudgel',
-    detail: [
-      {
-        meaning: {
-          en: 'A short thick stick used as a club.',
-          es: 'porra',
-          zh_TW: 'cudgel',
-          zh_CN: 'cudgel',
-          ja: '棍棒',
-          ko: '곤장',
-          th: 'อุ้ม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11070,
     word: 'culinary',
     detail: [
@@ -19912,25 +19361,6 @@ export default [
     ],
   },
   {
-    id: 11083,
-    word: 'curtsy',
-    detail: [
-      {
-        meaning: {
-          en: 'A downward movement of the body by bending the knees.',
-          es: 'reverencia',
-          zh_TW: 'curtsy',
-          zh_CN: 'curtsy',
-          ja: 'おなかが',
-          ko: '절하다',
-          th: 'เป็นสีม่วง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11084,
     word: 'cycloid',
     detail: [
@@ -20000,25 +19430,6 @@ export default [
           ja: '皮肉',
           ko: '냉소',
           th: 'ความเห็นถากถางดูถูก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11088,
-    word: 'cynosure',
-    detail: [
-      {
-        meaning: {
-          en: 'That to which general interest or attention is directed.',
-          es: 'Osa Menor',
-          zh_TW: 'Cynosure',
-          zh_CN: 'Cynosure',
-          ja: '皮肉',
-          ko: 'cynosure',
-          th: 'เป้า',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -20197,25 +19608,6 @@ export default [
     ],
   },
   {
-    id: 11098,
-    word: 'debonair',
-    detail: [
-      {
-        meaning: {
-          en: 'Having gentle or courteous bearing or manner.',
-          es: 'elegante',
-          zh_TW: 'Debonair',
-          zh_CN: 'Debonair',
-          ja: 'デボネア',
-          ko: 'Debonair',
-          th: 'debonair',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11099,
     word: 'debut',
     detail: [
@@ -20228,44 +19620,6 @@ export default [
           ja: 'デビュー',
           ko: '데뷔',
           th: 'การเปิดตัว',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11100,
-    word: 'decagon',
-    detail: [
-      {
-        meaning: {
-          en: 'A figure with ten sides and ten angles.',
-          es: 'decágono',
-          zh_TW: 'decagon',
-          zh_CN: 'decagon',
-          ja: 'デカゴン',
-          ko: '십자형',
-          th: 'decagon',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11101,
-    word: 'decagram',
-    detail: [
-      {
-        meaning: {
-          en: 'A weight of 10 grams.',
-          es: 'decagramo',
-          zh_TW: 'Decagram',
-          zh_CN: 'Decagram',
-          ja: 'デカグラム',
-          ko: '데카 그램',
-          th: 'เดคากรัม',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -20311,63 +19665,6 @@ export default [
     ],
   },
   {
-    id: 11104,
-    word: 'decameron',
-    detail: [
-      {
-        meaning: {
-          en: 'A volume consisting of ten parts or books.',
-          es: 'decamerón',
-          zh_TW: 'Decameron',
-          zh_CN: 'Decameron',
-          ja: 'デカメロン',
-          ko: '데카 머론',
-          th: 'decameron',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11105,
-    word: 'decameter',
-    detail: [
-      {
-        meaning: {
-          en: 'A length of ten meters.',
-          es: 'decámetro',
-          zh_TW: 'decameter',
-          zh_CN: 'decameter',
-          ja: 'デカメーター',
-          ko: '데카 미터',
-          th: 'เดคาเมตร',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11106,
-    word: 'decamp',
-    detail: [
-      {
-        meaning: {
-          en: 'To leave suddenly or unexpectedly.',
-          es: 'decampar',
-          zh_TW: 'decamp',
-          zh_CN: 'decamp',
-          ja: 'デカンプ',
-          ko: '캠프',
-          th: 'decamp',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11107,
     word: 'decapitate',
     detail: [
@@ -20382,44 +19679,6 @@ export default [
           th: 'ประหารชีวิต',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11108,
-    word: 'decapod',
-    detail: [
-      {
-        meaning: {
-          en: 'Ten-footed or ten-armed.',
-          es: 'decápodo',
-          zh_TW: 'decapod',
-          zh_CN: 'decapod',
-          ja: 'decapod',
-          ko: '디카 포드',
-          th: 'decapod',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11109,
-    word: 'decasyllable',
-    detail: [
-      {
-        meaning: {
-          en: 'A line of ten syllables.',
-          es: 'decasilable',
-          zh_TW: 'Decasyllable',
-          zh_CN: 'Decasyllable',
-          ja: 'Decasyllable',
-          ko: '더 치실',
-          th: 'decasyllable',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -21641,25 +20900,6 @@ export default [
     ],
   },
   {
-    id: 11174,
-    word: 'demerit',
-    detail: [
-      {
-        meaning: {
-          en: 'A mark for failure or bad conduct.',
-          es: 'desmérito',
-          zh_TW: 'demerit',
-          zh_CN: 'demerit',
-          ja: 'デメリット',
-          ko: '벌점',
-          th: 'โทษ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11175,
     word: 'demise',
     detail: [
@@ -22743,25 +21983,6 @@ export default [
     ],
   },
   {
-    id: 11232,
-    word: 'desperado',
-    detail: [
-      {
-        meaning: {
-          en: 'One without regard for law or life.',
-          es: 'forajido',
-          zh_TW: 'Desperado',
-          zh_CN: 'Desperado',
-          ja: 'デスペラド',
-          ko: '불량자',
-          th: 'ผู้สิ้นหวัง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11233,
     word: 'desperate',
     detail: [
@@ -22907,25 +22128,6 @@ export default [
           ja: '貧困',
           ko: '난민',
           th: 'ยากจน',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11241,
-    word: 'desultory',
-    detail: [
-      {
-        meaning: {
-          en: 'Not connected with what precedes.',
-          es: 'inconexo',
-          zh_TW: 'desultory',
-          zh_CN: 'desultory',
-          ja: 'desultory',
-          ko: '일관성 없는',
-          th: 'ไม่เต็มใจ',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -23636,25 +22838,6 @@ export default [
     ],
   },
   {
-    id: 11279,
-    word: 'digraph',
-    detail: [
-      {
-        meaning: {
-          en: 'A union of two characters representing a single sound.',
-          es: 'dígrafo',
-          zh_TW: 'Digraph',
-          zh_CN: 'Digraph',
-          ja: 'ディグラフ',
-          ko: 'Digraph',
-          th: 'ดิจิตอล',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11280,
     word: 'digress',
     detail: [
@@ -23724,25 +22907,6 @@ export default [
           ja: 'ジレンマ',
           ko: '양도 논법',
           th: 'ภาวะที่กลืนไม่เข้าคายไม่ออก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11284,
-    word: 'dilettante',
-    detail: [
-      {
-        meaning: {
-          en: 'A superficial amateur.',
-          es: 'diletante',
-          zh_TW: 'Dilettante',
-          zh_CN: 'Dilettante',
-          ja: 'ディレタンテ',
-          ko: 'Dilettante',
-          th: 'การพองตัว',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -23821,25 +22985,6 @@ export default [
           th: 'สลัว',
         },
         partsOfSpeech: 'adverb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11289,
-    word: 'diphthong',
-    detail: [
-      {
-        meaning: {
-          en: 'The sound produced by combining two vowels in to a single syllable or running together the sounds.',
-          es: 'diptongo',
-          zh_TW: 'Diphthong',
-          zh_CN: 'Diphthong',
-          ja: '二重母音',
-          ko: '끈',
-          th: 'คำควบกล้ำ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -24275,25 +23420,6 @@ export default [
           ja: '変色',
           ko: '변색',
           th: 'เปลี่ยนสี',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11313,
-    word: 'discomfit',
-    detail: [
-      {
-        meaning: {
-          en: 'To put to confusion.',
-          es: 'desconcertar en algo',
-          zh_TW: 'discomfit',
-          zh_CN: 'discomfit',
-          ja: 'Discomfit',
-          ko: '뒤집어 엎다',
-          th: 'ความไม่ลงรอยกัน',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -26296,25 +25422,6 @@ export default [
     ],
   },
   {
-    id: 11419,
-    word: 'dolor',
-    detail: [
-      {
-        meaning: {
-          en: 'Lamentation.',
-          es: 'dolor',
-          zh_TW: 'Dolor',
-          zh_CN: 'Dolor',
-          ja: 'ドロール',
-          ko: '슬픔',
-          th: 'เครื่องทำเสียง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11420,
     word: 'dolorous',
     detail: [
@@ -26657,25 +25764,6 @@ export default [
     ],
   },
   {
-    id: 11438,
-    word: 'dragnet',
-    detail: [
-      {
-        meaning: {
-          en: 'A net to be drawn along the bottom of the water.',
-          es: 'rastra',
-          zh_TW: 'dragnet',
-          zh_CN: 'dragnet',
-          ja: 'ドラグネット',
-          ko: '저인망',
-          th: 'dragnet',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11439,
     word: 'dragoon',
     detail: [
@@ -26954,25 +26042,6 @@ export default [
           ja: '二枚舌',
           ko: '이중성',
           th: 'ความซ้ำซ้อน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11454,
-    word: 'durance',
-    detail: [
-      {
-        meaning: {
-          en: 'Confinement.',
-          es: 'duros',
-          zh_TW: 'Durance',
-          zh_CN: 'Durance',
-          ja: 'デュランス',
-          ko: 'Durance',
-          th: 'โทษจำ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -27322,25 +26391,6 @@ export default [
     ],
   },
   {
-    id: 11473,
-    word: 'edify',
-    detail: [
-      {
-        meaning: {
-          en: 'To build up, or strengthen, especially in morals or religion.',
-          es: 'edificar',
-          zh_TW: 'edify',
-          zh_CN: 'edify',
-          ja: '啓発します',
-          ko: '교화',
-          th: 'เทศนา',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11474,
     word: 'editorial',
     detail: [
@@ -27524,25 +26574,6 @@ export default [
           ja: '発泡性',
           ko: '흥분한',
           th: 'ที่มีชีวิตชีวา',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11484,
-    word: 'effete',
-    detail: [
-      {
-        meaning: {
-          en: 'Exhausted, as having performed its functions.',
-          es: 'decadente',
-          zh_TW: 'EFFETE',
-          zh_CN: 'EFFETE',
-          ja: '効果',
-          ko: '정력 빠진',
-          th: 'ทำให้มีชีวิตชีวา',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -28082,25 +27113,6 @@ export default [
     ],
   },
   {
-    id: 11513,
-    word: 'elocution',
-    detail: [
-      {
-        meaning: {
-          en: 'The art of correct intonation, inflection, and gesture in public speaking or reading.',
-          es: 'elocución',
-          zh_TW: 'Elocution',
-          zh_CN: 'Elocution',
-          ja: '解放',
-          ko: '웅변술',
-          th: 'elocution',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11514,
     word: 'eloquent',
     detail: [
@@ -28322,25 +27334,6 @@ export default [
           ja: 'エンベズル',
           ko: '쓰다',
           th: 'ยัก',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11526,
-    word: 'emblazon',
-    detail: [
-      {
-        meaning: {
-          en: 'To set forth publicly or in glowing terms.',
-          es: 'engalanar',
-          zh_TW: 'emblazon',
-          zh_CN: 'emblazon',
-          ja: 'emblazon',
-          ko: '그리다',
-          th: 'ตบแต่ง',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -28861,25 +27854,6 @@ export default [
     ],
   },
   {
-    id: 11554,
-    word: 'encore',
-    detail: [
-      {
-        meaning: {
-          en: 'The call for a repetition, as of some part of a play or performance.',
-          es: 'bis',
-          zh_TW: 'encore',
-          zh_CN: 'encore',
-          ja: 'アンコール',
-          ko: '연주',
-          th: 'อีกครั้ง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11555,
     word: 'encourage',
     detail: [
@@ -29127,25 +28101,6 @@ export default [
     ],
   },
   {
-    id: 11568,
-    word: 'enfeeble',
-    detail: [
-      {
-        meaning: {
-          en: 'To debilitate.',
-          es: 'debilitar',
-          zh_TW: 'Enfeeble',
-          zh_CN: 'Enfeeble',
-          ja: 'enfeeble',
-          ko: 'enfeeble',
-          th: 'ทำให้หมดกำลัง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11569,
     word: 'enfranchise',
     detail: [
@@ -29279,25 +28234,6 @@ export default [
     ],
   },
   {
-    id: 11576,
-    word: 'enkindle',
-    detail: [
-      {
-        meaning: {
-          en: 'To set on fire.',
-          es: 'hacer fuego',
-          zh_TW: 'enkindle',
-          zh_CN: 'enkindle',
-          ja: 'エンキンドル',
-          ko: '일으키다',
-          th: 'ทำให้ขัง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11577,
     word: 'enlighten',
     detail: [
@@ -29350,25 +28286,6 @@ export default [
           th: 'ความเป็นปฏิปักษ์',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11580,
-    word: 'ennoble',
-    detail: [
-      {
-        meaning: {
-          en: 'To dignify.',
-          es: 'ennoblecer',
-          zh_TW: 'ennoble',
-          zh_CN: 'ennoble',
-          ja: 'ennoble',
-          ko: '기품 있게 하다',
-          th: 'ทำให้เป็นจำนวนมาก',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -29462,25 +28379,6 @@ export default [
           ja: 'enshrine',
           ko: 'enshrine',
           th: 'ทำให้ดีขึ้น',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11586,
-    word: 'ensnare',
-    detail: [
-      {
-        meaning: {
-          en: 'To entrap.',
-          es: 'entrampar',
-          zh_TW: 'Ensnare',
-          zh_CN: 'Ensnare',
-          ja: 'snare',
-          ko: 'Ensnare',
-          th: 'ติดกับ',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -29773,63 +28671,6 @@ export default [
     ],
   },
   {
-    id: 11602,
-    word: 'epicure',
-    detail: [
-      {
-        meaning: {
-          en: 'One who cultivates a delicate taste for eating and drinking.',
-          es: 'sibarita',
-          zh_TW: 'Epicure',
-          zh_CN: 'Epicure',
-          ja: '叙事詩',
-          ko: '서사시',
-          th: 'สิ่งที่น่าสนใจ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11603,
-    word: 'epicurean',
-    detail: [
-      {
-        meaning: {
-          en: 'Indulging, ministering, or pertaining to daintiness of appetite.',
-          es: 'epicúreo',
-          zh_TW: 'Epicurean',
-          zh_CN: 'Epicurean',
-          ja: 'エピキュリアン',
-          ko: '미식가',
-          th: 'ผู้มีพระคุณ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11604,
-    word: 'epicycle',
-    detail: [
-      {
-        meaning: {
-          en: 'A circle that rolls upon the external or internal circumference of another circle.',
-          es: 'epiciclo',
-          zh_TW: 'epicycle',
-          zh_CN: 'epicycle',
-          ja: '壮大',
-          ko: '주전원',
-          th: 'Epicycle',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11605,
     word: 'epicycloid',
     detail: [
@@ -30020,25 +28861,6 @@ export default [
     ],
   },
   {
-    id: 11615,
-    word: 'epizootic',
-    detail: [
-      {
-        meaning: {
-          en: 'Prevailing among animals.',
-          es: 'epizoótico',
-          zh_TW: 'epizootic',
-          zh_CN: 'epizootic',
-          ja: 'エピソスティック',
-          ko: '가축 유행병',
-          th: 'Epizootic',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11616,
     word: 'epoch',
     detail: [
@@ -30051,25 +28873,6 @@ export default [
           ja: '時代',
           ko: '시대',
           th: 'ยุค',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11617,
-    word: 'epode',
-    detail: [
-      {
-        meaning: {
-          en: 'A species of lyric poems.',
-          es: 'epopeya',
-          zh_TW: 'epode',
-          zh_CN: 'epode',
-          ja: 'epode',
-          ko: '에피드',
-          th: 'คนอื่น ๆ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -30224,25 +29027,6 @@ export default [
           th: 'ไม่พอใช้',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11626,
-    word: 'equivocate',
-    detail: [
-      {
-        meaning: {
-          en: 'To use words of double meaning.',
-          es: 'usar equívocos',
-          zh_TW: 'equivocate',
-          zh_CN: 'equivocate',
-          ja: '曖昧',
-          ko: '흐리다',
-          th: 'พูดคุยกัน',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -30628,25 +29412,6 @@ export default [
     ],
   },
   {
-    id: 11647,
-    word: 'evanesce',
-    detail: [
-      {
-        meaning: {
-          en: 'To vanish gradually.',
-          es: 'evanescer',
-          zh_TW: 'evanesce',
-          zh_CN: 'evanesce',
-          ja: 'エヴァネシュ',
-          ko: '사라져 가다',
-          th: 'หลบหลีก',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11648,
     word: 'evanescent',
     detail: [
@@ -30963,25 +29728,6 @@ export default [
           ja: '超えた',
           ko: '초과하다',
           th: 'เกิน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11665,
-    word: 'excel',
-    detail: [
-      {
-        meaning: {
-          en: 'To be superior or distinguished.',
-          es: 'sobresalir',
-          zh_TW: 'Excel',
-          zh_CN: 'Excel',
-          ja: 'Excel',
-          ko: '뛰어나다',
-          th: 'ยอดเยี่ยม',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -32471,25 +31217,6 @@ export default [
     ],
   },
   {
-    id: 11744,
-    word: 'extol',
-    detail: [
-      {
-        meaning: {
-          en: 'To praise in the highest terms.',
-          es: 'ensalzar',
-          zh_TW: 'extol',
-          zh_CN: 'extol',
-          ja: '称賛',
-          ko: 'etol',
-          th: 'เฉลิม',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11745,
     word: 'extort',
     detail: [
@@ -33212,25 +31939,6 @@ export default [
     ],
   },
   {
-    id: 11783,
-    word: 'faun',
-    detail: [
-      {
-        meaning: {
-          en: 'One of a class of deities of the woods and herds represented as half human, with goats feet.',
-          es: 'fauno',
-          zh_TW: 'Faun',
-          zh_CN: 'Faun',
-          ja: 'ファウン',
-          ko: 'FAUN',
-          th: 'ฟา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11784,
     word: 'fawn',
     detail: [
@@ -33302,25 +32010,6 @@ export default [
           th: 'เป็นสหพันธ์',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11788,
-    word: 'feint',
-    detail: [
-      {
-        meaning: {
-          en: 'Any sham, pretense, or deceptive movement.',
-          es: 'finta',
-          zh_TW: 'feint',
-          zh_CN: 'feint',
-          ja: 'フェイント',
-          ko: '가장',
-          th: 'หลอก',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -33661,25 +32350,6 @@ export default [
           ja: '封建主義',
           ko: '봉건 제도',
           th: 'ระบบศักดินา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11807,
-    word: 'fez',
-    detail: [
-      {
-        meaning: {
-          en: 'A brimless felt cap in the shape of a truncated cone, usually red with a black tassel.',
-          es: 'fez',
-          zh_TW: 'fez',
-          zh_CN: 'fez',
-          ja: 'フェズ',
-          ko: '페즈',
-          th: 'เฟซ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -34580,44 +33250,6 @@ export default [
     ],
   },
   {
-    id: 11855,
-    word: 'foppery',
-    detail: [
-      {
-        meaning: {
-          en: 'Dandyism.',
-          es: 'afectación en el vestir',
-          zh_TW: 'Foppery',
-          zh_CN: 'Foppery',
-          ja: 'foppery',
-          ko: '겉치레',
-          th: 'คนเลี้ยงสัตว์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11856,
-    word: 'foppish',
-    detail: [
-      {
-        meaning: {
-          en: 'Characteristic of one who is unduly devoted to dress and the niceties of manners.',
-          es: 'afectado',
-          zh_TW: 'Foppish',
-          zh_CN: 'Foppish',
-          ja: 'foppish',
-          ko: '멋 부리는',
-          th: 'เลอะเทอะ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11857,
     word: 'forbearance',
     detail: [
@@ -35143,25 +33775,6 @@ export default [
           ja: '没収',
           ko: '박탈',
           th: 'ริบ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11885,
-    word: 'forfend',
-    detail: [
-      {
-        meaning: {
-          en: 'To ward off.',
-          es: 'por favor',
-          zh_TW: 'forfend',
-          zh_CN: 'forfend',
-          ja: 'forfend',
-          ko: '포인트',
-          th: 'คุ้มครอง',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -35720,25 +34333,6 @@ export default [
     ],
   },
   {
-    id: 11915,
-    word: 'frigidarium',
-    detail: [
-      {
-        meaning: {
-          en: 'A room kept at a low temperature for preserving fruits, meat, etc.',
-          es: 'frigidario',
-          zh_TW: 'Frigidarium',
-          zh_CN: 'Frigidarium',
-          ja: 'フリギダリウム',
-          ko: 'frigidarium',
-          th: 'frigidarium',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11916,
     word: 'frivolity',
     detail: [
@@ -35810,25 +34404,6 @@ export default [
           th: 'หยิก',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11920,
-    word: 'frolicsome',
-    detail: [
-      {
-        meaning: {
-          en: 'Prankish.',
-          es: 'juguetón',
-          zh_TW: 'Frolicsome',
-          zh_CN: 'Frolicsome',
-          ja: 'Frolicsome',
-          ko: 'Frolicsome',
-          th: 'มีความสุข',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -36150,25 +34725,6 @@ export default [
           ja: 'ファーロー',
           ko: '사가',
           th: 'ร่อง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11938,
-    word: 'furrier',
-    detail: [
-      {
-        meaning: {
-          en: 'A dealer in or maker of fur goods.',
-          es: 'peletero',
-          zh_TW: 'Furrier',
-          zh_CN: 'Furrier',
-          ja: 'フーリエ',
-          ko: '모피상',
-          th: 'ขนนก',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -36570,25 +35126,6 @@ export default [
           th: 'ทหาร',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11960,
-    word: 'garrote',
-    detail: [
-      {
-        meaning: {
-          en: 'To execute by strangling.',
-          es: 'garrote',
-          zh_TW: 'Garrote',
-          zh_CN: 'Garrote',
-          ja: 'ギャロテ',
-          ko: '가로테',
-          th: 'เกราะ',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -37126,25 +35663,6 @@ export default [
     ],
   },
   {
-    id: 11989,
-    word: 'gibe',
-    detail: [
-      {
-        meaning: {
-          en: 'To utter taunts or reproaches.',
-          es: 'burla',
-          zh_TW: 'gibe',
-          zh_CN: 'gibe',
-          ja: 'ギブ',
-          ko: '비웃음',
-          th: 'ความรู้สึก',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11990,
     word: 'giddy',
     detail: [
@@ -37411,25 +35929,6 @@ export default [
     ],
   },
   {
-    id: 12004,
-    word: 'gnash',
-    detail: [
-      {
-        meaning: {
-          en: 'To grind or strike the teeth together, as from rage.',
-          es: 'rechinar',
-          zh_TW: 'gnash',
-          zh_CN: 'gnash',
-          ja: 'gnash',
-          ko: '악물다',
-          th: 'กัดฟัน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12005,
     word: 'gosling',
     detail: [
@@ -37480,25 +35979,6 @@ export default [
           ja: 'ひょうたん',
           ko: '박',
           th: 'น้ำเต้า',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12008,
-    word: 'gourmand',
-    detail: [
-      {
-        meaning: {
-          en: 'A connoisseur in the delicacies of the table.',
-          es: 'goloso',
-          zh_TW: 'Gourmand',
-          zh_CN: 'Gourmand',
-          ja: 'グルメ',
-          ko: '대식가',
-          th: 'รสเลิศ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -38437,25 +36917,6 @@ export default [
     ],
   },
   {
-    id: 12058,
-    word: 'halcyon',
-    detail: [
-      {
-        meaning: {
-          en: 'Calm.',
-          es: 'martín pescador',
-          zh_TW: 'Halcyon',
-          zh_CN: 'Halcyon',
-          ja: 'ハルシオン',
-          ko: '쇠새',
-          th: 'การหยุดชะงัก',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12059,
     word: 'hale',
     detail: [
@@ -38812,25 +37273,6 @@ export default [
           th: 'Henpeck',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12078,
-    word: 'heptagon',
-    detail: [
-      {
-        meaning: {
-          en: 'A figure having seven sides and seven angles.',
-          es: 'heptágono',
-          zh_TW: 'heptagon',
-          zh_CN: 'heptagon',
-          ja: 'ヘプタゴン',
-          ko: '칠각형',
-          th: 'heptagon',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -40850,25 +39292,6 @@ export default [
     ],
   },
   {
-    id: 12185,
-    word: 'imbrue',
-    detail: [
-      {
-        meaning: {
-          en: 'To wet or moisten.',
-          es: 'bañar',
-          zh_TW: 'Imbrue',
-          zh_CN: 'Imbrue',
-          ja: 'Imbrue',
-          ko: 'imbrue',
-          th: 'imbrue',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12186,
     word: 'imitation',
     detail: [
@@ -42427,25 +40850,6 @@ export default [
     ],
   },
   {
-    id: 12268,
-    word: 'inane',
-    detail: [
-      {
-        meaning: {
-          en: 'Silly.',
-          es: 'inane',
-          zh_TW: 'inane',
-          zh_CN: 'inane',
-          ja: 'inane',
-          ko: '어리석은',
-          th: 'ไร้เดียงสา',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12269,
     word: 'inanimate',
     detail: [
@@ -43655,25 +42059,6 @@ export default [
           ja: '議論の余地はありません',
           ko: '실용적',
           th: 'มองไม่เห็น',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12333,
-    word: 'indiscreet',
-    detail: [
-      {
-        meaning: {
-          en: 'Lacking wise judgment.',
-          es: 'indiscreto',
-          zh_TW: 'indiscreet',
-          zh_CN: 'indiscreet',
-          ja: '無言う',
-          ko: '무분별한',
-          th: 'ไม่รอบคอบ',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -44949,25 +43334,6 @@ export default [
           th: 'ไร้มนุษยธรรม',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12401,
-    word: 'inhume',
-    detail: [
-      {
-        meaning: {
-          en: 'To place in the earth, as a dead body.',
-          es: 'aliviar',
-          zh_TW: 'inhume',
-          zh_CN: 'inhume',
-          ja: 'inhume',
-          ko: '억제',
-          th: 'จู่โจม',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -47234,25 +45600,6 @@ export default [
     ],
   },
   {
-    id: 12521,
-    word: 'inure',
-    detail: [
-      {
-        meaning: {
-          en: 'To harden or toughen by use, exercise, or exposure.',
-          es: 'acostumbrar',
-          zh_TW: 'Inure',
-          zh_CN: 'Inure',
-          ja: '効力を生じる',
-          ko: 'inure',
-          th: 'ทำให้เสียชีวิต',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12522,
     word: 'invalid',
     detail: [
@@ -47381,25 +45728,6 @@ export default [
           th: 'เกี่ยวกับการประนีประนอม',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12529,
-    word: 'inveigh',
-    detail: [
-      {
-        meaning: {
-          en: 'To utter vehement censure or invective.',
-          es: 'atacar verbalmente',
-          zh_TW: 'inveigh',
-          zh_CN: 'inveigh',
-          ja: 'Inveigh',
-          ko: 'inveigh',
-          th: 'มีอยู่',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -47723,25 +46051,6 @@ export default [
           th: 'อย่างภายใน',
         },
         partsOfSpeech: 'adverb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12547,
-    word: 'iota',
-    detail: [
-      {
-        meaning: {
-          en: 'A small or insignificant mark or part.',
-          es: 'iota',
-          zh_TW: 'iota',
-          zh_CN: 'iota',
-          ja: 'イオタ',
-          ko: '이오타',
-          th: 'ไอโอต้า',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -48374,25 +46683,6 @@ export default [
     ],
   },
   {
-    id: 12581,
-    word: 'isobar',
-    detail: [
-      {
-        meaning: {
-          en: 'A line joining points at which the barometric pressure is the same at a specified moment.',
-          es: 'isobara',
-          zh_TW: 'isobar',
-          zh_CN: 'isobar',
-          ja: '等圧線',
-          ko: '이소 바',
-          th: 'Isobar',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12582,
     word: 'isochronous',
     detail: [
@@ -48564,44 +46854,6 @@ export default [
     ],
   },
   {
-    id: 12591,
-    word: 'jingo',
-    detail: [
-      {
-        meaning: {
-          en: 'One of a party in Great Britain in favor of spirited and demonstrative foreign policy.',
-          es: 'jingoísta',
-          zh_TW: 'Jingo',
-          zh_CN: 'Jingo',
-          ja: '主戦論者',
-          ko: '징고',
-          th: 'jingo',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12592,
-    word: 'jocose',
-    detail: [
-      {
-        meaning: {
-          en: 'Done or made in jest.',
-          es: 'jocoso',
-          zh_TW: 'Jocose',
-          zh_CN: 'Jocose',
-          ja: 'jocose',
-          ko: 'Jocose',
-          th: 'เปี่ยม',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12593,
     word: 'jocular',
     detail: [
@@ -48652,25 +46904,6 @@ export default [
           ja: 'ジャーナライズ',
           ko: '저널 리즈',
           th: 'บันทึกรายวัน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12596,
-    word: 'joust',
-    detail: [
-      {
-        meaning: {
-          en: 'To engage in a tilt with lances on horseback.',
-          es: 'justar',
-          zh_TW: 'joust',
-          zh_CN: 'joust',
-          ja: 'ゾッツ',
-          ko: 'Joust',
-          th: 'การแข่งขัน',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -49951,25 +48184,6 @@ export default [
     ],
   },
   {
-    id: 12665,
-    word: 'lea',
-    detail: [
-      {
-        meaning: {
-          en: 'A field.',
-          es: 'pasto',
-          zh_TW: 'Lea',
-          zh_CN: 'Lea',
-          ja: 'リー',
-          ko: '넓은 땅',
-          th: 'ทุ่งหญ้า',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12666,
     word: 'leaflet',
     detail: [
@@ -50267,25 +48481,6 @@ export default [
           ja: '寛大',
           ko: '허술한',
           th: 'ผ่อนผัน',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12682,
-    word: 'leonine',
-    detail: [
-      {
-        meaning: {
-          en: 'Like a lion.',
-          es: 'leonino',
-          zh_TW: 'Leonine',
-          zh_CN: 'Leonine',
-          ja: 'レオニン',
-          ko: '레오닌',
-          th: 'ลีโอนีน',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -50628,25 +48823,6 @@ export default [
           ja: '先取特権',
           ko: '선취 특권',
           th: 'ภาระ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12701,
-    word: 'lieu',
-    detail: [
-      {
-        meaning: {
-          en: 'Stead.',
-          es: 'lugar',
-          zh_TW: 'Lieu',
-          zh_CN: 'Lieu',
-          ja: 'lieu',
-          ko: '대령',
-          th: 'Lieu',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -51490,25 +49666,6 @@ export default [
     ],
   },
   {
-    id: 12746,
-    word: 'lode',
-    detail: [
-      {
-        meaning: {
-          en: 'A somewhat continuous unstratified metal- bearing vein.',
-          es: 'veta',
-          zh_TW: 'lode',
-          zh_CN: 'lode',
-          ja: 'ロード',
-          ko: '광맥',
-          th: 'ที่เก็บของ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12747,
     word: 'lodgment',
     detail: [
@@ -51578,25 +49735,6 @@ export default [
           ja: 'ロジシャン',
           ko: '논리학',
           th: 'นักตรรก์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12751,
-    word: 'loiterer',
-    detail: [
-      {
-        meaning: {
-          en: 'One who consumes time idly.',
-          es: 'vago',
-          zh_TW: 'Loiterer',
-          zh_CN: 'Loiterer',
-          ja: 'loiterer',
-          ko: '로테르',
-          th: 'ผู้เดินเล่น',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -51998,25 +50136,6 @@ export default [
           th: 'ลูกผสม',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12773,
-    word: 'lurid',
-    detail: [
-      {
-        meaning: {
-          en: 'Ghastly and sensational.',
-          es: 'espeluznante',
-          zh_TW: 'Lurid',
-          zh_CN: 'Lurid',
-          ja: '硬い',
-          ko: '어쩐지 기분 나쁜',
-          th: 'ซีดเซียว',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -53542,25 +51661,6 @@ export default [
     ],
   },
   {
-    id: 12854,
-    word: 'mawkish',
-    detail: [
-      {
-        meaning: {
-          en: 'Sickening or insipid.',
-          es: 'empalagoso',
-          zh_TW: 'mawkish',
-          zh_CN: 'mawkish',
-          ja: 'モーキッシュ',
-          ko: 'Mawkish',
-          th: 'คนโง่',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12855,
     word: 'maxim',
     detail: [
@@ -53979,25 +52079,6 @@ export default [
     ],
   },
   {
-    id: 12877,
-    word: 'menagerie',
-    detail: [
-      {
-        meaning: {
-          en: 'A collection of wild animals, especially when kept for exhibition.',
-          es: 'casa de fieras',
-          zh_TW: 'Menagerie',
-          zh_CN: 'Menagerie',
-          ja: 'メナゲリー',
-          ko: '동물원',
-          th: 'โรงละครสัตว์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12878,
     word: 'mendacious',
     detail: [
@@ -54012,25 +52093,6 @@ export default [
           th: 'โกหก',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12879,
-    word: 'mendicant',
-    detail: [
-      {
-        meaning: {
-          en: 'A beggar.',
-          es: 'mendicante',
-          zh_TW: 'mendicant',
-          zh_CN: 'mendicant',
-          ja: 'メンディキャント',
-          ko: '거지',
-          th: 'ขอทาน',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -54183,25 +52245,6 @@ export default [
           th: 'ชวนให้หลงใหล',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12888,
-    word: 'messieurs',
-    detail: [
-      {
-        meaning: {
-          en: 'pl. Gentlemen.',
-          es: 'señores',
-          zh_TW: 'Messieurs',
-          zh_CN: 'Messieurs',
-          ja: 'メッシーズ',
-          ko: '메시어스',
-          th: 'ผู้มาสเตอร์',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -54511,25 +52554,6 @@ export default [
     ],
   },
   {
-    id: 12905,
-    word: 'mettlesome',
-    detail: [
-      {
-        meaning: {
-          en: 'Having courage or spirit.',
-          es: 'animoso',
-          zh_TW: 'Mettlesome',
-          zh_CN: 'Mettlesome',
-          ja: 'mettlesome',
-          ko: '기운찬',
-          th: 'mettlesome',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12906,
     word: 'microcosm',
     detail: [
@@ -54675,25 +52699,6 @@ export default [
           ja: '助産師',
           ko: '산파',
           th: 'ผดุงครรภ์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12914,
-    word: 'mien',
-    detail: [
-      {
-        meaning: {
-          en: 'The external appearance or manner of a person.',
-          es: 'semblante',
-          zh_TW: 'mien',
-          zh_CN: 'mien',
-          ja: 'ミエン',
-          ko: '풍채',
-          th: 'เมียน',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -55632,25 +53637,6 @@ export default [
     ],
   },
   {
-    id: 12964,
-    word: 'miter',
-    detail: [
-      {
-        meaning: {
-          en: 'The junction of two bodies at an equally divided angle.',
-          es: 'inglete',
-          zh_TW: 'MITER',
-          zh_CN: 'MITER',
-          ja: 'マイター',
-          ko: '연귀',
-          th: 'ม่าน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12965,
     word: 'mitigate',
     detail: [
@@ -55665,25 +53651,6 @@ export default [
           th: 'ลดหย่อน',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12966,
-    word: 'mnemonics',
-    detail: [
-      {
-        meaning: {
-          en: 'A system of principles and formulas designed to assist the recollection in certain instances.',
-          es: 'mnemotécnica',
-          zh_TW: 'mnemonics',
-          zh_CN: 'mnemonics',
-          ja: 'ニーモニック',
-          ko: '기억술',
-          th: 'ความจำ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -55720,25 +53687,6 @@ export default [
           ja: 'モモクラシー',
           ko: 'Mobocracy',
           th: 'มพาวุธ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12969,
-    word: 'moccasin',
-    detail: [
-      {
-        meaning: {
-          en: 'A foot-covering made of soft leather or buckskin.',
-          es: 'mocasín',
-          zh_TW: 'moccasin',
-          zh_CN: 'moccasin',
-          ja: 'モカシン',
-          ko: '모카신',
-          th: 'แตะ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -56544,25 +54492,6 @@ export default [
     ],
   },
   {
-    id: 13012,
-    word: 'mordant',
-    detail: [
-      {
-        meaning: {
-          en: 'Biting.',
-          es: 'mordaz',
-          zh_TW: 'mordant',
-          zh_CN: 'mordant',
-          ja: '媒染剤',
-          ko: '점착제',
-          th: 'คนขี้ขลาด',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13013,
     word: 'moribund',
     detail: [
@@ -56748,44 +54677,6 @@ export default [
           th: 'คอก',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13023,
-    word: 'mulatto',
-    detail: [
-      {
-        meaning: {
-          en: 'The offspring of a white person and a black person.',
-          es: 'mulato',
-          zh_TW: 'mulatto',
-          zh_CN: 'mulatto',
-          ja: 'ムラート',
-          ko: '뮬라토',
-          th: 'มัลัตโต',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13024,
-    word: 'muleteer',
-    detail: [
-      {
-        meaning: {
-          en: 'A mule-driver.',
-          es: 'arriero',
-          zh_TW: 'muleteer',
-          zh_CN: 'muleteer',
-          ja: 'muleteer',
-          ko: '노새 몰이꾼',
-          th: 'ผู้ล่อลวง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -57109,25 +55000,6 @@ export default [
           th: 'ไม่มีชื่อ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13042,
-    word: 'naphtha',
-    detail: [
-      {
-        meaning: {
-          en: 'A light, colorless, volatile, inflammable oil used as a solvent, as in manufacture of paints.',
-          es: 'nafta',
-          zh_TW: 'Naphtha',
-          zh_CN: 'Naphtha',
-          ja: 'ナフサ',
-          ko: '나프타',
-          th: 'แนฟทา',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -57931,25 +55803,6 @@ export default [
     ],
   },
   {
-    id: 13085,
-    word: 'neology',
-    detail: [
-      {
-        meaning: {
-          en: 'The coining or using of new words or new meanings of words.',
-          es: 'neología',
-          zh_TW: 'Neology',
-          zh_CN: 'Neology',
-          ja: 'ネオロジー',
-          ko: '신설',
-          th: 'เกี่ยวกับระบบประสาท',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13086,
     word: 'neopaganism',
     detail: [
@@ -58173,44 +56026,6 @@ export default [
           th: 'นิวตัน',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13098,
-    word: 'niggardly',
-    detail: [
-      {
-        meaning: {
-          en: 'Stingy. (no longer acceptable to use)',
-          es: 'tacaño',
-          zh_TW: 'niggardly',
-          zh_CN: 'niggardly',
-          ja: 'niggardly',
-          ko: '멍청하게',
-          th: 'งุนงง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13099,
-    word: 'nihilist',
-    detail: [
-      {
-        meaning: {
-          en: 'An advocate of the doctrine that nothing either exists or can be known.',
-          es: 'nihilista',
-          zh_TW: 'Nihilist',
-          zh_CN: 'Nihilist',
-          ja: 'ニヒリスト',
-          ko: '무정부주의자',
-          th: 'ผู้ทำลาย',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -58648,25 +56463,6 @@ export default [
           th: 'ฉาวโฉ่',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13123,
-    word: 'novellette',
-    detail: [
-      {
-        meaning: {
-          en: 'A short novel.',
-          es: 'noveleta',
-          zh_TW: 'Novellette',
-          zh_CN: 'Novellette',
-          ja: 'ノヴェレット',
-          ko: 'Novellette',
-          th: 'ใหม่',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -59774,25 +57570,6 @@ export default [
     ],
   },
   {
-    id: 13182,
-    word: 'octavo',
-    detail: [
-      {
-        meaning: {
-          en: 'A book, or collection of paper in which the sheets are so folded as to make eight leaves.',
-          es: 'octavo',
-          zh_TW: 'Octavo',
-          zh_CN: 'Octavo',
-          ja: 'オクタボ',
-          ko: '옥타 보',
-          th: 'ยก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13183,
     word: 'octogenarian',
     detail: [
@@ -60059,25 +57836,6 @@ export default [
     ],
   },
   {
-    id: 13197,
-    word: 'ogre',
-    detail: [
-      {
-        meaning: {
-          en: 'A demon or monster that was supposed to devour human beings.',
-          es: 'ogro',
-          zh_TW: 'OGRE',
-          zh_CN: 'OGRE',
-          ja: '鬼',
-          ko: '오그레',
-          th: 'หอยนางรม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13198,
     word: 'ointment',
     detail: [
@@ -60263,25 +58021,6 @@ export default [
           th: 'เป็นภาระ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13208,
-    word: 'onrush',
-    detail: [
-      {
-        meaning: {
-          en: 'Onset.',
-          es: 'embestida',
-          zh_TW: 'Onrush',
-          zh_CN: 'Onrush',
-          ja: '突出',
-          ko: '돌격',
-          th: 'การโผล่ออกมา',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -60572,25 +58311,6 @@ export default [
     ],
   },
   {
-    id: 13224,
-    word: 'opprobrium',
-    detail: [
-      {
-        meaning: {
-          en: 'The state of being scornfully reproached or accused of evil.',
-          es: 'oprobio',
-          zh_TW: 'Opprobrium',
-          zh_CN: 'Opprobrium',
-          ja: 'Opprobrium',
-          ko: '욕설',
-          th: 'ผู้ต่อต้าน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13225,
     word: 'optic',
     detail: [
@@ -60757,25 +58477,6 @@ export default [
           th: 'ปากเปล่า',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13234,
-    word: 'orate',
-    detail: [
-      {
-        meaning: {
-          en: 'To deliver an elaborate or formal public speech.',
-          es: 'perorar',
-          zh_TW: 'orate',
-          zh_CN: 'orate',
-          ja: 'オレート',
-          ko: 'ORATE',
-          th: 'คำปราศรัย',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -62206,63 +59907,6 @@ export default [
     ],
   },
   {
-    id: 13310,
-    word: 'palinode',
-    detail: [
-      {
-        meaning: {
-          en: 'A retraction.',
-          es: 'palinodia',
-          zh_TW: 'Palinode',
-          zh_CN: 'Palinode',
-          ja: 'パリノード',
-          ko: '팔리 노드',
-          th: 'palinode',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13311,
-    word: 'pall',
-    detail: [
-      {
-        meaning: {
-          en: 'To make dull by satiety.',
-          es: 'féretro',
-          zh_TW: 'pall',
-          zh_CN: 'pall',
-          ja: 'ポール',
-          ko: '물리다',
-          th: 'พัลลอ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13312,
-    word: 'palliate',
-    detail: [
-      {
-        meaning: {
-          en: 'To cause to appear less guilty.',
-          es: 'paliar',
-          zh_TW: 'palliate',
-          zh_CN: 'palliate',
-          ja: 'パリエート',
-          ko: '완화',
-          th: 'ทำให้ผ่อนคลาย',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13313,
     word: 'pallid',
     detail: [
@@ -62410,25 +60054,6 @@ export default [
           th: 'การระบาดใหญ่',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13321,
-    word: 'pandemonium',
-    detail: [
-      {
-        meaning: {
-          en: 'A fiendish or riotous uproar.',
-          es: 'pandemonio',
-          zh_TW: 'pandemonium',
-          zh_CN: 'pandemonium',
-          ja: 'パンデモニウム',
-          ko: '복마전',
-          th: 'การพนัน',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -62795,25 +60420,6 @@ export default [
     ],
   },
   {
-    id: 13341,
-    word: 'paramour',
-    detail: [
-      {
-        meaning: {
-          en: 'One who is unlawfully and immorally a lover or a mistress.',
-          es: 'amante',
-          zh_TW: 'paramour',
-          zh_CN: 'paramour',
-          ja: 'パラマー',
-          ko: '정부',
-          th: 'ความรัก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13342,
     word: 'paraphernalia',
     detail: [
@@ -62866,25 +60472,6 @@ export default [
           th: 'ตัด',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13345,
-    word: 'parentage',
-    detail: [
-      {
-        meaning: {
-          en: 'The relation of parent to child, of the producer to the produced, or of cause to effect.',
-          es: 'familia',
-          zh_TW: 'parentage',
-          zh_CN: 'parentage',
-          ja: '親子',
-          ko: '부모',
-          th: 'บิดามารดา',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -63650,25 +61237,6 @@ export default [
     ],
   },
   {
-    id: 13386,
-    word: 'peccadillo',
-    detail: [
-      {
-        meaning: {
-          en: 'A small breach of propriety or principle.',
-          es: 'pecadillo',
-          zh_TW: 'Peccadillo',
-          zh_CN: 'Peccadillo',
-          ja: 'ペッカディロ',
-          ko: '가벼운 죄',
-          th: 'เพคคาดิลโล',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13387,
     word: 'peccant',
     detail: [
@@ -63966,25 +61534,6 @@ export default [
           ja: 'ピアレス',
           ko: '비길 데 없는',
           th: 'ไม่มีใครเทียบ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13403,
-    word: 'peevish',
-    detail: [
-      {
-        meaning: {
-          en: 'Petulant. (irritable)',
-          es: 'malhumorado',
-          zh_TW: 'PEEVISH',
-          zh_CN: 'PEEVISH',
-          ja: 'ピーヴィッシュ',
-          ko: 'Peevish',
-          th: 'ขี้ขลาด',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -65146,25 +62695,6 @@ export default [
           th: 'สานต่อ',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13465,
-    word: 'persiflage',
-    detail: [
-      {
-        meaning: {
-          en: 'Banter.',
-          es: 'burla',
-          zh_TW: 'persiflage',
-          zh_CN: 'persiflage',
-          ja: 'persiflage',
-          ko: '야유',
-          th: 'ความยั่วยุ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -66424,25 +63954,6 @@ export default [
     ],
   },
   {
-    id: 13532,
-    word: 'picayune',
-    detail: [
-      {
-        meaning: {
-          en: 'Of small value.',
-          es: 'baladí',
-          zh_TW: 'picayune',
-          zh_CN: 'picayune',
-          ja: 'Picayune',
-          ko: '하찮은',
-          th: 'picayune',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13533,
     word: 'piccolo',
     detail: [
@@ -66728,25 +64239,6 @@ export default [
     ],
   },
   {
-    id: 13548,
-    word: 'pittance',
-    detail: [
-      {
-        meaning: {
-          en: 'Any small portion or meager allowance.',
-          es: 'miseria',
-          zh_TW: 'Pittance',
-          zh_CN: 'Pittance',
-          ja: 'ピタンス',
-          ko: '얼마 안되는 수입',
-          th: 'เงินเล็กน้อย',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13549,
     word: 'placate',
     detail: [
@@ -66797,25 +64289,6 @@ export default [
           ja: '盗作',
           ko: '표절',
           th: 'การลอกเลียนแบบ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13552,
-    word: 'planisphere',
-    detail: [
-      {
-        meaning: {
-          en: 'A polar projection of the heavens on a chart.',
-          es: 'planisferio',
-          zh_TW: 'Planisphere',
-          zh_CN: 'Planisphere',
-          ja: 'Planisphere',
-          ko: 'planisphere',
-          th: 'ดาวเคราะห์',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -67160,25 +64633,6 @@ export default [
           th: 'ดิ่ง',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13571,
-    word: 'pluperfect',
-    detail: [
-      {
-        meaning: {
-          en: 'Expressing past time or action prior to some other past time or action.',
-          es: 'pluscuamperfecto',
-          zh_TW: 'pluperfect',
-          zh_CN: 'pluperfect',
-          ja: 'pluperfect',
-          ko: 'pluperfect',
-          th: 'ความสมบูรณ์แบบ',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -67792,25 +65246,6 @@ export default [
     ],
   },
   {
-    id: 13604,
-    word: 'portend',
-    detail: [
-      {
-        meaning: {
-          en: 'To indicate as being about to happen, especially by previous signs.',
-          es: 'presagiar',
-          zh_TW: 'portend',
-          zh_CN: 'portend',
-          ja: 'ポテンド',
-          ko: '포트 엔드',
-          th: 'มีความหมาย',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13605,
     word: 'portent',
     detail: [
@@ -67901,25 +65336,6 @@ export default [
           th: 'เชิงบวก',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13610,
-    word: 'posse',
-    detail: [
-      {
-        meaning: {
-          en: 'A force of men.',
-          es: 'grupo',
-          zh_TW: 'posse',
-          zh_CN: 'posse',
-          ja: '集会',
-          ko: '일대',
-          th: 'กองทหาร',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -68224,25 +65640,6 @@ export default [
           th: 'ปฏิบัติได้',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13627,
-    word: 'prate',
-    detail: [
-      {
-        meaning: {
-          en: 'To talk about vainly or foolishly.',
-          es: 'parlotear',
-          zh_TW: 'prate',
-          zh_CN: 'prate',
-          ja: '格子',
-          ko: '수다',
-          th: 'การพูดจาโผงผาง',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -68794,25 +66191,6 @@ export default [
           th: 'การได้รับ',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13657,
-    word: 'preengage',
-    detail: [
-      {
-        meaning: {
-          en: 'To preoccupy.',
-          es: 'prensa',
-          zh_TW: 'PREENGAGE',
-          zh_CN: 'PREENGAGE',
-          ja: 'PRENGAGE',
-          ko: 'Preengage',
-          th: 'ที่อยู่อาศัย',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -69825,63 +67203,6 @@ export default [
     ],
   },
   {
-    id: 13711,
-    word: 'priggish',
-    detail: [
-      {
-        meaning: {
-          en: 'Conceited.',
-          es: 'pedante',
-          zh_TW: 'priggish',
-          zh_CN: 'priggish',
-          ja: '頑丈',
-          ko: '가망',
-          th: 'ที่ถ่วง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13712,
-    word: 'prim',
-    detail: [
-      {
-        meaning: {
-          en: 'Stiffly proper.',
-          es: 'remilgado',
-          zh_TW: 'Prim',
-          zh_CN: 'Prim',
-          ja: '堅苦しい',
-          ko: '꼼꼼한',
-          th: 'ปฐมย์',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13713,
-    word: 'prima',
-    detail: [
-      {
-        meaning: {
-          en: 'First.',
-          es: 'prima',
-          zh_TW: 'Prima',
-          zh_CN: 'Prima',
-          ja: 'プリマ',
-          ko: '프리마',
-          th: 'พรีม่า',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13714,
     word: 'primer',
     detail: [
@@ -70274,25 +67595,6 @@ export default [
           ja: '怠慢',
           ko: '지연',
           th: 'การผัดวันประกันพรุ่ง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13735,
-    word: 'proctor',
-    detail: [
-      {
-        meaning: {
-          en: 'An agent acting for another.',
-          es: 'procurador',
-          zh_TW: 'Proctor',
-          zh_CN: 'Proctor',
-          ja: 'プロクター',
-          ko: '대리인',
-          th: 'ผู้เข้าร่วม',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -71687,25 +68989,6 @@ export default [
     ],
   },
   {
-    id: 13809,
-    word: 'proviso',
-    detail: [
-      {
-        meaning: {
-          en: 'A clause in a contract, will, etc., by which its operation is rendered conditional.',
-          es: 'condición',
-          zh_TW: 'Proviso',
-          zh_CN: 'Proviso',
-          ja: 'プロビソ',
-          ko: '단서',
-          th: 'เงื่อนไข',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13810,
     word: 'provocation',
     detail: [
@@ -72010,25 +69293,6 @@ export default [
     ],
   },
   {
-    id: 13826,
-    word: 'puerile',
-    detail: [
-      {
-        meaning: {
-          en: 'Childish.',
-          es: 'pueril',
-          zh_TW: 'Puerile',
-          zh_CN: 'Puerile',
-          ja: '不毛',
-          ko: '어린이 다운',
-          th: 'ไร้เดียงสา',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13827,
     word: 'pugnacious',
     detail: [
@@ -72041,25 +69305,6 @@ export default [
           ja: 'pugnasious',
           ko: '멍청한',
           th: 'เป็นคนขี้เกียจ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13828,
-    word: 'puissant',
-    detail: [
-      {
-        meaning: {
-          en: 'Possessing strength.',
-          es: 'puissante',
-          zh_TW: 'Puissant',
-          zh_CN: 'Puissant',
-          ja: 'うらつき',
-          ko: 'Puissant',
-          th: 'พงศาวดาร',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -72295,25 +69540,6 @@ export default [
     ],
   },
   {
-    id: 13841,
-    word: 'pusillanimous',
-    detail: [
-      {
-        meaning: {
-          en: 'Without spirit or bravery.',
-          es: 'pusilánime',
-          zh_TW: 'pusillanimous',
-          zh_CN: 'pusillanimous',
-          ja: 'usillanimous',
-          ko: 'pusillanimous',
-          th: 'มีอาการปัสสาวะ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13842,
     word: 'putrescent',
     detail: [
@@ -72328,25 +69554,6 @@ export default [
           th: 'วูบวาบ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13843,
-    word: 'pyre',
-    detail: [
-      {
-        meaning: {
-          en: 'A heap of combustibles arranged for burning a dead body.',
-          es: 'pira',
-          zh_TW: 'pyre',
-          zh_CN: 'pyre',
-          ja: 'パイア',
-          ko: '파이어',
-          th: 'เมรุ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -72385,44 +69592,6 @@ export default [
           th: 'เกี่ยวกับดอกไม้ไฟ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13846,
-    word: 'pyx',
-    detail: [
-      {
-        meaning: {
-          en: 'A vessel or casket, usually of precious metal, in which the host is preserved.',
-          es: 'píxide',
-          zh_TW: 'pyx',
-          zh_CN: 'pyx',
-          ja: 'pyx',
-          ko: '성합',
-          th: 'เพดาน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13847,
-    word: 'quackery',
-    detail: [
-      {
-        meaning: {
-          en: 'Charlatanry',
-          es: 'curanderismo',
-          zh_TW: 'Quackery',
-          zh_CN: 'Quackery',
-          ja: 'Quackery',
-          ko: '엉터리 치료',
-          th: 'การหลอกลวง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -72903,25 +70072,6 @@ export default [
     ],
   },
   {
-    id: 13873,
-    word: 'quixotic',
-    detail: [
-      {
-        meaning: {
-          en: 'Chivalrous or romantic to a ridiculous or extravagant degree.',
-          es: 'quijotesco',
-          zh_TW: 'quixotic',
-          zh_CN: 'quixotic',
-          ja: 'quixotic',
-          ko: 'quixotic',
-          th: 'เป็นเรื่องน่าประหลาดใจ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13874,
     word: 'rabid',
     detail: [
@@ -72934,25 +70084,6 @@ export default [
           ja: '狂犬病',
           ko: '맹렬한',
           th: 'บ้า',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13875,
-    word: 'racy',
-    detail: [
-      {
-        meaning: {
-          en: 'Exciting or exhilarating to the mind.',
-          es: 'picante',
-          zh_TW: 'racy',
-          zh_CN: 'racy',
-          ja: 'レイシー',
-          ko: '레이스',
-          th: 'มีชีวิตชีวา',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -73010,25 +70141,6 @@ export default [
           ja: 'ラジカル',
           ko: '근본적인',
           th: 'รุนแรง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13879,
-    word: 'radix',
-    detail: [
-      {
-        meaning: {
-          en: 'That from or on which something is developed.',
-          es: 'base',
-          zh_TW: 'radix',
-          zh_CN: 'radix',
-          ja: '基数',
-          ko: '어근',
-          th: 'รัศมี',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -73150,25 +70262,6 @@ export default [
     ],
   },
   {
-    id: 13886,
-    word: 'rankle',
-    detail: [
-      {
-        meaning: {
-          en: 'To produce irritation or festering.',
-          es: 'amargar la vida',
-          zh_TW: 'Rankle',
-          zh_CN: 'Rankle',
-          ja: 'ランクル',
-          ko: '곪다',
-          th: 'รก',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13887,
     word: 'rapacious',
     detail: [
@@ -73202,25 +70295,6 @@ export default [
           th: 'รวดเร็ว',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13889,
-    word: 'rapine',
-    detail: [
-      {
-        meaning: {
-          en: 'The act of seizing and carrying off property by superior force, as in war.',
-          es: 'rapiña',
-          zh_TW: 'Rapine',
-          zh_CN: 'Rapine',
-          ja: 'ラピン',
-          ko: '강탈',
-          th: 'การพุ่ง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -75159,25 +72233,6 @@ export default [
           th: 'จ่ายเงินคืน',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13992,
-    word: 'rein',
-    detail: [
-      {
-        meaning: {
-          en: 'A step attached to the bit for controlling a horse or other draft-animal.',
-          es: 'rienda',
-          zh_TW: 'rein',
-          zh_CN: 'rein',
-          ja: '手綱',
-          ko: '고리',
-          th: 'บังเหียน',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -77425,25 +74480,6 @@ export default [
     ],
   },
   {
-    id: 14111,
-    word: 'revisal',
-    detail: [
-      {
-        meaning: {
-          en: 'Revision.',
-          es: 'revisión',
-          zh_TW: 'Revisal',
-          zh_CN: 'Revisal',
-          ja: 'リビザル',
-          ko: '재 방문',
-          th: 'การทบทวน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14112,
     word: 'revise',
     detail: [
@@ -77743,25 +74779,6 @@ export default [
           th: 'เข้มงวด',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14128,
-    word: 'ripplet',
-    detail: [
-      {
-        meaning: {
-          en: 'A small ripple, as of water.',
-          es: 'ripglet',
-          zh_TW: 'ripplet',
-          zh_CN: 'ripplet',
-          ja: 'リップレット',
-          ko: '리플렛',
-          th: 'กระเพื่อม',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -78845,25 +75862,6 @@ export default [
           th: 'เกี่ยวกับนักวิชาการ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14186,
-    word: 'scintilla',
-    detail: [
-      {
-        meaning: {
-          en: 'The faintest ray.',
-          es: 'chispa',
-          zh_TW: 'scintilla',
-          zh_CN: 'scintilla',
-          ja: 'シンチラ',
-          ko: '불꽃',
-          th: 'ประกาย',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -80864,25 +77862,6 @@ export default [
     ],
   },
   {
-    id: 14292,
-    word: 'sirocco',
-    detail: [
-      {
-        meaning: {
-          en: 'hot winds from Africa.',
-          es: 'siroco',
-          zh_TW: 'Sirocco',
-          zh_CN: 'Sirocco',
-          ja: 'シロッコ',
-          ko: '열풍',
-          th: 'Sirocco',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14293,
     word: 'sisterhood',
     detail: [
@@ -80971,25 +77950,6 @@ export default [
           ja: '小競り合い',
           ko: '작은 접전',
           th: 'การต่อสู้กัน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14298,
-    word: 'sleight',
-    detail: [
-      {
-        meaning: {
-          en: 'A trick or feat so deftly done that the manner of performance escapes observation.',
-          es: 'artimañas',
-          zh_TW: 'Sleight',
-          zh_CN: 'Sleight',
-          ja: 'sleight',
-          ko: '속임수',
-          th: 'เครื่องราง',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -81123,25 +78083,6 @@ export default [
           ja: '社会学',
           ko: '사회학',
           th: 'สังคมวิทยา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14306,
-    word: 'sol',
-    detail: [
-      {
-        meaning: {
-          en: 'The sun.',
-          es: 'Sol',
-          zh_TW: 'sol',
-          zh_CN: 'sol',
-          ja: 'ソル',
-          ko: '솔',
-          th: 'โซล',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -81415,25 +78356,6 @@ export default [
     ],
   },
   {
-    id: 14321,
-    word: 'somnolent',
-    detail: [
-      {
-        meaning: {
-          en: 'Sleepy.',
-          es: 'somnoliento',
-          zh_TW: 'Somnolent',
-          zh_CN: 'Somnolent',
-          ja: 'somnolent',
-          ko: '졸리는',
-          th: 'ง่วง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14322,
     word: 'sonata',
     detail: [
@@ -81486,25 +78408,6 @@ export default [
           th: 'มีเสียงดัง',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14325,
-    word: 'soothsayer',
-    detail: [
-      {
-        meaning: {
-          en: 'One who claims to have supernatural insight or foresight.',
-          es: 'adivino',
-          zh_TW: 'Soothsayer',
-          zh_CN: 'Soothsayer',
-          ja: '占い師',
-          ko: '점쟁이',
-          th: 'ผู้ทำนาย',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -82004,25 +78907,6 @@ export default [
     ],
   },
   {
-    id: 14352,
-    word: 'spinster',
-    detail: [
-      {
-        meaning: {
-          en: 'A woman who has never been married.',
-          es: 'solterona',
-          zh_TW: 'Spinster',
-          zh_CN: 'Spinster',
-          ja: 'スピンスター',
-          ko: '노처녀',
-          th: 'สูดดม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14353,
     word: 'spontaneous',
     detail: [
@@ -82263,25 +79147,6 @@ export default [
           ja: '支柱',
           ko: '기둥',
           th: 'เสาตับ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14366,
-    word: 'stanza',
-    detail: [
-      {
-        meaning: {
-          en: 'A group of rimed lines, usually forming one of a series of similar divisions in a poem.',
-          es: 'estrofa',
-          zh_TW: 'Stanza',
-          zh_CN: 'Stanza',
-          ja: 'スタンザ',
-          ko: '절',
-          th: 'บทกวี',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -82878,25 +79743,6 @@ export default [
     ],
   },
   {
-    id: 14398,
-    word: 'stultify',
-    detail: [
-      {
-        meaning: {
-          en: 'To give an appearance of foolishness to.',
-          es: 'poner en ridículo',
-          zh_TW: 'stultify',
-          zh_CN: 'stultify',
-          ja: 'stultify',
-          ko: 'smitify',
-          th: 'ทำให้เยือกเย็น',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14399,
     word: 'stupendous',
     detail: [
@@ -82949,25 +79795,6 @@ export default [
           th: 'การซุ่มโจมตี',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14402,
-    word: 'suave',
-    detail: [
-      {
-        meaning: {
-          en: 'Smooth and pleasant in manner.',
-          es: 'afable',
-          zh_TW: 'Suave',
-          zh_CN: 'Suave',
-          ja: 'suave',
-          ko: 'Suave',
-          th: 'อ่อนโยน',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -84645,25 +81472,6 @@ export default [
     ],
   },
   {
-    id: 14491,
-    word: 'sybarite',
-    detail: [
-      {
-        meaning: {
-          en: 'A luxurious person.',
-          es: 'sibarita',
-          zh_TW: 'Sybarite',
-          zh_CN: 'Sybarite',
-          ja: 'シバライト',
-          ko: '시바 라이트',
-          th: 'Sybarite',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14492,
     word: 'sycophant',
     detail: [
@@ -84752,25 +81560,6 @@ export default [
           ja: 'シラバス',
           ko: '강의 계획서',
           th: 'หลักสูตร',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14497,
-    word: 'sylph',
-    detail: [
-      {
-        meaning: {
-          en: 'A slender, graceful young woman or girl.',
-          es: 'sílfide',
-          zh_TW: 'Sylph',
-          zh_CN: 'Sylph',
-          ja: 'シルフ',
-          ko: '실프',
-          th: 'ซิลฟ์',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -85044,25 +81833,6 @@ export default [
     ],
   },
   {
-    id: 14512,
-    word: 'tableau',
-    detail: [
-      {
-        meaning: {
-          en: 'An arrangement of inanimate figures representing a scene from real life.',
-          es: 'cuadro',
-          zh_TW: 'Tableau',
-          zh_CN: 'Tableau',
-          ja: 'タブロー',
-          ko: 'tableau',
-          th: 'ฉาก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14513,
     word: 'tacit',
     detail: [
@@ -85272,25 +82042,6 @@ export default [
     ],
   },
   {
-    id: 14524,
-    word: 'tantamount',
-    detail: [
-      {
-        meaning: {
-          en: 'Having equal or equivalent value, effect, or import.',
-          es: 'equivalente',
-          zh_TW: 'Tantamount',
-          zh_CN: 'Tantamount',
-          ja: 'Tantamount',
-          ko: '동등한',
-          th: 'เทียม',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14525,
     word: 'tapestry',
     detail: [
@@ -85481,25 +82232,6 @@ export default [
     ],
   },
   {
-    id: 14535,
-    word: 'teem',
-    detail: [
-      {
-        meaning: {
-          en: 'To be full to overflowing.',
-          es: 'abundar',
-          zh_TW: 'teem',
-          zh_CN: 'teem',
-          ja: 'ティーム',
-          ko: '비우다',
-          th: 'เต็มไปด้วย',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14536,
     word: 'telepathy',
     detail: [
@@ -85552,44 +82284,6 @@ export default [
           th: 'กล้องโทรทรรศน์',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14539,
-    word: 'telltale',
-    detail: [
-      {
-        meaning: {
-          en: 'That gives warning or information.',
-          es: 'indicador',
-          zh_TW: 'Telltale',
-          zh_CN: 'Telltale',
-          ja: 'telltale',
-          ko: '경렴',
-          th: 'ปากโป้ง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14540,
-    word: 'temerity',
-    detail: [
-      {
-        meaning: {
-          en: 'Recklessness.',
-          es: 'temeridad',
-          zh_TW: 'temerity',
-          zh_CN: 'temerity',
-          ja: 'テメリティ',
-          ko: '무모한 행위',
-          th: 'การก่อการร้าย',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -85837,44 +82531,6 @@ export default [
           th: 'การดำรงตำแหน่ง',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14554,
-    word: 'tercentenary',
-    detail: [
-      {
-        meaning: {
-          en: 'Pertaining to a period of 300 years.',
-          es: 'tricentenario',
-          zh_TW: 'Tercentenary',
-          zh_CN: 'Tercentenary',
-          ja: 'テルセンター',
-          ko: '삼 골대',
-          th: 'ผู้มีเพศสัมพันธ์',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14555,
-    word: 'termagant',
-    detail: [
-      {
-        meaning: {
-          en: 'Violently abusive and quarrelsome.',
-          es: 'arpía',
-          zh_TW: 'termagant',
-          zh_CN: 'termagant',
-          ja: 'Termagant',
-          ko: 'Termagant',
-          th: 'ข้าราชสำนัก',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -86405,44 +83061,6 @@ export default [
           ja: '大通り',
           ko: '도로',
           th: 'ทางสัญจร',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14584,
-    word: 'thrall',
-    detail: [
-      {
-        meaning: {
-          en: 'One controlled by an appetite or a passion.',
-          es: 'esclavo',
-          zh_TW: 'Thrall',
-          zh_CN: 'Thrall',
-          ja: 'スロール',
-          ko: '노예',
-          th: 'ทำให้เกิดขึ้น',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14585,
-    word: 'tilth',
-    detail: [
-      {
-        meaning: {
-          en: 'Cultivation.',
-          es: 'laboreo',
-          zh_TW: 'tilth',
-          zh_CN: 'tilth',
-          ja: 'tilth',
-          ko: '경작',
-          th: 'กราม',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -87533,25 +84151,6 @@ export default [
     ],
   },
   {
-    id: 14643,
-    word: 'transmute',
-    detail: [
-      {
-        meaning: {
-          en: 'To change in nature, substance, or form.',
-          es: 'transmutar',
-          zh_TW: 'Transmute',
-          zh_CN: 'Transmute',
-          ja: 'トランスミュート',
-          ko: '변하게 하다',
-          th: 'เปลี่ยนรูป',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14644,
     word: 'transparent',
     detail: [
@@ -88179,25 +84778,6 @@ export default [
     ],
   },
   {
-    id: 14677,
-    word: 'trisect',
-    detail: [
-      {
-        meaning: {
-          en: 'To divide into three parts, especially into three equal parts.',
-          es: 'trisecar',
-          zh_TW: 'Trisect',
-          zh_CN: 'Trisect',
-          ja: '三等',
-          ko: 'TRISECT',
-          th: 'การตัด',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14678,
     word: 'trite',
     detail: [
@@ -88212,25 +84792,6 @@ export default [
           th: 'ซ้ำซาก',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14679,
-    word: 'triumvir',
-    detail: [
-      {
-        meaning: {
-          en: 'One of three men united coordinately in public office or authority.',
-          es: 'triunvir',
-          zh_TW: 'Triumvir',
-          zh_CN: 'Triumvir',
-          ja: 'Triumvir',
-          ko: '트림 비르',
-          th: 'ทริเทียเวียร์',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -88312,25 +84873,6 @@ export default [
     ],
   },
   {
-    id: 14684,
-    word: 'truism',
-    detail: [
-      {
-        meaning: {
-          en: 'A statement so plainly true as hardly to require statement or proof.',
-          es: 'perogrullada',
-          zh_TW: 'truism',
-          zh_CN: 'truism',
-          ja: '真実',
-          ko: '진실',
-          th: 'ตัตวศาสตร์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14685,
     word: 'truthful',
     detail: [
@@ -88343,25 +84885,6 @@ export default [
           ja: '真実',
           ko: '거짓말 안하는',
           th: 'จริงใจ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14686,
-    word: 'turgid',
-    detail: [
-      {
-        meaning: {
-          en: 'Swollen.',
-          es: 'turgente',
-          zh_TW: 'turgid',
-          zh_CN: 'turgid',
-          ja: 'Turgid',
-          ko: '과장된',
-          th: 'เป็นคนขี้เกียจ',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -88438,25 +84961,6 @@ export default [
           ja: '家庭教師',
           ko: '튜터십',
           th: 'การสอน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14691,
-    word: 'twinge',
-    detail: [
-      {
-        meaning: {
-          en: 'A darting momentary local pain.',
-          es: 'punzada',
-          zh_TW: 'Twinge',
-          zh_CN: 'Twinge',
-          ja: 'Twinge',
-          ko: '고통',
-          th: 'twinge',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -88668,25 +85172,6 @@ export default [
           th: 'คำขาด',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14703,
-    word: 'ultramontane',
-    detail: [
-      {
-        meaning: {
-          en: 'Beyond the mountains, especially beyond the Alps (that is, on their Italian side).',
-          es: 'ultramontano',
-          zh_TW: 'Ultramontane',
-          zh_CN: 'Ultramontane',
-          ja: 'ウルトラモンタン',
-          ko: '울트라 몬탄',
-          th: 'ultramontane',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -89794,25 +86279,6 @@ export default [
     ],
   },
   {
-    id: 14762,
-    word: 'unyoke',
-    detail: [
-      {
-        meaning: {
-          en: 'To separate.',
-          es: 'desuncir',
-          zh_TW: 'Unyoke',
-          zh_CN: 'Unyoke',
-          ja: 'Unyoke',
-          ko: 'Unyoke',
-          th: 'unyoke',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14763,
     word: 'upbraid',
     detail: [
@@ -89820,8 +86286,8 @@ export default [
         meaning: {
           en: 'To reproach as deserving blame.',
           es: 'reprender a',
-          zh_TW: '吒',
-          zh_CN: '吒',
+          zh_TW: '責罵、訓斥',
+          zh_CN: '責罵、訓斥',
           ja: 'アップブレイド',
           ko: '업 브레이드',
           th: 'เป็นที่นิยม',
@@ -90041,25 +86507,6 @@ export default [
     ],
   },
   {
-    id: 14775,
-    word: 'usage',
-    detail: [
-      {
-        meaning: {
-          en: 'Treatment.',
-          es: 'uso',
-          zh_TW: '用法',
-          zh_CN: '用法',
-          ja: '使用法',
-          ko: '용법',
-          th: 'การใช้งาน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14776,
     word: 'usurious',
     detail: [
@@ -90269,25 +86716,6 @@ export default [
     ],
   },
   {
-    id: 14787,
-    word: 'vagabond',
-    detail: [
-      {
-        meaning: {
-          en: 'A wanderer.',
-          es: 'vagabundo',
-          zh_TW: 'Vagabond',
-          zh_CN: 'Vagabond',
-          ja: 'Vagabond',
-          ko: '부랑자',
-          th: 'คนจรจัด',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14788,
     word: 'vagrant',
     detail: [
@@ -90300,25 +86728,6 @@ export default [
           ja: 'Vagrant',
           ko: '방랑자',
           th: 'คนพเนจร',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14789,
-    word: 'vainglory',
-    detail: [
-      {
-        meaning: {
-          en: 'Excessive, pretentious, and demonstrative vanity.',
-          es: 'fama inútil',
-          zh_TW: 'Vainglory',
-          zh_CN: 'Vainglory',
-          ja: 'vainglory',
-          ko: '자만심',
-          th: 'ความซาบซึ้ง',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -90357,25 +86766,6 @@ export default [
           ja: '決別',
           ko: '고별',
           th: 'การรับรอง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14792,
-    word: 'valedictorian',
-    detail: [
-      {
-        meaning: {
-          en: 'Student who delivers an address at graduating exercises of an educational institution.',
-          es: 'valedictoriano',
-          zh_TW: 'Valedictorian',
-          zh_CN: 'Valedictorian',
-          ja: 'valedictorian',
-          ko: 'Valedictorian',
-          th: 'ผู้สมัคร',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -90440,25 +86830,6 @@ export default [
     ],
   },
   {
-    id: 14796,
-    word: 'vapid',
-    detail: [
-      {
-        meaning: {
-          en: 'Having lost sparkling quality and flavor.',
-          es: 'insípido',
-          zh_TW: 'VAPID',
-          zh_CN: 'VAPID',
-          ja: 'Vapid',
-          ko: '맛없는',
-          th: 'แอบดู',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14797,
     word: 'vaporizer',
     detail: [
@@ -90492,25 +86863,6 @@ export default [
           th: 'ตัวแปร',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14799,
-    word: 'variance',
-    detail: [
-      {
-        meaning: {
-          en: 'Change.',
-          es: 'diferencia',
-          zh_TW: '方差',
-          zh_CN: '方差',
-          ja: '分散',
-          ko: '변화',
-          th: 'ความแปรปรวน',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -90554,25 +86906,6 @@ export default [
     ],
   },
   {
-    id: 14802,
-    word: 'variegate',
-    detail: [
-      {
-        meaning: {
-          en: 'To mark with different shades or colors.',
-          es: 'jaspear',
-          zh_TW: '斕',
-          zh_CN: '斓',
-          ja: 'バリゲート',
-          ko: 'Variegate',
-          th: 'แตกต่างกันไป',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14803,
     word: 'vassal',
     detail: [
@@ -90585,25 +86918,6 @@ export default [
           ja: '家臣',
           ko: '가신',
           th: 'ข้าราชบริพาร',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14804,
-    word: 'vaudeville',
-    detail: [
-      {
-        meaning: {
-          en: 'A variety show.',
-          es: 'vodevil',
-          zh_TW: '沃德維爾',
-          zh_CN: '沃德维尔',
-          ja: '寄席',
-          ko: 'Vaudeville',
-          th: 'เพลง',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -90763,25 +87077,6 @@ export default [
     ],
   },
   {
-    id: 14813,
-    word: 'venal',
-    detail: [
-      {
-        meaning: {
-          en: 'Mercenary, corrupt.',
-          es: 'venal',
-          zh_TW: 'Venal',
-          zh_CN: 'Venal',
-          ja: 'ベナール',
-          ko: '정맥',
-          th: 'เกี่ยวกับสิ่งของ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14814,
     word: 'vendible',
     detail: [
@@ -90908,25 +87203,6 @@ export default [
           ja: 'venereal',
           ko: '성병',
           th: 'กามโรค',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14821,
-    word: 'venial',
-    detail: [
-      {
-        meaning: {
-          en: 'That may be pardoned or forgiven, a forgivable sin.',
-          es: 'venial',
-          zh_TW: 'ven',
-          zh_CN: 'ven',
-          ja: 'ベニアル',
-          ko: 'venial',
-          th: 'เกี่ยวกับความชั่วร้าย',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -91523,25 +87799,6 @@ export default [
     ],
   },
   {
-    id: 14853,
-    word: 'vincible',
-    detail: [
-      {
-        meaning: {
-          en: 'Conquerable.',
-          es: 'vincible',
-          zh_TW: 'Vincible',
-          zh_CN: 'Vincible',
-          ja: 'ヴィンカブル',
-          ko: '이길 수 있는',
-          th: 'เป็นไปได้',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14854,
     word: 'vindicate',
     detail: [
@@ -91751,25 +88008,6 @@ export default [
     ],
   },
   {
-    id: 14865,
-    word: 'virtu',
-    detail: [
-      {
-        meaning: {
-          en: 'Rare, curious, or beautiful quality.',
-          es: 'virtu',
-          zh_TW: 'VIRTU',
-          zh_CN: 'VIRTU',
-          ja: 'virtu',
-          ko: '미덕',
-          th: 'ผู้มีคุณธรรม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14866,
     word: 'virtual',
     detail: [
@@ -91841,25 +88079,6 @@ export default [
           th: 'รุนแรง',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14870,
-    word: 'visage',
-    detail: [
-      {
-        meaning: {
-          en: 'The face, countenance, or look of a person.',
-          es: 'rostro',
-          zh_TW: 'VISAGE',
-          zh_CN: 'VISAGE',
-          ja: '顔',
-          ko: '얼굴',
-          th: 'ใบหน้า',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -92093,44 +88312,6 @@ export default [
     ],
   },
   {
-    id: 14883,
-    word: 'vocative',
-    detail: [
-      {
-        meaning: {
-          en: 'Of or pertaining to the act of calling.',
-          es: 'vocativo',
-          zh_TW: '呼',
-          zh_CN: '呼',
-          ja: '語彙',
-          ko: '부르는',
-          th: 'เกี่ยวกับเสียง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14884,
-    word: 'vociferance',
-    detail: [
-      {
-        meaning: {
-          en: 'The quality of making a clamor.',
-          es: 'vociferancia',
-          zh_TW: 'vociferance',
-          zh_CN: 'vociferance',
-          ja: '声高',
-          ko: '성상',
-          th: 'การจ้องมอง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14885,
     word: 'vociferate',
     detail: [
@@ -92183,25 +88364,6 @@ export default [
           th: 'สมัย',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14888,
-    word: 'volant',
-    detail: [
-      {
-        meaning: {
-          en: 'Flying or able to fly.',
-          es: 'volante',
-          zh_TW: 'Volant',
-          zh_CN: 'Volant',
-          ja: 'volant',
-          ko: '날쌘',
-          th: 'การระเหย',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -92416,25 +88578,6 @@ export default [
     ],
   },
   {
-    id: 14900,
-    word: 'waif',
-    detail: [
-      {
-        meaning: {
-          en: 'A homeless, neglected wanderer.',
-          es: 'niño abandonado',
-          zh_TW: 'waif',
-          zh_CN: 'waif',
-          ja: 'waif',
-          ko: '방랑자',
-          th: 'ความรู้สึก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14901,
     word: 'waistcoat',
     detail: [
@@ -92468,25 +88611,6 @@ export default [
           th: 'สละสิทธิ์',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14903,
-    word: 'wampum',
-    detail: [
-      {
-        meaning: {
-          en: 'Beads strung on threads, formerly used among the American Indians as currency.',
-          es: 'wampum',
-          zh_TW: 'Wampum',
-          zh_CN: 'Wampum',
-          ja: 'ワンパム',
-          ko: '조가비 구슬',
-          th: 'Wampum',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -92537,8 +88661,8 @@ export default [
         meaning: {
           en: 'A ripple.',
           es: 'wavelet',
-          zh_TW: '小波',
-          zh_CN: '小波',
+          zh_TW: '小浪',
+          zh_CN: '小浪',
           ja: 'ウェーブレット',
           ko: '잔물결',
           th: 'เวฟเล็ต',
@@ -92625,44 +88749,6 @@ export default [
     ],
   },
   {
-    id: 14911,
-    word: 'wherever',
-    detail: [
-      {
-        meaning: {
-          en: 'In or at whatever place.',
-          es: 'lo que sea',
-          zh_TW: '無論何處',
-          zh_CN: '无论何处',
-          ja: 'どこでも',
-          ko: '대체 어디로',
-          th: 'ทุกที่',
-        },
-        partsOfSpeech: 'adverb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14912,
-    word: 'wherewith',
-    detail: [
-      {
-        meaning: {
-          en: 'The necessary means or resources.',
-          es: 'con lo cual',
-          zh_TW: '在哪裡',
-          zh_CN: '在哪里',
-          ja: 'どこです',
-          ko: '그것을 가지고',
-          th: 'ด้วยเหตุนี้',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14913,
     word: 'whet',
     detail: [
@@ -92720,44 +88806,6 @@ export default [
     ],
   },
   {
-    id: 14916,
-    word: 'wholly',
-    detail: [
-      {
-        meaning: {
-          en: 'Completely.',
-          es: 'totalmente',
-          zh_TW: '完全',
-          zh_CN: '完全',
-          ja: '完全に',
-          ko: '전적으로',
-          th: 'ทั้งหมด',
-        },
-        partsOfSpeech: 'adverb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14917,
-    word: 'wield',
-    detail: [
-      {
-        meaning: {
-          en: 'To use, control, or manage, as a weapon, or instrument, especially with full command.',
-          es: 'empuñar',
-          zh_TW: '揮',
-          zh_CN: '挥',
-          ja: '振る舞います',
-          ko: '휘두르다',
-          th: 'ควง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14918,
     word: 'wile',
     detail: [
@@ -92777,25 +88825,6 @@ export default [
     ],
   },
   {
-    id: 14919,
-    word: 'winsome',
-    detail: [
-      {
-        meaning: {
-          en: 'Attractive.',
-          es: 'atractivo',
-          zh_TW: 'Winsome',
-          zh_CN: 'Winsome',
-          ja: 'winsome',
-          ko: '매력 있는',
-          th: 'ใจชนะ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14920,
     word: 'wintry',
     detail: [
@@ -92808,25 +88837,6 @@ export default [
           ja: '冬',
           ko: '냉랭한',
           th: 'ฤดูหนาว',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14921,
-    word: 'wiry',
-    detail: [
-      {
-        meaning: {
-          en: 'Thin, but tough and sinewy.',
-          es: 'nervioso',
-          zh_TW: 'Wiry',
-          zh_CN: 'Wiry',
-          ja: 'ワイリー',
-          ko: '깐깐한',
-          th: 'ลื่นไหล',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -92967,25 +88977,6 @@ export default [
     ],
   },
   {
-    id: 14929,
-    word: 'workmanship',
-    detail: [
-      {
-        meaning: {
-          en: 'The art or skill of a workman.',
-          es: 'hechura',
-          zh_TW: '做工',
-          zh_CN: '做工',
-          ja: '仕上がり',
-          ko: '솜씨',
-          th: 'ทักษะฝีมือ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14930,
     word: 'wrangle',
     detail: [
@@ -93014,7 +89005,7 @@ export default [
           es: 'infligir',
           zh_TW: '屈服',
           zh_CN: '屈服',
-          ja: 'WREAK',
+          ja: '壊す',
           ko: '가하다',
           th: 'ระบาย',
         },
@@ -93119,25 +89110,6 @@ export default [
     ],
   },
   {
-    id: 14937,
-    word: 'wxane',
-    detail: [
-      {
-        meaning: {
-          en: 'To diminish in size and brilliancy.',
-          es: 'wxane',
-          zh_TW: 'wxane',
-          zh_CN: 'wxane',
-          ja: 'wxane',
-          ko: 'wxane',
-          th: 'wxane',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14938,
     word: 'yearling',
     detail: [
@@ -93169,25 +89141,6 @@ export default [
           ja: 'Zealot',
           ko: '열성',
           th: 'ความกระตือรือร้น',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14940,
-    word: 'zeitgeist',
-    detail: [
-      {
-        meaning: {
-          en: 'The intellectual and moral tendencies that characterize any age or epoch.',
-          es: 'espíritu',
-          zh_TW: 'Zeitgeist',
-          zh_CN: 'Zeitgeist',
-          ja: 'Zeitgeist',
-          ko: '시대 정신',
-          th: 'นักจิตวิญญาณ',
         },
         partsOfSpeech: 'noun',
         example: '',
