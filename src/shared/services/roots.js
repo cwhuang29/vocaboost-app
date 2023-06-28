@@ -19,7 +19,7 @@ const httpConfig = {
 
 const fetch = axios.create(httpConfig);
 
-const beforeReqIsSend = async config => {
+const reqMiddleware = async config => {
   const [token, deviceInfo] = await Promise.all([getAuthToken(), getDeviceInfo()]);
   const platform = getDevicePlatform(deviceInfo);
 
@@ -53,7 +53,7 @@ const respMiddleware = async err => {
   return Promise.reject(err);
 };
 
-fetch.interceptors.request.use(beforeReqIsSend);
+fetch.interceptors.request.use(reqMiddleware);
 fetch.interceptors.response.use(resp => resp, respMiddleware);
 
 export default fetch;
