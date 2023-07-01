@@ -1,6 +1,7 @@
 const apis = {
   LOCAL_HOST: 'http://127.0.0.1:8000',
   HOST: 'https://api.vocabularyboost.com',
+  GRAPHQL: '/graphql',
   V1: {
     ME: '/v1/users/me',
     LOGIN: '/v1/login',
