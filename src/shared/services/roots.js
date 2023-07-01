@@ -29,7 +29,7 @@ const httpAnalyticsServerConfig = {
     headers: { [HEADER_SOURCE]: 'mobile' }, // Custom headers to be sent
 };
 
-const fetch = axios.create(httpAnalyticsServerConfig);
+const fetchAnalyticsServer = axios.create(httpAnalyticsServerConfig);
 
 const reqMiddleware = async config => {
   const [token, deviceInfo] = await Promise.all([getAuthToken(), getDeviceInfo()]);
@@ -59,13 +59,13 @@ const respMiddleware = async err => {
 
   Object.assign(err.config.headers, { ...err.config.headers, [HEADER_RETRY_COUNT]: tried });
   if (status >= 400 && tried < REQ_RETRY_COUNT && allowedRetryEndpoint) {
-    const resp = await fetch.request(err.config);
+    const resp = await fetchAnalyticsServer.request(err.config);
     return resp;
   }
   return Promise.reject(err);
 };
 
-fetch.interceptors.request.use(reqMiddleware);
-fetch.interceptors.response.use(resp => resp, respMiddleware);
+fetchAnalyticsServer.interceptors.request.use(reqMiddleware);
+fetchAnalyticsServer.interceptors.response.use(resp => resp, respMiddleware);
 
-export default fetch;
+export default fetchAnalyticsServer;
