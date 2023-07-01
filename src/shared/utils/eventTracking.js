@@ -1,5 +1,4 @@
 import EVENT_TYPE from 'shared/constants/eventTracking';
-// eslint-disable-next-line no-unused-vars
 import eventTrackingService from 'shared/services/eventTracking.service';
 import { decodeAuthToken } from 'shared/utils/auth';
 import { getDeviceInfo } from 'shared/utils/devices';
