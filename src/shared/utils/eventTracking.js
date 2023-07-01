@@ -1,5 +1,4 @@
 import EVENT_TYPE from 'shared/constants/eventTracking';
-// eslint-disable-next-line no-unused-vars
 import eventTrackingService from 'shared/services/eventTracking.service';
 import { decodeAuthToken } from 'shared/utils/auth';
 import { getDeviceInfo } from 'shared/utils/devices';
@@ -18,7 +17,7 @@ const createEvent = async payload => {
     ts: getLocalDate(),
   };
   logger(`(Event tracking). Event type: ${p.type}, metrics: ${JSON.stringify(p)}`);
-  // eventTrackingService.createEventTracking(p).catch(err => err);
+  eventTrackingService.createEventTracking(p).catch(err => err);
 };
 
 export const createLoginEvent = ({ token }) => {
