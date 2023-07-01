@@ -22,7 +22,9 @@ const apis = {
 export default apis;
 
 export const EVENT_TRACKING_API = {
-  V1: '/v1',
+  // V1: '/v1',
+  // temporarily hardcoded endpoint
+  V1: 'http://localhost:8080/v1/event-tracking'
 };
 
 export const REQ_RETRY_COUNT = 3;
