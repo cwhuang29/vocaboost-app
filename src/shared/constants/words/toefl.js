@@ -10849,25 +10849,6 @@ export default [
     ],
   },
   {
-    id: 10649,
-    word: 'cabalism',
-    detail: [
-      {
-        meaning: {
-          en: "Superstitious devotion to one's religion.",
-          es: 'cabalismo',
-          zh_TW: '白志作',
-          zh_CN: '白志作',
-          ja: 'カバリズム',
-          ko: 'CABISM',
-          th: 'ความเป็นกันเอง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10650,
     word: 'cabinet',
     detail: [
@@ -10925,44 +10906,6 @@ export default [
     ],
   },
   {
-    id: 10654,
-    word: 'cadenza',
-    detail: [
-      {
-        meaning: {
-          en: 'An embellishment or flourish, prepared or improvised, for a solo voice or instrument.',
-          es: 'cadencia',
-          zh_TW: '卡登扎',
-          zh_CN: '卡登扎',
-          ja: 'カデンツァ',
-          ko: '카덴차',
-          th: 'ชาวแคเดนซา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10655,
-    word: 'caitiff',
-    detail: [
-      {
-        meaning: {
-          en: 'Cowardly.',
-          es: 'mísero',
-          zh_TW: '凱蒂夫',
-          zh_CN: '凯蒂夫',
-          ja: 'caitiff',
-          ko: '비겁한',
-          th: 'ผู้เลี้ยงสัตว์',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10656,
     word: 'cajole',
     detail: [
@@ -11008,8 +10951,8 @@ export default [
         meaning: {
           en: 'A concretion formed in various parts of the body resembling a pebble in hardness.',
           es: 'cálculo',
-          zh_TW: '結石',
-          zh_CN: '结石',
+          zh_TW: '微積分',
+          zh_CN: '微积分',
           ja: '微積分',
           ko: '계산법',
           th: 'แคลคูลัส',
@@ -11034,25 +10977,6 @@ export default [
           th: 'ความใจจดใจจ่อ',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10661,
-    word: 'callow',
-    detail: [
-      {
-        meaning: {
-          en: 'Without experience of the world.',
-          es: 'inexperto',
-          zh_TW: '卡洛',
-          zh_CN: '卡洛',
-          ja: 'カロウ',
-          ko: '캘러 우',
-          th: 'เรียกร้อง',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -11096,25 +11020,6 @@ export default [
     ],
   },
   {
-    id: 10664,
-    word: 'calvary',
-    detail: [
-      {
-        meaning: {
-          en: 'The place where Christ was crucified.',
-          es: 'calvario',
-          zh_TW: 'Cal髏地',
-          zh_CN: 'Cal髅地',
-          ja: 'カルバリー',
-          ko: '고난',
-          th: 'คัลวารี',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10665,
     word: 'calvinism',
     detail: [
@@ -11129,25 +11034,6 @@ export default [
           th: 'ลัทธิคาลวิน',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10666,
-    word: 'calvinize',
-    detail: [
-      {
-        meaning: {
-          en: 'To teach or imbue with the doctrines of Calvinism.',
-          es: 'calvinizar',
-          zh_TW: '加爾維尼',
-          zh_CN: '加尔维尼',
-          ja: 'カルビナイズ',
-          ko: '캘빈 화',
-          th: 'ทำให้เป็นยา',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -11300,63 +11186,6 @@ export default [
           th: 'สุนัข',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10675,
-    word: 'canon',
-    detail: [
-      {
-        meaning: {
-          en: 'Any rule or law.',
-          es: 'canon',
-          zh_TW: '佳能',
-          zh_CN: '佳能',
-          ja: 'キヤノン',
-          ko: '정경',
-          th: 'หลักการ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10676,
-    word: 'cant',
-    detail: [
-      {
-        meaning: {
-          en: 'To talk in a singsong, preaching tone with affected solemnity.',
-          es: 'no poder',
-          zh_TW: '不能',
-          zh_CN: '不能',
-          ja: 'カント',
-          ko: '캔트',
-          th: 'ไม่สามารถ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10678,
-    word: 'canto',
-    detail: [
-      {
-        meaning: {
-          en: 'One of the divisions of an extended poem.',
-          es: 'canto',
-          zh_TW: '坎托',
-          zh_CN: '坎托',
-          ja: 'できること',
-          ko: '편',
-          th: 'คาน',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -11571,25 +11400,6 @@ export default [
     ],
   },
   {
-    id: 10690,
-    word: 'caret',
-    detail: [
-      {
-        meaning: {
-          en: 'A sign (^) placed below a line, indicating where omitted words, etc., should be inserted.',
-          es: 'signo de intercalación',
-          zh_TW: '商店',
-          zh_CN: '商店',
-          ja: 'カレット',
-          ko: '탈자 부호',
-          th: 'ตักเตือน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10691,
     word: 'caricature',
     detail: [
@@ -11661,25 +11471,6 @@ export default [
           th: 'ที่กินเนื้อเป็นอาหาร',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10695,
-    word: 'carouse',
-    detail: [
-      {
-        meaning: {
-          en: 'To drink deeply and in boisterous or jovial manner.',
-          es: 'ir de parranda',
-          zh_TW: '卡魯斯',
-          zh_CN: '卡鲁斯',
-          ja: 'カルーーズ',
-          ko: '카로틴',
-          th: 'เครื่องดื่ม',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -12018,7 +11809,7 @@ export default [
           zh_TW: '放棄',
           zh_CN: '放弃',
           ja: '譲り',
-          ko: 'cede',
+          ko: '(마지못해) 양도[이양]하다',
           th: 'ยก',
         },
         partsOfSpeech: 'verb',
@@ -12578,25 +12369,6 @@ export default [
     ],
   },
   {
-    id: 10746,
-    word: 'christen',
-    detail: [
-      {
-        meaning: {
-          en: 'To name in baptism.',
-          es: 'bautizar',
-          zh_TW: '克里斯汀',
-          zh_CN: '克里斯汀',
-          ja: 'クリステン',
-          ko: '세례',
-          th: 'คริสตจักร',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10747,
     word: 'christendom',
     detail: [
@@ -13029,25 +12801,6 @@ export default [
           th: 'ความเมตตากรุณา',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10771,
-    word: 'clement',
-    detail: [
-      {
-        meaning: {
-          en: 'Compassionate.',
-          es: 'clemente',
-          zh_TW: '克萊門特',
-          zh_CN: '克莱门特',
-          ja: 'クレメント',
-          ko: '온화한',
-          th: 'การตัดทอน',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -16815,25 +16568,6 @@ export default [
     ],
   },
   {
-    id: 10971,
-    word: 'contrite',
-    detail: [
-      {
-        meaning: {
-          en: 'Broken in spirit because of a sense of sin.',
-          es: 'contrito',
-          zh_TW: 'con悔',
-          zh_CN: 'con悔',
-          ja: '悔い改め',
-          ko: '통제',
-          th: 'แย้ง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10972,
     word: 'contrivance',
     detail: [
@@ -18145,25 +17879,6 @@ export default [
     ],
   },
   {
-    id: 11043,
-    word: 'covey',
-    detail: [
-      {
-        meaning: {
-          en: 'A flock of quails or partridges.',
-          es: 'grupo',
-          zh_TW: '科維',
-          zh_CN: '科维',
-          ja: 'コビー',
-          ko: '한 무리',
-          th: 'ครอก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11044,
     word: 'cower',
     detail: [
@@ -18178,25 +17893,6 @@ export default [
           th: 'อมตะ',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11045,
-    word: 'coxswain',
-    detail: [
-      {
-        meaning: {
-          en: "One who steers a rowboat, or one who has charge of a ship's boat and its crew under an officer.",
-          es: 'timonel',
-          zh_TW: '柯克斯斯溫',
-          zh_CN: '柯克斯斯温',
-          ja: 'コックスウェイン',
-          ko: '키잡이',
-          th: 'coxswain',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -18727,25 +18423,6 @@ export default [
           ja: '暗渠',
           ko: '암거',
           th: 'ท่อระบายน้ำ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11075,
-    word: 'cupidity',
-    detail: [
-      {
-        meaning: {
-          en: 'Avarice.',
-          es: 'codicia',
-          zh_TW: '丘比特',
-          zh_CN: '丘比特',
-          ja: '貪欲',
-          ko: '탐욕',
-          th: 'โลภ',
         },
         partsOfSpeech: 'noun',
         example: '',
