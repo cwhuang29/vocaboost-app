@@ -8189,25 +8189,6 @@ export default [
     ],
   },
   {
-    id: 10467,
-    word: 'baconian',
-    detail: [
-      {
-        meaning: {
-          en: 'Of or pertaining to Lord Bacon or his system of philosophy.',
-          es: 'baconiano',
-          zh_TW: '培根',
-          zh_CN: '培根',
-          ja: 'ベーコニア',
-          ko: '베이컨',
-          th: 'เกี่ยวกับเบคอน',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10468,
     word: 'bacterium',
     detail: [
@@ -8645,25 +8626,6 @@ export default [
     ],
   },
   {
-    id: 10494,
-    word: 'beau',
-    detail: [
-      {
-        meaning: {
-          en: 'An escort or lover.',
-          es: 'galán',
-          zh_TW: '博',
-          zh_CN: '博',
-          ja: 'ボー',
-          ko: '아름다운',
-          th: 'คนที่มีความสุข',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10495,
     word: 'becalm',
     detail: [
@@ -8676,44 +8638,6 @@ export default [
           ja: '冷静である',
           ko: '진정',
           th: 'เงียบ ๆ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10496,
-    word: 'beck',
-    detail: [
-      {
-        meaning: {
-          en: 'To give a signal to, by nod or gesture.',
-          es: 'arroyo',
-          zh_TW: '貝克',
-          zh_CN: '贝克',
-          ja: 'ベック',
-          ko: '끄덕임',
-          th: 'เบ็ค',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10498,
-    word: 'bedeck',
-    detail: [
-      {
-        meaning: {
-          en: 'To cover with ornament.',
-          es: 'adornar',
-          zh_TW: '貝德克',
-          zh_CN: '贝德克',
-          ja: 'ベデック',
-          ko: '꾸미다',
-          th: 'ทำให้นอนหลับ',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -8809,25 +8733,6 @@ export default [
           ja: '遅れる',
           ko: '늦다',
           th: 'ไม่ทันเวลา',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10505,
-    word: 'belay',
-    detail: [
-      {
-        meaning: {
-          en: 'To make fast, as a rope, by winding round a cleat.',
-          es: 'amarrar',
-          zh_TW: '貝萊',
-          zh_CN: '贝莱',
-          ja: 'ベレイ',
-          ko: 'Belay',
-          th: 'มัด',
         },
         partsOfSpeech: 'verb',
         example: '',
@@ -9196,25 +9101,6 @@ export default [
     ],
   },
   {
-    id: 10525,
-    word: 'benison',
-    detail: [
-      {
-        meaning: {
-          en: 'Blessing.',
-          es: 'benison',
-          zh_TW: '貝尼森',
-          zh_CN: '贝尼森',
-          ja: 'ベニソン',
-          ko: '베니슨',
-          th: 'เบนิสัน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10526,
     word: 'bequeath',
     detail: [
@@ -9329,44 +9215,6 @@ export default [
     ],
   },
   {
-    id: 10533,
-    word: 'bestrew',
-    detail: [
-      {
-        meaning: {
-          en: 'To sprinkle or cover with things strewn.',
-          es: 'desparramar',
-          zh_TW: '貝斯特魯',
-          zh_CN: '贝斯特鲁',
-          ja: 'ベスレーウ',
-          ko: 'Bestrew',
-          th: 'สุดซึ้ง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10536,
-    word: 'betide',
-    detail: [
-      {
-        meaning: {
-          en: 'To happen to or befall.',
-          es: 'ocurrir',
-          zh_TW: '貝蒂德',
-          zh_CN: '贝蒂德',
-          ja: 'ベティド',
-          ko: '생기다',
-          th: 'เดิมพัน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10538,
     word: 'betroth',
     detail: [
@@ -9462,25 +9310,6 @@ export default [
     ],
   },
   {
-    id: 10544,
-    word: 'bibliophile',
-    detail: [
-      {
-        meaning: {
-          en: 'One who loves books.',
-          es: 'bibliófilo',
-          zh_TW: 'blibliophile',
-          zh_CN: 'blibliophile',
-          ja: '書誌',
-          ko: '애서가',
-          th: 'บรรณานุกรม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10545,
     word: 'bibulous',
     detail: [
@@ -9495,25 +9324,6 @@ export default [
           th: 'ซึ่งแยกจากกัน',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10546,
-    word: 'bide',
-    detail: [
-      {
-        meaning: {
-          en: 'To await.',
-          es: 'permanecer',
-          zh_TW: '拜',
-          zh_CN: '拜',
-          ja: 'バイド',
-          ko: 'Bide',
-          th: 'เดี๋ยว',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -9728,25 +9538,6 @@ export default [
     ],
   },
   {
-    id: 10560,
-    word: 'blasé',
-    detail: [
-      {
-        meaning: {
-          en: 'Sated with pleasure.',
-          es: 'hastiado',
-          zh_TW: '布拉斯',
-          zh_CN: '布拉斯',
-          ja: 'ブラセ',
-          ko: '인생 등에 지친',
-          th: 'คนขี้เกียจ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10561,
     word: 'blaspheme',
     detail: [
@@ -9804,25 +9595,6 @@ export default [
     ],
   },
   {
-    id: 10564,
-    word: 'blazon',
-    detail: [
-      {
-        meaning: {
-          en: 'To make widely or generally known.',
-          es: 'blasón',
-          zh_TW: '布拉森',
-          zh_CN: '布拉森',
-          ja: 'ブラゾン',
-          ko: '과시',
-          th: 'เครื่องหมาย',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10565,
     word: 'bleak',
     detail: [
@@ -9856,25 +9628,6 @@ export default [
           th: 'เป็นรอยเปื้อน',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10567,
-    word: 'blithe',
-    detail: [
-      {
-        meaning: {
-          en: 'Joyous.',
-          es: 'alegre',
-          zh_TW: '布利特',
-          zh_CN: '布利特',
-          ja: 'ブリス',
-          ko: '즐거운',
-          th: 'ปั่นป่วน',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -10065,25 +9818,6 @@ export default [
           th: 'ระเบิด',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10580,
-    word: 'bombardier',
-    detail: [
-      {
-        meaning: {
-          en: 'A person who has charge of mortars, bombs, and shells.',
-          es: 'bombardero',
-          zh_TW: '龐巴迪',
-          zh_CN: '庞巴迪',
-          ja: 'ボンバルディア',
-          ko: '포병 하사관',
-          th: 'บอมแธง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -10317,25 +10051,6 @@ export default [
     ],
   },
   {
-    id: 10594,
-    word: 'braggart',
-    detail: [
-      {
-        meaning: {
-          en: 'A vain boaster.',
-          es: 'fanfarrón',
-          zh_TW: '布拉格特',
-          zh_CN: '布拉格特',
-          ja: '天狗',
-          ko: '바람둥이',
-          th: 'คนอวดดี',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10595,
     word: 'brandish',
     detail: [
@@ -10355,25 +10070,6 @@ export default [
     ],
   },
   {
-    id: 10596,
-    word: 'bravado',
-    detail: [
-      {
-        meaning: {
-          en: 'An aggressive display of boldness.',
-          es: 'bravata',
-          zh_TW: '布拉瓦多',
-          zh_CN: '布拉瓦多',
-          ja: 'ブラバド',
-          ko: '허세',
-          th: 'ความองอาจ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10597,
     word: 'bray',
     detail: [
@@ -10388,25 +10084,6 @@ export default [
           th: 'เบรย์',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10598,
-    word: 'braze',
-    detail: [
-      {
-        meaning: {
-          en: 'To make of or ornament with brass.',
-          es: 'soldar',
-          zh_TW: '布雷茲',
-          zh_CN: '布雷兹',
-          ja: 'ブラズ',
-          ko: '브레이즈',
-          th: 'บดขยี้',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -10583,25 +10260,6 @@ export default [
     ],
   },
   {
-    id: 10608,
-    word: 'brigand',
-    detail: [
-      {
-        meaning: {
-          en: 'One who lives by robbery and plunder.',
-          es: 'bandido',
-          zh_TW: '布里格',
-          zh_CN: '布里格',
-          ja: 'ブリガンド',
-          ko: '산적',
-          th: 'โจร',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10609,
     word: 'brimstone',
     detail: [
@@ -10678,25 +10336,6 @@ export default [
     ],
   },
   {
-    id: 10613,
-    word: 'briticism',
-    detail: [
-      {
-        meaning: {
-          en: 'A word, idiom, or phrase characteristic of Great Britain or the British.',
-          es: 'anglicismo',
-          zh_TW: '胸日',
-          zh_CN: '胸日',
-          ja: '英国主義',
-          ko: '브리티즘',
-          th: 'การทำบริติก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10614,
     word: 'brittle',
     detail: [
@@ -10716,25 +10355,6 @@ export default [
     ],
   },
   {
-    id: 10615,
-    word: 'broach',
-    detail: [
-      {
-        meaning: {
-          en: 'To mention, for the first time.',
-          es: 'broche',
-          zh_TW: '布拉奇',
-          zh_CN: '布拉奇',
-          ja: '切り出す',
-          ko: '꼬챙이',
-          th: 'เจาะ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10616,
     word: 'broadcast',
     detail: [
@@ -10749,44 +10369,6 @@ export default [
           th: 'ออกอากาศ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10617,
-    word: 'brogan',
-    detail: [
-      {
-        meaning: {
-          en: 'A coarse, heavy shoe.',
-          es: 'brogan',
-          zh_TW: '布羅根',
-          zh_CN: '布罗根',
-          ja: 'ブロガン',
-          ko: '브로건',
-          th: 'ชาวทวิภาค',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10618,
-    word: 'brogue',
-    detail: [
-      {
-        meaning: {
-          en: 'Any dialectic pronunciation of English, especially that of the Irish people.',
-          es: 'acento irlandés',
-          zh_TW: '布洛',
-          zh_CN: '布洛',
-          ja: 'ブローグ',
-          ko: '아일랜드 사투리',
-          th: 'คนโง่',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -11172,44 +10754,6 @@ export default [
     ],
   },
   {
-    id: 10640,
-    word: 'burgess',
-    detail: [
-      {
-        meaning: {
-          en: 'In colonial times, a member of the lower house of the legislature of Maryland or Virginia.',
-          es: 'diputado',
-          zh_TW: '伯吉斯',
-          zh_CN: '伯吉斯',
-          ja: 'バージェス',
-          ko: '버지스',
-          th: 'ชาวเมือง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10641,
-    word: 'burgher',
-    detail: [
-      {
-        meaning: {
-          en: 'An inhabitant, citizen or freeman of a borough burgh, or corporate town.',
-          es: 'ciudadano',
-          zh_TW: '伯格',
-          zh_CN: '伯格',
-          ja: 'バーガー',
-          ko: '공민',
-          th: 'ชาวเมือง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 10642,
     word: 'burnish',
     detail: [
@@ -11262,25 +10806,6 @@ export default [
           th: 'ก้น',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 10646,
-    word: 'butte',
-    detail: [
-      {
-        meaning: {
-          en: 'A conspicuous hill, low mountain, or natural turret, generally isolated.',
-          es: 'butte',
-          zh_TW: '巴特',
-          zh_CN: '巴特',
-          ja: 'ビュート',
-          ko: '버트',
-          th: 'บัต',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
