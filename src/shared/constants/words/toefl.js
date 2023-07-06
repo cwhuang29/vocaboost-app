@@ -18696,25 +18696,6 @@ export default [
     ],
   },
   {
-    id: 11092,
-    word: 'dastard',
-    detail: [
-      {
-        meaning: {
-          en: 'A base coward.',
-          es: 'persona asquerosa',
-          zh_TW: '達斯特',
-          zh_CN: '达斯特',
-          ja: 'ダスタード',
-          ko: '겁쟁이',
-          th: 'คนขี้ขลาด',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11093,
     word: 'datum',
     detail: [
@@ -18772,25 +18753,6 @@ export default [
     ],
   },
   {
-    id: 11096,
-    word: 'debase',
-    detail: [
-      {
-        meaning: {
-          en: 'To lower in character or virtue.',
-          es: 'degradar',
-          zh_TW: 'depase',
-          zh_CN: 'depase',
-          ja: 'debase',
-          ko: '디지스',
-          th: 'การลดทอน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11097,
     word: 'debatable',
     detail: [
@@ -18841,25 +18803,6 @@ export default [
           ja: 'デカリター',
           ko: '데칼 리터',
           th: 'เดคาลิตร',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11103,
-    word: 'decalogue',
-    detail: [
-      {
-        meaning: {
-          en: 'The ten commandments.',
-          es: 'decálogo',
-          zh_TW: '十二',
-          zh_CN: '十二',
-          ja: 'デカローグ',
-          ko: '기본 계율',
-          th: 'การรับรู้',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -19014,25 +18957,6 @@ export default [
           th: 'ทศนิยม',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11117,
-    word: 'decimate',
-    detail: [
-      {
-        meaning: {
-          en: 'To destroy a measurable or large proportion of.',
-          es: 'diezmar',
-          zh_TW: '十二期',
-          zh_CN: '十二期',
-          ja: '間引',
-          ko: '경사',
-          th: 'ทำให้เสื่อมเสีย',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -20311,25 +20235,6 @@ export default [
     ],
   },
   {
-    id: 11186,
-    word: 'denizen',
-    detail: [
-      {
-        meaning: {
-          en: 'Inhabitant.',
-          es: 'habitante',
-          zh_TW: '丹尼森',
-          zh_CN: '丹尼森',
-          ja: 'デニゼン',
-          ko: '동식물',
-          th: 'คนพลเมือง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11187,
     word: 'denominate',
     detail: [
@@ -20553,25 +20458,6 @@ export default [
           th: 'เสียดสี',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11199,
-    word: 'deponent',
-    detail: [
-      {
-        meaning: {
-          en: 'Laying down.',
-          es: 'deponente',
-          zh_TW: 'deponend',
-          zh_CN: 'deponend',
-          ja: '担当者',
-          ko: '선서 증인',
-          th: 'การลงโทษ',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -20969,25 +20855,6 @@ export default [
           ja: '皮膚科',
           ko: '피부과',
           th: 'โรคผิวหนัง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11221,
-    word: 'derrick',
-    detail: [
-      {
-        meaning: {
-          en: 'An apparatus for hoisting and swinging great weights.',
-          es: 'derrick',
-          zh_TW: '德里克',
-          zh_CN: '德里克',
-          ja: 'デリック',
-          ko: '데릭',
-          th: 'ปั้นจั่น',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -23693,25 +23560,6 @@ export default [
     ],
   },
   {
-    id: 11370,
-    word: 'dissever',
-    detail: [
-      {
-        meaning: {
-          en: 'To divide.',
-          es: 'desunirse',
-          zh_TW: '迪斯特人',
-          zh_CN: '迪斯特人',
-          ja: 'ディスバー',
-          ko: '끊임없이',
-          th: 'ทำขึ้น',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11371,
     word: 'dissimilar',
     detail: [
@@ -24586,25 +24434,6 @@ export default [
     ],
   },
   {
-    id: 11417,
-    word: 'doleful',
-    detail: [
-      {
-        meaning: {
-          en: 'Melancholy.',
-          es: 'triste',
-          zh_TW: '多勒',
-          zh_CN: '多勒',
-          ja: 'doleful',
-          ko: '서글픈',
-          th: 'น่าเบื่อหน่าย',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11418,
     word: 'dolesome',
     detail: [
@@ -24940,25 +24769,6 @@ export default [
           ja: '持参金',
           ko: '결혼 지참금',
           th: 'สินสอดทองหมั้น',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11437,
-    word: 'drachma',
-    detail: [
-      {
-        meaning: {
-          en: 'A modern and an ancient Greek coin.',
-          es: 'dracma',
-          zh_TW: '德拉克馬',
-          zh_CN: '德拉克马',
-          ja: 'ドラッマ',
-          ko: '드라크마',
-          th: 'Drachma',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -25341,25 +25151,6 @@ export default [
           th: 'ลดน้อยลง',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11460,
-    word: 'dyne',
-    detail: [
-      {
-        meaning: {
-          en: 'The force which, applied to a mass of one gram for 1 second, would give it a velocity of 1 cm/s.',
-          es: 'dina',
-          zh_TW: '達因',
-          zh_CN: '达因',
-          ja: 'ダイン',
-          ko: '다인',
-          th: 'dyne',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
