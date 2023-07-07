@@ -35644,25 +35644,6 @@ export default [
     ],
   },
   {
-    id: 12056,
-    word: 'hackney',
-    detail: [
-      {
-        meaning: {
-          en: 'To make stale or trite by repetition.',
-          es: 'máquina de alquiler',
-          zh_TW: '哈克尼',
-          zh_CN: '哈克尼',
-          ja: 'ハックニー',
-          ko: '해킹',
-          th: 'แฮ็คนีย์',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12057,
     word: 'haggard',
     detail: [
@@ -35675,25 +35656,6 @@ export default [
           ja: 'ハガード',
           ko: '매서운',
           th: 'ซุกซน',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12059,
-    word: 'hale',
-    detail: [
-      {
-        meaning: {
-          en: 'Of sound and vigorous health.',
-          es: 'sano',
-          zh_TW: '黑爾',
-          zh_CN: '黑尔',
-          ja: 'ヘイル',
-          ko: '건장한',
-          th: 'กระวนกระวาย',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -35827,25 +35789,6 @@ export default [
           ja: '大混乱',
           ko: '큰 파란',
           th: 'ความหายนะ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12067,
-    word: 'hawthorn',
-    detail: [
-      {
-        meaning: {
-          en: 'A thorny shrub much used in England for hedges.',
-          es: 'espino',
-          zh_TW: '霍索恩',
-          zh_CN: '霍索恩',
-          ja: 'ホーソーン',
-          ko: '호손',
-          th: 'ฮอร์ ธ อร์น',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -36017,44 +35960,6 @@ export default [
           ja: 'ヘンチマン',
           ko: '후원자',
           th: 'ลูกน้อง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12077,
-    word: 'henpeck',
-    detail: [
-      {
-        meaning: {
-          en: 'To worry or harass by ill temper and petty annoyances.',
-          es: 'dominar al marido',
-          zh_TW: '怕老婆',
-          zh_CN: '怕老婆',
-          ja: 'ヘンペック',
-          ko: 'Henpeck',
-          th: 'Henpeck',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12079,
-    word: 'heptarchy',
-    detail: [
-      {
-        meaning: {
-          en: 'A group of seven governments.',
-          es: 'heptarquía',
-          zh_TW: '亨氏',
-          zh_CN: '亨氏',
-          ja: 'ヘプターカー',
-          ko: '칠두 정치국',
-          th: 'heptarchy',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -36589,25 +36494,6 @@ export default [
           th: 'อุปสรรค',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12108,
-    word: 'hirsute',
-    detail: [
-      {
-        meaning: {
-          en: 'Having a hairy covering.',
-          es: 'hirsuto',
-          zh_TW: '伯斯特',
-          zh_CN: '伯斯特',
-          ja: 'hirsute',
-          ko: 'hirsute',
-          th: 'ขนนก',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
