@@ -33858,25 +33858,6 @@ export default [
     ],
   },
   {
-    id: 11955,
-    word: 'gambol',
-    detail: [
-      {
-        meaning: {
-          en: 'Playful leaping or frisking.',
-          es: 'retozar',
-          zh_TW: '甘博爾',
-          zh_CN: '甘博尔',
-          ja: 'Gambol',
-          ko: 'gambol',
-          th: 'เล่นรัศมี',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11956,
     word: 'gamester',
     detail: [
@@ -34580,25 +34561,6 @@ export default [
     ],
   },
   {
-    id: 11995,
-    word: 'gladden',
-    detail: [
-      {
-        meaning: {
-          en: 'To make joyous.',
-          es: 'alegrar',
-          zh_TW: '格拉登',
-          zh_CN: '格拉登',
-          ja: 'うれしい',
-          ko: '기쁘게 되다',
-          th: 'ดีใจ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11996,
     word: 'glazier',
     detail: [
@@ -34746,25 +34708,6 @@ export default [
           th: 'มีจำนวนมาก',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12005,
-    word: 'gosling',
-    detail: [
-      {
-        meaning: {
-          en: 'A young goose.',
-          es: 'ansarino',
-          zh_TW: '戈斯林',
-          zh_CN: '戈斯林',
-          ja: 'ゴスリング',
-          ko: '거위 새끼',
-          th: 'การล่องเรือ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
