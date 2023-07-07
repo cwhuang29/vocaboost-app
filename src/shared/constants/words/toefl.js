@@ -37335,25 +37335,6 @@ export default [
     ],
   },
   {
-    id: 12153,
-    word: 'ichthyic',
-    detail: [
-      {
-        meaning: {
-          en: 'Fish-like.',
-          es: 'ictíico',
-          zh_TW: '魚魚',
-          zh_CN: '鱼鱼',
-          ja: 'ichthyic',
-          ko: 'ichthyic',
-          th: 'ichthyic',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12154,
     word: 'ichthyology',
     detail: [
@@ -37392,25 +37373,6 @@ export default [
     ],
   },
   {
-    id: 12156,
-    word: 'icily',
-    detail: [
-      {
-        meaning: {
-          en: 'Frigidly.',
-          es: 'glacialmente',
-          zh_TW: '伊克利',
-          zh_CN: '伊克利',
-          ja: 'icly',
-          ko: 'icily',
-          th: 'อย่างมีน้ำใจ',
-        },
-        partsOfSpeech: 'adverb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12157,
     word: 'iciness',
     detail: [
@@ -37442,25 +37404,6 @@ export default [
           ja: 'アイコン',
           ko: '상',
           th: 'ไอคอน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12159,
-    word: 'iconoclast',
-    detail: [
-      {
-        meaning: {
-          en: 'An image-breaker.',
-          es: 'iconoclasta',
-          zh_TW: '圖標',
-          zh_CN: '图标',
-          ja: 'ICONOCLAST',
-          ko: '아이콘 클래스트',
-          th: 'ภาพที่ไม่น่าสนใจ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -39007,25 +38950,6 @@ export default [
     ],
   },
   {
-    id: 12242,
-    word: 'importune',
-    detail: [
-      {
-        meaning: {
-          en: 'To harass with persistent demands or entreaties.',
-          es: 'importunar',
-          zh_TW: 'excientune',
-          zh_CN: 'excientune',
-          ja: 'インポート',
-          ko: 'importune',
-          th: 'ความสำคัญ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12243,
     word: 'impotent',
     detail: [
@@ -39532,25 +39456,6 @@ export default [
           ja: '容認できない',
           ko: '이해할 수 없는',
           th: 'ไม่สามารถเข้าใจได้',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12271,
-    word: 'inapt',
-    detail: [
-      {
-        meaning: {
-          en: 'Awkward or slow.',
-          es: 'inepto',
-          zh_TW: 'in apt',
-          zh_CN: 'in apt',
-          ja: 'Inapt',
-          ko: '서투른',
-          th: 'ไม่จำเป็น',
         },
         partsOfSpeech: 'adjective',
         example: '',
