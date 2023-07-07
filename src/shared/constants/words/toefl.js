@@ -26961,25 +26961,6 @@ export default [
     ],
   },
   {
-    id: 11561,
-    word: 'endear',
-    detail: [
-      {
-        meaning: {
-          en: 'To cause to be loved.',
-          es: 'hacerse querer por',
-          zh_TW: 'partear',
-          zh_CN: 'partear',
-          ja: 'かわいらしい',
-          ko: '사랑 받게 하다',
-          th: 'เป็นที่รัก',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11562,
     word: 'endemic',
     detail: [
