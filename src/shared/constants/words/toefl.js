@@ -30989,25 +30989,6 @@ export default [
     ],
   },
   {
-    id: 11789,
-    word: 'felicitate',
-    detail: [
-      {
-        meaning: {
-          en: 'To wish joy or happiness to, especially in view of a coming event.',
-          es: 'felicitar',
-          zh_TW: 'feLicatity',
-          zh_CN: 'feLicatity',
-          ja: 'フェリシテート',
-          ko: '셀리치',
-          th: 'ขอแสดงความยินดี',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11790,
     word: 'felicity',
     detail: [
@@ -31098,25 +31079,6 @@ export default [
           th: 'ของผู้หญิง',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11795,
-    word: 'fernery',
-    detail: [
-      {
-        meaning: {
-          en: 'A place in which ferns are grown.',
-          es: 'invernadero de helechos',
-          zh_TW: '費爾尼',
-          zh_CN: '费尔尼',
-          ja: 'フェリー',
-          ko: 'Fernery',
-          th: 'เฟิร์น',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -31445,25 +31407,6 @@ export default [
     ],
   },
   {
-    id: 11814,
-    word: 'filibuster',
-    detail: [
-      {
-        meaning: {
-          en: 'One who attempts to obstruct legislation.',
-          es: 'filibustero',
-          zh_TW: 'fillibuster',
-          zh_CN: 'fillibuster',
-          ja: 'フィリバスター',
-          ko: '해적',
-          th: 'ผู้ประกอบการ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11815,
     word: 'finale',
     detail: [
@@ -31768,25 +31711,6 @@ export default [
     ],
   },
   {
-    id: 11831,
-    word: 'flection',
-    detail: [
-      {
-        meaning: {
-          en: 'The act of bending.',
-          es: 'flexión',
-          zh_TW: '翻動',
-          zh_CN: '翻动',
-          ja: 'FLECTION',
-          ko: '굴곡',
-          th: 'การขับออกไป',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11832,
     word: 'fledgling',
     detail: [
@@ -31913,25 +31837,6 @@ export default [
           ja: '花',
           ko: '꽃',
           th: 'เกี่ยวกับดอกไม้',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11839,
-    word: 'florid',
-    detail: [
-      {
-        meaning: {
-          en: 'Flushed with red.',
-          es: 'florido',
-          zh_TW: '佛羅里達',
-          zh_CN: '佛罗里达',
-          ja: 'フロリッド',
-          ko: '화려한',
-          th: 'ฟลอริดส์',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -33402,25 +33307,6 @@ export default [
     ],
   },
   {
-    id: 11922,
-    word: 'frowzy',
-    detail: [
-      {
-        meaning: {
-          en: 'Slovenly in appearance.',
-          es: 'desaliñado',
-          zh_TW: '弗羅茲',
-          zh_CN: '弗罗兹',
-          ja: 'frowzy',
-          ko: 'Frowzy',
-          th: 'ทำให้หมองคล้ำ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 11923,
     word: 'frugal',
     detail: [
@@ -33511,25 +33397,6 @@ export default [
           th: 'เต็มเปี่ยม',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11928,
-    word: 'fulsome',
-    detail: [
-      {
-        meaning: {
-          en: 'Offensive from excess of praise or commendation.',
-          es: 'exagerado',
-          zh_TW: 'funsome',
-          zh_CN: 'funsome',
-          ja: 'フルサム',
-          ko: '지나친',
-          th: 'น่าเกรงขาม',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -33663,25 +33530,6 @@ export default [
           th: 'ขัด',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 11936,
-    word: 'furlong',
-    detail: [
-      {
-        meaning: {
-          en: 'A measure, one-eighth of a mile.',
-          es: 'raro',
-          zh_TW: '弗隆',
-          zh_CN: '弗隆',
-          ja: 'ファーロング',
-          ko: '펄롱',
-          th: 'ร่อง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
