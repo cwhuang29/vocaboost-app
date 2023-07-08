@@ -46208,63 +46208,6 @@ export default [
     ],
   },
   {
-    id: 12636,
-    word: 'laddie',
-    detail: [
-      {
-        meaning: {
-          en: 'A lad.',
-          es: 'muchacho',
-          zh_TW: '拉迪',
-          zh_CN: '拉迪',
-          ja: 'ラディー',
-          ko: '젊은이',
-          th: 'หนุ่ม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12637,
-    word: 'ladle',
-    detail: [
-      {
-        meaning: {
-          en: 'A cup-shaped vessel with a long handle, intended for dipping up and pouring liquids.',
-          es: 'cucharón',
-          zh_TW: '鋼包',
-          zh_CN: '钢包',
-          ja: 'ひしゃく',
-          ko: '국자',
-          th: 'ทัพพี',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12638,
-    word: 'laggard',
-    detail: [
-      {
-        meaning: {
-          en: 'Falling behind.',
-          es: 'rezagado',
-          zh_TW: '萊加德',
-          zh_CN: '莱加德',
-          ja: 'ラガード',
-          ko: '느림보',
-          th: 'คนขี้เกียจ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12639,
     word: 'landholder',
     detail: [
@@ -47101,25 +47044,6 @@ export default [
     ],
   },
   {
-    id: 12686,
-    word: 'leviathan',
-    detail: [
-      {
-        meaning: {
-          en: 'Any large animal, as a whale.',
-          es: 'leviatán',
-          zh_TW: '利維坦',
-          zh_CN: '利维坦',
-          ja: 'リヴァイアサン',
-          ko: '거대한',
-          th: 'เลวีอาธาน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12687,
     word: 'levity',
     detail: [
@@ -47322,25 +47246,6 @@ export default [
           ja: '免許的',
           ko: '음탕 한',
           th: 'มีอำนาจ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12698,
-    word: 'licit',
-    detail: [
-      {
-        meaning: {
-          en: 'Lawful.',
-          es: 'lícito',
-          zh_TW: '合法',
-          zh_CN: '合法',
-          ja: 'LICIT',
-          ko: 'LICIT',
-          th: 'ใบอนุญาต',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -48089,25 +47994,6 @@ export default [
     ],
   },
   {
-    id: 12739,
-    word: 'livid',
-    detail: [
-      {
-        meaning: {
-          en: 'Black-and-blue, as contused flesh.',
-          es: 'lívido',
-          zh_TW: '鐵青',
-          zh_CN: '铁青',
-          ja: 'livid',
-          ko: 'livid',
-          th: 'มีสีสันสดใส',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12740,
     word: 'loam',
     detail: [
@@ -48393,25 +48279,6 @@ export default [
     ],
   },
   {
-    id: 12757,
-    word: 'lough',
-    detail: [
-      {
-        meaning: {
-          en: 'A lake or loch.',
-          es: 'lago',
-          zh_TW: '湖',
-          zh_CN: '湖',
-          ja: 'lough',
-          ko: '호수',
-          th: 'เปล่งประกาย',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12758,
     word: 'louse',
     detail: [
@@ -48678,25 +48545,6 @@ export default [
     ],
   },
   {
-    id: 12772,
-    word: 'lune',
-    detail: [
-      {
-        meaning: {
-          en: 'The moon.',
-          es: 'lunar',
-          zh_TW: '盧恩',
-          zh_CN: '卢恩',
-          ja: 'ルーン',
-          ko: '루네',
-          th: 'ลูกผสม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12774,
     word: 'luscious',
     detail: [
@@ -48804,25 +48652,6 @@ export default [
           ja: '嘘をついている',
           ko: '거짓말하는',
           th: 'โกหก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12780,
-    word: 'lyre',
-    detail: [
-      {
-        meaning: {
-          en: 'One of the most ancient of stringed instruments of the harp class.',
-          es: 'lira',
-          zh_TW: '七弦琴',
-          zh_CN: '七弦琴',
-          ja: 'lyre',
-          ko: '거문고',
-          th: 'พิณ',
         },
         partsOfSpeech: 'noun',
         example: '',
