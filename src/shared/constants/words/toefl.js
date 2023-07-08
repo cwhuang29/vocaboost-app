@@ -67830,44 +67830,6 @@ export default [
     ],
   },
   {
-    id: 13881,
-    word: 'ramify',
-    detail: [
-      {
-        meaning: {
-          en: 'To divide or subdivide into branches or subdivisions.',
-          es: 'ramificarse',
-          zh_TW: '分支',
-          zh_CN: '分支',
-          ja: 'ramify',
-          ko: 'RAMIFY',
-          th: 'ทำให้แตกกัน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13882,
-    word: 'ramose',
-    detail: [
-      {
-        meaning: {
-          en: 'Branch-like.',
-          es: 'ramificado',
-          zh_TW: '拉莫斯',
-          zh_CN: '拉莫斯',
-          ja: 'ラモーズ',
-          ko: '라모스',
-          th: 'ทำให้เกิดเสียงดัง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13883,
     word: 'rampant',
     detail: [
@@ -67956,25 +67918,6 @@ export default [
           ja: '急速',
           ko: '빠른',
           th: 'รวดเร็ว',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13890,
-    word: 'rapt',
-    detail: [
-      {
-        meaning: {
-          en: 'Enraptured.',
-          es: 'arrebatado',
-          zh_TW: '猛撲',
-          zh_CN: '猛扑',
-          ja: 'rapt',
-          ko: '황홀한',
-          th: 'ความกล้าหาญ',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -69559,25 +69502,6 @@ export default [
     ],
   },
   {
-    id: 13974,
-    word: 'refringent',
-    detail: [
-      {
-        meaning: {
-          en: 'Having the power to refract.',
-          es: 'refunente',
-          zh_TW: 'recringent',
-          zh_CN: 'recringent',
-          ja: 'リフリング',
-          ko: '굴절',
-          th: 'ที่ทำให้งดย',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13975,
     word: 'refusal',
     detail: [
@@ -69616,25 +69540,6 @@ export default [
     ],
   },
   {
-    id: 13977,
-    word: 'regale',
-    detail: [
-      {
-        meaning: {
-          en: 'To give unusual pleasure.',
-          es: 'agasajar',
-          zh_TW: '款待',
-          zh_CN: '款待',
-          ja: 'Regale',
-          ko: '산해 진미',
-          th: 'การปนเปื้อน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13978,
     word: 'regalia',
     detail: [
@@ -69647,25 +69552,6 @@ export default [
           ja: 'レガリア',
           ko: '레 갈리아',
           th: 'เครื่องราชกกุธภัณฑ์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13979,
-    word: 'regality',
-    detail: [
-      {
-        meaning: {
-          en: 'Royalty.',
-          es: 'privilegios reales',
-          zh_TW: '延長',
-          zh_CN: '延长',
-          ja: 'regality',
-          ko: '왕국',
-          th: 'การปกครอง',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -69704,25 +69590,6 @@ export default [
           ja: '摂政',
           ko: '섭정',
           th: 'อุปราช',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13982,
-    word: 'regicide',
-    detail: [
-      {
-        meaning: {
-          en: 'The killing of a king or sovereign.',
-          es: 'regicidio',
-          zh_TW: '療程劑',
-          zh_CN: '疗程剂',
-          ja: 'REGACIDE',
-          ko: '국완 살해',
-          th: 'การปราบปราม',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -69782,25 +69649,6 @@ export default [
           th: 'กองทหาร',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13986,
-    word: 'regnant',
-    detail: [
-      {
-        meaning: {
-          en: "Exercising royal authority in one's own right.",
-          es: 'reinante',
-          zh_TW: '恢復',
-          zh_CN: '恢复',
-          ja: 'Regnant',
-          ko: '우세한',
-          th: 'รีนัตต์',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -70129,25 +69977,6 @@ export default [
     ],
   },
   {
-    id: 14005,
-    word: 'reliquary',
-    detail: [
-      {
-        meaning: {
-          en: 'A casket, coffer, or repository in which relics are kept.',
-          es: 'relicario',
-          zh_TW: '奇異',
-          zh_CN: '奇异',
-          ja: '聖遺物箱',
-          ko: 'Reliquary',
-          th: 'ของสะสม',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14006,
     word: 'relish',
     detail: [
@@ -70333,44 +70162,6 @@ export default [
           th: 'การสร้างใหม่',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14016,
-    word: 'remonstrant',
-    detail: [
-      {
-        meaning: {
-          en: 'Having the character of a reproof.',
-          es: 'protestante',
-          zh_TW: '示威',
-          zh_CN: '示威',
-          ja: 'レモラント',
-          ko: 'Remonstrant',
-          th: 'สร้างใหม่',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14017,
-    word: 'remonstrate',
-    detail: [
-      {
-        meaning: {
-          en: 'To present a verbal or written protest to those who have power to right or prevent a wrong.',
-          es: 'protestar',
-          zh_TW: '示意',
-          zh_CN: '示意',
-          ja: 'REMANTREATH',
-          ko: '회상하십시오',
-          th: 'ประท้วง',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -72257,25 +72048,6 @@ export default [
     ],
   },
   {
-    id: 14118,
-    word: 'ribald',
-    detail: [
-      {
-        meaning: {
-          en: 'Indulging in or manifesting coarse indecency or obscenity.',
-          es: 'obsceno',
-          zh_TW: '里布爾德',
-          zh_CN: '里布尔德',
-          ja: 'ribald',
-          ko: '리 볼트',
-          th: 'ความไม่สงบ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14119,
     word: 'riddance',
     detail: [
@@ -72504,44 +72276,6 @@ export default [
     ],
   },
   {
-    id: 14132,
-    word: 'rondo',
-    detail: [
-      {
-        meaning: {
-          en: 'A musical composition during which the first part or subject is repeated several times.',
-          es: 'rondó',
-          zh_TW: '隆多',
-          zh_CN: '隆多',
-          ja: 'ロンド',
-          ko: '론도',
-          th: 'Rondo',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14133,
-    word: 'rookery',
-    detail: [
-      {
-        meaning: {
-          en: 'A place where crows congregate to breed.',
-          es: 'colonia de grajos',
-          zh_TW: '別克里',
-          zh_CN: '别克里',
-          ja: 'ルーカリー',
-          ko: '루커',
-          th: 'ที่เล่นอีก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14134,
     word: 'rotary',
     detail: [
@@ -72746,25 +72480,6 @@ export default [
           th: 'ชนบท',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14145,
-    word: 'ruth',
-    detail: [
-      {
-        meaning: {
-          en: "Sorrow for another's misery.",
-          es: 'piedad',
-          zh_TW: '露絲',
-          zh_CN: '露丝',
-          ja: 'ルース',
-          ko: '룻',
-          th: 'คร่ำครวญ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -73169,25 +72884,6 @@ export default [
     ],
   },
   {
-    id: 14167,
-    word: 'sapid',
-    detail: [
-      {
-        meaning: {
-          en: 'Affecting the sense of taste.',
-          es: 'sabroso',
-          zh_TW: '薩皮德',
-          zh_CN: '萨皮德',
-          ja: 'sapid',
-          ko: '맛있는',
-          th: 'น้ำท่วม',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14168,
     word: 'sapience',
     detail: [
@@ -73219,25 +72915,6 @@ export default [
           ja: 'サピエント',
           ko: '현명한',
           th: 'ฉลาด',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14170,
-    word: 'sapiential',
-    detail: [
-      {
-        meaning: {
-          en: 'Possessing wisdom.',
-          es: 'sapiencial',
-          zh_TW: '智力',
-          zh_CN: '智力',
-          ja: 'サピリアンティア',
-          ko: 'sapiential',
-          th: 'เกี่ยวกับความรู้',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -73753,25 +73430,6 @@ export default [
           th: 'เคียว',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14199,
-    word: 'sear',
-    detail: [
-      {
-        meaning: {
-          en: 'To burn on the surface.',
-          es: 'marchito',
-          zh_TW: '西爾',
-          zh_CN: '西尔',
-          ja: 'シアー',
-          ko: '시든',
-          th: 'ทำให้เฉื่อยชา',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -75107,25 +74765,6 @@ export default [
     ],
   },
   {
-    id: 14270,
-    word: 'sibilance',
-    detail: [
-      {
-        meaning: {
-          en: 'A hissing sound.',
-          es: 'carácter sibilante',
-          zh_TW: 'sibinance',
-          zh_CN: 'sibinance',
-          ja: 'シビランス',
-          ko: 'sibilance',
-          th: 'ความไร้เดียงสา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14271,
     word: 'sibilant',
     detail: [
@@ -75138,44 +74777,6 @@ export default [
           ja: 'シビラント',
           ko: '치찰음',
           th: 'คนขี้เหนียว',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14272,
-    word: 'sibilate',
-    detail: [
-      {
-        meaning: {
-          en: 'To give a hissing sound to, as in pronouncing the letter s.',
-          es: 'pronunciar con sibilante',
-          zh_TW: 'si骨',
-          zh_CN: 'si骨',
-          ja: 'sibilate',
-          ko: 'sibilate',
-          th: 'ทำให้เป็นสัตว์',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14273,
-    word: 'sidelong',
-    detail: [
-      {
-        meaning: {
-          en: 'Inclining or tending to one side.',
-          es: 'de soslayo',
-          zh_TW: '橫',
-          zh_CN: '横',
-          ja: 'Sidelong',
-          ko: '사이드 롱',
-          th: 'ด้านข้าง',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -75387,25 +74988,6 @@ export default [
           th: 'พร้อมกัน',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14285,
-    word: 'sinecure',
-    detail: [
-      {
-        meaning: {
-          en: 'Any position having emoluments with few or no duties.',
-          es: 'sinecura',
-          zh_TW: '內塞',
-          zh_CN: '内塞',
-          ja: 'sinecure',
-          ko: '한직',
-          th: 'ความปลอดภัย',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -75981,44 +75563,6 @@ export default [
     ],
   },
   {
-    id: 14319,
-    word: 'somniferous',
-    detail: [
-      {
-        meaning: {
-          en: 'Tending to produce sleep.',
-          es: 'somnífero',
-          zh_TW: '小的',
-          zh_CN: '小的',
-          ja: 'somnifours',
-          ko: '졸음',
-          th: 'งี่เง่า',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14320,
-    word: 'somnolence',
-    detail: [
-      {
-        meaning: {
-          en: 'Oppressive drowsiness.',
-          es: 'somnolencia',
-          zh_TW: 'somne​​ence',
-          zh_CN: 'somne​​ence',
-          ja: 'やがん',
-          ko: '졸림',
-          th: 'การง่วงนอน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14322,
     word: 'sonata',
     detail: [
@@ -76052,25 +75596,6 @@ export default [
           th: 'โคลง',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14324,
-    word: 'sonorous',
-    detail: [
-      {
-        meaning: {
-          en: 'Resonant.',
-          es: 'sonoro',
-          zh_TW: 'son',
-          zh_CN: 'son',
-          ja: 'ソノラス',
-          ko: '격조 높은',
-          th: 'มีเสียงดัง',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -76185,25 +75710,6 @@ export default [
           th: 'เวทมนตร์',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14332,
-    word: 'sordid',
-    detail: [
-      {
-        meaning: {
-          en: 'Of degraded character or nature.',
-          es: 'sórdido',
-          zh_TW: '骯髒',
-          zh_CN: '肮脏',
-          ja: 'sordid',
-          ko: '더러운',
-          th: 'ต่ำต้อย',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -76627,25 +76133,6 @@ export default [
     ],
   },
   {
-    id: 14356,
-    word: 'squabble',
-    detail: [
-      {
-        meaning: {
-          en: 'To quarrel.',
-          es: 'disputa común',
-          zh_TW: '爭吵',
-          zh_CN: '争吵',
-          ja: 'squabble',
-          ko: '싸움',
-          th: 'การทะเลาะกัน',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14357,
     word: 'squalid',
     detail: [
@@ -76817,25 +76304,6 @@ export default [
     ],
   },
   {
-    id: 14367,
-    word: 'statecraft',
-    detail: [
-      {
-        meaning: {
-          en: 'The art of conducting state affairs.',
-          es: 'política',
-          zh_TW: '司克拉夫',
-          zh_CN: '司克拉夫',
-          ja: '国政',
-          ko: '스테이크 크래프트',
-          th: 'การคราฟท์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14368,
     word: 'static',
     detail: [
@@ -76850,25 +76318,6 @@ export default [
           th: 'คงที่',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14369,
-    word: 'statics',
-    detail: [
-      {
-        meaning: {
-          en: 'The branch of mechanics that treats of the relations that subsist among forces in order.',
-          es: 'estadística',
-          zh_TW: '靜態',
-          zh_CN: '静态',
-          ja: 'statics',
-          ko: '정적',
-          th: 'วิชาว่าด้วยวัตถุ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -76926,25 +76375,6 @@ export default [
           th: 'รูปปั้น',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14373,
-    word: 'statuette',
-    detail: [
-      {
-        meaning: {
-          en: 'A figurine.',
-          es: 'estatuilla',
-          zh_TW: '塑像',
-          zh_CN: '塑像',
-          ja: 'statuette',
-          ko: '작은 조상',
-          th: 'รูปปั้น',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -77463,25 +76893,6 @@ export default [
     ],
   },
   {
-    id: 14403,
-    word: 'subacid',
-    detail: [
-      {
-        meaning: {
-          en: 'Somewhat sharp or biting.',
-          es: 'subacido',
-          zh_TW: '微酸',
-          zh_CN: '微酸',
-          ja: '亜酸',
-          ko: '서브 acid',
-          th: 'น้ำกึ่งลดลง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14404,
     word: 'subaquatic',
     detail: [
@@ -77513,25 +76924,6 @@ export default [
           ja: '潜在意識',
           ko: '잠재 의식',
           th: 'เกี่ยวกับจิตใต้สำนึก',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14406,
-    word: 'subjacent',
-    detail: [
-      {
-        meaning: {
-          en: 'Situated directly underneath.',
-          es: 'subyacente',
-          zh_TW: '次級',
-          zh_CN: '次级',
-          ja: 'subjacent',
-          ko: '밑에 있는',
-          th: 'อยู่ภายใต้',
         },
         partsOfSpeech: 'adjective',
         example: '',
@@ -78356,25 +77748,6 @@ export default [
     ],
   },
   {
-    id: 14450,
-    word: 'superannuate',
-    detail: [
-      {
-        meaning: {
-          en: 'To become deteriorated or incapacitated by long service.',
-          es: 'jubilar',
-          zh_TW: '哺乳動物',
-          zh_CN: '哺乳动物',
-          ja: 'supernuate',
-          ko: '감독',
-          th: 'ทำให้เสื่อมเสีย',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14451,
     word: 'superb',
     detail: [
@@ -78622,25 +77995,6 @@ export default [
     ],
   },
   {
-    id: 14464,
-    word: 'supine',
-    detail: [
-      {
-        meaning: {
-          en: 'Lying on the back.',
-          es: 'supino',
-          zh_TW: '仰臥',
-          zh_CN: '仰卧',
-          ja: '仰pine',
-          ko: '부정사',
-          th: 'หงาย',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14465,
     word: 'supplant',
     detail: [
@@ -78807,25 +78161,6 @@ export default [
           th: 'การปราบปราม',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14474,
-    word: 'supramundane',
-    detail: [
-      {
-        meaning: {
-          en: 'Supernatural.',
-          es: 'supramundano',
-          zh_TW: '超凡',
-          zh_CN: '超凡',
-          ja: 'supramundane',
-          ko: 'Supramundane',
-          th: 'คนที่มีอำนาจเหนือกว่า',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -79111,25 +78446,6 @@ export default [
           th: 'การดำรงชีวิต',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14490,
-    word: 'swarthy',
-    detail: [
-      {
-        meaning: {
-          en: 'Having a dark hue, especially a dark or sunburned complexion.',
-          es: 'moreno',
-          zh_TW: '斯威西',
-          zh_CN: '斯威西',
-          ja: '浅黒い',
-          ko: '거무스름한',
-          th: 'เป็นสี',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
