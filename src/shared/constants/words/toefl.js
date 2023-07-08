@@ -53333,25 +53333,6 @@ export default [
     ],
   },
   {
-    id: 13050,
-    word: 'natal',
-    detail: [
-      {
-        meaning: {
-          en: "Pertaining to one's birth.",
-          es: 'natal',
-          zh_TW: '納塔爾',
-          zh_CN: '纳塔尔',
-          ja: 'ナタール',
-          ko: '나탈',
-          th: 'เกี่ยวกับธรรมชาติ',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13051,
     word: 'nationality',
     detail: [
@@ -54264,25 +54245,6 @@ export default [
     ],
   },
   {
-    id: 13102,
-    word: 'nit',
-    detail: [
-      {
-        meaning: {
-          en: 'The egg of a louse or some other insect.',
-          es: 'liendre',
-          zh_TW: '尼特',
-          zh_CN: '尼特',
-          ja: 'nit',
-          ko: '바보',
-          th: 'นิดหน่อย',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13103,
     word: 'nocturnal',
     detail: [
@@ -55076,25 +55038,6 @@ export default [
           th: 'ความอ้วน',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13146,
-    word: 'obituary',
-    detail: [
-      {
-        meaning: {
-          en: 'A published notice of a death.',
-          es: 'obituario',
-          zh_TW: 'itu告',
-          zh_CN: 'itu告',
-          ja: '死亡記事',
-          ko: '사망 기사',
-          th: 'ข่าวร้าย',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -58045,25 +57988,6 @@ export default [
     ],
   },
   {
-    id: 13307,
-    word: 'palatial',
-    detail: [
-      {
-        meaning: {
-          en: 'Magnificent.',
-          es: 'palaciego',
-          zh_TW: 'pale',
-          zh_CN: 'pale',
-          ja: '宮殿',
-          ko: '궁전 같은',
-          th: 'ที่หรูหรา',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13308,
     word: 'paleontology',
     detail: [
@@ -58154,25 +58078,6 @@ export default [
           th: 'อัมพาต',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13316,
-    word: 'paly',
-    detail: [
-      {
-        meaning: {
-          en: 'Lacking color or brilliancy.',
-          es: 'palomado',
-          zh_TW: '帕莉',
-          zh_CN: '帕莉',
-          ja: '淡い',
-          ko: '창백한',
-          th: 'น่าเบื่อหน่าย',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -58672,25 +58577,6 @@ export default [
     ],
   },
   {
-    id: 13346,
-    word: 'pariah',
-    detail: [
-      {
-        meaning: {
-          en: 'A member of a degraded class; a social outcast.',
-          es: 'paria',
-          zh_TW: '帕里亞',
-          zh_CN: '帕里亚',
-          ja: '不可触民',
-          ko: '파리 아',
-          th: 'คนพารามิเตอร์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13347,
     word: 'parish',
     detail: [
@@ -58762,25 +58648,6 @@ export default [
           th: 'การพูดคุย',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13351,
-    word: 'parley',
-    detail: [
-      {
-        meaning: {
-          en: 'To converse in.',
-          es: 'parlamentar',
-          zh_TW: '帕利',
-          zh_CN: '帕利',
-          ja: 'パーリー',
-          ko: '협상',
-          th: 'การจัดเก็บ',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -59242,25 +59109,6 @@ export default [
     ],
   },
   {
-    id: 13376,
-    word: 'patronymic',
-    detail: [
-      {
-        meaning: {
-          en: "Formed after one's father's name.",
-          es: 'patronímico',
-          zh_TW: 'taperonymic',
-          zh_CN: 'taperonymic',
-          ja: '父称',
-          ko: '후원',
-          th: 'เป็นคำพ้องเสียง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13377,
     word: 'patter',
     detail: [
@@ -59584,25 +59432,6 @@ export default [
     ],
   },
   {
-    id: 13395,
-    word: 'peddle',
-    detail: [
-      {
-        meaning: {
-          en: 'To go about with a small stock of goods to sell.',
-          es: 'difundir',
-          zh_TW: '兜售',
-          zh_CN: '兜售',
-          ja: '行peddle',
-          ko: '조금씩 잘라 팔다',
-          th: 'เร่',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13396,
     word: 'peddler',
     detail: [
@@ -59774,25 +59603,6 @@ export default [
     ],
   },
   {
-    id: 13406,
-    word: 'penance',
-    detail: [
-      {
-        meaning: {
-          en: 'Punishment to which one voluntarily submits or subjects himself as an expression of penitence.',
-          es: 'penitencia',
-          zh_TW: 'pen悔',
-          zh_CN: 'pen悔',
-          ja: '苦行',
-          ko: '참회',
-          th: 'การเสียดสี',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13407,
     word: 'penchant',
     detail: [
@@ -59940,63 +59750,6 @@ export default [
           th: 'คาบสมุทร',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13415,
-    word: 'penitence',
-    detail: [
-      {
-        meaning: {
-          en: 'Sorrow for sin with desire to amend and to atone.',
-          es: 'penitencia',
-          zh_TW: 'pen悔',
-          zh_CN: 'pen悔',
-          ja: '懺悔',
-          ko: '회개',
-          th: 'ความสำนึกผิด',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13416,
-    word: 'penitential',
-    detail: [
-      {
-        meaning: {
-          en: 'Pertaining to sorrow for sin with desire to amend and to atone.',
-          es: 'penitencial',
-          zh_TW: 'pen悔',
-          zh_CN: 'pen悔',
-          ja: '悔い改め',
-          ko: '참회',
-          th: 'สำนึกผิด',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13417,
-    word: 'pennant',
-    detail: [
-      {
-        meaning: {
-          en: 'A small flag.',
-          es: 'banderín',
-          zh_TW: '班丹特',
-          zh_CN: '班丹特',
-          ja: 'ペナント',
-          ko: '페넌트',
-          th: 'ธง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -60553,25 +60306,6 @@ export default [
     ],
   },
   {
-    id: 13447,
-    word: 'perigee',
-    detail: [
-      {
-        meaning: {
-          en: 'The point in the orbit of the moon when it is nearest the earth.',
-          es: 'perigeo',
-          zh_TW: '佩里格',
-          zh_CN: '佩里格',
-          ja: '周辺',
-          ko: '근지점',
-          th: 'perigee',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13448,
     word: 'periodicity',
     detail: [
@@ -61104,25 +60838,6 @@ export default [
     ],
   },
   {
-    id: 13477,
-    word: 'perspire',
-    detail: [
-      {
-        meaning: {
-          en: 'To excrete through the pores of the skin.',
-          es: 'transpirar',
-          zh_TW: '波蘭人',
-          zh_CN: '波兰人',
-          ja: '汗',
-          ko: '배어 나오게 하다',
-          th: 'เหงื่อ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13478,
     word: 'persuadable',
     detail: [
@@ -61484,25 +61199,6 @@ export default [
     ],
   },
   {
-    id: 13497,
-    word: 'peter',
-    detail: [
-      {
-        meaning: {
-          en: 'To fail or lose power, efficiency, or value.',
-          es: 'péter',
-          zh_TW: '彼得',
-          zh_CN: '彼得',
-          ja: 'ピーター',
-          ko: '베드로',
-          th: 'ปีเตอร์',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13498,
     word: 'petrify',
     detail: [
@@ -61631,25 +61327,6 @@ export default [
           th: 'ปรากฏการณ์',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13505,
-    word: 'philander',
-    detail: [
-      {
-        meaning: {
-          en: 'To play at courtship with a woman.',
-          es: 'flirtear',
-          zh_TW: '菲蘭德',
-          zh_CN: '菲兰德',
-          ja: 'フィランダー',
-          ko: 'Philander',
-          th: 'ผู้ทำนาย',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -62225,25 +61902,6 @@ export default [
     ],
   },
   {
-    id: 13537,
-    word: 'pillory',
-    detail: [
-      {
-        meaning: {
-          en: 'A wooden framework in which an offender is fastened to boards and is exposed to public scorn.',
-          es: 'picota',
-          zh_TW: 'lard',
-          zh_CN: 'lard',
-          ja: '柱',
-          ko: '칼',
-          th: 'ประจาน',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13538,
     word: 'pincers',
     detail: [
@@ -62256,25 +61914,6 @@ export default [
           ja: 'ピンサー',
           ko: '협공',
           th: 'กก',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13539,
-    word: 'pinchers',
-    detail: [
-      {
-        meaning: {
-          en: 'An instrument having two jaws working on a pivot.',
-          es: 'tenazas',
-          zh_TW: '施加人',
-          zh_CN: '施加人',
-          ja: 'ピンチャー',
-          ko: '족집게',
-          th: 'บีบ',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -62676,25 +62315,6 @@ export default [
           th: 'คนโง่',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13563,
-    word: 'pledgee',
-    detail: [
-      {
-        meaning: {
-          en: 'The person to whom anything is pledged.',
-          es: 'compromiso',
-          zh_TW: '誓言',
-          zh_CN: '誓言',
-          ja: 'PHESDEGE',
-          ko: '질권자',
-          th: 'จำนำ',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -63840,25 +63460,6 @@ export default [
     ],
   },
   {
-    id: 13628,
-    word: 'prattle',
-    detail: [
-      {
-        meaning: {
-          en: 'To utter in simple or childish talk.',
-          es: 'parloteo',
-          zh_TW: 'pro',
-          zh_CN: 'pro',
-          ja: 'プラットル',
-          ko: '프레이트',
-          th: 'การพูดจาโผงผาง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13629,
     word: 'preamble',
     detail: [
@@ -64942,25 +64543,6 @@ export default [
     ],
   },
   {
-    id: 13687,
-    word: 'prepossession',
-    detail: [
-      {
-        meaning: {
-          en: 'A preconceived liking.',
-          es: 'prejuicio',
-          zh_TW: '預俄羅斯',
-          zh_CN: '预俄罗斯',
-          ja: 'プレリッセッション',
-          ko: '선입감',
-          th: 'การทำให้หมดแรง',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13688,
     word: 'preposterous',
     detail: [
@@ -65797,25 +65379,6 @@ export default [
     ],
   },
   {
-    id: 13736,
-    word: 'prodigal',
-    detail: [
-      {
-        meaning: {
-          en: 'One wasteful or extravagant, especially in the use of money or property.',
-          es: 'pródigo',
-          zh_TW: '浪子',
-          zh_CN: '浪子',
-          ja: '放dig',
-          ko: '낭비하는',
-          th: 'ฟุ่มเฟือย',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13737,
     word: 'prodigious',
     detail: [
@@ -65906,25 +65469,6 @@ export default [
           th: 'ศาสตราจารย์',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13742,
-    word: 'proffer',
-    detail: [
-      {
-        meaning: {
-          en: 'To offer to another for acceptance.',
-          es: 'oferta',
-          zh_TW: '求婚',
-          zh_CN: '求婚',
-          ja: 'Proffer',
-          ko: 'Proffer',
-          th: 'เสนอขาย',
-        },
-        partsOfSpeech: 'verb',
         example: '',
       },
     ],
@@ -66633,25 +66177,6 @@ export default [
     ],
   },
   {
-    id: 13780,
-    word: 'prosaic',
-    detail: [
-      {
-        meaning: {
-          en: 'Unimaginative.',
-          es: 'prosaico',
-          zh_TW: '平淡無奇',
-          zh_CN: '平淡无奇',
-          ja: 'prosaic',
-          ko: 'prosaic',
-          th: 'น่าเบื่อหน่าย',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13781,
     word: 'proscenium',
     detail: [
@@ -66930,25 +66455,6 @@ export default [
           ja: 'プロトコル',
           ko: '규약',
           th: 'มาตรการ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13796,
-    word: 'protomartyr',
-    detail: [
-      {
-        meaning: {
-          en: 'The earliest victim in any cause.',
-          es: 'protomártir',
-          zh_TW: '原始療法',
-          zh_CN: '原始疗法',
-          ja: 'Protomartyr',
-          ko: 'protomartyr',
-          th: 'protomartyry',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -67331,25 +66837,6 @@ export default [
           th: 'เป็นคนขี้เกียจ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13818,
-    word: 'pseudapostle',
-    detail: [
-      {
-        meaning: {
-          en: 'A pretended or false apostle.',
-          es: 'seudapóstula',
-          zh_TW: '偽階級',
-          zh_CN: '伪阶级',
-          ja: 'Pseudapostle',
-          ko: '유사 로스트 레',
-          th: 'Pseudapostle',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -67749,25 +67236,6 @@ export default [
           th: 'วูบวาบ',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13844,
-    word: 'pyromania',
-    detail: [
-      {
-        meaning: {
-          en: 'An insane propensity to set things on fire.',
-          es: 'piromanía',
-          zh_TW: '熱情狂',
-          zh_CN: '热情狂',
-          ja: 'Pyromania',
-          ko: 'Pyromania',
-          th: 'Pyromania',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
