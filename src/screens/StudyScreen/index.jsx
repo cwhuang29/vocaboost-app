@@ -125,7 +125,7 @@ const StudyScreen = ({ navigation, route }) => {
   const entireWordList = useMemo(() => getEntireWordList({ type: routeType, shuffle: sortingMode === SORTING_MODE.SHUFFLE }), [routeType, sortingMode]);
   const entireWordListSortByAlphabet = useMemo(() => sortAlphabetically(entireWordList), [entireWordList]);
   const entireWordListObject = useMemo(() => transformWordListToObject(entireWordList), [entireWordList]);
-  const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL()); // TODO If user is not signed in, don't run ws code
+  // const { lastJsonMessage, readyState, sendJsonMessage } = useWebSocket(getWebSocketURL()); // TODO If user is not signed in, don't run ws code
   // const connStatus = getWSConnStatusDisplay(readyState);
   const { wordCount, timeElapsed } = useStudyScreenMonitor(wordList?.[wordIndex]);
 
@@ -138,14 +138,14 @@ const StudyScreen = ({ navigation, route }) => {
 
   const setup = async () => {
     const [c, token] = await Promise.all([getConfig(), getAuthToken()]);
-    if (!token) {
-      setAlertData({
-        type: ALERT_TYPES.WARNING,
-        title: CONNECTED_WORDS_FAILED_MSG.TITLE,
-        content: CONNECTED_WORDS_FAILED_MSG.CONTENT,
-        ts: getLocalDate().toString(),
-      });
-    }
+    // if (!token) {
+    //   setAlertData({
+    //     type: ALERT_TYPES.WARNING,
+    //     title: CONNECTED_WORDS_FAILED_MSG.TITLE,
+    //     content: CONNECTED_WORDS_FAILED_MSG.CONTENT,
+    //     ts: getLocalDate().toString(),
+    //   });
+    // }
     accessToken.current = token;
     const finalConfig = isObjectEmpty(c) ? DEFAULT_CONFIG : c;
     const { mode, wordId } = finalConfig.studyOptions[routeType];
@@ -262,38 +262,38 @@ const StudyScreen = ({ navigation, route }) => {
     createEnterStudyScreenEvent();
   }, []);
 
-  const setupWebSocket = async () => {
-    // Note that readyState only turns to OPEN once
-    if (readyState !== ReadyState.OPEN || accessToken.current === null) {
-      return;
-    }
-    if (accessToken.current) {
-      sendJsonMessage({ data: config.collectedWords, accessToken: accessToken.current, ts: config.updatedAt });
-    }
-  };
+  // const setupWebSocket = async () => {
+  //   // Note that readyState only turns to OPEN once
+  //   if (readyState !== ReadyState.OPEN || accessToken.current === null) {
+  //     return;
+  //   }
+  //   if (accessToken.current) {
+  //     sendJsonMessage({ data: config.collectedWords, accessToken: accessToken.current, ts: config.updatedAt });
+  //   }
+  // };
 
-  const wsMessageOnReceive = async () => {
-    if (lastJsonMessage === null) {
-      return;
-    }
-    const { isStale, data, ts, error } = lastJsonMessage;
-    if (error && !isStale) {
-      logger(`Update config to server error: ${error}`);
-    }
-    if (isStale) {
-      await storage.setData(STORAGE_CONFIG, { ...config, collectedWords: data, updatedAt: ts });
-      setConfig(prev => ({ ...prev, collectedWords: data, updatedAt: ts }));
-      logger('Just updated the latest config from server!');
-    }
-  };
+  // const wsMessageOnReceive = async () => {
+  //   if (lastJsonMessage === null) {
+  //     return;
+  //   }
+  //   const { isStale, data, ts, error } = lastJsonMessage;
+  //   if (error && !isStale) {
+  //     logger(`Update config to server error: ${error}`);
+  //   }
+  //   if (isStale) {
+  //     await storage.setData(STORAGE_CONFIG, { ...config, collectedWords: data, updatedAt: ts });
+  //     setConfig(prev => ({ ...prev, collectedWords: data, updatedAt: ts }));
+  //     logger('Just updated the latest config from server!');
+  //   }
+  // };
 
-  useEffect(() => {
-    setupWebSocket();
-  }, [readyState]);
+  // useEffect(() => {
+  //   setupWebSocket();
+  // }, [readyState]);
 
-  useEffect(() => {
-    wsMessageOnReceive();
-  }, [lastJsonMessage]);
+  // useEffect(() => {
+  //   wsMessageOnReceive();
+  // }, [lastJsonMessage]);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', () => {
@@ -320,9 +320,9 @@ const StudyScreen = ({ navigation, route }) => {
       const newConfig = { ...config, collectedWords, updatedAt: time };
       setConfig(newConfig);
 
-      if (accessToken.current) {
-        sendJsonMessage({ data: collectedWords, accessToken: accessToken.current, ts: time });
-      }
+      // if (accessToken.current) {
+      //   sendJsonMessage({ data: collectedWords, accessToken: accessToken.current, ts: time });
+      // }
     };
 
   const onCopyText = text => () => {

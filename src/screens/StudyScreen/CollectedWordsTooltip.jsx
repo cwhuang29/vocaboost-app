@@ -22,11 +22,12 @@ const Badge = ({ children, config }) => {
   );
 };
 
+// eslint-disable-next-line no-unused-vars
 const CollectedWordsTooltip = ({ display, wordType, progress, config }) =>
   display && (
     <HStack justifyContent='center' space={3} mb={2}>
       <Badge config={config}>{progress}</Badge>
-      <Badge config={config}>{wordType}</Badge>
+      {/* <Badge config={config}>{wordType}</Badge> */}
     </HStack>
   );
 
