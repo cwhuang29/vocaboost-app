@@ -79705,25 +79705,6 @@ export default [
     ],
   },
   {
-    id: 14566,
-    word: 'thearchy',
-    detail: [
-      {
-        meaning: {
-          en: 'Government by a supreme deity.',
-          es: 'thearchy',
-          zh_TW: 'theweaty',
-          zh_CN: 'theweaty',
-          ja: 'Thearchy',
-          ko: 'THEARCHY',
-          th: 'ซึ่งค้นหา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14567,
     word: 'theism',
     detail: [
@@ -79755,25 +79736,6 @@ export default [
           ja: '神権政治',
           ko: '신정',
           th: 'Theocracy',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14569,
-    word: 'theocrasy',
-    detail: [
-      {
-        meaning: {
-          en: 'The mixed worship of polytheism.',
-          es: 'teocria',
-          zh_TW: '神權',
-          zh_CN: '神权',
-          ja: 'Theocrasy',
-          ko: '신권',
-          th: 'TheOcrasy',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -79890,25 +79852,6 @@ export default [
           th: 'สร้างทฤษฎี',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14576,
-    word: 'thereabout',
-    detail: [
-      {
-        meaning: {
-          en: 'Near that number, quantity, degree, place, or time, approximately.',
-          es: 'por ahí',
-          zh_TW: 'therebout',
-          zh_CN: 'therebout',
-          ja: 'そのため',
-          ko: '그 당시',
-          th: 'ในขณะนั้น',
-        },
-        partsOfSpeech: 'adverb',
         example: '',
       },
     ],
@@ -80066,44 +80009,6 @@ export default [
     ],
   },
   {
-    id: 14587,
-    word: 'timorous',
-    detail: [
-      {
-        meaning: {
-          en: 'Lacking courage.',
-          es: 'timorato',
-          zh_TW: '稍加言',
-          zh_CN: '稍加言',
-          ja: 'Timeours',
-          ko: '소심한',
-          th: 'ขี้ขลาด',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14588,
-    word: 'tincture',
-    detail: [
-      {
-        meaning: {
-          en: 'A solution, usually alcoholic, of some principle used in medicine.',
-          es: 'tintura',
-          zh_TW: 'tin劑',
-          zh_CN: 'tin剂',
-          ja: 'チンキ',
-          ko: '팅크',
-          th: 'ทิงเจอร์',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14589,
     word: 'tinge',
     detail: [
@@ -80118,25 +80023,6 @@ export default [
           th: 'สี',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14590,
-    word: 'tipsy',
-    detail: [
-      {
-        meaning: {
-          en: 'Befuddled with drinks.',
-          es: 'achispado',
-          zh_TW: 'tip',
-          zh_CN: 'tip',
-          ja: 'ほろ酔い',
-          ko: '기운',
-          th: 'เลื้อยคลาน',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
@@ -81909,25 +81795,6 @@ export default [
     ],
   },
   {
-    id: 14689,
-    word: 'tutelar',
-    detail: [
-      {
-        meaning: {
-          en: 'Protective.',
-          es: 'tutelar',
-          zh_TW: '圖特拉',
-          zh_CN: '图特拉',
-          ja: 'Tutelar',
-          ko: '수호자',
-          th: 'ผู้ปกครอง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14690,
     word: 'tutorship',
     detail: [
@@ -82170,25 +82037,6 @@ export default [
           th: 'ultramundane',
         },
         partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14705,
-    word: 'umbrage',
-    detail: [
-      {
-        meaning: {
-          en: 'A sense of injury.',
-          es: 'resentimiento',
-          zh_TW: '蒙布拉奇',
-          zh_CN: '蒙布拉奇',
-          ja: 'umbrage',
-          ko: '나뭇잎',
-          th: 'ความแตกต่าง',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -82588,25 +82436,6 @@ export default [
           th: 'รองลงมา',
         },
         partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14727,
-    word: 'underling',
-    detail: [
-      {
-        meaning: {
-          en: 'A subordinate.',
-          es: 'subordinado',
-          zh_TW: '下屬',
-          zh_CN: '下属',
-          ja: 'アンダーリング',
-          ko: '부하',
-          th: 'underling underling',
-        },
-        partsOfSpeech: 'noun',
         example: '',
       },
     ],
@@ -85728,25 +85557,6 @@ export default [
     ],
   },
   {
-    id: 14913,
-    word: 'whet',
-    detail: [
-      {
-        meaning: {
-          en: 'To make more keen or eager.',
-          es: 'afilar',
-          zh_TW: '惠特',
-          zh_CN: '惠特',
-          ja: 'ウェット',
-          ko: '자극',
-          th: 'ลับ',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 14914,
     word: 'whimsical',
     detail: [
@@ -86065,25 +85875,6 @@ export default [
           th: 'การเขียน',
         },
         partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 14936,
-    word: 'wry',
-    detail: [
-      {
-        meaning: {
-          en: 'Deviating from that which is proper or right.',
-          es: 'torcido',
-          zh_TW: '沃里',
-          zh_CN: '沃里',
-          ja: '苦しんでいます',
-          ko: '찡그린',
-          th: 'เบียดเสียด',
-        },
-        partsOfSpeech: 'adjective',
         example: '',
       },
     ],
