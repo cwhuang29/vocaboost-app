@@ -48678,25 +48678,6 @@ export default [
     ],
   },
   {
-    id: 12782,
-    word: 'macadamize',
-    detail: [
-      {
-        meaning: {
-          en: 'To cover or pave, as a path or roadway, with small broken stone.',
-          es: 'macadamizar',
-          zh_TW: '杏仁餅',
-          zh_CN: '杏仁饼',
-          ja: 'マカダミズ',
-          ko: 'macadamize',
-          th: 'แมคคาเดเมดา',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12783,
     word: 'machinery',
     detail: [
@@ -48747,44 +48728,6 @@ export default [
           ja: '大宇宙',
           ko: '대우주',
           th: 'จักรวาล',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12786,
-    word: 'madden',
-    detail: [
-      {
-        meaning: {
-          en: 'To inflame with passion.',
-          es: 'enloquecer',
-          zh_TW: '馬登',
-          zh_CN: '马登',
-          ja: 'マッデン',
-          ko: '미치게 미치다',
-          th: 'ทำให้บ้าคลั่ง',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12787,
-    word: 'madonna',
-    detail: [
-      {
-        meaning: {
-          en: 'A painted or sculptured representation of the Virgin, usually with the infant Jesus.',
-          es: 'Virgen',
-          zh_TW: '麥當娜',
-          zh_CN: '麦当娜',
-          ja: 'マドンナ',
-          ko: '성모 마리아',
-          th: 'มาดอนน่า',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -49609,25 +49552,6 @@ export default [
     ],
   },
   {
-    id: 12831,
-    word: 'manumission',
-    detail: [
-      {
-        meaning: {
-          en: 'Emancipation.',
-          es: 'manumisión',
-          zh_TW: '摩納作',
-          zh_CN: '摩纳作',
-          ja: '操作',
-          ko: '해방',
-          th: 'การจัดการ',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12832,
     word: 'manumit',
     detail: [
@@ -50036,7 +49960,7 @@ export default [
           es: 'mausoleo',
           zh_TW: '陵',
           zh_CN: '陵',
-          ja: '霊us',
+          ja: '陵',
           ko: '웅장한 무덤',
           th: 'ฮวงซุ้ย',
         },
@@ -50077,25 +50001,6 @@ export default [
           ja: '迷路',
           ko: '미로',
           th: 'เขาวงกต',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12857,
-    word: 'mead',
-    detail: [
-      {
-        meaning: {
-          en: 'A meadow.',
-          es: 'aguamiel',
-          zh_TW: '米德',
-          zh_CN: '米德',
-          ja: 'ミード',
-          ko: '벌꿀 술',
-          th: 'ทุ่งหญ้า',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -50761,44 +50666,6 @@ export default [
           ja: '形而上学',
           ko: '형이상학',
           th: 'อภิปรัชญา',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12896,
-    word: 'mete',
-    detail: [
-      {
-        meaning: {
-          en: 'To apportion.',
-          es: 'asignar',
-          zh_TW: '米特',
-          zh_CN: '米特',
-          ja: 'メテ',
-          ko: '재다',
-          th: 'อมเทียม',
-        },
-        partsOfSpeech: 'verb',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 12897,
-    word: 'metempsychosis',
-    detail: [
-      {
-        meaning: {
-          en: 'Transition of the soul of a human being at death into another body, whether human or beast.',
-          es: 'metempsicosis',
-          zh_TW: '輪迴',
-          zh_CN: '轮回',
-          ja: 'Metempsychosis',
-          ko: 'Metempsychosis',
-          th: 'metempsychosis',
         },
         partsOfSpeech: 'noun',
         example: '',
@@ -52212,25 +52079,6 @@ export default [
     ],
   },
   {
-    id: 12977,
-    word: 'modish',
-    detail: [
-      {
-        meaning: {
-          en: 'Fashionable.',
-          es: 'sumamente elegante',
-          zh_TW: '莫迪什',
-          zh_CN: '莫迪什',
-          ja: 'モディッシュ',
-          ko: '모드',
-          th: 'ดัดแปลง',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 12978,
     word: 'modulate',
     detail: [
@@ -52934,25 +52782,6 @@ export default [
     ],
   },
   {
-    id: 13016,
-    word: 'motley',
-    detail: [
-      {
-        meaning: {
-          en: 'Composed of heterogeneous or inharmonious elements.',
-          es: 'abigarrado',
-          zh_TW: '莫特利',
-          zh_CN: '莫特利',
-          ja: '雑多',
-          ko: '뒤범벅',
-          th: 'Motley',
-        },
-        partsOfSpeech: 'adjective',
-        example: '',
-      },
-    ],
-  },
-  {
     id: 13017,
     word: 'motto',
     detail: [
@@ -53155,25 +52984,6 @@ export default [
           ja: '自治体',
           ko: '지방 자치체',
           th: 'เทศบาล',
-        },
-        partsOfSpeech: 'noun',
-        example: '',
-      },
-    ],
-  },
-  {
-    id: 13030,
-    word: 'munificence',
-    detail: [
-      {
-        meaning: {
-          en: 'A giving characterized by generous motives and extraordinary liberality.',
-          es: 'munificencia',
-          zh_TW: '野獸',
-          zh_CN: '野兽',
-          ja: 'Munificence',
-          ko: 'Munificence',
-          th: 'ความเยือกเย็น',
         },
         partsOfSpeech: 'noun',
         example: '',
