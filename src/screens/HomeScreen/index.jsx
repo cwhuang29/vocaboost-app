@@ -8,22 +8,24 @@ import { AspectRatio, Box, Center, Heading, useColorMode, useTheme, VStack } fro
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
 import { useDeviceInfoContext } from 'shared/hooks/useDeviceInfoContext';
 import CollectedWordListSvg from 'shared/svgs/collectedWordListSvg';
-import WordListSvg1 from 'shared/svgs/wordListSvg1';
 import WordListSvg2 from 'shared/svgs/wordListSvg2';
 import { deviceIsTablet } from 'shared/utils/devices';
 import { getIsSmallDevice, homeDeviceStyle, isDarkMode } from 'shared/utils/style';
 
 const HomeBox = ({ text, imgXml, onPress }) => {
   const deviceInfo = useDeviceInfoContext();
-  const maxWidth = deviceIsTablet(deviceInfo) ? '390' : '300';
-  const wordBoxPadding = deviceIsTablet(deviceInfo) ? 5 : 3;
+  const isTablet = deviceIsTablet(deviceInfo);
   const isSmallDevice = getIsSmallDevice();
+
+  const maxWidthParent = isTablet ? 490 : 390;
+  const maxWidth = isTablet ? 490 : 320;
+  const wordBoxPadding = isTablet ? 6 : 3;
   const deviceStyle = isSmallDevice ? homeDeviceStyle.small : homeDeviceStyle.normal;
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Box alignItems='center' mt={4} mx={4} style={{ maxWidth: 390 }}>
-        <Box rounded='xl' overflow='hidden' w='85%' maxW={maxWidth}>
+      <Box alignItems='center' mt={4} mx={4} style={{ maxWidth: maxWidthParent }}>
+        <Box rounded='xl' overflow='hidden' w={deviceStyle.boxWidth} maxW={maxWidth}>
           <AspectRatio w='100%' ratio={deviceStyle.ratio}>
             <SvgXml xml={imgXml} width='100%' height='100%' />
           </AspectRatio>
@@ -43,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
   const { colorMode } = useColorMode();
   const bgColor = isDarkMode(colorMode) ? colors.vhdark[200] : colors.vhlight[200];
   const deviceInfo = useDeviceInfoContext();
-  const space = deviceIsTablet(deviceInfo) ? 12 : 0;
+  const space = deviceIsTablet(deviceInfo) ? 48 : 10;
   const onPress =
     ({ type }) =>
     () => {
@@ -53,7 +55,6 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Center bgColor={bgColor} safeAreaTop={3} justifyContent='center' flex={1}>
       <VStack space={space} pt={3}>
-        <HomeBox text='TOEFL' imgXml={WordListSvg1} onPress={onPress({ type: WORD_LIST_TYPE.TOEFL })} />
         <HomeBox text='GRE' imgXml={WordListSvg2} onPress={onPress({ type: WORD_LIST_TYPE.GRE })} />
         <HomeBox text='Collected' imgXml={CollectedWordListSvg} onPress={onPress({ type: WORD_LIST_TYPE.COLLECTED })} />
       </VStack>

@@ -65,8 +65,8 @@ export const profileDeviceStyle = {
 };
 
 export const homeDeviceStyle = {
-  small: { ratio: 2.7 },
-  normal: { ratio: 1.8 },
+  small: { ratio: 2.7, boxWidth: '84%' },
+  normal: { ratio: 1.6, boxWidth: '90%' },
 };
 
 export const fontsMap = {
