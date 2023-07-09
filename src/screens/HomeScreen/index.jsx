@@ -17,8 +17,8 @@ const HomeBox = ({ text, imgXml, onPress }) => {
   const isTablet = deviceIsTablet(deviceInfo);
   const isSmallDevice = getIsSmallDevice();
 
-  const maxWidthParent = isTablet ? 490 : 390;
-  const maxWidth = isTablet ? 490 : 320;
+  const maxWidthParent = isTablet ? 400 : 300;
+  const maxWidth = isTablet ? 380 : 270;
   const wordBoxPadding = isTablet ? 6 : 3;
   const deviceStyle = isSmallDevice ? homeDeviceStyle.small : homeDeviceStyle.normal;
 
@@ -45,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
   const { colorMode } = useColorMode();
   const bgColor = isDarkMode(colorMode) ? colors.vhdark[200] : colors.vhlight[200];
   const deviceInfo = useDeviceInfoContext();
-  const space = deviceIsTablet(deviceInfo) ? 48 : 10;
+  const space = deviceIsTablet(deviceInfo) ? 32 : 10;
   const onPress =
     ({ type }) =>
     () => {

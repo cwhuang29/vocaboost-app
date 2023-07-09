@@ -105,7 +105,7 @@ const ProfileScreen = () => {
       <Box safeAreaY={needMoreSpace ? '8' : '4'} safeAreaX='8' flex={1} _light={{ bg: 'vhlight.200' }} _dark={{ bg: 'vhdark.200' }}>
         {needMoreSpace && <Box height={9} />}
         <Box mx={isTablet ? 16 : 0}>
-          <Box alignItems='center' position='absolute' style={{ top: isTablet ? 6 : needMoreSpace ? -5 : -10, right: 2 }}>
+          <Box alignItems='center' position='absolute' style={{ top: isTablet ? 6 : 0, right: 2 }}>
             <AdvertisementModal iconColor={iconColor} isAndroid={isAndroid} />
             <SignInOut
               loading={loading}
