@@ -3,7 +3,7 @@
     "name": "VocaBoost (GRE)",
     "slug": "vocabularyboost",
     "owner": "cwhuang29",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "description": "VocaBoost helps you improve your GRE vocabulary in an effective way",
     "orientation": "portrait",
     "icon": "./src/assets/icons/logo-square.png",
@@ -17,7 +17,7 @@
     "scheme": "msauth.vocaboost.com",
     "ios": {
       "bundleIdentifier": "vocaboost.com",
-      "buildNumber": "1.3.2",
+      "buildNumber": "1.4.0",
       "supportsTablet": true,
       "googleServicesFile": "./google-services-secret-ios.plist"
     },
