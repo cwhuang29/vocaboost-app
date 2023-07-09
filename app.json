@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "VocaBoost (TOEFL)",
-    "slug": "vocabularyboost",
+    "slug": "vocaboost",
     "owner": "cwhuang29",
     "version": "1.0.0",
     "description": "VocaBoost (TOEFL) helps you improve your TOEFL vocabulary in an effective way",
@@ -17,13 +17,13 @@
     "scheme": "msauth.vocaboost.com",
     "ios": {
       "bundleIdentifier": "vocaboost.toefl.com",
-      "buildNumber": "1.3.2",
+      "buildNumber": "1.0.0",
       "supportsTablet": true,
       "googleServicesFile": "./google-services-secret-ios.plist"
     },
     "android": {
       "package": "vocaboost.com",
-      "versionCode": 5,
+      "versionCode": 1,
       "permissions": ["com.google.android.gms.permission.AD_ID"],
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {

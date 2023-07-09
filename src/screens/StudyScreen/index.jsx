@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import Tts from 'react-native-tts';
-import useWebSocket, { ReadyState } from 'react-use-websocket';
+// import useWebSocket, { ReadyState } from 'react-use-websocket';
 import Clipboard from '@react-native-clipboard/clipboard';
 import PropTypes from 'prop-types';
 
@@ -12,7 +12,7 @@ import { BottomAlert } from 'components/Alerts';
 import { ALERT_TYPES, SORTING_MODE } from 'shared/constants';
 import apis from 'shared/constants/apis';
 import { LANGS_SUPPORTED } from 'shared/constants/i18n';
-import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
+// import { CONNECTED_WORDS_FAILED_MSG } from 'shared/constants/messages';
 import { STORAGE_CONFIG } from 'shared/constants/storage';
 import { COPY_TEXT_ALERT_TIME_PERIOD } from 'shared/constants/styles';
 import { WORD_LIST_TYPE } from 'shared/constants/wordListType';
@@ -27,7 +27,7 @@ import { DEFAULT_CONFIG } from 'shared/utils/config';
 import { deviceIsTablet } from 'shared/utils/devices';
 import { createEnterStudyScreenEvent, createLeaveStudyScreenEvent } from 'shared/utils/eventTracking';
 import { constructWordExample } from 'shared/utils/highlight';
-import logger from 'shared/utils/logger';
+// import logger from 'shared/utils/logger';
 import { isObjectEmpty } from 'shared/utils/misc';
 import { getSpeechLanguage } from 'shared/utils/speech';
 import { getAuthToken, getConfig } from 'shared/utils/storage';
@@ -42,7 +42,7 @@ import { SpeakerIconButton, StarIconButton, UndoIconButton } from './IconButton'
 import SortingMenu from './SortingMenu';
 import WordCard from './WordCard';
 
-const getWebSocketURL = () => `${getBaseURL()}${apis.V1.SETTING_COLLECTED_WORDS}`;
+// const getWebSocketURL = () => `${getBaseURL()}${apis.V1.SETTING_COLLECTED_WORDS}`;
 
 const getWordList = ({ type }) => {
   const queryType = type === WORD_LIST_TYPE.COLLECTED ? WORD_LIST_TYPE.ALL : type;
